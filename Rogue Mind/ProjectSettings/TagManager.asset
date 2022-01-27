@@ -7,6 +7,9 @@ TagManager:
   - SpawnPoint
   - Rooms
   - Destroyer
+  - Enemy
+  - Melee
+  - Bullet
   layers:
   - Default
   - TransparentFX

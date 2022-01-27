@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7253674216014756465}
-  bulletPrefab: {fileID: 1089777734120550567, guid: cd51e4b6b2a64c543b44941a4bf4fd95, type: 3}
+  bulletPrefab: {fileID: 6596869843035164009, guid: cd51e4b6b2a64c543b44941a4bf4fd95, type: 3}
   bulletForce: 20
 --- !u!114 &7253674216189750445
 MonoBehaviour:
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0ad75fe08475e4bbc14e80defb5566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashColor: {r: 1, g: 0, b: 0, a: 0}
-  regularColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 0.6666667}
+  regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.07
   numberOfFlashes: 3
   triggerCollider: {fileID: 7253674216189750480}
