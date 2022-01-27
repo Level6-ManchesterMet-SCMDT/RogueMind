@@ -9,6 +9,7 @@ public class ShootingScript : MonoBehaviour
     public GameObject bulletPrefab;//the prefab of the bullet being shot
 
     public float bulletForce = 20f;//the force at which bullets are shot
+    
     // Start is called before the first frame update
     void Start()
     {

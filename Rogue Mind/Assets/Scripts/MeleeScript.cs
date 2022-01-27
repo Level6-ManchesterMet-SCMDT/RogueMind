@@ -11,16 +11,19 @@ public class MeleeScript : MonoBehaviour
 
     public Transform hitPoint;//The transform child object where the slashes will spawn
 
+    public float damage = 1f;//the damage of the bullet
+
     //public float coolDownTime;
     //public float nextFireTime = 0f;
     public static int numberOfClicks = 0;//counts the number of clicks currently within the combo time
     public float lastClickedTime = 0f;//stores last time of click
     public float maxComboDelay;//the ammount of time before the combo resets
 
+    float initialDamage;// the damage value that the attack initialy has
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
     }
 
     // Update is called once per frame
@@ -29,7 +32,8 @@ public class MeleeScript : MonoBehaviour
         if(Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
 		{
             numberOfClicks = 0;
-		}
+            damage = initialDamage;//sets damage back to 1 for the first hit
+}
         if(Input.GetMouseButtonDown(1))//if right mouse button clicked
 		{
             OnClick();//Run the onClick function
@@ -49,11 +53,13 @@ public class MeleeScript : MonoBehaviour
         if(numberOfClicks == 2)//if 2 clicks
 		{
             //second hit
+            damage = initialDamage * 2.0f;//doubles damage value
             GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
         }
         if (numberOfClicks == 3)//if 3 clicks
         {
             //third hit
+            damage = initialDamage * 3.0f;//tripples damage value
             GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
             numberOfClicks = 0;//reset number of clicks 

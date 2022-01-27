@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitScript : MonoBehaviour
 {
+    public float knockback = 1f;// the knockback this hit applies to enemies
     // Start is called before the first frame update
     void Start()
     {
