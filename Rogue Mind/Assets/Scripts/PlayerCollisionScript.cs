@@ -31,7 +31,7 @@ public class PlayerCollisionScript : MonoBehaviour
         
         if(collision.CompareTag("Enemy"))//if the collider is an enemy
 		{
-            health -= collision.GetComponent<EnemyFollowerScript>().damage;//reduce health by enemy damage ammount
+            health -= collision.GetComponent<EnemyScript>().damage;//reduce health by enemy damage ammount
             
             StartCoroutine(FlashCo());//run the flash co routine for I frames
             if (health <= 0)
