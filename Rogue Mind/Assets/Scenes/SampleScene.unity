@@ -269,7 +269,7 @@ MonoBehaviour:
   - {fileID: 4586379957973840395, guid: 615bc95eda15cb6458d18c3d8076025e, type: 3}
   closedRoom: {fileID: 4455080339084857634, guid: 411806cfd441d3e40b2bd804007bfbb2, type: 3}
   rooms: []
-  chanceOf3DoorsSpawned: 10
+  chanceOf3DoorsSpawned: 25
   waitTime: 3
   spawnedEndRoom: 0
   endRoomPlaceHolder: {fileID: 5165489882499522545, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
