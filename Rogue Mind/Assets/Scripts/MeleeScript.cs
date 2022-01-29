@@ -20,9 +20,12 @@ public class MeleeScript : MonoBehaviour
     public float maxComboDelay;//the ammount of time before the combo resets
 
     float initialDamage;// the damage value that the attack initialy has
+
+    public DrugManagerScript modifiers;//finds the drugs modifiers
     // Start is called before the first frame update
     void Start()
     {
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
     }
 
@@ -32,7 +35,7 @@ public class MeleeScript : MonoBehaviour
         if(Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
 		{
             numberOfClicks = 0;
-            damage = initialDamage;//sets damage back to 1 for the first hit
+            damage = initialDamage * modifiers.meleeDamageModifier;//sets damage back to 1 for the first hit
 }
         if(Input.GetMouseButtonDown(1))//if right mouse button clicked
 		{
@@ -53,13 +56,13 @@ public class MeleeScript : MonoBehaviour
         if(numberOfClicks == 2)//if 2 clicks
 		{
             //second hit
-            damage = initialDamage * 2.0f;//doubles damage value
+            damage = (initialDamage * 2.0f) * modifiers.meleeDamageModifier;//doubles damage value
             GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
         }
         if (numberOfClicks == 3)//if 3 clicks
         {
             //third hit
-            damage = initialDamage * 3.0f;//tripples damage value
+            damage = (initialDamage * 3.0f)*modifiers.meleeDamageModifier;//tripples damage value
             GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
             numberOfClicks = 0;//reset number of clicks 

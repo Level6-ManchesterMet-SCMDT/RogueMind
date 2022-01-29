@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPercentage: 0
   movementSpeedPercentage: 0
-  dashDistancePercentage: 10
-  meleeDamagePercentage: -5
+  dashDistancePercentage: 0.1
+  meleeDamagePercentage: -0.05
   fireRatePercentage: 0
   resistanceToEnemyDamage: 0
+  name: drug 6
+  description: more dash distance less melee damage

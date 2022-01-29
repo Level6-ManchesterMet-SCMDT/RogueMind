@@ -6,10 +6,12 @@ using System;
 [CreateAssetMenu]
 public class DrugsData : ScriptableObject
 {
-    public int healthPercentage;
-    public int movementSpeedPercentage;
-    public int dashDistancePercentage;
-    public int meleeDamagePercentage;
-    public int fireRatePercentage;
-    public int resistanceToEnemyDamage;
+    public float healthPercentage;
+    public float movementSpeedPercentage;
+    public float dashDistancePercentage;
+    public float meleeDamagePercentage;
+    public float fireRatePercentage;
+    public float resistanceToEnemyDamage;
+    public string name;
+    public string description;
 }

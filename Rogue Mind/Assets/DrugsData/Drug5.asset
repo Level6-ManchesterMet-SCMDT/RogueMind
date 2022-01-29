@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Drug5
   m_EditorClassIdentifier: 
-  healthPercentage: 25
-  movementSpeedPercentage: -5
+  healthPercentage: 0.25
+  movementSpeedPercentage: -0.5
   dashDistancePercentage: 0
-  meleeDamagePercentage: -15
+  meleeDamagePercentage: -0.15
   fireRatePercentage: 0
   resistanceToEnemyDamage: 0
+  name: drug 5
+  description: more health less melee damage and move speed
