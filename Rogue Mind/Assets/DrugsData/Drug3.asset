@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Drug3
   m_EditorClassIdentifier: 
   healthPercentage: 0
-  movementSpeedPercentage: 5
+  movementSpeedPercentage: 0.05
   dashDistancePercentage: 0
   meleeDamagePercentage: 0
   fireRatePercentage: 0
-  resistanceToEnemyDamage: -10
+  resistanceToEnemyDamage: -0.1
+  name: drug 3
+  description: 'more movement speed less enemy resistance '

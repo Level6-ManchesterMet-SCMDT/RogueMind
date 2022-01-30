@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;//stores player input for movement
     Vector2 mousePos;//mouse position on screen
+
+    public DrugManagerScript modifiers;//finds the drugs modifiers
     // Start is called before the first frame update
     void Start()
     {
-        
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
     }
 
 	
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.MovePosition(rigidBody.position + movement * moveSpeed * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+        rigidBody.MovePosition(rigidBody.position + movement * (moveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
 
         Vector2 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation

@@ -16,5 +16,7 @@ MonoBehaviour:
   movementSpeedPercentage: 0
   dashDistancePercentage: 5
   meleeDamagePercentage: 0
-  fireRatePercentage: 15
-  resistanceToEnemyDamage: -5
+  fireRatePercentage: 0.15
+  resistanceToEnemyDamage: -0.05
+  name: 'drug 7 '
+  description: 'more fire rate less resistance to enemies '

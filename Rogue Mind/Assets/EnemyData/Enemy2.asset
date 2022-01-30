@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d2dbfddde7fd743ba0fde36ab92ee7, type: 3}
   m_Name: Enemy2
   m_EditorClassIdentifier: 
+  aiType: 0
   name: 
   sprite: {fileID: 0}
   hp: 28
-  movementSpeed: 2
+  movementSpeed: 0
   damage: 5

@@ -14,10 +14,11 @@ public class PlayerCollisionScript : MonoBehaviour
 
     public float health;//the players health
 
+    public DrugManagerScript modifiers;//finds the drugs modifiers
     // Start is called before the first frame update
     void Start()
     {
-        
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class PlayerCollisionScript : MonoBehaviour
         
         if(collision.CompareTag("Enemy"))//if the collider is an enemy
 		{
-            health -= collision.GetComponent<EnemyScript>().damage;//reduce health by enemy damage ammount
+            health -= (collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
             
             StartCoroutine(FlashCo());//run the flash co routine for I frames
             if (health <= 0)
