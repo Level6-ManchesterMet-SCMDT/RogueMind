@@ -5,33 +5,34 @@ using UnityEngine;
 public class DrugManagerScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    private List<DrugsData> scriptables = new List<DrugsData>(); //the scriptable object assigned to this 
+    public List<DrugsData> scriptables = new List<DrugsData>(); //the scriptable object assigned to this 
+    private List<DrugsData> scriptablesCurrent = new List<DrugsData>(); //the scriptable object assigned to this 
 
-    public float healthModifier = 1;
-    public float movementSpeedModifier = 1;
-    public float dashDistanceModifier = 1;
-    public float meleeDamageModifier = 1;
-    public float fireRateModifier = 1;
-    public float resistanceToEnemyModifier = 1;
+    public float healthModifier;
+    public float movementSpeedModifier;
+    public float dashDistanceModifier;
+    public float meleeDamageModifier;
+    public float fireRateModifier;
+    public float resistanceToEnemyModifier;
 
 
     void Start()
     {
-        healthModifier = 1;
+        healthModifier = 1;//set all modifiers to 1 which means no changes
         movementSpeedModifier = 1;
         dashDistanceModifier = 1;
         meleeDamageModifier = 1;
         fireRateModifier = 1;
         resistanceToEnemyModifier = 1;
-        foreach(DrugsData i in scriptables)
+        foreach(DrugsData i in scriptables)//add every modifier currently in effect to the modifier variables
 		{
             AddEffects(i);
 		}
     }
-    public void AddEffects(DrugsData scriptable)
+    public void AddEffects(DrugsData scriptable)// adds on each 
 	{
-        scriptables.Add(scriptable);
-        healthModifier += scriptable.healthPercentage;
+        scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
+        healthModifier += scriptable.healthPercentage;//add all modifers
         movementSpeedModifier += scriptable.movementSpeedPercentage;
         movementSpeedModifier += scriptable.movementSpeedPercentage;
         dashDistanceModifier += scriptable.dashDistancePercentage;

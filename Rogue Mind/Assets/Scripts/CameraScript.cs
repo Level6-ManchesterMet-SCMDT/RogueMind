@@ -5,12 +5,12 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public Transform player;// used to store the players transform
-    public Vector3 offset;
+    public Vector3 offset;// an offset to be used if needed
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;//finds the player
     }
 
     // Update is called once per frame

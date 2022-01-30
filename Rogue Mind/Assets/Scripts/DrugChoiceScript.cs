@@ -13,8 +13,8 @@ public class DrugChoiceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        drugSelectionMenu = transform.GetChild(0).gameObject;
-        drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
+        drugSelectionMenu = transform.GetChild(0).gameObject;//find the menu
+        drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
     }
 
     // Update is called once per frame
@@ -25,12 +25,12 @@ public class DrugChoiceScript : MonoBehaviour
         {
             if(drugSelectionMenu.active == true)
 			{
-                drugSelectionMenu.SetActive(false);
+                drugSelectionMenu.SetActive(false);//turns off menu
             }
             else
 			{
-                drugSelectionMenu.SetActive(true);
-                OnOpen();
+                drugSelectionMenu.SetActive(true);//turns on menu
+                OnOpen();//runs a new set of drug options
             }
             
         }
@@ -39,37 +39,37 @@ public class DrugChoiceScript : MonoBehaviour
 
     }
 
-    public void OnOpen()
+    public void OnOpen()// on the opening of the menu
 	{
-        DisplayedDrugs.Clear();
-		for (int i = 0; i < 3; i++)
+        DisplayedDrugs.Clear();//empty list of drugs
+		for (int i = 0; i < 3; i++)// for 3 drugs
 		{
-            DrugsData drug1 = RandomDrug();
-            DisplayedDrugs.Add(drug1);
-            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = drug1.name;
-            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = drug1.description;
+            DrugsData drug1 = RandomDrug();//create a random drug
+            DisplayedDrugs.Add(drug1);//add it to list
+            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = drug1.name;//set its name
+            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = drug1.description;//set its description
         }
         
 	}
 
-    public DrugsData RandomDrug()
+    public DrugsData RandomDrug()// obtain a random drug from the list of potential ones
 	{
         return scriptable[Random.Range(0, scriptable.Length)];
 	}
 
-    public void AddDrug1()
-	{
+    public void AddDrug1()//adds drug 1 to list of effectors
+    {
         drugManager.AddEffects(DisplayedDrugs[1]);
-        drugSelectionMenu.SetActive(false);
+        drugSelectionMenu.SetActive(false);//turns off menu
 	}
-    public void AddDrug2()
+    public void AddDrug2()//adds drug 2 to list of effectors
     {
         drugManager.AddEffects(DisplayedDrugs[2]);
-        drugSelectionMenu.SetActive(false);
+        drugSelectionMenu.SetActive(false);//turns off menu
     }
-    public void AddDrug3()
+    public void AddDrug3()//adds drug 3 to list of effectors
     {
         drugManager.AddEffects(DisplayedDrugs[3]);
-        drugSelectionMenu.SetActive(false);
+        drugSelectionMenu.SetActive(false);//turns off menu
     }
 }
