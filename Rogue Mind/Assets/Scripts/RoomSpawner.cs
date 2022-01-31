@@ -27,53 +27,38 @@ public class RoomSpawner : MonoBehaviour
         {
             int number = Random.Range(0, 100);// used for 3 doors
 
-            if (direction == OpeningDirection.BOTTOM) // spawns rooms with a door on the bottom
-            {
-                rand = Random.Range(0, templates.bottomRooms.Length -3);// rooms with 2 or less doors
-                Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity); // spawns a room
-            }
-            else if (direction == OpeningDirection.TOP)// spawns rooms with a door on the top
-            {
-                rand = Random.Range(0, templates.topRooms.Length-3);
-                Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);
-            }
-            else if (direction == OpeningDirection.LEFT)// spawns rooms with a door on the left
-            {
-                rand = Random.Range(0, templates.leftRooms.Length-3);
-                Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
-            }
-            else if (direction == OpeningDirection.RIGHT)// spawns rooms with a door on the right
-            {
-                rand = Random.Range(0, templates.rightRooms.Length-3);
-                Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
-            }
-            spawned = true;
+            
+           
             
             //TO DO, SPAWNING 3 DOORS OCCASIONALLY CAUSES OVERLAP AND BLOCKS OFF THE PATH TO THE EXIT
-            /*
+           
             if (number > templates.chanceOf3DoorsSpawned)
             {
                 if (direction == OpeningDirection.BOTTOM)
                 {
                     rand = Random.Range(0, templates.bottomRooms.Length - 3);// rooms with 2 or less doors
                     Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);
+                    spawned = true;
                 }
                 else if (direction == OpeningDirection.TOP)
                 {  
                     rand = Random.Range(0, templates.topRooms.Length - 3);
-                    Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity); 
+                    Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);
+                    spawned = true;
                 }
                 else if (direction == OpeningDirection.LEFT)
                 {
                     rand = Random.Range(0, templates.leftRooms.Length - 3);
                     Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+                    spawned = true;
                 }
                 else if (direction == OpeningDirection.RIGHT)
                 {
                     rand = Random.Range(0, templates.rightRooms.Length - 3);
                     Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+                    spawned = true;
                 }
-                spawned = true;
+                //spawned = true;
             }
             if (number < templates.chanceOf3DoorsSpawned)
             {
@@ -100,19 +85,81 @@ public class RoomSpawner : MonoBehaviour
                     Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
                 }
                 spawned = true;
-            }*/
+            }
         }
         
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SpawnPoint"))
-        {if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+        {
+            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
+                /*if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM)
+                {
+                    Debug.Log("BottomLeft");
+                    rand = Random.Range(0, templates.bottomLeftRooms.Length);
+                    Instantiate(templates.bottomLeftRooms[rand], transform.position, transform.rotation);
+                    spawned = true;
+                    
+                    Destroy(gameObject, waitTime);
+                }
+                else if(other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.LEFT)
+                {
+                    Debug.Log("BottomLeft");
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.BOTTOM)
+                {
+                    Debug.Log("BottomRight");
+                    rand = Random.Range(0, templates.bottomRightRooms.Length);
+                    Instantiate(templates.bottomRightRooms[rand], transform.position, transform.rotation);
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.RIGHT)
+                {
+                    Debug.Log("BottomRight");
+                    Destroy(gameObject, waitTime);
+                    spawned = true;
+                    Debug.Log("BottomRight");
+                }
+                else if(other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.TOP)
+                {
+                    Debug.Log("TopLeft");
+                    rand = Random.Range(0, templates.topLeftRooms.Length);
+                    Instantiate(templates.topLeftRooms[rand], transform.position, transform.rotation);
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                }
+                else if(other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.LEFT)
+                {
+                    Debug.Log("TopLeft");
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.TOP)
+                {
+                    Debug.Log("TopRight");
+                    rand = Random.Range(0, templates.topRightRooms.Length);
+                    Instantiate(templates.topRightRooms[rand], transform.position, transform.rotation);
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                }
+                else if(other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.RIGHT)
+                {
+                    Debug.Log("TopRight");
+                    spawned = true;
+                    Destroy(gameObject, waitTime);
+                    
+                }
+                */
+                
                 Instantiate(templates.closedRoom, transform.position, Quaternion.identity);// spawns a closed off room if there is accidental overlap
-                Destroy(gameObject);
+                Destroy(gameObject, waitTime);
             }
-            spawned = true;
+            //spawned = true;
         }
         
     }

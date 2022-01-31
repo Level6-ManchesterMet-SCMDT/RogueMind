@@ -8,6 +8,10 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bottomRooms;
     public GameObject[] rightRooms;
     public GameObject[] leftRooms;
+    public GameObject[] bottomLeftRooms;
+    public GameObject[] bottomRightRooms;
+    public GameObject[] topLeftRooms;
+    public GameObject[] topRightRooms;
 
     public GameObject closedRoom;
 

@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform player;// used to store the players transform
+    public Transform target;// used to store the players transform
     public Vector3 offset;// an offset to be used if needed
+    public float smoothSpeed = 0.125f;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;//finds the player
+        target = GameObject.Find("StartRoom").transform;//finds the player
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -10); // Camera follows the player with specified offset position
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition; // Camera follows the player with specified offset position
     }
 }

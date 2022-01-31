@@ -23,6 +23,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public int num;
     public int nextWave = 0;
     public int round = 1;
+    Transform camera;
 
     public float waveDelay = 1.0f;
     public float countdown;
@@ -44,6 +45,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     private void Update()
     {
+        camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         if (spawnEnemies)
         {
             if (state == SpawnState.WAITING)
@@ -139,15 +141,19 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")&& !enemiesSpawned)
+        if (collision.CompareTag("Player"))
         {
-            
-            time -= Time.deltaTime;
-            if (time <= 0)
+            camera.GetComponent<CameraScript>().target = this.gameObject.transform;
+            if (!enemiesSpawned)
             {
-                time = 0;
-                spawnEnemies = true;
-                doors.SetActive(true);
+                time -= Time.deltaTime;
+                if (time <= 0)
+                {
+                    time = 0;
+                    spawnEnemies = true;
+                    doors.SetActive(true);
+                }
+
             }
         }
     }
