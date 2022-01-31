@@ -11,6 +11,7 @@ TagManager:
   - Melee
   - Bullet
   - DrugManager
+  - HealthBar
   layers:
   - Default
   - TransparentFX

@@ -13,15 +13,20 @@ public class PlayerCollisionScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;// the sprite renderer
 
     public float health;//the players health
+    public float Maxhealth;//the players health
+
+    public GameObject healthBar;// the healthbar for the player
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     // Start is called before the first frame update
     void Start()
     {
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar");//set the health bar
+        Maxhealth = health;//set max health
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         
@@ -32,8 +37,8 @@ public class PlayerCollisionScript : MonoBehaviour
         
         if(collision.CompareTag("Enemy"))//if the collider is an enemy
 		{
-            health -= (collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
-            
+            TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
+
             StartCoroutine(FlashCo());//run the flash co routine for I frames
             if (health <= 0)
             {
@@ -58,4 +63,20 @@ public class PlayerCollisionScript : MonoBehaviour
         }
         triggerCollider.enabled = true;// turn the hitbox back on
 	}
+
+    void TakeDamage(float damage)
+	{
+        health -= damage;
+        healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
+    }
+
+    void HealDamage(float heal)
+	{
+        health += heal;
+        if(health > Maxhealth)
+		{
+            health = Maxhealth;
+		}
+        healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
+    }
 }
