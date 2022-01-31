@@ -23,6 +23,7 @@ public class PlayerCollisionScript : MonoBehaviour
     {
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");//set the health bar
         Maxhealth = health;//set max health
+        healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(Maxhealth);
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
     }
 
@@ -40,11 +41,15 @@ public class PlayerCollisionScript : MonoBehaviour
             TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
 
             StartCoroutine(FlashCo());//run the flash co routine for I frames
-            if (health <= 0)
-            {
-                Destroy(gameObject);//if health drops below 0 kill the player
-            }
             
+            
+        }
+        if(collision.CompareTag("EnemyBullet"))
+		{
+            TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
+            Destroy(collision.gameObject);
+            StartCoroutine(FlashCo());//run the flash co routine for I frames
+           
         }
        
 	}
@@ -64,13 +69,21 @@ public class PlayerCollisionScript : MonoBehaviour
         triggerCollider.enabled = true;// turn the hitbox back on
 	}
 
-    void TakeDamage(float damage)
+    void TakeDamage(float damage)//used for taking damage
 	{
         health -= damage;
         healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
+        DeathCheck();
     }
 
-    void HealDamage(float heal)
+    void DeathCheck()//check if player has died
+	{
+        if (health <= 0)
+        {
+            Destroy(gameObject);//if health drops below 0 kill the player
+        }
+    }
+    void HealDamage(float heal)//used for healing
 	{
         health += heal;
         if(health > Maxhealth)

@@ -10,6 +10,7 @@ public class EnemyTypes : MonoBehaviour
     {
         Follower,// an ai that just follows the player
         Shooter,// an ai that shoots at the player
+        Nose,//an ai that runs after the player then does an AOE attack
         
     }// Start is called before the first frame update
 }
