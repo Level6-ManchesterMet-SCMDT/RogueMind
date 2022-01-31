@@ -14,12 +14,12 @@ public class HealthBarScirpt : MonoBehaviour
 	{
 		
 		player = GameObject.FindGameObjectWithTag("Player");//find the player	
-		SetMaxHealth();//set the max health
+		//set the max health
 	}
-	public void SetMaxHealth()//sets max health
+	public void SetMaxHealth(float health)//sets max health
 	{
-		slider.maxValue = player.GetComponent<PlayerCollisionScript>().Maxhealth;
-        slider.value = player.GetComponent<PlayerCollisionScript>().health;
+		slider.maxValue = health;
+        slider.value = health;
 	}
 
     public void SetHealth(float health)//sets current slider value

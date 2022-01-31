@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - DrugManager
   - HealthBar
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
