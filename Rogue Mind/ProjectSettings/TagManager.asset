@@ -13,6 +13,7 @@ TagManager:
   - DrugManager
   - HealthBar
   - EnemyBullet
+  - WaveSpawner
   layers:
   - Default
   - TransparentFX

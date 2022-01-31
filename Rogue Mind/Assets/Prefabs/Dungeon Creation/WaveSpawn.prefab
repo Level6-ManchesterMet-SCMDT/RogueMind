@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4186991356919553459}
   m_Layer: 0
   m_Name: WaveSpawn
-  m_TagString: Untagged
+  m_TagString: WaveSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +82,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyPrefab: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
-  doors:
-  - {fileID: 0}
+  doors: {fileID: 0}
   num: 0
   nextWave: 0
   round: 1
