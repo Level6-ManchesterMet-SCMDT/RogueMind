@@ -178,9 +178,13 @@ MonoBehaviour:
   health: 0
   damage: 0
   name: 
+  bulletType: {fileID: 0}
   spriteRenderer: {fileID: 0}
   rigidBody: {fileID: 0}
+  collider: {fileID: 0}
+  DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
   aiType: 0
+  currentState: 0
 --- !u!114 &3182398780945161529
 MonoBehaviour:
   m_ObjectHideFlags: 0

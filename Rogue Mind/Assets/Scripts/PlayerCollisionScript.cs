@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisionScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerCollisionScript : MonoBehaviour
 
     public float health;//the players health
     public float Maxhealth;//the players health
+    public int Dopamine;
 
     public GameObject healthBar;// the healthbar for the player
 
@@ -21,6 +23,7 @@ public class PlayerCollisionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Dopamine = 0;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");//set the health bar
         Maxhealth = health;//set max health
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(Maxhealth);
@@ -51,8 +54,14 @@ public class PlayerCollisionScript : MonoBehaviour
             StartCoroutine(FlashCo());//run the flash co routine for I frames
            
         }
-       
-	}
+        if (collision.CompareTag("DopamineDrop"))
+        {
+            Dopamine++;
+            Destroy(collision.gameObject);
+            
+        }
+
+    }
 	private IEnumerator FlashCo()// used for Iframes and flashing
 	{
         int temp = 0;
@@ -80,6 +89,7 @@ public class PlayerCollisionScript : MonoBehaviour
 	{
         if (health <= 0)
         {
+            SceneManager.LoadScene(0);
             Destroy(gameObject);//if health drops below 0 kill the player
         }
     }
