@@ -15,6 +15,7 @@ TagManager:
   - EnemyBullet
   - WaveSpawner
   - DopamineDrop
+  - StartRoom
   layers:
   - Default
   - TransparentFX
