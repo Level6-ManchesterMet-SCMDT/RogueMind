@@ -39,7 +39,8 @@ public class RoomTemplates : MonoBehaviour
         {
             if(i == rooms.Count -1)
             {
-                Instantiate(endRoomPlaceHolder, rooms[i].transform.position, Quaternion.identity);// spawns a placeholder for the last room at the end of the list
+                //Instantiate(endRoomPlaceHolder, rooms[i].transform.position, Quaternion.identity);// spawns a placeholder for the last room at the end of the list
+                rooms[i].GetComponent<Activator>().isEndRoom = true;
                 spawnedEndRoom = true;
             }
         }
