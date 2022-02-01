@@ -16,6 +16,7 @@ public class EnemyScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
     public BoxCollider2D collider;// the boxcollider on the enemy
+    public GameObject DopamineDrop;
 
     
   
@@ -116,6 +117,10 @@ public class EnemyScript : MonoBehaviour
             Destroy(collision.gameObject);//destroy bullet
             if (health <= 0)
             {
+                for (int i = 0; i < Random.RandomRange(0, 3); i++)
+                {
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                }
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -126,6 +131,10 @@ public class EnemyScript : MonoBehaviour
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
             if (health <= 0)
             {
+				for (int i = 0; i < Random.RandomRange(0,3); i++)
+				{
+                    Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
+				}
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
