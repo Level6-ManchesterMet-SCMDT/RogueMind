@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
+  spawned: 0
 --- !u!61 &8649683491884812544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -868,7 +869,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf2f2565fa6c9541af0a04212a62c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 3
+  direction: 1
+  spawned: 0
 --- !u!61 &8487711937824076563
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -961,7 +963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf2f2565fa6c9541af0a04212a62c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
+  direction: 3
+  spawned: 0
 --- !u!61 &2102165142150358469
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1210,7 +1213,7 @@ GameObject:
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6443940946034402810
 Transform:
   m_ObjectHideFlags: 0

@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2e15158171d984f96dfda1641f3dc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  offset: {x: 0, y: 0, z: -10}
+  smoothSpeed: 0.0125
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
