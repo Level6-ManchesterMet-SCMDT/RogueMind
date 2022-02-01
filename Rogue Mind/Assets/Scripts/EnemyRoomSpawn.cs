@@ -20,6 +20,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public Transform[] spawnPoints;
     public GameObject enemyPrefab;
     public GameObject doors;
+    public GameObject exitDoor;
     public int num;
     public int nextWave = 0;
     public int round = 1;
@@ -45,6 +46,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     private void Update()
     {
+        
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         if (spawnEnemies)
         {
@@ -77,6 +79,17 @@ public class EnemyRoomSpawn : MonoBehaviour
         {
             spawnEnemies = false;
             doors.SetActive(false);
+            if(exitDoor != null)
+            {
+                exitDoor.SetActive(true);
+            }
+            else
+            {
+                return;
+            }
+            
+            
+
         }
         
        
@@ -151,7 +164,14 @@ public class EnemyRoomSpawn : MonoBehaviour
                 {
                     time = 0;
                     spawnEnemies = true;
-                    doors.SetActive(true);
+                    if (doors != null)
+                    {
+                        doors.SetActive(true);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
 
             }
