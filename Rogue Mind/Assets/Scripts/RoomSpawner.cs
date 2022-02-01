@@ -11,7 +11,7 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;
     private int rand;// defines a random value to pick from the rooms array
     public bool spawned = false;
-    public bool dontSpawn = false;
+    //public bool dontSpawn = false;
     float waitTime = 10f;
     GameObject room;
 
@@ -26,7 +26,7 @@ public class RoomSpawner : MonoBehaviour
 
     void Spawn()
     {
-        if (!spawned&& !dontSpawn)// checks if the spawn point has already spawned a room
+        if (!spawned)// checks if the spawn point has already spawned a room
         {
             int number = Random.Range(0, 100);// used for 3 doors
             //TO DO, SPAWNING 3 DOORS OCCASIONALLY CAUSES OVERLAP AND BLOCKS OFF THE PATH TO THE EXIT
@@ -59,7 +59,7 @@ public class RoomSpawner : MonoBehaviour
                 }
                 spawned = true;
             }
-           
+           /*
             else if (number < templates.chanceOf3DoorsSpawned)
             {
                 if (direction == OpeningDirection.BOTTOM)
@@ -89,7 +89,7 @@ public class RoomSpawner : MonoBehaviour
                     
                 }
                 spawned = true;
-            }
+            }*/
         }
         
     }
@@ -100,7 +100,7 @@ public class RoomSpawner : MonoBehaviour
             
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
-                if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM  )
+               /* if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM  )
                 {
                     Debug.Log("BottomLeft");
                     rand = Random.Range(0, templates.bottomLeftRooms.Length);
@@ -171,13 +171,13 @@ public class RoomSpawner : MonoBehaviour
                     dontSpawn = true;
                     Destroy(gameObject);
                 }
+                */
 
-
-                    //Instantiate(templates.closedRoom, transform.position, Quaternion.identity);// spawns a closed off room if there is accidental overlap
+                    Instantiate(templates.closedRoom, transform.position, Quaternion.identity);// spawns a closed off room if there is accidental overlap
                     Destroy(gameObject);
             }
             
-            //spawned = true;
+            spawned = true;
         }
         
     }
