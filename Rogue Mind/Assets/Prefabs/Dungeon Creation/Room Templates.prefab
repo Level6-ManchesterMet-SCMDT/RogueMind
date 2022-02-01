@@ -75,9 +75,13 @@ MonoBehaviour:
   - {fileID: 4037423639246316221, guid: 7751db897dbfee743bdb2481c4edf5a7, type: 3}
   - {fileID: 147581087021951229, guid: eab87520891464d4f9bae56bb7d8c4d5, type: 3}
   - {fileID: 4586379957973840395, guid: 615bc95eda15cb6458d18c3d8076025e, type: 3}
+  bottomLeftRooms: []
+  bottomRightRooms: []
+  topLeftRooms: []
+  topRightRooms: []
   closedRoom: {fileID: 4455080339084857634, guid: 411806cfd441d3e40b2bd804007bfbb2, type: 3}
   rooms: []
-  chanceOf3DoorsSpawned: 25
+  chanceOf3DoorsSpawned: 0
   waitTime: 3
   spawnedEndRoom: 0
   endRoomPlaceHolder: {fileID: 5165489882499522545, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
