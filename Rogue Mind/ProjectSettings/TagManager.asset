@@ -14,7 +14,7 @@ TagManager:
   - HealthBar
   - EnemyBullet
   - WaveSpawner
-  - StartRoom
+  - DopamineDrop
   layers:
   - Default
   - TransparentFX
