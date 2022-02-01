@@ -36,25 +36,25 @@ public class RoomSpawner : MonoBehaviour
                 if (direction == OpeningDirection.BOTTOM)
                 {
                     rand = Random.Range(0, templates.bottomRooms.Length - 3);// rooms with 2 or less doors
-                    room = Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
+                    Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
                     
                 }
                 else if (direction == OpeningDirection.TOP)
                 {  
                     rand = Random.Range(0, templates.topRooms.Length - 3);
-                    room = Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
+                    Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
                     
                 }
                 else if (direction == OpeningDirection.LEFT)
                 {
                     rand = Random.Range(0, templates.leftRooms.Length - 3);
-                    room = Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+                    Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
                     
                 }
                 else if (direction == OpeningDirection.RIGHT)
                 {
                     rand = Random.Range(0, templates.rightRooms.Length - 3);
-                    room = Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+                    Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
                     
                 }
                 spawned = true;

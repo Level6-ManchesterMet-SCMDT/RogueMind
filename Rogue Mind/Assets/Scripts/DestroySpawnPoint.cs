@@ -10,7 +10,7 @@ public class DestroySpawnPoint : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        if (other.CompareTag("WaveSpawner"))
+        if (other.CompareTag("WaveSpawner")&& this.tag != "Destroyer")
         {
             Destroy(other.gameObject);
         }
