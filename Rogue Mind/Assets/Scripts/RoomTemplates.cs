@@ -25,6 +25,7 @@ public class RoomTemplates : MonoBehaviour
     {
         if(waitTime<= 0 && !spawnedEndRoom)
         {
+            waitTime = 0;
             exitRoom();
         }
         else

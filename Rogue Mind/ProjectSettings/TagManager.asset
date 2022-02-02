@@ -16,6 +16,8 @@ TagManager:
   - WaveSpawner
   - DopamineDrop
   - StartRoom
+  - SpawnedRoom
+  - Room
   layers:
   - Default
   - TransparentFX

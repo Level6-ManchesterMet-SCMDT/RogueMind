@@ -1122,9 +1122,11 @@ GameObject:
   - component: {fileID: 2886804675397992321}
   - component: {fileID: 1142785940418384350}
   - component: {fileID: 5231491455560138770}
+  - component: {fileID: 7955889045261725674}
+  - component: {fileID: 8910597009413027946}
   m_Layer: 0
   m_Name: B
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,6 +1175,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEndRoom: 0
   endRoomTemplate: {fileID: 4615474500888007981}
+--- !u!114 &7955889045261725674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620072631149712808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff33fee2fbe73e42b6e0f46abeacd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &8910597009413027946
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620072631149712808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5}
+  m_EdgeRadius: 0
 --- !u!1 &7810226634783932204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,14 +1531,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 340a5b450ffa9cb4a8472ac47d443660, type: 3}
---- !u!4 &3772297557299248048 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1544914550787601008, guid: 340a5b450ffa9cb4a8472ac47d443660, type: 3}
-  m_PrefabInstance: {fileID: 2389519404915476928}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821983027348990836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4062735965805781684, guid: 340a5b450ffa9cb4a8472ac47d443660, type: 3}
+  m_PrefabInstance: {fileID: 2389519404915476928}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3772297557299248048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1544914550787601008, guid: 340a5b450ffa9cb4a8472ac47d443660, type: 3}
   m_PrefabInstance: {fileID: 2389519404915476928}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8611107223267682221
