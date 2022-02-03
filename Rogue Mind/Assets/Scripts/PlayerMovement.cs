@@ -14,17 +14,28 @@ public class PlayerMovement : MonoBehaviour
     Vector2 mousePos;//mouse position on screen
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
+    public GameObject drugSelectionMenu;
+
+    bool ran = false;
     // Start is called before the first frame update
     void Start()
     {
+        
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
+        drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");
+        
     }
 
 	
 	// Update is called once per frame
 	void Update()
     {
+        if(!ran)
+		{
+            drugSelectionMenu.GetComponent<DrugChoiceScript>().OpenMenu();
+            ran = true;
+        }
         movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
         movement.y = Input.GetAxisRaw("Vertical");//Obtain user input for vertical Movement 
 

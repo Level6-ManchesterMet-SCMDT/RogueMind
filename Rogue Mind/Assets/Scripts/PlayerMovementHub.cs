@@ -13,12 +13,15 @@ public class PlayerMovementHub : MonoBehaviour
     public GameObject gymMenu;
     public GameObject deskMenu;
 
+
     Vector2 movement;//stores player input for movement
     Vector2 mousePos;//mouse position on screen
     // Start is called before the first frame update
     void Start()
     {
+        
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+       
     }
 
 

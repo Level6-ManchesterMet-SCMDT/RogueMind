@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1df9c26ac63784ca585735795d4824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptable: []
-  healthModifier: 0
-  movementSpeedModifier: 0
-  dashDistanceModifier: 0
-  meleeDamageModifier: 0
-  fireRateModifier: 0
-  resistanceToEnemyModifier: 0
+  scriptables: []
+  healthModifier: 1
+  movementSpeedModifier: 1
+  dashDistanceModifier: 1
+  meleeDamageModifier: 1
+  fireRateModifier: 1
+  resistanceToEnemyModifier: 1

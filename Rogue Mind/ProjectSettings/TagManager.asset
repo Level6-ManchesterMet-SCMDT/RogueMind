@@ -22,6 +22,7 @@ TagManager:
   - Desk
   - Gym
   - Play
+  - DrugMenu
   layers:
   - Default
   - TransparentFX
