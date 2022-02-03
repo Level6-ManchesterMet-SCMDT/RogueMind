@@ -13,6 +13,7 @@ public class PlayerMovementHub : MonoBehaviour
     public GameObject gymMenu;
     public GameObject deskMenu;
 
+    public Animator transition;
 
     Vector2 movement;//stores player input for movement
     Vector2 mousePos;//mouse position on screen
@@ -61,7 +62,7 @@ public class PlayerMovementHub : MonoBehaviour
                         gymMenu.SetActive(true);
                     break;
                 case "Play":
-                    SceneManager.LoadScene(2);
+                    StartCoroutine(LoadLevel(2));
                     break;
             }
 
@@ -71,5 +72,13 @@ public class PlayerMovementHub : MonoBehaviour
 	{
         deskMenu.SetActive(false);
         gymMenu.SetActive(false);
+    }
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1.0f);
+
+
+        SceneManager.LoadScene(levelIndex);
     }
 }
