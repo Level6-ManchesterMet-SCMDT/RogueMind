@@ -182,6 +182,7 @@ MonoBehaviour:
   moveSpeed: 5
   rigidBody: {fileID: 7253674216189750481}
   cam: {fileID: 0}
+  modifiers: {fileID: 0}
 --- !u!114 &7253674216189750444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,8 @@ MonoBehaviour:
   firePoint: {fileID: 7253674216014756465}
   bulletPrefab: {fileID: 6596869843035164009, guid: cd51e4b6b2a64c543b44941a4bf4fd95, type: 3}
   bulletForce: 20
+  currentBullets: 0
+  maxBullets: 6
 --- !u!114 &7253674216189750445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +219,7 @@ MonoBehaviour:
   damage: 1
   lastClickedTime: 0
   maxComboDelay: 1
+  modifiers: {fileID: 0}
 --- !u!114 &6312177899545002380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +239,10 @@ MonoBehaviour:
   triggerCollider: {fileID: 7253674216189750480}
   spriteRenderer: {fileID: 7253674216189750482}
   health: 10
+  Maxhealth: 0
+  Dopamine: 0
+  healthBar: {fileID: 0}
+  modifiers: {fileID: 0}
 --- !u!1 &7253674216771829773
 GameObject:
   m_ObjectHideFlags: 0

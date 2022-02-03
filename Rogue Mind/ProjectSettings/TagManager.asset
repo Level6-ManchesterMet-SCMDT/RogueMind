@@ -18,6 +18,7 @@ TagManager:
   - StartRoom
   - SpawnedRoom
   - Room
+  - Boss
   layers:
   - Default
   - TransparentFX
