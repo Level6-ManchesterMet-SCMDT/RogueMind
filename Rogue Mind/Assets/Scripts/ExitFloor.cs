@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ExitFloor : MonoBehaviour
 {
     public Animator transition;
+    public int floorChange;
     public void Start()
     {
         transition = GameObject.Find("ScreenWipe").gameObject.GetComponent<Animator>();
@@ -15,7 +16,7 @@ public class ExitFloor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("leaving to main menu");
-           StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
+           StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - floorChange));
 
         }
     }
