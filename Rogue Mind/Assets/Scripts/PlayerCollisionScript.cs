@@ -94,7 +94,7 @@ public class PlayerCollisionScript : MonoBehaviour
 	{
         if (health <= 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
             Destroy(gameObject);//if health drops below 0 kill the player
         }
     }
