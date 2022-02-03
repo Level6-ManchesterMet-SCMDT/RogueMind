@@ -18,8 +18,11 @@ public class EnemyScript : MonoBehaviour
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;
 
-    
-  
+    public Color flashColor;//the colour it flashes to
+    public Color regularColor;//the colour it returns to 
+    public float flashDuration;//the duration of each flash
+    public int numberOfFlashes;// the number of flashes after getting hit
+
     Vector2 movement;// a vector used for movement
     public EnemyTypes.EnemyAI aiType;// the type of AI being used
 
@@ -30,7 +33,21 @@ public class EnemyScript : MonoBehaviour
         Moving,//when the enemy is moving 
         Attacking,// when the enemy is attacking
 	}
+    private IEnumerator FlashCo()// used for Iframes and flashing
+    {
+        int temp = 0;
+        
+        while (temp < numberOfFlashes)// as long as there are more flashes to do
+        {
+            spriteRenderer.color = flashColor;// set the sprite the flash colour
+            yield return new WaitForSeconds(flashDuration);//wait the duration
+            spriteRenderer.color = regularColor;//set the sprite the normal colour
+            yield return new WaitForSeconds(flashDuration);//wait the duration
+            temp++;//increase the count in the loop by 1
 
+        }
+        
+    }
     void Start()
     {
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
@@ -114,6 +131,7 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Bullet"))//if collide with a bullet
         {
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
+            StartCoroutine(FlashCo());
             Destroy(collision.gameObject);//destroy bullet
             if (health <= 0)
             {
@@ -127,6 +145,7 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Melee"))//if collide with a melee attack
         {
             health -= target.GetComponent<MeleeScript>().damage;// reduce health by attacks damage value
+            StartCoroutine(FlashCo());
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
             if (health <= 0)

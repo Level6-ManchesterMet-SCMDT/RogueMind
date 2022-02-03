@@ -183,6 +183,10 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   collider: {fileID: 0}
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
+  flashColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0.6666667}
+  regularColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
+  numberOfFlashes: 1
   aiType: 0
   currentState: 0
 --- !u!114 &3182398780945161529
