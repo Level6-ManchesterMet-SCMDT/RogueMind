@@ -44,10 +44,14 @@ public class PlayerCollisionScript : MonoBehaviour
             TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
 
             StartCoroutine(FlashCo());//run the flash co routine for I frames
-            
-            
         }
-        if(collision.CompareTag("EnemyBullet"))
+        if (collision.CompareTag("Boss"))//if the collider is an Boss
+        {
+            TakeDamage(collision.GetComponent<BossScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by Boss damage ammount
+
+            StartCoroutine(FlashCo());//run the flash co routine for I frames
+        }
+        if (collision.CompareTag("EnemyBullet"))
 		{
             TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
             Destroy(collision.gameObject);
