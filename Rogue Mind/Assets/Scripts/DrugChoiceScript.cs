@@ -29,14 +29,20 @@ public class DrugChoiceScript : MonoBehaviour
             }
             else
 			{
-                drugSelectionMenu.SetActive(true);//turns on menu
-                OnOpen();//runs a new set of drug options
+                OpenMenu();
+                //runs a new set of drug options
             }
             
         }
 
 
 
+    }
+
+    public void OpenMenu()
+	{
+        drugSelectionMenu.SetActive(true);//turns on menu
+        OnOpen();
     }
 
     public void OnOpen()// on the opening of the menu
