@@ -29,7 +29,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public float waveDelay = 1.0f;
     public float countdown;
 
-    private float searchCountdown = 1.0f;
+    private float searchCountdown = .5f;
     public bool enemiesSpawned = false;
     public bool spawnEnemies =false;
     public float time = 1.4f;
@@ -62,7 +62,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             {
                 if (state != SpawnState.SPAWNING)
                 {
-                    StartCoroutine(SpawnWave(waves[nextWave]));
+                    SpawnWave(waves[nextWave]);
                 }
             }
 
@@ -131,7 +131,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             nextWave++;
         }
     }
-    IEnumerator SpawnWave(Wave wave)
+    public void SpawnWave(Wave wave)
     {
         state = SpawnState.SPAWNING;
 
@@ -141,11 +141,11 @@ public class EnemyRoomSpawn : MonoBehaviour
             {
                 enemyPrefab.GetComponent<EnemyScript>().scriptable = wave.enemyTypes[i];
                 SpawnEnemy(enemyPrefab);
-                yield return new WaitForSeconds(1f / wave.spawnRate);
+                //yield return new WaitForSeconds(1f / wave.spawnRate);
             }
         }
         state = SpawnState.WAITING;
-        yield break;
+        //yield break;
     }
     void SpawnEnemy(GameObject enemy)
     {
