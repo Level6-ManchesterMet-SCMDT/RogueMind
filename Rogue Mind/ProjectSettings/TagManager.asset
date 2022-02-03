@@ -19,6 +19,9 @@ TagManager:
   - SpawnedRoom
   - Room
   - Boss
+  - Desk
+  - Gym
+  - Play
   layers:
   - Default
   - TransparentFX
