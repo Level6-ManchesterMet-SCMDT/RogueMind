@@ -76,17 +76,18 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d6df9412572c2034db641a9eb55b907a, type: 2}
     - {fileID: 11400000, guid: fccdea38009fb134499a930825912f39, type: 2}
     count: 0100000001000000
-    spawnRate: 1
+    spawnRate: 2
     data: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   enemyPrefab: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
   doors: {fileID: 0}
+  exitDoor: {fileID: 0}
   num: 0
   nextWave: 0
   round: 1
-  waveDelay: 1
+  waveDelay: 0.2
   countdown: 0
   enemiesSpawned: 0
   spawnEnemies: 0

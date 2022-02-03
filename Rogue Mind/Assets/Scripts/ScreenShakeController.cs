@@ -32,12 +32,14 @@ public class ScreenShakeController : MonoBehaviour
             transform.position += new Vector3(xAmount, yAmount, 0f);
 
             shakePower = Mathf.MoveTowards(shakePower, 0f, shakeFadeTime * Time.deltaTime);
+            gameObject.GetComponent<CameraScript>().shaking = false;
 
         }
     }
 
     public void StartShake(float length, float power)
     {
+        gameObject.GetComponent<CameraScript>().shaking = true;
         shakeTimeRemaining = length;
 
         shakePower = power;
