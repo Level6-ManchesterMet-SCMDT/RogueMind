@@ -5,13 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class ExitFloor : MonoBehaviour
 {
+    public Animator transition;
+    public void Start()
+    {
+        transition = GameObject.Find("ScreenWipe").gameObject.GetComponent<Animator>();
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("leaving to main menu");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+           StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
 
         }
+    }
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1.0f);
+
+
+        SceneManager.LoadScene(levelIndex);
     }
 }
