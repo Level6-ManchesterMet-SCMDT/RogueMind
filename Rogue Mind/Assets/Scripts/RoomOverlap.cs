@@ -22,7 +22,7 @@ public class RoomOverlap : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collision2D collision)
+    private void OnTriggerEnter(Collider2D collision)
     {
         if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room") 
         {
