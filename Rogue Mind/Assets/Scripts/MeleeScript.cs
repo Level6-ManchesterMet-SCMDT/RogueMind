@@ -18,6 +18,8 @@ public class MeleeScript : MonoBehaviour
     public static int numberOfClicks = 0;//counts the number of clicks currently within the combo time
     public float lastClickedTime = 0f;//stores last time of click
     public float maxComboDelay;//the ammount of time before the combo resets
+    public int hitDelay;
+    public int currentDelay = 0;
 
     float initialDamage;// the damage value that the attack initialy has
 
@@ -32,15 +34,24 @@ public class MeleeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
+        if(currentDelay >= 0)
 		{
-            numberOfClicks = 0;
-            damage = initialDamage * modifiers.meleeDamageModifier;//sets damage back to 1 for the first hit
-}
-        if(Input.GetMouseButtonDown(1))//if right mouse button clicked
-		{
-            OnClick();//Run the onClick function
+            currentDelay--;
 		}
+        else
+		{
+            if (Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
+            {
+                
+                numberOfClicks = 0;
+                damage = initialDamage * modifiers.meleeDamageModifier;//sets damage back to 1 for the first hit
+            }
+            if (Input.GetMouseButtonDown(1))//if right mouse button clicked
+            {
+                OnClick();//Run the onClick function
+            }
+        }
+       
     }
 
     void OnClick()
@@ -49,23 +60,29 @@ public class MeleeScript : MonoBehaviour
         numberOfClicks++;//increase the number of clicks in current combo
         if(numberOfClicks == 1)// if 1 click
 		{
+            this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
+
             //hit 1
             GameObject hitBox = Instantiate(hit1Prefab, hitPoint.position, hitPoint.rotation);//spawn first hitbox
         }
         numberOfClicks = Mathf.Clamp(numberOfClicks, 0, 3);//clamps the number of clicks so it doesnt exceed 3
         if(numberOfClicks == 2)//if 2 clicks
 		{
+            this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
             //second hit
             damage = (initialDamage * 2.0f) * modifiers.meleeDamageModifier;//doubles damage value
             GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
         }
         if (numberOfClicks == 3)//if 3 clicks
         {
+            currentDelay = hitDelay;
             //third hit
+            this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
             damage = (initialDamage * 3.0f)*modifiers.meleeDamageModifier;//tripples damage value
             GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
             numberOfClicks = 0;//reset number of clicks 
+            
             //COMMENT OUT LINE ABOVE AND MATHF.CLAMP LINE FOR A MORE RESTRICTIVE MELEE ATTACK
         }
 
