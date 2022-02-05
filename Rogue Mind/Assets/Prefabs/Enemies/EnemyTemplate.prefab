@@ -120,7 +120,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3182398780945161534}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   numberOfFlashes: 1
   aiType: 0
   currentState: 0
+  stunnedDuration: 0
 --- !u!114 &3182398780945161529
 MonoBehaviour:
   m_ObjectHideFlags: 0
