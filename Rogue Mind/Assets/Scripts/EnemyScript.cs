@@ -27,11 +27,13 @@ public class EnemyScript : MonoBehaviour
     public EnemyTypes.EnemyAI aiType;// the type of AI being used
 
     public EnemyState currentState;// the enemies state
+    public int stunnedDuration;
 
     public enum EnemyState
 	{
         Moving,//when the enemy is moving 
         Attacking,// when the enemy is attacking
+        Stunned,//when the enemy is stunned
 	}
     private IEnumerator FlashCo()// used for Iframes and flashing
     {
@@ -113,18 +115,49 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    public void Stun(int duration)
+	{
+        stunnedDuration = duration;
+        currentState = EnemyState.Stunned;
+    }
+
+    void StunnedUpdate()
+	{
+        if(stunnedDuration > 0)
+		{
+            stunnedDuration--;
+		}
+        else
+		{
+            currentState = EnemyState.Moving;
+		}
+
+	}
+
     //---------------------------------FOLLOWER-----------------------------------
     void FollowerUpdate()
     {
-        Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
-        rigidBody.rotation = angle;// rotate enemy to face player
-        direction.Normalize();//normalize
-        movement = direction;//set movement vector 
+        switch (currentState)// runs the collider code associated with this enemies ai type
+        {
+            case EnemyState.Moving:
+                Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
+                rigidBody.rotation = angle;// rotate enemy to face player
+                direction.Normalize();//normalize
+                movement = direction;//set movement vector 
+                break;
+            case EnemyState.Stunned:
+                StunnedUpdate();
+                break;
+        }
+         
     }
     void FollowerFixedUpdate(Vector2 direction)
     {
-        rigidBody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));// move position by speed in direction over time
+        if (currentState == EnemyState.Moving)//as long as he should be moving
+        {
+            rigidBody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));// move position by speed in direction over time
+        }
     }
     private void FollowerOnTriggerEnter(Collider2D collision)
 	{
@@ -145,6 +178,8 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Melee"))//if collide with a melee attack
         {
             health -= target.GetComponent<MeleeScript>().damage;// reduce health by attacks damage value
+            Stun(collision.GetComponent<HitScript>().stun);
+            
             StartCoroutine(FlashCo());
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
@@ -178,8 +213,8 @@ public class EnemyScript : MonoBehaviour
                     StartCoroutine(NoseAttack());   //run attack
                 }
                 break;
-            case EnemyState.Attacking:
-   
+            case EnemyState.Stunned:
+                StunnedUpdate();
                 break;
         }
         
@@ -229,8 +264,8 @@ public class EnemyScript : MonoBehaviour
                     StartCoroutine(ShooterAttack());// shoot
                 }
                 break;
-            case EnemyState.Attacking:
-
+            case EnemyState.Stunned:
+                StunnedUpdate();
                 break;
         }
     }

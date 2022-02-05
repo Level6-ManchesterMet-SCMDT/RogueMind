@@ -183,6 +183,7 @@ MonoBehaviour:
   rigidBody: {fileID: 7253674216189750481}
   cam: {fileID: 0}
   modifiers: {fileID: 0}
+  drugSelectionMenu: {fileID: 0}
 --- !u!114 &7253674216189750444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   bulletForce: 20
   currentBullets: 0
   maxBullets: 6
+  currentState: 0
 --- !u!114 &7253674216189750445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +221,8 @@ MonoBehaviour:
   damage: 1
   lastClickedTime: 0
   maxComboDelay: 1
+  hitDelay: 200
+  currentDelay: 0
   modifiers: {fileID: 0}
 --- !u!114 &6312177899545002380
 MonoBehaviour:
