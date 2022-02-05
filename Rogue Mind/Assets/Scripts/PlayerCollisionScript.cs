@@ -38,26 +38,28 @@ public class PlayerCollisionScript : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)//when something enters trigger hit box
 	{
+        if(this.gameObject.GetComponent<PlayerMovement>().currentState != PlayerMovement.PlayerState.Dashing)
+		{
+            if (collision.CompareTag("Enemy"))//if the collider is an enemy
+            {
+                TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
+
+                StartCoroutine(FlashCo());//run the flash co routine for I frames
+            }
+            if (collision.CompareTag("Boss"))//if the collider is an Boss
+            {
+                TakeDamage(collision.GetComponent<BossScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by Boss damage ammount
+
+                StartCoroutine(FlashCo());//run the flash co routine for I frames
+            }
+            if (collision.CompareTag("EnemyBullet"))
+            {
+                TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
+                Destroy(collision.gameObject);
+                StartCoroutine(FlashCo());//run the flash co routine for I frames
+            }
+        }
         
-        if(collision.CompareTag("Enemy"))//if the collider is an enemy
-		{
-            TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
-
-            StartCoroutine(FlashCo());//run the flash co routine for I frames
-        }
-        if (collision.CompareTag("Boss"))//if the collider is an Boss
-        {
-            TakeDamage(collision.GetComponent<BossScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by Boss damage ammount
-
-            StartCoroutine(FlashCo());//run the flash co routine for I frames
-        }
-        if (collision.CompareTag("EnemyBullet"))
-		{
-            TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
-            Destroy(collision.gameObject);
-            StartCoroutine(FlashCo());//run the flash co routine for I frames
-           
-        }
         if (collision.CompareTag("DopamineDrop"))
         {
             Dopamine++;
