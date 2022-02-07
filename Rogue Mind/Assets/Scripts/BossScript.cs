@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossScript : MonoBehaviour
 {
@@ -18,8 +19,9 @@ public class BossScript : MonoBehaviour
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;// the dopamine drops 
     public EnemyData spawnableData;// what the boss can spawn
+    public GameObject nameText;
 
-
+    public GameObject healthBar;// the healthbar for the player
 
     Vector2 movement;// a vector used for movement
     public BossTypes.BossAI aiType;// the type of AI being used
@@ -47,7 +49,9 @@ public class BossScript : MonoBehaviour
         name = scriptable.name;
         spawnable = scriptable.spawnable;
         spawnableData = scriptable.spawnableData;
-
+        Debug.Log(health.ToString());
+        healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(health);
+        nameText.GetComponent<Text>().text = name;
 
         if (scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
         {
@@ -168,12 +172,14 @@ public class BossScript : MonoBehaviour
         if ((collision.tag == "Bullet"))//if collide with a bullet
         {
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
+            healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
             Destroy(collision.gameObject);//destroy bullet
             DeathCheck();
         }
         if ((collision.tag == "Melee"))//if collide with a melee attack
         {
             health -= target.GetComponent<MeleeScript>().damage;// reduce health by attacks damage value
+            healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
             DeathCheck();
