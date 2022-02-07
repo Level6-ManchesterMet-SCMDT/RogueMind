@@ -31,67 +31,158 @@ public class RoomSpawner : MonoBehaviour
         {
             int number = Random.Range(0, 100);// used for 3 doors
                                               //TO DO, SPAWNING 3 DOORS OCCASIONALLY CAUSES OVERLAP AND BLOCKS OFF THE PATH TO THE EXIT
+            if (templates.rooms.Count > templates.minNumberOfRooms && templates.rooms.Count < templates.maxNumberOfRooms)
+            {
+                if (number > templates.chanceOf3DoorsSpawned)
+                {
+                    if (direction == OpeningDirection.BOTTOM)
+                    {
+                        rand = Random.Range(0, templates.bottomRooms.Length - 3);// rooms with 2 or less doors
+                        Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
+                        spawned = true;
+                    }
+                    else if (direction == OpeningDirection.TOP)
+                    {
+                        rand = Random.Range(0, templates.topRooms.Length - 3);
+                        Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
+                        spawned = true;
+                    }
+                    else if (direction == OpeningDirection.LEFT)
+                    {
+                        rand = Random.Range(0, templates.leftRooms.Length - 3);
+                        Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+                        spawned = true;
 
-            if (number > templates.chanceOf3DoorsSpawned)
+                    }
+                    else if (direction == OpeningDirection.RIGHT)
+                    {
+                        rand = Random.Range(0, templates.rightRooms.Length - 3);
+                        Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+                        spawned = true;
+                    }
+                }
+                else if (number <= templates.chanceOf3DoorsSpawned)
+                {
+                    if (direction == OpeningDirection.BOTTOM)
+                    {
+                        rand = Random.Range(templates.bottomRooms.Length - 3, templates.bottomRooms.Length);// all rooms avaliable
+                        room = Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);
+
+                    }
+                    else if (direction == OpeningDirection.TOP)
+                    {
+
+                        rand = Random.Range(templates.topRooms.Length - 3, templates.topRooms.Length);
+                        room = Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);
+
+
+                    }
+                    else if (direction == OpeningDirection.LEFT)
+                    {
+                        rand = Random.Range(templates.leftRooms.Length - 3, templates.leftRooms.Length);
+                        room = Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+
+                    }
+                    else if (direction == OpeningDirection.RIGHT)
+                    {
+                        rand = Random.Range(templates.rightRooms.Length - 3, templates.rightRooms.Length);
+                        room = Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+
+                    }
+                    spawned = true;
+                }
+
+            }
+            else if (templates.rooms.Count >= templates.maxNumberOfRooms)
             {
                 if (direction == OpeningDirection.BOTTOM)
                 {
-                    rand = Random.Range(0, templates.bottomRooms.Length - 3);// rooms with 2 or less doors
-                    Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
+                    // rooms with 2 or less doors
+                    Instantiate(templates.bottomEndCap, transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
                     spawned = true;
                 }
                 else if (direction == OpeningDirection.TOP)
                 {
-                    rand = Random.Range(0, templates.topRooms.Length - 3);
-                    Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
+                    Instantiate(templates.topEndCap, transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
                     spawned = true;
                 }
                 else if (direction == OpeningDirection.LEFT)
                 {
-                    rand = Random.Range(0, templates.leftRooms.Length - 3);
-                    Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
+
+                    Instantiate(templates.leftEndCap, transform.position, Quaternion.identity);
                     spawned = true;
 
                 }
                 else if (direction == OpeningDirection.RIGHT)
                 {
-                    rand = Random.Range(0, templates.rightRooms.Length - 3);
-                    Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
+                    Instantiate(templates.rightEndcap, transform.position, Quaternion.identity);
+                    spawned = true;
+                }
+            }
+            else if (templates.rooms.Count<= templates.minNumberOfRooms)
+            {
+                if (number > templates.chanceOf3DoorsSpawned)
+                {
+                    if (direction == OpeningDirection.BOTTOM)
+                    {
+                        rand = Random.Range(0, templates.bottomRooms2PlusDoors.Length - 3);// rooms with 2 or less doors
+                        Instantiate(templates.bottomRooms2PlusDoors[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
+                        spawned = true;
+                    }
+                    else if (direction == OpeningDirection.TOP)
+                    {
+                        rand = Random.Range(0, templates.topRooms2PlusDoors.Length - 3);
+                        Instantiate(templates.topRooms2PlusDoors[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
+                        spawned = true;
+                    }
+                    else if (direction == OpeningDirection.LEFT)
+                    {
+                        rand = Random.Range(0, templates.leftRooms2PlusDoors.Length - 3);
+                        Instantiate(templates.leftRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+                        spawned = true;
+
+                    }
+                    else if (direction == OpeningDirection.RIGHT)
+                    {
+                        rand = Random.Range(0, templates.rightRooms2PlusDoors.Length - 3);
+                        Instantiate(templates.rightRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+                        spawned = true;
+                    }
+                }
+                else if (number <= templates.chanceOf3DoorsSpawned)
+                {
+                    if (direction == OpeningDirection.BOTTOM)
+                    {
+                        rand = Random.Range(templates.bottomRooms2PlusDoors.Length - 3, templates.bottomRooms2PlusDoors.Length);// all rooms avaliable
+                        room = Instantiate(templates.bottomRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+
+                    }
+                    else if (direction == OpeningDirection.TOP)
+                    {
+
+                        rand = Random.Range(templates.topRooms2PlusDoors.Length - 3, templates.topRooms2PlusDoors.Length);
+                        room = Instantiate(templates.topRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+
+
+                    }
+                    else if (direction == OpeningDirection.LEFT)
+                    {
+                        rand = Random.Range(templates.leftRooms2PlusDoors.Length - 3, templates.leftRooms2PlusDoors.Length);
+                        room = Instantiate(templates.leftRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+
+                    }
+                    else if (direction == OpeningDirection.RIGHT)
+                    {
+                        rand = Random.Range(templates.rightRooms2PlusDoors.Length - 3, templates.rightRooms2PlusDoors.Length);
+                        room = Instantiate(templates.rightRooms2PlusDoors[rand], transform.position, Quaternion.identity);
+
+                    }
                     spawned = true;
                 }
             }
 
 
-            else if (number <= templates.chanceOf3DoorsSpawned)
-            {
-                if (direction == OpeningDirection.BOTTOM)
-                {
-                    rand = Random.Range(templates.bottomRooms.Length - 3, templates.bottomRooms.Length);// all rooms avaliable
-                    room = Instantiate(templates.bottomRooms[rand], transform.position, Quaternion.identity);
 
-                }
-                else if (direction == OpeningDirection.TOP)
-                {
-
-                    rand = Random.Range(templates.topRooms.Length - 3, templates.topRooms.Length);
-                    room = Instantiate(templates.topRooms[rand], transform.position, Quaternion.identity);
-
-
-                }
-                else if (direction == OpeningDirection.LEFT)
-                {
-                    rand = Random.Range(templates.leftRooms.Length - 3, templates.leftRooms.Length);
-                    room = Instantiate(templates.leftRooms[rand], transform.position, Quaternion.identity);
-
-                }
-                else if (direction == OpeningDirection.RIGHT)
-                {
-                    rand = Random.Range(templates.rightRooms.Length - 3, templates.rightRooms.Length);
-                    room = Instantiate(templates.rightRooms[rand], transform.position, Quaternion.identity);
-
-                }
-                spawned = true;
-            }
             spawned = true;
         }
         
