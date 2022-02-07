@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         activeMoveSpeed = moveSpeed;
-        currentState = PlayerState.Moving;
+        currentState = PlayerState.menu;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");
@@ -88,15 +88,19 @@ public class PlayerMovement : MonoBehaviour
 		}
         if (dashCounter > 0)
         {
-            dashCounter -= Time.deltaTime;
+            if(currentState == PlayerState.Dashing)
+			{
+                dashCounter -= Time.deltaTime;
 
-            if (dashCounter <= 0)
-            {
-                activeMoveSpeed = moveSpeed;
-                dashCoolCounter = dashCoolCounter;
-                
-                currentState = PlayerState.Moving;
+                if (dashCounter <= 0)
+                {
+                    activeMoveSpeed = moveSpeed;
+                    dashCoolCounter = dashCoolCounter;
+
+                    currentState = PlayerState.Moving;
+                }
             }
+           
         }
 
         if (dashCoolCounter > 0)
@@ -110,8 +114,8 @@ public class PlayerMovement : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Moving:
-                //rigidBody.MovePosition(rigidBody.position + movement * (moveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
-                rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
+                rigidBody.MovePosition(rigidBody.position + movement * (moveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                //rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
                 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
                 angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 

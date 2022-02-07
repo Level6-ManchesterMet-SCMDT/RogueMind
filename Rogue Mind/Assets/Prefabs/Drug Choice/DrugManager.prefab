@@ -50,3 +50,5 @@ MonoBehaviour:
   meleeDamageModifier: 1
   fireRateModifier: 1
   resistanceToEnemyModifier: 1
+  meleeAttackRateModifier: 1
+  gunDamageModifier: 1
