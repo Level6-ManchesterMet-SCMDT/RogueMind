@@ -8,10 +8,21 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] bottomRooms;
     public GameObject[] rightRooms;
     public GameObject[] leftRooms;
+
     public GameObject[] bottomLeftRooms;
     public GameObject[] bottomRightRooms;
     public GameObject[] topLeftRooms;
     public GameObject[] topRightRooms;
+
+    public GameObject[] topRooms2PlusDoors;
+    public GameObject[] bottomRooms2PlusDoors;
+    public GameObject[] leftRooms2PlusDoors;
+    public GameObject[] rightRooms2PlusDoors;
+
+    public GameObject rightEndcap;
+    public GameObject leftEndCap;
+    public GameObject topEndCap;
+    public GameObject bottomEndCap;
 
     public GameObject closedRoom;
 
@@ -25,6 +36,9 @@ public class RoomTemplates : MonoBehaviour
     public bool spawnedItemRoom;
     public bool spawnedShopRoom;
     public GameObject endRoomPlaceHolder;
+
+    public int minNumberOfRooms;
+    public int maxNumberOfRooms;
 
     private void Update()
     {
