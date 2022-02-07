@@ -24,9 +24,9 @@ public class PlayerCollisionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Dopamine = 0;
+        //Dopamine = 0;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");//set the health bar
-        Maxhealth = health;//set max health
+        health = Maxhealth;//set max health
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(Maxhealth);
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         save = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<SaveManagerScript>();

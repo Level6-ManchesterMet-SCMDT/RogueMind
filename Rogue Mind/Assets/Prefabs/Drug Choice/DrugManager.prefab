@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3343324184920348206}
   - component: {fileID: 3343324184920348205}
+  - component: {fileID: 99247253233534467}
   m_Layer: 0
   m_Name: DrugManager
   m_TagString: DrugManager
@@ -52,3 +53,28 @@ MonoBehaviour:
   resistanceToEnemyModifier: 1
   meleeAttackRateModifier: 1
   gunDamageModifier: 1
+--- !u!114 &99247253233534467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343324184920348204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8421a5462c70f7243b1ccade874e5d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cash: 0
+  gunRate: 0
+  swordRate: 0
+  swordDamage: 0
+  gunDamage: 0
+  moveSpeed: 0
+  enemyResistance: 0
+  gunRatePrice: 0
+  swordRatePrice: 0
+  swordDamagePrice: 0
+  gunDamagePrice: 0
+  moveSpeedPrice: 0
+  enemyResistancePrice: 0

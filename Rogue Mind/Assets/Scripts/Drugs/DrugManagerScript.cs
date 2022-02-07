@@ -21,13 +21,13 @@ public class DrugManagerScript : MonoBehaviour
     void Start()
     {
         healthModifier = 1;//set all modifiers to 1 which means no changes
-        movementSpeedModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().moveSpeed/100;
+        movementSpeedModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().moveSpeed/100;
         dashDistanceModifier = 1;
-        meleeDamageModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().swordDamage/100;
-        fireRateModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().gunRate/100;
-        resistanceToEnemyModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().enemyResistance/100;
-        meleeAttackRateModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().swordRate/100;
-        gunDamageModifier = 1 + this.gameObject.GetComponent<SaveManagerScript>().gunDamage/100;
+        meleeDamageModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().swordDamage/100;
+        fireRateModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().gunRate/100;
+        resistanceToEnemyModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().enemyResistance/100;
+        meleeAttackRateModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().swordRate/100;
+        gunDamageModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().gunDamage/100;
         foreach(DrugsData i in scriptables)//add every modifier currently in effect to the modifier variables
 		{
             AddEffects(i);
