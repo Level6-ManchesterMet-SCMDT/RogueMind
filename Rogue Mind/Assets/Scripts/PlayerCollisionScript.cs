@@ -20,6 +20,7 @@ public class PlayerCollisionScript : MonoBehaviour
     public GameObject healthBar;// the healthbar for the player
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
+    public SaveManagerScript save;//finds the drugs modifiers
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,8 @@ public class PlayerCollisionScript : MonoBehaviour
         Maxhealth = health;//set max health
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(Maxhealth);
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
+        save = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<SaveManagerScript>();
+        Maxhealth *= modifiers.healthModifier;
     }
 
     // Update is called once per frame 
@@ -96,6 +99,8 @@ public class PlayerCollisionScript : MonoBehaviour
 	{
         if (health <= 0)
         {
+            save.cash += 10;
+            save.NextScene();
             SceneManager.LoadScene(1);
             Destroy(gameObject);//if health drops below 0 kill the player
         }

@@ -1,0 +1,7 @@
+cash: 0
+gunRate: 0
+swordRate: 0
+swordDamage: 0
+gunDamage: 25
+moveSpeed: 0
+enemyResistance: 0

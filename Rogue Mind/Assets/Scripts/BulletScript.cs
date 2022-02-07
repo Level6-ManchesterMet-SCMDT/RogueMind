@@ -6,9 +6,12 @@ public class BulletScript : MonoBehaviour
 {
     public float damage = 1f;//the damage of the bullet
     // Start is called before the first frame update
+    public DrugManagerScript modifiers;//finds the drugs modifiers
     void Start()
     {
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         Destroy(gameObject, 3);//after 5 seconds a bullet is destroyed 
+        damage *= modifiers.gunDamageModifier;
     }
 
     // Update is called once per frame

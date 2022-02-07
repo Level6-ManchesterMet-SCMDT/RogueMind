@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PillBoxClickable : MonoBehaviour
 {
     public Animator transition;
+    public GameObject saveManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class PillBoxClickable : MonoBehaviour
     }
     void OnMouseDown()
     {
+        saveManager.GetComponent<SaveManagerScript>().NextScene();
         StartCoroutine(LoadLevel(2));
         // this object was clicked - do something
         
@@ -26,6 +28,7 @@ public class PillBoxClickable : MonoBehaviour
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
+        
         yield return new WaitForSeconds(1.0f);
 
 

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public GameObject drugSelectionMenu;
-
+    public SaveManagerScript save;//finds the drugs modifiers
 
 
 
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");
-        
+        dashLength *= modifiers.dashDistanceModifier;
     }
 
 	
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.Moving:
                 //rigidBody.MovePosition(rigidBody.position + movement * (moveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
-                rigidBody.velocity = activeMoveSpeed * movement;
+                rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
                 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
                 angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 

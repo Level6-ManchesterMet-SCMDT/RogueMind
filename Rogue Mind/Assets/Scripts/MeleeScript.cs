@@ -18,8 +18,8 @@ public class MeleeScript : MonoBehaviour
     public static int numberOfClicks = 0;//counts the number of clicks currently within the combo time
     public float lastClickedTime = 0f;//stores last time of click
     public float maxComboDelay;//the ammount of time before the combo resets
-    public int hitDelay;
-    public int currentDelay = 0;
+    public float hitDelay;
+    public float currentDelay = 0;
 
     float initialDamage;// the damage value that the attack initialy has
 
@@ -29,6 +29,7 @@ public class MeleeScript : MonoBehaviour
     {
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
+        hitDelay /= modifiers.meleeAttackRateModifier;
     }
 
     // Update is called once per frame
