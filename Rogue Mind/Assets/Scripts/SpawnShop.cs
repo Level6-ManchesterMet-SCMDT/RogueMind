@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItem : MonoBehaviour
+public class SpawnShop : MonoBehaviour
 {
     public Transform spawnPoint;
-    public GameObject[] items;
+    public GameObject shopRoomTileset;
+    public GameObject shopKeeper;
     bool spawned;
     Transform camera;
     private void Start()
@@ -15,13 +16,10 @@ public class SpawnItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")&&!spawned)
+        if (other.CompareTag("Player") && !spawned)
         {
-            
-            GameObject spawnedItem = items[Random.Range(0, items.Length)];
-
-            Instantiate(spawnedItem, spawnPoint.position, spawnPoint.rotation);
-            spawned = true;
+            shopRoomTileset.SetActive(true);
+            Instantiate(shopKeeper, spawnPoint.position, spawnPoint.rotation);
         }
         if (other.CompareTag("Player"))
         {

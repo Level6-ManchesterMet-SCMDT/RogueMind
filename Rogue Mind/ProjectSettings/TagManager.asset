@@ -23,6 +23,10 @@ TagManager:
   - Gym
   - Play
   - DrugMenu
+  - EndCap
+  - Col
+  - EmptyChecker
+  - ShopKeep
   layers:
   - Default
   - TransparentFX

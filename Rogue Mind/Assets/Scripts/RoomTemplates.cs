@@ -47,6 +47,15 @@ public class RoomTemplates : MonoBehaviour
         {
             itemWaitTime -= Time.deltaTime;
         }
+        if (shopWaitTime <= 0 && !spawnedShopRoom)
+        {
+            itemWaitTime = 0;
+            ShopRoom();
+        }
+        else
+        {
+            shopWaitTime -= Time.deltaTime;
+        }
     }
 
     void exitRoom()
@@ -88,6 +97,36 @@ public class RoomTemplates : MonoBehaviour
                     }
                 }
                     
+            }
+        }
+    }
+    void ShopRoom()
+    {
+        int rand = Random.Range(0, endRooms.Count - 1);
+
+        for (int i = 0; i < endRooms.Count; i++)
+        {
+            if (i == rand)
+            {
+                if (endRooms[i].GetComponent<Activator>().isItemRoom == false)
+                {
+                    endRooms[i].GetComponent<Activator>().isShopRoom = true;
+                    spawnedShopRoom = true;
+                }
+                else
+                {
+                    if (i + 1 >= endRooms.Count - 1)
+                    {
+                        endRooms[i - 1].GetComponent<Activator>().isShopRoom = true;
+                        spawnedShopRoom = true;
+                    }
+                    else if (i - 1 <= 0)
+                    {
+                        endRooms[i + 1].GetComponent<Activator>().isShopRoom = true;
+                        spawnedShopRoom = true;
+                    }
+                }
+
             }
         }
     }
