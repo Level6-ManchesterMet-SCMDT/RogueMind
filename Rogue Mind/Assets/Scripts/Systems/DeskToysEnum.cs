@@ -8,7 +8,10 @@ public class DeskToysEnum : MonoBehaviour
 
     public enum DeskToyAI// creates the actual Enum
     {
-        Example1,
+        AtomicFigure,
+        EnergyDrink,
+        ThePlumber,
+        PlasticDonut,
 
     }
 }
