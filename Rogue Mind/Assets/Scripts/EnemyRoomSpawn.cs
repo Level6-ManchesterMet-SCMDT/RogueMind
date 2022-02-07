@@ -9,11 +9,10 @@ public class EnemyRoomSpawn : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public int roundNum;
-        public EnemyData[] enemyTypes;
-        public int[] count;
-        public float spawnRate;
-        public int data;
+        public int roundNum; // allows for multiple rounds
+        public EnemyData[] enemyTypes;// holds the data for the different enemies
+        public int[] count;// array for the amount of each enemy you would like to spawn
+        public float spawnRate;// how quick the enemies spawn
     }
 
     public Wave[] waves;

@@ -9,6 +9,7 @@ public class DrugChoiceScript : MonoBehaviour
     public DrugsData[] scriptable;
     private List<DrugsData> DisplayedDrugs = new List<DrugsData>();
     public DrugManagerScript drugManager;
+    public GameObject shopKeeper;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,8 @@ public class DrugChoiceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");
+        shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;
         if (Input.GetKeyDown(KeyCode.J))
         {
             if(drugSelectionMenu.active == true)

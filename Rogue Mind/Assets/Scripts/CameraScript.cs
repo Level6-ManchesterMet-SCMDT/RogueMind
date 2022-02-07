@@ -16,13 +16,11 @@ public class CameraScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        if (!shaking)
-        {
-            transform.position = smoothedPosition;
-        } // Camera follows the player with specified offset position
+        transform.position = smoothedPosition;
+       // Camera follows the player with specified offset position
     }
 }

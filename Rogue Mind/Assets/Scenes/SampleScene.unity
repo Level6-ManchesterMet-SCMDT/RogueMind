@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  offset: {x: 0, y: 0, z: -30}
+  offset: {x: 0, y: 0, z: -20}
   smoothSpeed: 0.0125
   shaking: 0
 --- !u!20 &519420031
