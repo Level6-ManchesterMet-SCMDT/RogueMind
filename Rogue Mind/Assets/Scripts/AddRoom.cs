@@ -9,5 +9,9 @@ public class AddRoom : MonoBehaviour
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         templates.rooms.Add(this.gameObject);
+        if(this.gameObject.tag == "EndCap")
+        {
+            templates.endRooms.Add(this.gameObject);
+        }
     }
 }
