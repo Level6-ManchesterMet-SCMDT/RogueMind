@@ -54,8 +54,9 @@ public class DrugChoiceScript : MonoBehaviour
 		{
             DrugsData drug1 = RandomDrug();//create a random drug
             DisplayedDrugs.Add(drug1);//add it to list
-            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = drug1.name;//set its name
-            drugSelectionMenu.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = drug1.description;//set its description
+            
+            drugSelectionMenu.transform.GetChild(i+2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = drug1.name;//set its name
+            drugSelectionMenu.transform.GetChild(i+2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = drug1.description;//set its description
         }
         
 	}
