@@ -164,10 +164,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1870651678097302487}
   - component: {fileID: 8674839875422195085}
-  - component: {fileID: 7752937959392835119}
   - component: {fileID: 5333735810755245923}
   - component: {fileID: 4346672626689232623}
   - component: {fileID: 7502807091893319610}
+  - component: {fileID: 5938552339662241231}
   m_Layer: 0
   m_Name: EndPlaceHolder
   m_TagString: Untagged
@@ -242,38 +242,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7752937959392835119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5165489882499522545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd198e6f62f084d4b9bf4513328f6c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - roundNum: 0
-    enemyTypes:
-    - {fileID: 11400000, guid: 0daf3fa888cdc9442a8323de9ff7dc48, type: 2}
-    count: 06000000
-    spawnRate: 1
-  spawnPoints:
-  - {fileID: 5021983960557804734}
-  enemyPrefab: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
-  doors: {fileID: 0}
-  exitDoor: {fileID: 0}
-  num: 0
-  nextWave: 0
-  round: 1
-  waveDelay: 1
-  countdown: 0
-  enemiesSpawned: 0
-  spawnEnemies: 0
-  time: 1.4
-  state: 2
 --- !u!61 &5333735810755245923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -333,3 +301,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5679c4f2aaa4a24cbb76a3362822e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5938552339662241231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165489882499522545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ba90401f7073946b16f92c5b570ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - roundNum: 0
+    enemyTypes:
+    - {fileID: 11400000, guid: e1ae556b324945c4f9ee869c84d742c3, type: 2}
+    count: 01000000
+    spawnRate: 1
+  spawnPoints:
+  - {fileID: 5021983960557804734}
+  enemyPrefab: {fileID: 3182398780945161534, guid: 2a30c9f4a72df3f49be52448ee546ace, type: 3}
+  doors: {fileID: 0}
+  exitDoor: {fileID: 0}
+  num: 0
+  nextWave: 0
+  round: 1
+  waveDelay: 1
+  countdown: 0
+  enemiesSpawned: 0
+  spawnEnemies: 0
+  time: 1.4
+  state: 2

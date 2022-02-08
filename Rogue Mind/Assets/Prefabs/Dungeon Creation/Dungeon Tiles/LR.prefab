@@ -3612,6 +3612,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5938552339662241231, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
+      propertyPath: doors
+      value: 
+      objectReference: {fileID: 4021390548542354999}
+    - target: {fileID: 5938552339662241231, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
+      propertyPath: exitDoor
+      value: 
+      objectReference: {fileID: 7221101638695065795}
     - target: {fileID: 7752937959392835119, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
       propertyPath: doors
       value: 

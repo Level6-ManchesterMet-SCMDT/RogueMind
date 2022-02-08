@@ -3832,6 +3832,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndPlaceHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 5938552339662241231, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
+      propertyPath: doors
+      value: 
+      objectReference: {fileID: 5989283108280230936}
+    - target: {fileID: 5938552339662241231, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
+      propertyPath: exitDoor
+      value: 
+      objectReference: {fileID: 8279012004534414912}
     - target: {fileID: 7752937959392835119, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
       propertyPath: doors
       value: 
