@@ -187,6 +187,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   modifiers: {fileID: 0}
   drugSelectionMenu: {fileID: 0}
+  save: {fileID: 0}
   dashSpeed: 0
   dashLength: 0.5
   dashCooldown: 1
@@ -209,6 +210,7 @@ MonoBehaviour:
   currentBullets: 0
   maxBullets: 6
   currentState: 0
+  modifiers: {fileID: 0}
 --- !u!114 &7253674216189750445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +227,7 @@ MonoBehaviour:
   hit2Prefab: {fileID: 163164568366012444, guid: 8b807921e07cddd4b8253e8e5d99681a, type: 3}
   hit3Prefab: {fileID: 1600023975566780479, guid: 1bb2437fa8c4e264ca2c634784cc5d8e, type: 3}
   hitPoint: {fileID: 7253674216771829774}
-  damage: 1
+  damage: 10
   lastClickedTime: 0
   maxComboDelay: 1
   hitDelay: 200
@@ -249,11 +251,12 @@ MonoBehaviour:
   numberOfFlashes: 3
   triggerCollider: {fileID: 7253674216189750480}
   spriteRenderer: {fileID: 7253674216189750482}
-  health: 10
+  health: 100
   Maxhealth: 0
   Dopamine: 0
   healthBar: {fileID: 0}
   modifiers: {fileID: 0}
+  save: {fileID: 0}
 --- !u!114 &5667592042216432226
 MonoBehaviour:
   m_ObjectHideFlags: 0
