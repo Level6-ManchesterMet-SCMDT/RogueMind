@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Drug5
   m_EditorClassIdentifier: 
   healthPercentage: 0.25
-  movementSpeedPercentage: -0.5
+  movementSpeedPercentage: -0.2
   dashDistancePercentage: 0
   meleeDamagePercentage: -0.15
   fireRatePercentage: 0
