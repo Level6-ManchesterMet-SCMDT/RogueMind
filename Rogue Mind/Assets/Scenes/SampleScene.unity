@@ -601,7 +601,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.45098042, g: 0.27450982, b: 0.29803923, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1118,6 +1118,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
   m_PrefabInstance: {fileID: 772240134}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591770277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3343324184920348204, guid: 0b78d46f755b269409c3201708099578, type: 3}
+  m_PrefabInstance: {fileID: 1989642317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1602519033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3343324184920348206, guid: 0b78d46f755b269409c3201708099578, type: 3}
@@ -1298,6 +1303,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeskToysManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6078221790024944970, guid: ce6cdea7e55a0c94699da765497ed18d, type: 3}
+      propertyPath: m_TagString
+      value: DeskToyManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078221790024944971, guid: ce6cdea7e55a0c94699da765497ed18d, type: 3}
+      propertyPath: saveManager
+      value: 
+      objectReference: {fileID: 1591770277}
     - target: {fileID: 6078221790024944972, guid: ce6cdea7e55a0c94699da765497ed18d, type: 3}
       propertyPath: m_RootOrder
       value: 9

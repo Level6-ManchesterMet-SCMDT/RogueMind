@@ -22,6 +22,10 @@ public class SaveManagerScript : MonoBehaviour
     public int moveSpeedPrice;
     public int enemyResistancePrice;
 
+    public string DeskToy1;
+    public string DeskToy2;
+
+    bool firstChoice = false;
 
     string content;
     // Start is called before the first frame update
@@ -38,8 +42,9 @@ public class SaveManagerScript : MonoBehaviour
         {
             ReadFromFile();  
 
-        }       
-
+        }
+        GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");
+        test.GetComponent<DeskToysScript>().RealStart();
     }
 
     void Update()
@@ -80,6 +85,10 @@ public class SaveManagerScript : MonoBehaviour
         
         content += "enemyResistance: " + enemyResistance.ToString() + "\n";
 
+        content += "DeskToy1: " + DeskToy1 + "\n";
+
+        content += "DeskToy2: " + DeskToy2 + "\n";
+
         Debug.Log(content);
         return content;
         
@@ -97,6 +106,8 @@ public class SaveManagerScript : MonoBehaviour
         string string5 = fileLines[4].Remove(0, 11);
         string string6 = fileLines[5].Remove(0, 11);
         string string7 = fileLines[6].Remove(0, 17);
+        string string8 = fileLines[7].Remove(0, 10);
+        string string9 = fileLines[8].Remove(0, 10);
 
 
         int.TryParse(string1, out cash);
@@ -106,6 +117,8 @@ public class SaveManagerScript : MonoBehaviour
         int.TryParse(string5, out gunDamage);
         int.TryParse(string6, out moveSpeed);
         int.TryParse(string7, out enemyResistance);
+        DeskToy1 = string8;
+        DeskToy2 = string9;
     }
     // Update is called once per frame
 
@@ -166,6 +179,55 @@ public class SaveManagerScript : MonoBehaviour
             DecreaseCash(enemyResistancePrice);
         }
         
+    }
+
+    public void SelectAtomic()
+    {
+        if(!firstChoice)
+		{
+            DeskToy1 = "Atomic";
+            firstChoice = true;
+		}
+        else
+		{
+            DeskToy2 = "Atomic";
+        }
+    }
+    public void SelectEnergy()
+    {
+        if (!firstChoice)
+        {
+            DeskToy1 = "Energy";
+            firstChoice = true;
+        }
+        else
+        {
+            DeskToy2 = "Energy";
+        }
+    }
+    public void SelectPlumber()
+    {
+        if (!firstChoice)
+        {
+            DeskToy1 = "Plumber";
+            firstChoice = true;
+        }
+        else
+        {
+            DeskToy2 = "Plumber";
+        }
+    }
+    public void SelectDonut()
+    {
+        if (!firstChoice)
+        {
+            DeskToy1 = "Donut";
+            firstChoice = true;
+        }
+        else
+        {
+            DeskToy2 = "Donut";
+        }
     }
 
 }
