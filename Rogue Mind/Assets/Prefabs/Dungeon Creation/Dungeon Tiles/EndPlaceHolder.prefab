@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 5165489882499522545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 9, z: 1}
+  m_LocalScale: {x: 21, y: 9, z: 1}
   m_Children:
   - {fileID: 5021983960557804734}
   - {fileID: 7441609234863088031}
@@ -260,7 +260,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0daf3fa888cdc9442a8323de9ff7dc48, type: 2}
     count: 06000000
     spawnRate: 1
-    data: 0
   spawnPoints:
   - {fileID: 5021983960557804734}
   enemyPrefab: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
