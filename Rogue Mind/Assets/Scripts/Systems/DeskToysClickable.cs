@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeskToysClickable : MonoBehaviour
 {
     public GameObject deskMenu;
+    public GameObject otherMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class DeskToysClickable : MonoBehaviour
     void OnMouseDown()
     {
         // this object was clicked - do something
+        otherMenu.SetActive(false);
         deskMenu.SetActive(true);
     }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DeskToysScript : MonoBehaviour
 {
-    public List<DeskToysData> activeToys;
+    public List<string> activeToys;
     public GameObject player;
+    public GameObject saveManager;
 
     int temp1I;
     int temp2I;
@@ -23,45 +24,54 @@ public class DeskToysScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+    }
+
+    public void RealStart()
+	{
         player = GameObject.FindGameObjectWithTag("Player");
-		for (int i = 0; i < activeToys.Count; i++)
-		{
-            
-            switch(activeToys[i].AI)
-			{
-                case DeskToysEnum.DeskToyAI.AtomicFigure:
+        Debug.Log(saveManager.GetComponent<SaveManagerScript>().DeskToy1);
+        Debug.Log(saveManager.GetComponent<SaveManagerScript>().DeskToy2);
+
+        activeToys[0] = saveManager.GetComponent<SaveManagerScript>().DeskToy1;
+        activeToys[1] = saveManager.GetComponent<SaveManagerScript>().DeskToy2;
+        for (int i = 0; i < activeToys.Count; i++)
+        {
+
+            switch (activeToys[i])
+            {
+                case "Atomic":
                     AtomicFigureStart();
                     break;
-                case DeskToysEnum.DeskToyAI.EnergyDrink:
+                case "Energy":
                     EnergyDrinkStart();
                     break;
-                case DeskToysEnum.DeskToyAI.ThePlumber:
+                case "Plumber":
                     ThePlumberStart();
                     break;
-                case DeskToysEnum.DeskToyAI.PlasticDonut:
+                case "Donut":
                     PlasticDoughnutStart();
                     break;
             }
-		}
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < activeToys.Count; i++)
         {
-            switch (activeToys[i].AI)
+            switch (activeToys[i])
             {
-                case DeskToysEnum.DeskToyAI.AtomicFigure:
+                case "Atomic":
                     AtomicFigureUpdate();
                     break;
-                case DeskToysEnum.DeskToyAI.EnergyDrink:
+                case "Energy":
                     EnergyDrinkUpdate();
                     break;
-                case DeskToysEnum.DeskToyAI.ThePlumber:
+                case "Plumber":
                     ThePlumberUpdate();
                     break;
-                case DeskToysEnum.DeskToyAI.PlasticDonut:
+                case "Donut":
                     PlasticDoughnutUpdate();
                     break;
             }

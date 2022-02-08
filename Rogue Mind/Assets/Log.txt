@@ -1,7 +1,9 @@
-cash: 30
+cash: 0
 gunRate: 0
 swordRate: 0
 swordDamage: 0
-gunDamage: 25
-moveSpeed: 0
+gunDamage: 0
+moveSpeed: 1
 enemyResistance: 0
+DeskToy1: Energy
+DeskToy2: Donut
