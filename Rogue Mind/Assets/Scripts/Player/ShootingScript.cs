@@ -32,7 +32,7 @@ public class ShootingScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(shootDelay > 0)
 		{
@@ -40,7 +40,7 @@ public class ShootingScript : MonoBehaviour
 		}
         if (Input.GetMouseButton(0))//if left mouse click
         {
-            if (currentBullets > 0)
+            if (currentBullets > 0) 
             {
                 if(shootDelay <= 0)
 				{
