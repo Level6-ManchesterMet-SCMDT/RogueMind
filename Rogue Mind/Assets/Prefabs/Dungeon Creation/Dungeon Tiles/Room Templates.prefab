@@ -52,7 +52,7 @@ MonoBehaviour:
   - {fileID: 2760392126166485027, guid: 838c8d1d174a8d94c81ca8f27344fbc3, type: 3}
   - {fileID: 4586379957973840395, guid: 615bc95eda15cb6458d18c3d8076025e, type: 3}
   bottomRooms:
-  - {fileID: 7620072631149712808, guid: bf0d6cf2b0707994daa4085e5c0bcece, type: 3}
+  - {fileID: 7620072631149712808, guid: 15b2935d1a87ffa42a348fc6dbc5e87a, type: 3}
   - {fileID: 2632491851904860803, guid: 46a1780a98d5a9548ad255cf1968c774, type: 3}
   - {fileID: 162729192328163035, guid: e4c6e792d66ca9943a7a2fa7cccde6dc, type: 3}
   - {fileID: 8540196834633133520, guid: aaa7df4e1752c79479865a2392d5cccf, type: 3}
@@ -75,9 +75,12 @@ MonoBehaviour:
   - {fileID: 4037423639246316221, guid: 7751db897dbfee743bdb2481c4edf5a7, type: 3}
   - {fileID: 147581087021951229, guid: eab87520891464d4f9bae56bb7d8c4d5, type: 3}
   - {fileID: 4586379957973840395, guid: 615bc95eda15cb6458d18c3d8076025e, type: 3}
-  bottomLeftRooms: []
-  bottomRightRooms: []
-  topLeftRooms: []
+  bottomLeftRooms:
+  - {fileID: 2632491851904860803, guid: 46a1780a98d5a9548ad255cf1968c774, type: 3}
+  bottomRightRooms:
+  - {fileID: 162729192328163035, guid: e4c6e792d66ca9943a7a2fa7cccde6dc, type: 3}
+  topLeftRooms:
+  - {fileID: 9191877799309221745, guid: 2cb447de6f48d0642b92f22ed79236ed, type: 3}
   topRightRooms:
   - {fileID: 4098022013356744089, guid: a54e0522a86f24f4fbe64715dba5f7af, type: 3}
   topRooms2PlusDoors:
@@ -111,7 +114,7 @@ MonoBehaviour:
   rightEndcap: {fileID: 5526469129406346126, guid: 15078c183ed3cdb4ba426c48c47c1f63, type: 3}
   leftEndCap: {fileID: 9037971031006583637, guid: 3dde43436d5a62d46a1441b89805a063, type: 3}
   topEndCap: {fileID: 8098030432602428901, guid: 4bbfcf8919a485149b0ec0d85193520b, type: 3}
-  bottomEndCap: {fileID: 7620072631149712808, guid: bf0d6cf2b0707994daa4085e5c0bcece, type: 3}
+  bottomEndCap: {fileID: 7620072631149712808, guid: 15b2935d1a87ffa42a348fc6dbc5e87a, type: 3}
   closedRoom: {fileID: 4455080339084857634, guid: 411806cfd441d3e40b2bd804007bfbb2, type: 3}
   rooms: []
   endRooms: []

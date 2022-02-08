@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10}
+  m_Size: {x: 20, y: 8}
   m_EdgeRadius: 0
 --- !u!114 &4186991356919553459
 MonoBehaviour:
@@ -77,7 +77,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fccdea38009fb134499a930825912f39, type: 2}
     count: 0100000001000000
     spawnRate: 2
-    data: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
