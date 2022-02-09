@@ -85,11 +85,13 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Attacking:
                 break;
-		}
+
+            
+        }
         if (dashCounter > 0)
         {
-            if(currentState == PlayerState.Dashing)
-			{
+            if (currentState == PlayerState.Dashing)
+            {
                 dashCounter -= Time.deltaTime;
 
                 if (dashCounter <= 0)
@@ -100,13 +102,14 @@ public class PlayerMovement : MonoBehaviour
                     currentState = PlayerState.Moving;
                 }
             }
-           
+
         }
 
         if (dashCoolCounter > 0)
         {
             dashCoolCounter -= Time.deltaTime;
         }
+
     }
 
     private void FixedUpdate()
@@ -114,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Moving:
-                rigidBody.MovePosition(rigidBody.position + movement * (moveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                rigidBody.MovePosition(rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
                 //rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
                 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
                 angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
@@ -123,7 +126,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Dashing:
 
-                rigidBody.velocity = activeMoveSpeed * movementStore;
+                //rigidBody.velocity = activeMoveSpeed * movementStore;
+                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
                 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
                 angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 

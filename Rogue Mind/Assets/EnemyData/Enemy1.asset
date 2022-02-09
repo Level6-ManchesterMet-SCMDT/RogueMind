@@ -16,6 +16,6 @@ MonoBehaviour:
   name: FollowMan
   sprite: {fileID: 0}
   hp: 50
-  movementSpeed: 3
+  movementSpeed: 1.5
   damage: 10
   bulletType: {fileID: 0}

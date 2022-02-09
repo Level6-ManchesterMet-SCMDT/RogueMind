@@ -1,4 +1,4 @@
-cash: 0
+cash: 10
 gunRate: 0
 swordRate: 0
 swordDamage: 0
@@ -6,4 +6,4 @@ gunDamage: 0
 moveSpeed: 1
 enemyResistance: 0
 DeskToy1: Energy
-DeskToy2: Plumber
+DeskToy2: Donut
