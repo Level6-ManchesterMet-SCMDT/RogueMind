@@ -6,7 +6,7 @@ using System;
 [CreateAssetMenu]
 public class DrugsData : ScriptableObject
 {
-    public float healthPercentage;
+    public float healthPercentage;//the exten
     public float movementSpeedPercentage;
     public float dashDistancePercentage;
     public float meleeDamagePercentage;

@@ -55,18 +55,18 @@ public class PlayerCollisionScript : MonoBehaviour
 
                 StartCoroutine(FlashCo());//run the flash co routine for I frames
             }
-            if (collision.CompareTag("EnemyBullet"))
+            if (collision.CompareTag("EnemyBullet"))//if the collider is an enemy bullet
             {
                 TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
-                Destroy(collision.gameObject);
+                Destroy(collision.gameObject);//destreoy the bullet
                 StartCoroutine(FlashCo());//run the flash co routine for I frames
             }
         }
         
-        if (collision.CompareTag("DopamineDrop"))
+        if (collision.CompareTag("DopamineDrop"))//if the collider is a dopamine drop
         {
-            Dopamine++;
-            Destroy(collision.gameObject);
+            Dopamine++;//increase the dopamine count
+            Destroy(collision.gameObject);//destroy the dopamine drop
             
         }
 
@@ -99,18 +99,18 @@ public class PlayerCollisionScript : MonoBehaviour
 	{
         if (health <= 0)
         {
-            save.cash += 10;
-            save.NextScene();
-            SceneManager.LoadScene(1);
+            save.cash += 10;//increase the ammount of cash
+            save.NextScene();//save all changed data to the save file
+            SceneManager.LoadScene(1);//load the desk hub scene
             Destroy(gameObject);//if health drops below 0 kill the player
         }
     }
     void HealDamage(float heal)//used for healing
 	{
-        health += heal;
+        health += heal;// add health to the health variable
         if(health > Maxhealth)
 		{
-            health = Maxhealth;
+            health = Maxhealth;//if it has gone over max health then just set it to max health
 		}
         healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
     }

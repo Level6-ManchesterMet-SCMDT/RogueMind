@@ -10,7 +10,7 @@ public class HitScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");//finds the player
         Destroy(gameObject, 0.15f);//destroy object after 0.15 seconds
     }
 
@@ -22,6 +22,6 @@ public class HitScript : MonoBehaviour
 
 	private void OnDestroy()
 	{
-        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;// sets the players movement state back to moving at the end of an attack
     }
 }
