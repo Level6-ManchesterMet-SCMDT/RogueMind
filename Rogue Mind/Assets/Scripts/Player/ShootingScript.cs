@@ -31,27 +31,22 @@ public class ShootingScript : MonoBehaviour
         currentBullets = maxBullets;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(shootDelay > 0)
-		{
-            shootDelay--;
-		}
         if (Input.GetMouseButton(0))//if left mouse click
         {
-            if (currentBullets > 0) 
+            if (currentBullets > 0)
             {
-                if(shootDelay <= 0)
-				{
+                if (shootDelay <= 0)
+                {
                     if (currentState == ShootingState.CanShoot)
                     {
                         Shoot();//Shoot
 
                     }
                 }
-                
-                
+
+
             }
             else
             {
@@ -65,6 +60,15 @@ public class ShootingScript : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if(shootDelay > 0)
+		{
+            shootDelay--;
+		}
+        
     }
     void Shoot()
 	{
