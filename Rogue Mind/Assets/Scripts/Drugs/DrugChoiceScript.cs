@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class DrugChoiceScript : MonoBehaviour
 {
     GameObject drugSelectionMenu;//the menu used for selecting new drugs
+    GameObject roomTemplates;
+    GameObject shopRoom;
     public DrugsData[] scriptable;// an array of all the drugs currently in use
     private List<DrugsData> DisplayedDrugs = new List<DrugsData>();// a list of the drugs being displayed on a menu
     public DrugManagerScript drugManager;// the drug manager, which maintains modifiers
@@ -16,13 +18,28 @@ public class DrugChoiceScript : MonoBehaviour
     {
         drugSelectionMenu = transform.GetChild(0).gameObject;//find the menu
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
+        roomTemplates = GameObject.FindGameObjectWithTag("Rooms");
     }
 
     // Update is called once per frame
     void Update()
     {
-        shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");//find the shop keeper
-        shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;// get the shop keepers menu
+        if (roomTemplates.gameObject.GetComponent<RoomTemplates>().spawnedShopRoom)
+        {
+            shopRoom = GameObject.FindGameObjectWithTag("Shop");
+            if (shopRoom.GetComponent<SpawnShop>().spawned)
+            {
+                shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");//find the shop keeper
+                shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;// get the shop keepers menu
+            }
+            else if (shopKeeper == null)
+            {
+                return;
+            }
+        }
+       
+        
+        
         if (Input.GetKeyDown(KeyCode.J))// if j is hit
         {
             if(drugSelectionMenu.active == true)// if the menu is on

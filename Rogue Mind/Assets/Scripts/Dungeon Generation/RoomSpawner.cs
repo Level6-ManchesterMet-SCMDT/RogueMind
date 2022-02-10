@@ -171,6 +171,7 @@ public class RoomSpawner : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object

@@ -7,7 +7,7 @@ public class SpawnShop : MonoBehaviour
     public Transform spawnPoint;
     public GameObject shopRoomTileset;
     public GameObject shopKeeper;
-    bool spawned;
+    public bool spawned;
     Transform camera;
     private void Start()
     {
