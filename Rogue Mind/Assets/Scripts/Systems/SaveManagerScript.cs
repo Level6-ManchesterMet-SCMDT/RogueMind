@@ -46,10 +46,12 @@ public class SaveManagerScript : MonoBehaviour
         }
         if(SceneManager.sceneCount == 1)
 		{
-            GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");// finds the desk toy manager
-            test.GetComponent<DeskToysScript>().RealStart();//runs its real start
+            //GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");// finds the desk toy manager
+            //test.GetComponent<DeskToysScript>().RealStart();//runs its real start     
         }
-        
+        GameObject test2 = GameObject.FindGameObjectWithTag("DeskToys");// finds the desk toys on the desk
+        test2.GetComponent<DeskToysShowScript>().RealStart(GetComponent<SaveManagerScript>());//runs its real start
+
     }
 
     void Update()

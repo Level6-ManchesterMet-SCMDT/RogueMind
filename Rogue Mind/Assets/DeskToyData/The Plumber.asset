@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696119505fa21cb4fbd5d1d0832bac5b, type: 3}
   m_Name: The Plumber
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  name: The Plumber
+  sprite: {fileID: 21300000, guid: 775346ccae0b30943b78c6b15b3d9e94, type: 3}
+  name: Plumber
   description: 'Regain 50% health if health is depleted '
   AI: 2
   value1: 0

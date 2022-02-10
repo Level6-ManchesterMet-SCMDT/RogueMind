@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696119505fa21cb4fbd5d1d0832bac5b, type: 3}
   m_Name: Atomic Figure
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  name: AtomicFigure
+  sprite: {fileID: 21300000, guid: f8f9994cd2bb70b48a91ea8a0648f904, type: 3}
+  name: Atomic
   description: Deal more damage while below 35% health or less
   AI: 0
   value1: 0

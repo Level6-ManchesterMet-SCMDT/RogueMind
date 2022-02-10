@@ -28,6 +28,7 @@ TagManager:
   - EmptyChecker
   - ShopKeep
   - DeskToyManager
+  - DeskToys
   layers:
   - Default
   - TransparentFX
