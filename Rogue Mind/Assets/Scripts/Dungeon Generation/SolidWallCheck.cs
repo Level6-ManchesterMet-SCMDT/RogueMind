@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SolidWallCheck : MonoBehaviour
 {
+    //IN PROGRESS -- will be commented when finished
+
     public GameObject doorTileMap;
     public GameObject wallcollider;
     public float waitTime = 2f;

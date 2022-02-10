@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class RoomOverlap : MonoBehaviour
 {
-    float waitTime = 2f;
+    float waitTime = 2f; 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         waitTime -= Time.deltaTime;
         if (waitTime <= 0) 
         {
             waitTime = 0;
-            gameObject.tag = "SpawnedRoom";
+            gameObject.tag = "SpawnedRoom"; // changes the tag of a room that has recently been instansiated to spawned room
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // used to stop rooms overlapping, if a room is spawned on top of a spawned room(a room previously there)and will delete the object
     {
-        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap") 
+        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap")
         {
             Destroy(gameObject);
         }

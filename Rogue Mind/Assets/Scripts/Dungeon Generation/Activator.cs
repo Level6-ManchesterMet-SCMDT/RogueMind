@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Activator : MonoBehaviour
 {
-    public bool isEndRoom = false;
+    //bools to check if the room is a special room
+    public bool isEndRoom = false; 
     public bool isItemRoom = false;
     public bool isShopRoom = false;
+
+    //holds the gameobjects for the different special room templates
     public GameObject endRoomTemplate;
     public GameObject itemRoomTemplate;
     public GameObject shopRoomTemplate;
@@ -14,6 +17,7 @@ public class Activator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // will activate the different templates depending on the different room type
         if (isEndRoom)
         {
             endRoomTemplate.SetActive(true);
