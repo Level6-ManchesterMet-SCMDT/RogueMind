@@ -13,6 +13,7 @@ public class EnemyData : ScriptableObject
     public float movementSpeed;//enemy movement speed value
     public float damage;//enemy damage value
     public GameObject bulletType;// the type of bullet used by shooters
+    public RuntimeAnimatorController anim;
 
 
 

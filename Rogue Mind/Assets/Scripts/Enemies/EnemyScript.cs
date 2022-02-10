@@ -18,6 +18,8 @@ public class EnemyScript : MonoBehaviour
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;
 
+    public Animator anim;
+
     public Color flashColor;//the colour it flashes to
     public Color regularColor;//the colour it returns to 
     public float flashDuration;//the duration of each flash
@@ -28,6 +30,7 @@ public class EnemyScript : MonoBehaviour
 
     public EnemyState currentState;// the enemies state
     public int stunnedDuration;
+    Vector3 direction;
 
     public enum EnemyState
 	{
@@ -52,6 +55,7 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
         currentState = EnemyState.Moving;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
@@ -63,9 +67,15 @@ public class EnemyScript : MonoBehaviour
         damage = scriptable.damage;
         name = scriptable.name;
         bulletType = scriptable.bulletType;
+        anim.runtimeAnimatorController = scriptable.anim;
         if(scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
 		{
             spriteRenderer.sprite = scriptable.sprite;
+        }
+
+        if(scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
+		{
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
     // Update is called once per frame
@@ -141,10 +151,19 @@ public class EnemyScript : MonoBehaviour
         {
             case EnemyState.Moving:
                 Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
+                if(transform.position.x < target.transform.position.x)
+				{
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+				{
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
-                rigidBody.rotation = angle;// rotate enemy to face player
+                //rigidBody.rotation = angle;// rotate enemy to face player
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
+
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
@@ -201,9 +220,18 @@ public class EnemyScript : MonoBehaviour
         switch (currentState)// runs the collider code associated with this enemies ai type
         {
             case EnemyState.Moving:
+
                 Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
+                if (transform.position.x < target.transform.position.x)
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
-                rigidBody.rotation = angle;// rotate enemy to face player
+                //rigidBody.rotation = angle;// rotate enemy to face player
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
                 float dist = Vector3.Distance(target.transform.position, transform.position);
@@ -229,6 +257,8 @@ public class EnemyScript : MonoBehaviour
     }
     private IEnumerator NoseAttack()
 	{
+
+        anim.SetTrigger("Attack");
         float m_ScaleX, m_ScaleY;
         float s_ScaleX, s_ScaleY;
         m_ScaleX = collider.size.x;
@@ -238,10 +268,15 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1);//pause
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX*2,m_ScaleY*2);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 2, s_ScaleY * 2);// double size for the hit
+        Vector2 directionNow = new Vector2(direction.x,direction.y);
+
+        rigidBody.MovePosition((Vector2)transform.position + (directionNow * speed));// move position by speed in direction over time
         yield return new WaitForSeconds(1);//wait
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX, m_ScaleX);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX, s_ScaleX);//return to original size
+        
         currentState = EnemyState.Moving;//set moving again
+        anim.SetTrigger("Move");
         //return null;
     }
 
@@ -249,12 +284,13 @@ public class EnemyScript : MonoBehaviour
 
     void ShooterUpdate()
 	{
+        Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
+        rigidBody.rotation = angle;// rotate enemy to face player
         switch (currentState)// runs the collider code associated with this enemies ai type
         {
             case EnemyState.Moving:
-                Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
-                rigidBody.rotation = angle;// rotate enemy to face player
+                
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
                 float dist = Vector3.Distance(target.transform.position, transform.position);
@@ -285,7 +321,7 @@ public class EnemyScript : MonoBehaviour
         GameObject bullet = Instantiate(bulletType, transform.position,transform.rotation);//Create a bullet from the prefab
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
-        rigidBody.AddForce(transform.right * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
+        rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         yield return new WaitForSeconds(1);//pause inbetween shots
         currentState = EnemyState.Moving;//set back to moving
 

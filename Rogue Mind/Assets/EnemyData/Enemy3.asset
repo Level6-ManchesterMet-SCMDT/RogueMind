@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d2dbfddde7fd743ba0fde36ab92ee7, type: 3}
   m_Name: Enemy3
   m_EditorClassIdentifier: 
+  aiType: 2
   name: 
   sprite: {fileID: 0}
   hp: 25
   movementSpeed: 2.5
-  damage: 6
+  damage: 1
+  bulletType: {fileID: 0}
+  anim: {fileID: 9100000, guid: 415bb4a08b67c714da0e8f2333d5cba2, type: 2}
