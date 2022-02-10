@@ -73,7 +73,7 @@ public class BossScript : MonoBehaviour
         {
             case BossTypes.BossAI.BigSam:
                 BigSamUpdate();
-                DeathCheck();
+                
                 break;
 
         }

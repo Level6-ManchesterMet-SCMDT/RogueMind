@@ -115,13 +115,13 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    public void Stun(int duration)
+    public void Stun(int duration)// used to set an enemy in stun
 	{
-        stunnedDuration = duration;
-        currentState = EnemyState.Stunned;
+        stunnedDuration = duration;//set the duration
+        currentState = EnemyState.Stunned;//set the state to stunned
     }
 
-    void StunnedUpdate()
+    void StunnedUpdate()// counts down the stunned timer and sets state to moving once the stun is over
 	{
         if(stunnedDuration > 0)
 		{
@@ -283,12 +283,12 @@ public class EnemyScript : MonoBehaviour
         
         
         GameObject bullet = Instantiate(bulletType, transform.position,transform.rotation);//Create a bullet from the prefab
-        bullet.GetComponent<BulletScript>().damage = damage;
+        bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(transform.right * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         yield return new WaitForSeconds(1);//pause inbetween shots
         currentState = EnemyState.Moving;//set back to moving
 
-        //return null;
+        
 	}
 }

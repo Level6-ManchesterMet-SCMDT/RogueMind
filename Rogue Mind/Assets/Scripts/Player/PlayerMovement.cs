@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;//stores player input for movement
     Vector2 movementStore;//stores player input for movement
     Vector2 mousePos;//mouse position on screen
-    Vector2 lookDir;
-    float angle;
+    Vector2 lookDir;// the direction the player is looking in
+    float angle;// an angle used for setting the players look direction
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public GameObject drugSelectionMenu;
@@ -23,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    public float dashSpeed;
-    public float dashLength = 0.5f;
-    public float dashCooldown = 1f;
+    public float dashSpeed;// the speed of a dash
+    public float dashLength = 0.5f;// the length of a dash
+    public float dashCooldown = 1f;// the cool down between dashes
+    public float activeDashCooldown;// the cool down between dashes
 
     float dashCounter, dashCoolCounter;
 
@@ -42,12 +43,12 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        activeMoveSpeed = moveSpeed;
-        currentState = PlayerState.menu;
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
-        drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");
-        dashLength *= modifiers.dashDistanceModifier;
+        activeMoveSpeed = moveSpeed;// setting the active movespeed to that set in the inspector
+        currentState = PlayerState.menu;// set the players state to menu, just to get the initial drug menu to show
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();// find the camera
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// find the modifiers
+        drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
+        activeDashCooldown = 0;//sets the dash cool down to nothing
     }
 
 	
@@ -57,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
         switch(currentState)
 		{
             case PlayerState.menu:
-                drugSelectionMenu.GetComponent<DrugChoiceScript>().OpenMenu();
-                currentState = PlayerState.Moving;
+                drugSelectionMenu.GetComponent<DrugChoiceScript>().OpenMenu();//opens the menu for selecting drugs
+                currentState = PlayerState.Moving;// sets the state to moving
                 break;
             case PlayerState.Moving:
                 movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
@@ -67,17 +68,17 @@ public class PlayerMovement : MonoBehaviour
                 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);// sets mousePos from an on screen point to an in world point
 
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E))//if the player hits "E"
                 {
-                    if (dashCoolCounter <= 0 && dashCounter <= 0)
+                    if (dashCoolCounter <= 0 && dashCounter <= 0)// If the dash cool down is 0
                     {
-                        activeMoveSpeed = dashSpeed;
-                        movementStore = movement;
+                        activeMoveSpeed = dashSpeed;// start the dash
+                        movementStore = movement;// save the current movement axis so the dash is only in 1 direction
                         //rigidBody.AddForce(new Vector2(dashSpeed * movement.x * Time.deltaTime, dashSpeed * movement.y * Time.deltaTime));
                         //rigidBody.AddForceAtPosition(new Vector2(dashSpeed * movement.x, dashSpeed * movement.y), transform.position);
-                        dashCounter = dashLength;
+                        dashCounter = dashLength * modifiers.dashDistanceModifier;// set the length of the dash to that of dash length by the current modidfer
                         
-                        currentState = PlayerState.Dashing;
+                        currentState = PlayerState.Dashing;//set the players state to dashing
                     }
                 }
 
@@ -88,26 +89,26 @@ public class PlayerMovement : MonoBehaviour
 
             
         }
-        if (dashCounter > 0)
+        if (dashCounter > 0)// if dash is in progress
         {
-            if (currentState == PlayerState.Dashing)
+            if (currentState == PlayerState.Dashing)//if the players state is dashing
             {
-                dashCounter -= Time.deltaTime;
+                dashCounter -= Time.deltaTime;// count down the dash counter
 
-                if (dashCounter <= 0)
+                if (dashCounter <= 0)// once it's 0
                 {
-                    activeMoveSpeed = moveSpeed;
-                    dashCoolCounter = dashCoolCounter;
+                    activeMoveSpeed = moveSpeed;// stop the dash
+                    activeDashCooldown = dashCoolCounter;//set the cooldown
 
-                    currentState = PlayerState.Moving;
+                    currentState = PlayerState.Moving;//back to moving state
                 }
             }
 
         }
 
-        if (dashCoolCounter > 0)
+        if (activeDashCooldown > 0)// if in cool down
         {
-            dashCoolCounter -= Time.deltaTime;
+            dashCoolCounter -= Time.deltaTime;//count down
         }
 
     }
@@ -127,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Dashing:
 
                 //rigidBody.velocity = activeMoveSpeed * movementStore;
-                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
+                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
                 lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
                 angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
