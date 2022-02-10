@@ -13,7 +13,7 @@ public class ExitFloor : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("leaving to main menu");
            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - floorChange));

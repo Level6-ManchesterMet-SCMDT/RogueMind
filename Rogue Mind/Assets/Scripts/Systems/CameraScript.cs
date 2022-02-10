@@ -12,7 +12,10 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("StartRoom").transform;//finds the start room
+        if (target == null)
+        {
+            return;
+        }
     }
 
     // Update is called once per frame
