@@ -12,7 +12,7 @@ public class CameraScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.Find("StartRoom").transform;//finds the player
+        target = GameObject.Find("StartRoom").transform;//finds the start room
     }
 
     // Update is called once per frame
@@ -20,7 +20,6 @@ public class CameraScript : MonoBehaviour
     {
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-       // Camera follows the player with specified offset position
+        transform.position = smoothedPosition;// moves the position of the camera to the position of the target smoothly
     }
 }

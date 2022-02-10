@@ -15,14 +15,16 @@ public class EnemyRoomSpawn : MonoBehaviour
         public float spawnRate;// how quick the enemies spawn
     }
 
-    public Wave[] waves;
-    public Transform[] spawnPoints;
-    public GameObject enemyPrefab;
-    public GameObject doors;
-    public GameObject exitDoor;
-    public int num;
+    public Wave[] waves; // an array of waves
+    public Transform[] spawnPoints;// holds the spawnpoints in the room
+    public GameObject enemyPrefab;// holds the enemy prefab
+    public GameObject doors;// holds the doors of the room
+    public GameObject exitDoor;// used for the exit door in the end room
+
+    //used in the case of multiple rounds, unneeded for most rooms 
     public int nextWave = 0;
     public int round = 1;
+
     Transform camera;
 
     public float waveDelay = 1.0f;
@@ -30,7 +32,7 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     private float searchCountdown = .5f;
     public bool enemiesSpawned = false;
-    public bool spawnEnemies =false;
+    public bool spawnEnemies = false;
     public float time = 1.4f;
 
     public SpawnState state = SpawnState.COUNTING;
@@ -59,7 +61,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             }
             if (countdown <= 0)
             {
-                if (state != SpawnState.SPAWNING)
+                if (state != SpawnState.SPAWNING && waves.Length > 0)
                 {
                     SpawnWave(waves[nextWave]);
                 }
@@ -86,12 +88,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             {
                 return;
             }
-            
-            
-
         }
-        
-       
     }
     bool EnemiesAlive()
     {
