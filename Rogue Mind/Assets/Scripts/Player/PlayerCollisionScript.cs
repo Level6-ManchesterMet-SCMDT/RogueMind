@@ -101,7 +101,7 @@ public class PlayerCollisionScript : MonoBehaviour
         {
             save.cash += 10;//increase the ammount of cash
             save.NextScene();//save all changed data to the save file
-            SceneManager.LoadScene(1);//load the desk hub scene
+            SceneManager.LoadScene(0);//load the desk hub scene
             Destroy(gameObject);//if health drops below 0 kill the player
         }
     }

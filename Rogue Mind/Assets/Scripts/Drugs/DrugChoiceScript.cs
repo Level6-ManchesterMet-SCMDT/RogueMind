@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class DrugChoiceScript : MonoBehaviour
 {
-    GameObject drugSelectionMenu;
-    public DrugsData[] scriptable;
-    private List<DrugsData> DisplayedDrugs = new List<DrugsData>();
-    public DrugManagerScript drugManager;
-    public GameObject shopKeeper;
+    GameObject drugSelectionMenu;//the menu used for selecting new drugs
+    public DrugsData[] scriptable;// an array of all the drugs currently in use
+    private List<DrugsData> DisplayedDrugs = new List<DrugsData>();// a list of the drugs being displayed on a menu
+    public DrugManagerScript drugManager;// the drug manager, which maintains modifiers
+    public GameObject shopKeeper;// the games shop keeper
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +21,11 @@ public class DrugChoiceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");
-        shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;
-        if (Input.GetKeyDown(KeyCode.J))
+        shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");//find the shop keeper
+        shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;// get the shop keepers menu
+        if (Input.GetKeyDown(KeyCode.J))// if j is hit
         {
-            if(drugSelectionMenu.active == true)
+            if(drugSelectionMenu.active == true)// if the menu is on
 			{
                 drugSelectionMenu.SetActive(false);//turns off menu
             }
@@ -44,7 +44,7 @@ public class DrugChoiceScript : MonoBehaviour
     public void OpenMenu()
 	{
         drugSelectionMenu.SetActive(true);//turns on menu
-        OnOpen();
+        OnOpen();// sets the drugs displayed in the menu
     }
 
     public void OnOpen()// on the opening of the menu
@@ -63,7 +63,7 @@ public class DrugChoiceScript : MonoBehaviour
 
     public DrugsData RandomDrug()// obtain a random drug from the list of potential ones
 	{
-        return scriptable[Random.Range(0, scriptable.Length)];
+        return scriptable[Random.Range(0, scriptable.Length)];// returns a random drug
 	}
 
     public void AddDrug1()//adds drug 1 to list of effectors

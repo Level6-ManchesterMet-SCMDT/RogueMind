@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
 
 public class SaveManagerScript : MonoBehaviour
 {
-    public int cash;
+    public int cash;// the things that can be increased by the gym
     public int gunRate;
     public int swordRate;
     public int swordDamage;
@@ -15,63 +16,61 @@ public class SaveManagerScript : MonoBehaviour
     public int enemyResistance;
 
 
-    public int gunRatePrice;
+    public int gunRatePrice;// the price for each upgrade in the gym
     public int swordRatePrice;
     public int swordDamagePrice;
     public int gunDamagePrice;
     public int moveSpeedPrice;
     public int enemyResistancePrice;
 
-    public string DeskToy1;
+    public string DeskToy1;// the 2 desk toys in use
     public string DeskToy2;
 
-    bool firstChoice = false;
+    bool firstChoice = false;// whether the desk toy being chose is the first or second
 
-    string content;
+    string content;// used for writing to the text file
     // Start is called before the first frame update
     void Start()
     {
-        string path = Application.dataPath + "/Log.txt";
+        string path = Application.dataPath + "/Log.txt";// the path to the save file
 
-        if (!File.Exists(path))
+        if (!File.Exists(path))// if there isn't a save file then make one
         {
             File.AppendAllText(path, WriteToFile(0, 0, 0, 0, 0, 1, 0));
 
         }
         else
         {
-            ReadFromFile();  
+            ReadFromFile();  // read the data from the file found
 
         }
-        GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");
-        test.GetComponent<DeskToysScript>().RealStart();
+        if(SceneManager.sceneCount == 1)
+		{
+            GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");// finds the desk toy manager
+            test.GetComponent<DeskToysScript>().RealStart();//runs its real start
+        }
+        
     }
 
     void Update()
     {
         
 
-        Debug.Log(cash.ToString());
-        Debug.Log(gunRate.ToString());
-        Debug.Log(gunDamage.ToString());
-        Debug.Log(swordDamage.ToString());
-        Debug.Log(swordRate.ToString());
-        Debug.Log(moveSpeed.ToString());
-        Debug.Log(enemyResistance.ToString());
+       
 
     }
 
-    public void NextScene()
+    public void NextScene()// used for moving onto the next scene
 	{
         Debug.Log("Next Scene");
         string path = Application.dataPath + "/Log.txt";
-        File.WriteAllText(path, WriteToFile(cash, gunDamage, swordDamage, gunRate, swordRate, moveSpeed, enemyResistance));
+        File.WriteAllText(path, WriteToFile(cash, gunDamage, swordDamage, gunRate, swordRate, moveSpeed, enemyResistance));// write to the file all current saved data
     }
 
-    string WriteToFile(int cash,int gunDamage, int swordDamage, int gunRate, int swordRate, int moveSpeed, int enemyResistance)
+    string WriteToFile(int cash,int gunDamage, int swordDamage, int gunRate, int swordRate, int moveSpeed, int enemyResistance)// used to write to the save file
 	{
         
-        content = "cash: " + cash.ToString() + "\n";
+        content = "cash: " + cash.ToString() + "\n";//adds each piece of data being saved to the file in a new line 
         
         content += "gunRate: " + gunRate.ToString() + "\n";
         
@@ -97,9 +96,9 @@ public class SaveManagerScript : MonoBehaviour
   
     void ReadFromFile()
 	{
-        string readFromFilePath = Application.dataPath + "/Log.txt";
+        string readFromFilePath = Application.dataPath + "/Log.txt";// read from the file
         List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
-        string string1 = fileLines[0].Remove(0, 6);
+        string string1 = fileLines[0].Remove(0, 6);// each line we cut out the text before the actual piece of data 
         string string2 = fileLines[1].Remove(0, 9);
         string string3 = fileLines[2].Remove(0, 11);
         string string4 = fileLines[3].Remove(0, 13);
@@ -110,7 +109,7 @@ public class SaveManagerScript : MonoBehaviour
         string string9 = fileLines[8].Remove(0, 10);
 
 
-        int.TryParse(string1, out cash);
+        int.TryParse(string1, out cash);// set them to int's and store them
         int.TryParse(string2, out gunRate);
         int.TryParse(string3, out swordRate);
         int.TryParse(string4, out swordDamage);

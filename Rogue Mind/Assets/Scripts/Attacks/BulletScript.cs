@@ -5,12 +5,13 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public float damage = 1f;//the damage of the bullet
+    public int timeTillDestroy = 3;// how long till the bullet automaticaly destroys itself
     // Start is called before the first frame update
     public DrugManagerScript modifiers;//finds the drugs modifiers
     void Start()
     {
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// finds the modifiers
-        Destroy(gameObject, 3);//after 5 seconds a bullet is destroyed 
+        Destroy(gameObject, timeTillDestroy);//after 5 seconds a bullet is destroyed 
         damage *= modifiers.gunDamageModifier;// the bullet's damage is affected by any modifiers
     }
 

@@ -289,6 +289,6 @@ public class EnemyScript : MonoBehaviour
         yield return new WaitForSeconds(1);//pause inbetween shots
         currentState = EnemyState.Moving;//set back to moving
 
-        //return null;
+        
 	}
 }

@@ -21,6 +21,9 @@ public class MeleeScript : MonoBehaviour
     public float hitDelay;
     public float currentDelay = 0;
 
+    public float secondHitModifier = 2.0f;// the modifier on damage for the second melee hit
+    public float thirdHitModifier = 3.0f;// the modifier on damage for the third melee hit
+
     float initialDamage;// the damage value that the attack initialy has
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
@@ -71,7 +74,7 @@ public class MeleeScript : MonoBehaviour
 		{
             this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
             //second hit
-            damage = (initialDamage * 2.0f) * modifiers.meleeDamageModifier;//doubles damage value
+            damage = (initialDamage * secondHitModifier) * modifiers.meleeDamageModifier;//doubles damage value
             GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
         }
         if (numberOfClicks == 3)//if 3 clicks
@@ -79,7 +82,7 @@ public class MeleeScript : MonoBehaviour
             currentDelay = hitDelay;
             //third hit
             this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
-            damage = (initialDamage * 3.0f)*modifiers.meleeDamageModifier;//tripples damage value
+            damage = (initialDamage * thirdHitModifier)*modifiers.meleeDamageModifier;//tripples damage value
             GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
             numberOfClicks = 0;//reset number of clicks 

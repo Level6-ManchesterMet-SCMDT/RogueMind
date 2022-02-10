@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class DeskToysScript : MonoBehaviour
 {
-    public List<string> activeToys;
-    public GameObject player;
-    public GameObject saveManager;
+    public List<string> activeToys;// a list of toys currently active
+    public GameObject player;// the player
+    public GameObject saveManager;// the save manager
 
-    int temp1I;
+    int temp1I;// a series of integers used by Toy's AI
     int temp2I;
     int temp3I;
     int temp4I;
-    float temp1F;
+
+    float temp1F;// a series of floats used by Toy's AI
     float temp2F;
     float temp3F;
     float temp4F;
 
-    bool temp1B;
+    bool temp1B;// a series of bools used by Toy's AI
     bool temp2B;
     bool temp3B;
     bool temp4B;
@@ -27,18 +28,15 @@ public class DeskToysScript : MonoBehaviour
        
     }
 
-    public void RealStart()
+    public void RealStart()// used to be called after the save file is read
 	{
-        player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(saveManager.GetComponent<SaveManagerScript>().DeskToy1);
-        Debug.Log(saveManager.GetComponent<SaveManagerScript>().DeskToy2);
-
-        activeToys[0] = saveManager.GetComponent<SaveManagerScript>().DeskToy1;
+        player = GameObject.FindGameObjectWithTag("Player");// find the player
+        activeToys[0] = saveManager.GetComponent<SaveManagerScript>().DeskToy1;// set the active toys to be those currently in the save file
         activeToys[1] = saveManager.GetComponent<SaveManagerScript>().DeskToy2;
-        for (int i = 0; i < activeToys.Count; i++)
+        for (int i = 0; i < activeToys.Count; i++)// for every toy in the active toys list
         {
 
-            switch (activeToys[i])
+            switch (activeToys[i])//run the associated start 
             {
                 case "Atomic":
                     AtomicFigureStart();
@@ -58,9 +56,9 @@ public class DeskToysScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < activeToys.Count; i++)
+        for (int i = 0; i < activeToys.Count; i++)// for every toy in the active toys list
         {
-            switch (activeToys[i])
+            switch (activeToys[i])//run the associated update
             {
                 case "Atomic":
                     AtomicFigureUpdate();

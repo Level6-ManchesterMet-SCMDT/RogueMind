@@ -12,7 +12,8 @@ public class ShootingScript : MonoBehaviour
     public int currentBullets;// the current bullets in the gun
     public int maxBullets;// the max number of bullets in the clip
     float shootDelay = 0;// used to delay the shots
-    public float shootDelayLength = 20;
+    public float shootDelayLength = 20;//the delay inbetween shots
+    public float reloadDelay = 1.0f;
 
     public ShootingState currentState;// the enemies state
 
@@ -52,7 +53,7 @@ public class ShootingScript : MonoBehaviour
             else
             {
                 currentState = ShootingState.CantShoot;// set it so the player can't shoot
-                //StartCoroutine(Reload());
+                
             }
 
         }
@@ -77,14 +78,14 @@ public class ShootingScript : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//Create a bullet from the prefab
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
-        currentBullets--;
+        currentBullets--;// lower current bullets by one
     }
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(0.5f);//pause
+        yield return new WaitForSeconds(reloadDelay);//pause
         currentBullets = maxBullets;
-        yield return new WaitForSeconds(0.5f);//pause
+        yield return new WaitForSeconds(reloadDelay);//pause
         currentState = ShootingState.CanShoot;
     }
 }

@@ -8,7 +8,7 @@ public class DrugManagerScript : MonoBehaviour
     public List<DrugsData> scriptables = new List<DrugsData>(); //the scriptable object assigned to this 
     private List<DrugsData> scriptablesCurrent = new List<DrugsData>(); //the scriptable object assigned to this 
 
-    public float healthModifier;
+    public float healthModifier;// the list of modifiers that will be accessed globaly by other objects
     public float movementSpeedModifier;
     public float dashDistanceModifier;
     public float meleeDamageModifier;
@@ -22,7 +22,7 @@ public class DrugManagerScript : MonoBehaviour
     {
         healthModifier = 1;//set all modifiers to 1 which means no changes
         movementSpeedModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().moveSpeed/100;
-        dashDistanceModifier = 1;
+        dashDistanceModifier = 1;// set to 1 as when it is used it will be multiplied, so if it was 0 then the dash would become nothing
         meleeDamageModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().swordDamage/100;
         fireRateModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().gunRate/100;
         resistanceToEnemyModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().enemyResistance/100;

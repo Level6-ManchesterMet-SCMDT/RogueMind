@@ -9,7 +9,6 @@ public class Pickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))//if it is the player that collides with the object
         {
-            
             Destroy(gameObject);//destroy the object picked up
         }
     }
