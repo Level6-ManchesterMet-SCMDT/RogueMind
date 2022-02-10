@@ -29,6 +29,7 @@ TagManager:
   - ShopKeep
   - DeskToyManager
   - DeskToys
+  - Shop
   layers:
   - Default
   - TransparentFX
