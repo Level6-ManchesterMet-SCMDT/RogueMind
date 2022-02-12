@@ -30,6 +30,7 @@ TagManager:
   - DeskToyManager
   - DeskToys
   - Shop
+  - FoodDrop
   layers:
   - Default
   - TransparentFX

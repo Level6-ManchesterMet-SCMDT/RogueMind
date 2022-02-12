@@ -69,6 +69,13 @@ public class PlayerCollisionScript : MonoBehaviour
             Destroy(collision.gameObject);//destroy the dopamine drop
             
         }
+        if (collision.CompareTag("FoodDrop"))//if the collider is a dopamine drop
+        {
+            HealDamage(25);
+            Destroy(collision.gameObject);//destroy the dopamine drop
+
+        }
+
 
     }
 	private IEnumerator FlashCo()// used for Iframes and flashing

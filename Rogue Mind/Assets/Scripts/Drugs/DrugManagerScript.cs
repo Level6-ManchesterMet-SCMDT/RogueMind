@@ -17,6 +17,7 @@ public class DrugManagerScript : MonoBehaviour
     public float resistanceToEnemyModifier;
     public float meleeAttackRateModifier;
     public float gunDamageModifier;
+    public bool chefDrug = false;
 
 
     void Start()
@@ -41,7 +42,10 @@ public class DrugManagerScript : MonoBehaviour
                 case "WindowCleaner":
                     WindowCleanerStart();
                     break;
-                
+                case "Chef":
+                    ChefStart();
+                    break;
+
             }
         }
     }
@@ -54,6 +58,9 @@ public class DrugManagerScript : MonoBehaviour
             {
                 case "WindowCleaner":
                     WindowCleanerStart();
+                    break;
+                case "WindowChef":
+                    ChefStart();
                     break;
 
             }
@@ -78,6 +85,9 @@ public class DrugManagerScript : MonoBehaviour
                 case "WindowCleaner":
                     WindowCleanerUpdate();
                     break;
+                case "WindowChef":
+                    ChefUpdate();
+                    break;
 
             }
         }
@@ -90,5 +100,13 @@ public class DrugManagerScript : MonoBehaviour
     public void WindowCleanerUpdate()
     {
         
+    }
+    public void ChefStart()
+    {
+        chefDrug = true;
+    }
+    public void ChefUpdate()
+    {
+
     }
 }
