@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 7253674216189750444}
   - component: {fileID: 7253674216189750445}
   - component: {fileID: 6312177899545002380}
-  - component: {fileID: 5667592042216432226}
   - component: {fileID: 1410155858178551505}
   m_Layer: 0
   m_Name: Player
@@ -191,6 +190,7 @@ MonoBehaviour:
   dashSpeed: 0
   dashLength: 0.5
   dashCooldown: 1
+  activeDashCooldown: 0
   currentState: 0
 --- !u!114 &7253674216189750444
 MonoBehaviour:
@@ -209,6 +209,8 @@ MonoBehaviour:
   bulletForce: 20
   currentBullets: 0
   maxBullets: 6
+  shootDelayLength: 20
+  reloadDelay: 1
   currentState: 0
   modifiers: {fileID: 0}
 --- !u!114 &7253674216189750445
@@ -226,13 +228,17 @@ MonoBehaviour:
   hit1Prefab: {fileID: 2464545540108529902, guid: afe62ad3980d24142838e68238a96254, type: 3}
   hit2Prefab: {fileID: 163164568366012444, guid: 8b807921e07cddd4b8253e8e5d99681a, type: 3}
   hit3Prefab: {fileID: 1600023975566780479, guid: 1bb2437fa8c4e264ca2c634784cc5d8e, type: 3}
+  windowCleanerHitPrefab: {fileID: 1600023975566780479, guid: 7e1970b40eca63f4a85971e425693dad, type: 3}
   hitPoint: {fileID: 7253674216771829774}
   damage: 10
   lastClickedTime: 0
   maxComboDelay: 1
   hitDelay: 200
   currentDelay: 0
+  secondHitModifier: 2
+  thirdHitModifier: 3
   modifiers: {fileID: 0}
+  windowCleanerDrug: 0
 --- !u!114 &6312177899545002380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,18 +263,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   modifiers: {fileID: 0}
   save: {fileID: 0}
---- !u!114 &5667592042216432226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253674216189750486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b81a3ff9594e184c81066795e5f5f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1410155858178551505
 BoxCollider2D:
   m_ObjectHideFlags: 0
