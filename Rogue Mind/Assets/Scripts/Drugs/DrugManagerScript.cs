@@ -18,6 +18,7 @@ public class DrugManagerScript : MonoBehaviour
     public float meleeAttackRateModifier;
     public float gunDamageModifier;
     public bool chefDrug = false;
+    public float bulletSpeedMod = 1;
 
 
     void Start()
@@ -34,27 +35,12 @@ public class DrugManagerScript : MonoBehaviour
 		{
             AddEffects(i);
 		}
-        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
-        {
-
-            switch (scriptables[i].name)//run the associated start 
-            {
-                case "WindowCleaner":
-                    WindowCleanerStart();
-                    break;
-                case "Chef":
-                    ChefStart();
-                    break;
-
-            }
-        }
     }
     public void AddEffects(DrugsData scriptable)// adds on each 
 	{
-        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
-        {
+        
 
-            switch (scriptables[i].name)//run the associated start 
+            switch (scriptable.name)//run the associated start 
             {
                 case "WindowCleaner":
                     WindowCleanerStart();
@@ -62,9 +48,12 @@ public class DrugManagerScript : MonoBehaviour
                 case "WindowChef":
                     ChefStart();
                     break;
+                case "Soldier":
+                    SoldierStart();
+                    break;
 
-            }
         }
+        
         scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
         healthModifier += scriptable.healthPercentage;//add all modifers
         movementSpeedModifier += scriptable.movementSpeedPercentage;
@@ -77,16 +66,19 @@ public class DrugManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
+        for (int i = 0; i < scriptablesCurrent.Count; i++)// for every toy in the active toys list
         {
 
-            switch (scriptables[i].name)//run the associated start 
+            switch (scriptablesCurrent[i].name)//run the associated start 
             {
                 case "WindowCleaner":
                     WindowCleanerUpdate();
                     break;
                 case "WindowChef":
                     ChefUpdate();
+                    break;
+                case "Soldier":
+                    SoldierUpdate();
                     break;
 
             }
@@ -106,6 +98,15 @@ public class DrugManagerScript : MonoBehaviour
         chefDrug = true;
     }
     public void ChefUpdate()
+    {
+
+    }
+    public void SoldierStart()
+    {
+        player.GetComponent<ShootingScript>().reloadDelay /= 2;
+        player.GetComponent<ShootingScript>().bulletForce /= 1.5f;
+    }
+    public void SoldierUpdate()
     {
 
     }

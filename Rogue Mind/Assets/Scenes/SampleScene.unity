@@ -980,7 +980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: scriptable.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: scriptable.Array.data[7]
@@ -990,6 +990,10 @@ PrefabInstance:
       propertyPath: scriptable.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: 274e9089818255b429cd7eb10b80abb0, type: 2}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 63e984b4232560444886897e1a343823, type: 2}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
