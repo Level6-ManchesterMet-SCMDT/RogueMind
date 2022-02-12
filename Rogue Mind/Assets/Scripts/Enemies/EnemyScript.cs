@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
     public Rigidbody2D rigidBody;// the enemies rigidbody
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;
+    public GameObject FoodDrop;
 
     public Animator anim;
 
@@ -31,6 +32,7 @@ public class EnemyScript : MonoBehaviour
     public EnemyState currentState;// the enemies state
     public int stunnedDuration;
     Vector3 direction;
+    public DrugManagerScript modifiers;//finds the drugs modifiers
 
     public enum EnemyState
 	{
@@ -55,6 +57,7 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
         currentState = EnemyState.Moving;//set base movement state
@@ -191,6 +194,10 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
                 }
+                if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                {
+                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                }
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -208,6 +215,10 @@ public class EnemyScript : MonoBehaviour
 				{
                     Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
 				}
+                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                {
+                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                }
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
