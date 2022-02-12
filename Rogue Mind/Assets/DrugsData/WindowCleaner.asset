@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
+  m_Name: WindowCleaner
+  m_EditorClassIdentifier: 
+  healthPercentage: 0
+  movementSpeedPercentage: 0
+  dashDistancePercentage: 0
+  meleeDamagePercentage: 0
+  fireRatePercentage: 0
+  resistanceToEnemyDamage: 0
+  name: WindowCleaner
+  description: No gentlemen but attack behind too

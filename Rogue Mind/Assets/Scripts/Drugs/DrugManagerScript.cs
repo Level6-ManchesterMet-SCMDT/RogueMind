@@ -7,6 +7,7 @@ public class DrugManagerScript : MonoBehaviour
     // Start is called before the first frame update
     public List<DrugsData> scriptables = new List<DrugsData>(); //the scriptable object assigned to this 
     private List<DrugsData> scriptablesCurrent = new List<DrugsData>(); //the scriptable object assigned to this 
+    public GameObject player;
 
     public float healthModifier;// the list of modifiers that will be accessed globaly by other objects
     public float movementSpeedModifier;
@@ -32,10 +33,31 @@ public class DrugManagerScript : MonoBehaviour
 		{
             AddEffects(i);
 		}
-        
+        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
+        {
+
+            switch (scriptables[i].name)//run the associated start 
+            {
+                case "WindowCleaner":
+                    WindowCleanerStart();
+                    break;
+                
+            }
+        }
     }
     public void AddEffects(DrugsData scriptable)// adds on each 
 	{
+        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
+        {
+
+            switch (scriptables[i].name)//run the associated start 
+            {
+                case "WindowCleaner":
+                    WindowCleanerStart();
+                    break;
+
+            }
+        }
         scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
         healthModifier += scriptable.healthPercentage;//add all modifers
         movementSpeedModifier += scriptable.movementSpeedPercentage;
@@ -47,6 +69,25 @@ public class DrugManagerScript : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
+    {
+        for (int i = 0; i < scriptables.Count; i++)// for every toy in the active toys list
+        {
+
+            switch (scriptables[i].name)//run the associated start 
+            {
+                case "WindowCleaner":
+                    WindowCleanerUpdate();
+                    break;
+
+            }
+        }
+    }
+    
+    public void WindowCleanerStart()
+	{
+        player.GetComponent<MeleeScript>().windowCleanerDrug = true;
+	}
+    public void WindowCleanerUpdate()
     {
         
     }
