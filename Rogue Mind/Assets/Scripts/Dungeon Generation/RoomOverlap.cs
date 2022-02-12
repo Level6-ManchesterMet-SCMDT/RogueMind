@@ -20,11 +20,11 @@ public class RoomOverlap : MonoBehaviour
     {
         if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap")
         {
-            Destroy(gameObject);
+            Destroy(gameObject);// destroys the overlapped room
         }
         if (collision.gameObject.CompareTag("SpawnPoint")) 
         {
-            Destroy(collision.gameObject);
+            Destroy(collision.gameObject);// destroys the overlapped spawnpoint
         }
     }
 }
