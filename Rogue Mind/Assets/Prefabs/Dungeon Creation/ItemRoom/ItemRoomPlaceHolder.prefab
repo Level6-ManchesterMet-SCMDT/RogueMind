@@ -189,7 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 5021983960557804734}
-  items:
-  - {fileID: 4434812164370589443, guid: f524e6a1e6c6ca248ab0c75df81025c7, type: 3}
-  - {fileID: 4434812164370589443, guid: f524e6a1e6c6ca248ab0c75df81025c7, type: 3}
-  - {fileID: 8468937138213636541, guid: 3529f1e3014b2454b97e7fa32585d3b1, type: 3}
+  item: {fileID: 4434812164370589443, guid: f524e6a1e6c6ca248ab0c75df81025c7, type: 3}
+  drugData:
+  - {fileID: 11400000, guid: 274e9089818255b429cd7eb10b80abb0, type: 2}
+  - {fileID: 11400000, guid: 63e984b4232560444886897e1a343823, type: 2}
+  - {fileID: 11400000, guid: dbdd8fabab730944dbf15e71cb75a471, type: 2}

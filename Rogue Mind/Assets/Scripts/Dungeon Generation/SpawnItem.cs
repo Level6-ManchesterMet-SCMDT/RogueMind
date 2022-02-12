@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnItem : MonoBehaviour
 {
     public Transform spawnPoint;
-    public GameObject[] items;
+    public GameObject item;
+    public DrugsData[] drugData;
     bool spawned;
     Transform camera;
     private void Start()
@@ -18,9 +19,10 @@ public class SpawnItem : MonoBehaviour
         if (other.CompareTag("Player")&&!spawned)
         {
             
-            GameObject spawnedItem = items[Random.Range(0, items.Length)];
+            DrugsData drug = drugData[Random.Range(0, drugData.Length)];
+            item.GetComponent<ItemPickup>().data = drug;
 
-            Instantiate(spawnedItem, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(item, spawnPoint.position, spawnPoint.rotation);
             spawned = true;
         }
         if (other.CompareTag("Player"))
