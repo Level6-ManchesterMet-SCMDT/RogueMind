@@ -14,6 +14,8 @@ public class Activator : MonoBehaviour
     public GameObject itemRoomTemplate;
     public GameObject shopRoomTemplate;
 
+    public GameObject shopTileSet;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,6 +31,7 @@ public class Activator : MonoBehaviour
         if (isShopRoom)
         {
             shopRoomTemplate.SetActive(true);
+            shopTileSet.SetActive(true);
         }
     }
 }
