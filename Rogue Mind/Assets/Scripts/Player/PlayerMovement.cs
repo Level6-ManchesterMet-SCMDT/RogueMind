@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;//stores player input for movement
     Vector2 movementStore;//stores player input for movement
     Vector2 mousePos;//mouse position on screen
-    Vector2 lookDir;// the direction the player is looking in
+    public Vector2 lookDir;// the direction the player is looking in
     float angle;// an angle used for setting the players look direction
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
@@ -22,7 +22,15 @@ public class PlayerMovement : MonoBehaviour
     public SaveManagerScript save;//finds the drugs modifiers
 
     public Transform arm;
+    Vector3 armScale;
     public ArmRotation rotate;
+
+    public Transform bodyGFX;
+    Vector3 bodyScale;
+    
+    public Transform legsGFX;
+    Vector3 LegsScale;
+
 
     public float dashSpeed;// the speed of a dash
     public float dashLength = 0.5f;// the length of a dash
@@ -71,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 arm.GetComponent<ArmRotation>().movement.Normalize();
                 arm.GetComponent<ArmRotation>().mousePos = cam.ScreenToWorldPoint(Input.mousePosition);// sets mousePos from an on screen point to an in world point
 
+              
 
                 if (Input.GetKeyDown(KeyCode.E))//if the player hits "E"
                 {
@@ -84,9 +93,51 @@ public class PlayerMovement : MonoBehaviour
                         
                         currentState = PlayerState.Dashing;//set the players state to dashing
                     }
+                    
+                }
+                if (Input.GetAxis("Horizontal") < 0)
+                {
+                    LegsScale.x = -1;
+                    LegsScale.y = 1;
+                    LegsScale.z = 1;
+                    legsGFX.transform.localScale = LegsScale;
+                    
+                    armScale.x = -1;
+                    armScale.y = 1;
+                    armScale.z = 1;
+                    arm.transform.localScale = armScale;
+                }
+                if (Input.GetAxis("Horizontal") > 0)
+                {
+                    LegsScale.x = 1;
+                    LegsScale.y = 1;
+                    LegsScale.z = 1;
+                    legsGFX.transform.localScale = LegsScale;            
+                }
+                if(arm.GetComponent<ArmRotation>().lookDir.x < 0)
+                {
+                    bodyScale.x = -1;
+                    bodyScale.y = 1;
+                    bodyScale.z = 1;
+                    bodyGFX.transform.localScale = bodyScale;
+                    armScale.x = -1;
+                    armScale.y = 1;
+                    armScale.z = 1;
+                    arm.transform.localScale = armScale;
+                }
+                if (arm.GetComponent<ArmRotation>().lookDir.x > 0)
+                {
+                    bodyScale.x = 1;
+                    bodyScale.y = 1;
+                    bodyScale.z = 1;
+                    bodyGFX.transform.localScale = bodyScale;
+                    armScale.x = 1;
+                    armScale.y = 1;
+                    armScale.z = 1;
+                    arm.transform.localScale = armScale;
                 }
 
-                
+
                 break;
             case PlayerState.Attacking:
                 break;
@@ -123,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
         {
             case PlayerState.Moving:
                 rigidBody.MovePosition(rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
-                arm.GetComponent<ArmRotation>().rigidBody.MovePosition(arm.GetComponent<ArmRotation>().rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                arm.GetComponent<ArmRotation>().rigidBody.MovePosition(rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
                 //rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
                 arm.GetComponent<ArmRotation>().lookDir = arm.GetComponent<ArmRotation>().mousePos - arm.GetComponent<ArmRotation>().rigidBody.position;//Sets look direction to from the player to the mouse;
                 arm.GetComponent<ArmRotation>().angle = Mathf.Atan2(arm.GetComponent<ArmRotation>().lookDir.y, arm.GetComponent<ArmRotation>().lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
