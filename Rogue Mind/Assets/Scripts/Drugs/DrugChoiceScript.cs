@@ -85,17 +85,17 @@ public class DrugChoiceScript : MonoBehaviour
 
     public void AddDrug1()//adds drug 1 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[1]);
+        drugManager.AddEffects(DisplayedDrugs[0]);
         drugSelectionMenu.SetActive(false);//turns off menu
 	}
     public void AddDrug2()//adds drug 2 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[2]);
+        drugManager.AddEffects(DisplayedDrugs[1]);
         drugSelectionMenu.SetActive(false);//turns off menu
     }
     public void AddDrug3()//adds drug 3 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[3]);
+        drugManager.AddEffects(DisplayedDrugs[2]);
         drugSelectionMenu.SetActive(false);//turns off menu
     }
 }

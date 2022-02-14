@@ -32,6 +32,7 @@ public class EnemyScript : MonoBehaviour
     public EnemyState currentState;// the enemies state
     public int stunnedDuration;
     Vector3 direction;
+    public float healthHeal = 10;
     public DrugManagerScript modifiers;//finds the drugs modifiers
 
     public enum EnemyState
@@ -188,6 +189,10 @@ public class EnemyScript : MonoBehaviour
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
             StartCoroutine(FlashCo());
             Destroy(collision.gameObject);//destroy bullet
+            if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
+            {
+                target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
+            }
             if (health <= 0)
             {
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
@@ -199,6 +204,8 @@ public class EnemyScript : MonoBehaviour
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
+                
+                
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -210,6 +217,10 @@ public class EnemyScript : MonoBehaviour
             StartCoroutine(FlashCo());
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
+            if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
+            {
+                target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
+            }
             if (health <= 0)
             {
 				for (int i = 0; i < Random.RandomRange(0,3); i++)
@@ -220,6 +231,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
+                
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
             }
