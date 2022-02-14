@@ -979,9 +979,33 @@ PrefabInstance:
       value: Drug Choice Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: drugManager
+      value: 
+      objectReference: {fileID: 1591770279}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: scriptable.Array.size
-      value: 11
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8690f0962669ca54d990fcf329fd0018, type: 2}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 274e9089818255b429cd7eb10b80abb0, type: 2}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 63e984b4232560444886897e1a343823, type: 2}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: dbdd8fabab730944dbf15e71cb75a471, type: 2}
+    - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+      propertyPath: scriptable.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1be3a90659c5b5c4b9adac26a330b9b2, type: 2}
     - target: {fileID: 3102957311368369074, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: scriptable.Array.data[7]
       value: 
@@ -1117,7 +1141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750445, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: windowCleanerDrug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750483, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: m_RootOrder
@@ -1174,6 +1198,10 @@ PrefabInstance:
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: dashLength
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
+      propertyPath: killedEnemy
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
@@ -1263,6 +1291,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3343324184920348204, guid: 0b78d46f755b269409c3201708099578, type: 3}
   m_PrefabInstance: {fileID: 1989642317}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1591770279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3343324184920348205, guid: 0b78d46f755b269409c3201708099578, type: 3}
+  m_PrefabInstance: {fileID: 1989642317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591770277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1df9c26ac63784ca585735795d4824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1602519033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3343324184920348206, guid: 0b78d46f755b269409c3201708099578, type: 3}

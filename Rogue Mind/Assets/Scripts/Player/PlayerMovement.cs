@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 1f;// the cool down between dashes
     public float activeDashCooldown;// the cool down between dashes
     public bool atheleteDrug = false;// the cool down between dashes
-    public bool killedEnemy = false;// the cool down between dashes
+    public bool killedEnemy = true;// the cool down between dashes
     public int dashCount = 0;// the cool down between dashes
 
     float dashCounter, dashCoolCounter;
