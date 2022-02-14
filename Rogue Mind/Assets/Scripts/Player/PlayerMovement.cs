@@ -21,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject drugSelectionMenu;
     public SaveManagerScript save;//finds the drugs modifiers
 
-
+    public Transform arm;
+    public ArmRotation rotate;
 
     public float dashSpeed;// the speed of a dash
     public float dashLength = 0.5f;// the length of a dash
@@ -65,7 +66,10 @@ public class PlayerMovement : MonoBehaviour
                 movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
                 movement.y = Input.GetAxisRaw("Vertical");//Obtain user input for vertical Movement 
                 movement.Normalize();
-                mousePos = cam.ScreenToWorldPoint(Input.mousePosition);// sets mousePos from an on screen point to an in world point
+                arm.GetComponent<ArmRotation>().movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
+                arm.GetComponent<ArmRotation>().movement.y = Input.GetAxisRaw("Vertical");//Obtain user input for vertical Movement 
+                arm.GetComponent<ArmRotation>().movement.Normalize();
+                arm.GetComponent<ArmRotation>().mousePos = cam.ScreenToWorldPoint(Input.mousePosition);// sets mousePos from an on screen point to an in world point
 
 
                 if (Input.GetKeyDown(KeyCode.E))//if the player hits "E"
@@ -118,21 +122,22 @@ public class PlayerMovement : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Moving:
-                rigidBody.MovePosition(rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                rigidBody.MovePosition(rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
+                arm.GetComponent<ArmRotation>().rigidBody.MovePosition(arm.GetComponent<ArmRotation>().rigidBody.position + movement * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
                 //rigidBody.velocity = activeMoveSpeed * movement * modifiers.movementSpeedModifier;
-                lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
-                angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
+                arm.GetComponent<ArmRotation>().lookDir = arm.GetComponent<ArmRotation>().mousePos - arm.GetComponent<ArmRotation>().rigidBody.position;//Sets look direction to from the player to the mouse;
+                arm.GetComponent<ArmRotation>().angle = Mathf.Atan2(arm.GetComponent<ArmRotation>().lookDir.y, arm.GetComponent<ArmRotation>().lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
-                rigidBody.rotation = angle;//sets players rotation to point at the mouse
+                arm.GetComponent<ArmRotation>().rigidBody.rotation = arm.GetComponent<ArmRotation>().angle;//sets players rotation to point at the mouse
                 break;
             case PlayerState.Dashing:
 
                 //rigidBody.velocity = activeMoveSpeed * movementStore;
                 rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
-                lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
-                angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
+                arm.GetComponent<ArmRotation>().lookDir = arm.GetComponent<ArmRotation>().mousePos - arm.GetComponent<ArmRotation>().rigidBody.position;//Sets look direction to from the player to the mouse;
+                arm.GetComponent<ArmRotation>().angle = Mathf.Atan2(arm.GetComponent<ArmRotation>().lookDir.y, arm.GetComponent<ArmRotation>().lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
-                rigidBody.rotation = angle;//sets players rotation to point at the mouse
+                arm.GetComponent<ArmRotation>().rigidBody.rotation = arm.GetComponent<ArmRotation>().angle;//sets players rotation to point at the mouse
                 break;
             case PlayerState.Attacking:
                 break;
