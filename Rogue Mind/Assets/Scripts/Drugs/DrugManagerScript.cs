@@ -51,7 +51,9 @@ public class DrugManagerScript : MonoBehaviour
                 case "Soldier":
                     SoldierStart();
                     break;
-
+                case "Athlete":
+                    AthleteStart();
+                    break;
         }
         
         scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
@@ -79,6 +81,9 @@ public class DrugManagerScript : MonoBehaviour
                     break;
                 case "Soldier":
                     SoldierUpdate();
+                    break;
+                case "Athlete":
+                    AthleteUpdate();
                     break;
 
             }
@@ -110,4 +115,12 @@ public class DrugManagerScript : MonoBehaviour
     {
 
     }
+    public void AthleteStart()
+	{
+        player.GetComponent<PlayerMovement>().dashCooldown = 0;
+	}
+    public void AthleteUpdate()
+	{
+
+	}
 }

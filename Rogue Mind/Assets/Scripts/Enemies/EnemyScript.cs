@@ -198,6 +198,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
+                target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -219,6 +220,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
+                target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
