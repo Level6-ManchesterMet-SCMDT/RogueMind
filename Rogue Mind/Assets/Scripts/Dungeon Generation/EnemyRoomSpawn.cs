@@ -17,10 +17,13 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     public Wave[] waves; // an array of waves
     public Transform[] spawnPoints;// holds the spawnpoints in the room
+    public int currentSp = 0;
     public GameObject enemyPrefab;// holds the enemy prefab
     public GameObject doors;// holds the doors of the room
     public GameObject exitDoor;// used for the exit door in the end room
     public GameObject player;
+    public int maxAmountOf1Enemy;
+    int max = -1;
 
     //used in the case of multiple rounds, unneeded for most rooms 
     public int nextWave = 0;
@@ -46,6 +49,14 @@ public class EnemyRoomSpawn : MonoBehaviour
         {
             UnityEngine.Debug.Log("SPAWN POINTS EMPTY");
         }
+        for (int i = 0; i < waves.Length; i++)
+        {
+            for (int j = 0; j < waves[i].count.Length; j++)
+            {
+                waves[i].count[j] = Random.Range(0, maxAmountOf1Enemy- max);
+                max += waves[i].count[j];
+            }
+        }
     }
     private void Update()
     {
@@ -65,7 +76,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             {
                 if (state != SpawnState.SPAWNING && waves.Length > 0)
                 {
-                    SpawnWave(waves[nextWave]);
+                   StartCoroutine(SpawnWave(waves[nextWave]));
                 }
             }
 
@@ -95,6 +106,7 @@ public class EnemyRoomSpawn : MonoBehaviour
                 return;
             }
         }
+      
     }
     bool EnemiesAlive()
     {
@@ -133,7 +145,7 @@ public class EnemyRoomSpawn : MonoBehaviour
             nextWave++;
         }
     }
-    public void SpawnWave(Wave wave)
+    IEnumerator SpawnWave(Wave wave)
     {
         state = SpawnState.SPAWNING;
 
@@ -143,16 +155,17 @@ public class EnemyRoomSpawn : MonoBehaviour
             {
                 enemyPrefab.GetComponent<EnemyScript>().scriptable = wave.enemyTypes[i];
                 SpawnEnemy(enemyPrefab);
-                //yield return new WaitForSeconds(1f / wave.spawnRate);
+                yield return new WaitForSeconds(wave.spawnRate);
             }
         }
         state = SpawnState.WAITING;
-        //yield break;
+        yield break;
     }
     void SpawnEnemy(GameObject enemy)
     {
-        Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Transform sp = spawnPoints[Random.Range(0,spawnPoints.Length)];
         Instantiate(enemy, sp.position, sp.rotation);
+        Destroy(sp);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
