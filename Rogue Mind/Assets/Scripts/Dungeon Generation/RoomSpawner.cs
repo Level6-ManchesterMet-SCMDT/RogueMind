@@ -171,12 +171,26 @@ public class RoomSpawner : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Room") || other.CompareTag("SpawnedRoom"))
+        {
+            spawned = true;
+            Destroy(gameObject);
+        }
         //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
             {
-                if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM) //checks the direction of the other spawnpoint
+                Instantiate(templates.closedRoom, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+            spawned = true;
+        }
+       
+    }
+}
+
+    /* if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM) //checks the direction of the other spawnpoint
                 {
                     Debug.Log("BottomLeft");
                     rand = Random.Range(0, templates.bottomLeftRooms.Length);
@@ -242,13 +256,5 @@ public class RoomSpawner : MonoBehaviour
 
                 }
                 //Destroy(gameObject);
-            }
-            spawned = true;
-        }
-        if (other.CompareTag("Destroyer"))
-        {
-            this.gameObject.SetActive(false);
-        }
-    }
-}
-
+            }*/
+               

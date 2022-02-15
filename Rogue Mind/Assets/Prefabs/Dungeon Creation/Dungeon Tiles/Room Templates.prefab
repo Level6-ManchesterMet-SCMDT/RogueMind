@@ -107,7 +107,7 @@ MonoBehaviour:
   leftEndCap: {fileID: 9037971031006583637, guid: 3dde43436d5a62d46a1441b89805a063, type: 3}
   topEndCap: {fileID: 8098030432602428901, guid: 4bbfcf8919a485149b0ec0d85193520b, type: 3}
   bottomEndCap: {fileID: 7620072631149712808, guid: 15b2935d1a87ffa42a348fc6dbc5e87a, type: 3}
-  closedRoom: {fileID: 4455080339084857634, guid: 411806cfd441d3e40b2bd804007bfbb2, type: 3}
+  closedRoom: {fileID: 5526469129406346126, guid: bf00486bebcfc38439896b54fc98bb13, type: 3}
   rooms: []
   endRooms: []
   chanceOf3DoorsSpawned: 10
