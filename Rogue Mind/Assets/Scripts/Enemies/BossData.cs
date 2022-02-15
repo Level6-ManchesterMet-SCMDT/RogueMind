@@ -14,6 +14,7 @@ public class BossData : ScriptableObject
     public float damage;//Boss' damage value
     public GameObject spawnable;// the type of spawnable the boss can spawn
     public EnemyData spawnableData;// the scriptable that the spawnable might use
+    public RuntimeAnimatorController anim;
 
 
 

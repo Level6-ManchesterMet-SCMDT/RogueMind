@@ -20,3 +20,4 @@ MonoBehaviour:
   damage: 10
   spawnable: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
   spawnableData: {fileID: 11400000, guid: caa6ccd66fcaff84b90d7de5fde9de3d, type: 2}
+  anim: {fileID: 9100000, guid: fdad20c90a4a22248990c476251ee481, type: 2}
