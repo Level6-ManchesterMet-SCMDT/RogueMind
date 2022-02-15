@@ -481,6 +481,7 @@ Transform:
   - {fileID: 4533666522622918737}
   - {fileID: 8399426286298412886}
   - {fileID: 4717255142170071649}
+  - {fileID: 4978104301905187118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -849,3 +850,77 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &3007566841514812391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7253674216189750483}
+    m_Modifications:
+    - target: {fileID: 5623130995423759466, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_Name
+      value: Point Light 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071183
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70709527
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590340525243845492, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590340525243845492, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590340525243845492, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 11.91
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+--- !u!4 &4978104301905187118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7829720601439564489, guid: 47743976ba5896249a8ebed6ce908e1f, type: 3}
+  m_PrefabInstance: {fileID: 3007566841514812391}
+  m_PrefabAsset: {fileID: 0}
