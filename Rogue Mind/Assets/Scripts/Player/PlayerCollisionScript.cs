@@ -24,10 +24,12 @@ public class PlayerCollisionScript : MonoBehaviour
 
     public bool doctorDrug = false;
     public bool inRoom = false;
+    public SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         //Dopamine = 0;
         healthBar = GameObject.FindGameObjectWithTag("HealthBar");//set the health bar
         health = Maxhealth;//set max health
@@ -72,6 +74,7 @@ public class PlayerCollisionScript : MonoBehaviour
         
         if (collision.CompareTag("DopamineDrop"))//if the collider is a dopamine drop
         {
+            soundManager.PlaySound("Dopamine");
             Dopamine++;//increase the dopamine count
             Destroy(collision.gameObject);//destroy the dopamine drop
             

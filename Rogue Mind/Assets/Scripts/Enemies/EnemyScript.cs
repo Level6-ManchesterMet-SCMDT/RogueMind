@@ -36,6 +36,7 @@ public class EnemyScript : MonoBehaviour
     Vector3 direction;
     public float healthHeal = 10;
     public DrugManagerScript modifiers;//finds the drugs modifiers
+    public SoundManager soundManager;
 
     public enum EnemyState
 	{
@@ -60,6 +61,7 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
@@ -196,6 +198,7 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Bullet"))//if collide with a bullet
         {
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
+            soundManager.PlaySound("EnemyHit");
             StartCoroutine(FlashCo());
             Destroy(collision.gameObject);//destroy bullet
             if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
@@ -221,6 +224,7 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Melee"))//if collide with a melee attack
         {
             health -= target.GetComponent<MeleeScript>().damage;// reduce health by attacks damage value
+            soundManager.PlaySound("EnemyHit");
             Stun(collision.GetComponent<HitScript>().stun);
             
             StartCoroutine(FlashCo());

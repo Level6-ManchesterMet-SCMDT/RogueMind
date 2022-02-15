@@ -33,6 +33,7 @@ TagManager:
   - FoodDrop
   - Trail
   - UI
+  - SFX
   layers:
   - Default
   - TransparentFX

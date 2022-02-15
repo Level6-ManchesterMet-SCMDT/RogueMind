@@ -29,9 +29,11 @@ public class MeleeScript : MonoBehaviour
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public bool windowCleanerDrug = false;
+    public SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
         hitDelay /= modifiers.meleeAttackRateModifier;
@@ -69,7 +71,7 @@ public class MeleeScript : MonoBehaviour
             if (numberOfClicks == 1)// if 1 click
             {
                 this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
-
+                soundManager.PlaySound("Sword");
                 //hit 1
                 GameObject hitBox = Instantiate(hit1Prefab, hitPoint.position, hitPoint.rotation);//spawn first hitbox
             }
@@ -77,6 +79,7 @@ public class MeleeScript : MonoBehaviour
             if (numberOfClicks == 2)//if 2 clicks
             {
                 this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
+                soundManager.PlaySound("Sword");
                 //second hit
                 damage = (initialDamage * secondHitModifier) * modifiers.meleeDamageModifier;//doubles damage value
                 GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
@@ -86,6 +89,7 @@ public class MeleeScript : MonoBehaviour
                 currentDelay = hitDelay;
                 //third hit
                 this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
+                soundManager.PlaySound("Sword");
                 damage = (initialDamage * thirdHitModifier) * modifiers.meleeDamageModifier;//tripples damage value
                 GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
@@ -99,6 +103,7 @@ public class MeleeScript : MonoBehaviour
             currentDelay = hitDelay;
             //third hit
             this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
+            soundManager.PlaySound("Sword");
             damage = initialDamage * modifiers.meleeDamageModifier;//tripples damage value
             GameObject hitBox = Instantiate(windowCleanerHitPrefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 

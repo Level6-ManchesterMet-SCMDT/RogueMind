@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerState currentState;// the enemies state
 
+    public SoundManager soundManager;
+
     public enum PlayerState
     {
         Moving,//when the enemy is moving 
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         activeMoveSpeed = moveSpeed;// setting the active movespeed to that set in the inspector
         currentState = PlayerState.menu;// set the players state to menu, just to get the initial drug menu to show
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();// find the camera
@@ -98,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         if (!atheleteDrug)
                         {
+                            soundManager.PlaySound("Dash");
                             activeMoveSpeed = dashSpeed;// start the dash
                             movementStore = movement;// save the current movement axis so the dash is only in 1 direction
                                                      //rigidBody.AddForce(new Vector2(dashSpeed * movement.x * Time.deltaTime, dashSpeed * movement.y * Time.deltaTime));
