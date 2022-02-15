@@ -8,6 +8,7 @@ public class DrugManagerScript : MonoBehaviour
     public List<DrugsData> scriptables = new List<DrugsData>(); //the scriptable object assigned to this 
     private List<DrugsData> scriptablesCurrent = new List<DrugsData>(); //the scriptable object assigned to this 
     public GameObject player;
+    public DrugChoiceScript drugChoice;
 
     public float healthModifier;// the list of modifiers that will be accessed globaly by other objects
     public float movementSpeedModifier;
@@ -24,6 +25,7 @@ public class DrugManagerScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        drugChoice = GameObject.FindGameObjectWithTag("DrugMenu").GetComponent<DrugChoiceScript>();
         healthModifier = 1;//set all modifiers to 1 which means no changes
         movementSpeedModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().moveSpeed/100;
         dashDistanceModifier = 1;// set to 1 as when it is used it will be multiplied, so if it was 0 then the dash would become nothing
@@ -58,6 +60,9 @@ public class DrugManagerScript : MonoBehaviour
                     break;
                 case "Janitor":
                     JanitorStart();
+                    break;
+                case "Mime":
+                    MimeStart();
                     break;
         }
         
@@ -96,6 +101,9 @@ public class DrugManagerScript : MonoBehaviour
                     break;
                 case "Janitor":
                     JanitorUpdate();
+                    break;
+                case "Mime":
+                    MimeUpdate();
                     break;
             }
         }
@@ -157,4 +165,31 @@ public class DrugManagerScript : MonoBehaviour
     {
 
     }
+    public void MimeStart()
+	{
+        DrugsData adding;
+        while (true)
+		{
+            bool test = true;
+            adding = drugChoice.RandomDrug();
+            for (int i = 0; i < scriptablesCurrent.Count; i++)
+			{
+                if(scriptablesCurrent[i].name == adding.name)
+				{
+                    test = false;
+				}
+			}
+            if(test)
+			{
+                break;  
+			}
+            
+		}
+        Debug.Log(adding.name);
+        AddEffects(adding);
+	}
+    public void MimeUpdate()
+	{
+
+	}
 }
