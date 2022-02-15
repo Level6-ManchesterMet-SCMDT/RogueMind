@@ -522,7 +522,9 @@ MonoBehaviour:
   arm: {fileID: 4717255142170071649}
   rotate: {fileID: 0}
   bodyGFX: {fileID: 4533666522622918737}
+  bodyAnim: {fileID: 2597989263192847285}
   legsGFX: {fileID: 8399426286298412886}
+  legsAnim: {fileID: 5403374716691405028}
   dashSpeed: 0
   dashLength: 0.5
   dashCooldown: 1

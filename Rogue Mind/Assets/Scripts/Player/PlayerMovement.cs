@@ -26,9 +26,11 @@ public class PlayerMovement : MonoBehaviour
     public ArmRotation rotate;
 
     public Transform bodyGFX;
+    public Animator bodyAnim;
     Vector3 bodyScale;
     
     public Transform legsGFX;
+    public Animator legsAnim;
     Vector3 LegsScale;
 
 
@@ -74,6 +76,10 @@ public class PlayerMovement : MonoBehaviour
                 movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
                 movement.y = Input.GetAxisRaw("Vertical");//Obtain user input for vertical Movement 
                 movement.Normalize();
+
+                legsAnim.SetFloat("Speed", movement.sqrMagnitude);
+                bodyAnim.SetFloat("Speed", movement.sqrMagnitude);
+
                 arm.GetComponent<ArmRotation>().movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
                 arm.GetComponent<ArmRotation>().movement.y = Input.GetAxisRaw("Vertical");//Obtain user input for vertical Movement 
                 arm.GetComponent<ArmRotation>().movement.Normalize();
@@ -184,7 +190,8 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Dashing:
 
                 //rigidBody.velocity = activeMoveSpeed * movementStore;
-                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
+                arm.GetComponent<ArmRotation>().rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
                 arm.GetComponent<ArmRotation>().lookDir = arm.GetComponent<ArmRotation>().mousePos - arm.GetComponent<ArmRotation>().rigidBody.position;//Sets look direction to from the player to the mouse;
                 arm.GetComponent<ArmRotation>().angle = Mathf.Atan2(arm.GetComponent<ArmRotation>().lookDir.y, arm.GetComponent<ArmRotation>().lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
