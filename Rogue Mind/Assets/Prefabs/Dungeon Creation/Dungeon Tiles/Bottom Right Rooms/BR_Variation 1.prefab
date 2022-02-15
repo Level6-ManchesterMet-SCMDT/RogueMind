@@ -2571,7 +2571,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3483,10 +3483,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeWallsTop
       objectReference: {fileID: 0}
-    - target: {fileID: 2924782390703659958, guid: b86a25ad5dcc17e40ae59c739440d7d1, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 9046887371837746601, guid: b86a25ad5dcc17e40ae59c739440d7d1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3840,10 +3836,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeWallsLeft
       objectReference: {fileID: 0}
-    - target: {fileID: 8970187745233063834, guid: df0910c4898562947996d7d243bf36bc, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df0910c4898562947996d7d243bf36bc, type: 3}
 --- !u!1 &1023280696726738307 stripped
