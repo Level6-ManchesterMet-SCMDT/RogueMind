@@ -133,6 +133,10 @@ public class EnemyScript : MonoBehaviour
                 FollowerOnTriggerEnter(collision);
                 break;
         }
+        if (collision.CompareTag("StartRoom"))
+        {
+            Destroy(gameObject);
+        }
     }
 	private void OnTriggerExit2D(Collider2D collision)
 	{
