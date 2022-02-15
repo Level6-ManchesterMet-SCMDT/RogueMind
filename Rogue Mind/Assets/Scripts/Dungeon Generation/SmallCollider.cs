@@ -16,7 +16,7 @@ public class SmallCollider : MonoBehaviour
         {
             thisDoor.SetActive(true);
             wallTileset.SetActive(false);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

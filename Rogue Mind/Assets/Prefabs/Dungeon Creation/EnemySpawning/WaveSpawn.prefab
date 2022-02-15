@@ -80,10 +80,12 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
+  currentSp: 0
   enemyPrefab: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
   doors: {fileID: 0}
   exitDoor: {fileID: 0}
-  num: 0
+  player: {fileID: 0}
+  maxAmountOf1Enemy: 4
   nextWave: 0
   round: 1
   waveDelay: 0.2
