@@ -164,11 +164,12 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Dashing:
 
                 //rigidBody.velocity = activeMoveSpeed * movementStore;
-                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
-                //lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
-                //angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
+                rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);
+                arm.GetComponent<ArmRotation>().rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
+                arm.GetComponent<ArmRotation>().lookDir = arm.GetComponent<ArmRotation>().mousePos - arm.GetComponent<ArmRotation>().rigidBody.position;//Sets look direction to from the player to the mouse;
+                arm.GetComponent<ArmRotation>().angle = Mathf.Atan2(arm.GetComponent<ArmRotation>().lookDir.y, arm.GetComponent<ArmRotation>().lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
-                //rigidBody.rotation = angle;//sets players rotation to point at the mouse
+                arm.GetComponent<ArmRotation>().rigidBody.rotation = arm.GetComponent<ArmRotation>().angle;//sets players rotation to point at the mouse
                 break;
             case PlayerState.Attacking:
                 break;
