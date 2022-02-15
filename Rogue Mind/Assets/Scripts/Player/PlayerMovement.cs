@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public bool atheleteDrug = false;// the cool down between dashes
     public bool killedEnemy = true;// the cool down between dashes
     public int dashCount = 0;// the cool down between dashes
+    public GameObject trail;
+    public bool janitorDrug = false;
 
     float dashCounter, dashCoolCounter;
 
@@ -114,8 +116,14 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Attacking:
                 break;
+            case PlayerState.Dashing:
+                if(janitorDrug)
+				{
+                    Instantiate(trail, transform.GetChild(1).transform);
+				}
+                break;
 
-            
+
         }
         if (dashCounter > 0)// if dash is in progress
         {
@@ -157,10 +165,10 @@ public class PlayerMovement : MonoBehaviour
 
                 //rigidBody.velocity = activeMoveSpeed * movementStore;
                 rigidBody.MovePosition(rigidBody.position + movementStore * (activeMoveSpeed * modifiers.movementSpeedModifier) * Time.fixedDeltaTime);//moves the player's rigidbody by it's movement vector by its speed over delta time
-                lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
-                angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
+                //lookDir = mousePos - rigidBody.position;//Sets look direction to from the player to the mouse;
+                //angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;//sets the lookDir vec 2 to a rotation
 
-                rigidBody.rotation = angle;//sets players rotation to point at the mouse
+                //rigidBody.rotation = angle;//sets players rotation to point at the mouse
                 break;
             case PlayerState.Attacking:
                 break;
