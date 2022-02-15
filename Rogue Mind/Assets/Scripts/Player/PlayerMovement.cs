@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float dashSpeed;// the speed of a dash
-    public float dashLength = 0.5f;// the length of a dash
+    public float dashLength = 0.5f;// the length of a dash 
     public float dashCooldown = 1f;// the cool down between dashes
     public float activeDashCooldown;// the cool down between dashes
     public bool atheleteDrug = false;// the cool down between dashes
@@ -180,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Dashing:
                 if(janitorDrug)
 				{
-                    Instantiate(trail, transform.GetChild(1).transform);
+                    Instantiate(trail, transform.position,transform.rotation);
 				}
                 break;
 
