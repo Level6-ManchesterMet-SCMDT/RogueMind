@@ -56,6 +56,9 @@ public class DrugManagerScript : MonoBehaviour
                 case "Doctor":
                     DoctorStart();
                     break;
+                case "Janitor":
+                    JanitorStart();
+                    break;
         }
         
         scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
@@ -90,6 +93,9 @@ public class DrugManagerScript : MonoBehaviour
                     break;
                 case "Doctor":
                     DoctorUpdate();
+                    break;
+                case "Janitor":
+                    JanitorUpdate();
                     break;
             }
         }
@@ -137,6 +143,17 @@ public class DrugManagerScript : MonoBehaviour
 
     }
     public void DoctorUpdate()
+    {
+
+    }
+    public void JanitorStart()
+    {
+        player.GetComponent<PlayerMovement>().janitorDrug = true;
+        player.GetComponent<PlayerMovement>().dashLength /= 2;
+
+
+    }
+    public void JanitorUpdate()
     {
 
     }

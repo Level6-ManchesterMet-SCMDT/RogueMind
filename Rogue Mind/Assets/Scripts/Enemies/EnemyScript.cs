@@ -7,6 +7,8 @@ public class EnemyScript : MonoBehaviour
     public EnemyData scriptable;// the scriptable object that is used to store data for the enemy type
 
     public float speed;// enemies movement speed
+    public float activeSpeed;// enemies movement speed
+    public float reducedSpeed;// enemies movement speed
     public GameObject target;// the target the enemy is following (the player)
     public float health;//enemy health
     public float damage;// the damage value of the enemy
@@ -68,6 +70,8 @@ public class EnemyScript : MonoBehaviour
 
         health = scriptable.hp;// set all variables to that of the scriptable object assigned to the enemy
         speed = scriptable.movementSpeed;
+        activeSpeed = speed;
+        reducedSpeed = speed / 2;
         damage = scriptable.damage;
         name = scriptable.name;
         bulletType = scriptable.bulletType;
@@ -128,8 +132,13 @@ public class EnemyScript : MonoBehaviour
                 break;
         }
     }
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+        activeSpeed = speed;
+	}
 
-    public void Stun(int duration)// used to set an enemy in stun
+
+	public void Stun(int duration)// used to set an enemy in stun
 	{
         stunnedDuration = duration;//set the duration
         currentState = EnemyState.Stunned;//set the state to stunned
@@ -179,7 +188,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (currentState == EnemyState.Moving)//as long as he should be moving
         {
-            rigidBody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));// move position by speed in direction over time
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
         }
     }
     private void FollowerOnTriggerEnter(Collider2D collision)
@@ -236,6 +245,26 @@ public class EnemyScript : MonoBehaviour
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
+        if ((collision.tag == "Trail"))//if collide with a bullet
+        {
+            health *= 0.9999f;// reduce health by bullets damage value
+            activeSpeed = reducedSpeed;
+            StartCoroutine(FlashCo());
+            
+            if (health <= 0)
+            {
+                for (int i = 0; i < Random.RandomRange(0, 3); i++)
+                {
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                }
+                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                {
+                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                }
+                target.GetComponent<PlayerMovement>().killedEnemy = true;
+                Destroy(gameObject);// if health 0 or below then die
+            }
+        }
     }
 
 
@@ -276,7 +305,7 @@ public class EnemyScript : MonoBehaviour
     {
         if(currentState == EnemyState.Moving)//as long as he should be moving
 		{
-            rigidBody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));// move position by speed in direction over time
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
         }
         
     }
@@ -295,7 +324,7 @@ public class EnemyScript : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 2, s_ScaleY * 2);// double size for the hit
         Vector2 directionNow = new Vector2(direction.x,direction.y);
 
-        rigidBody.MovePosition((Vector2)transform.position + (directionNow * speed));// move position by speed in direction over time
+        rigidBody.MovePosition((Vector2)transform.position + (directionNow * activeSpeed));// move position by speed in direction over time
         yield return new WaitForSeconds(1);//wait
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX, m_ScaleX);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX, s_ScaleX);//return to original size
@@ -335,7 +364,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (currentState == EnemyState.Moving)
         {
-            rigidBody.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));// move position by speed in direction over time
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
         }
     }
 

@@ -529,6 +529,11 @@ MonoBehaviour:
   dashLength: 0.5
   dashCooldown: 1
   activeDashCooldown: 0
+  atheleteDrug: 0
+  killedEnemy: 1
+  dashCount: 0
+  trail: {fileID: 3493532758288577932, guid: b44c587588ef6014eba64ad95731a268, type: 3}
+  janitorDrug: 0
   currentState: 0
 --- !u!114 &7253674216189750444
 MonoBehaviour:
@@ -601,6 +606,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   modifiers: {fileID: 0}
   save: {fileID: 0}
+  doctorDrug: 0
+  inRoom: 0
 --- !u!61 &1410155858178551505
 BoxCollider2D:
   m_ObjectHideFlags: 0

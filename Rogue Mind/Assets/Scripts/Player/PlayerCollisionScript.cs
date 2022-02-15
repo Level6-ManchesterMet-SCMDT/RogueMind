@@ -112,7 +112,7 @@ public class PlayerCollisionScript : MonoBehaviour
     void DeathCheck()//check if player has died
 	{
         if (health <= 0)
-        {
+        { 
             save.cash += 10;//increase the ammount of cash
             save.NextScene();//save all changed data to the save file
             SceneManager.LoadScene(0);//load the desk hub scene

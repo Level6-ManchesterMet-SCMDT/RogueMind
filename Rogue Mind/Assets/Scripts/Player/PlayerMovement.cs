@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public bool atheleteDrug = false;// the cool down between dashes
     public bool killedEnemy = true;// the cool down between dashes
     public int dashCount = 0;// the cool down between dashes
+    public GameObject trail;
+    public bool janitorDrug = false;
 
     float dashCounter, dashCoolCounter;
 
@@ -175,8 +177,14 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case PlayerState.Attacking:
                 break;
+            case PlayerState.Dashing:
+                if(janitorDrug)
+				{
+                    Instantiate(trail, transform.GetChild(1).transform);
+				}
+                break;
 
-            
+
         }
         if (dashCounter > 0)// if dash is in progress
         {
