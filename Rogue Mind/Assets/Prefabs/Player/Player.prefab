@@ -175,7 +175,7 @@ Animator:
   m_GameObject: {fileID: 3297507965480011523}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e9255b1156c33e45a34a8335c12e7dd, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1e50d198c403814db952bf9ff6f87b0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   activeMoveSpeed: 0
   rigidBody: {fileID: 7253674216189750481}
   cam: {fileID: 0}
+  lookDir: {x: 0, y: 0}
   modifiers: {fileID: 0}
   drugSelectionMenu: {fileID: 0}
   save: {fileID: 0}
@@ -592,7 +593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4533666522622918737}
   - component: {fileID: 1319038114150898799}
-  - component: {fileID: 127125167617655920}
+  - component: {fileID: 2597989263192847285}
   m_Layer: 0
   m_Name: GfxTop
   m_TagString: Untagged
@@ -665,7 +666,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &127125167617655920
+--- !u!95 &2597989263192847285
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -675,7 +676,7 @@ Animator:
   m_GameObject: {fileID: 7916627678701137174}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b002a2ce6cc7ad04c8a884f41c18171a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 36c1a9de21681cd409e45ca92ab2a941, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
