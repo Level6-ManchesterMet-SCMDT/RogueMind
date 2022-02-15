@@ -12,10 +12,12 @@ public class DrugChoiceScript : MonoBehaviour
     private List<DrugsData> DisplayedDrugs = new List<DrugsData>();// a list of the drugs being displayed on a menu
     public DrugManagerScript drugManager;// the drug manager, which maintains modifiers
     public GameObject shopKeeper;// the games shop keeper
+    public SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         drugSelectionMenu = transform.GetChild(0).gameObject;//find the menu
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms");
@@ -85,16 +87,19 @@ public class DrugChoiceScript : MonoBehaviour
 
     public void AddDrug1()//adds drug 1 to list of effectors
     {
+        soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[0]);
         drugSelectionMenu.SetActive(false);//turns off menu
 	}
     public void AddDrug2()//adds drug 2 to list of effectors
     {
+        soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[1]);
         drugSelectionMenu.SetActive(false);//turns off menu
     }
     public void AddDrug3()//adds drug 3 to list of effectors
     {
+        soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[2]);
         drugSelectionMenu.SetActive(false);//turns off menu
     }

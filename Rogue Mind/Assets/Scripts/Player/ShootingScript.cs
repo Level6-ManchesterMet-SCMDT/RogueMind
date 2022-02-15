@@ -18,6 +18,7 @@ public class ShootingScript : MonoBehaviour
     public ShootingState currentState;// the enemies state
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
+    public SoundManager soundManager;
 
 
     public enum ShootingState
@@ -29,6 +30,7 @@ public class ShootingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// find the modifiers
         currentBullets = maxBullets;//set the current bullets to max bullets
     }
@@ -74,6 +76,7 @@ public class ShootingScript : MonoBehaviour
     }
     void Shoot()
 	{
+        soundManager.PlaySound("Gun");
         shootDelay = shootDelayLength / modifiers.fireRateModifier;
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//Create a bullet from the prefab
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody

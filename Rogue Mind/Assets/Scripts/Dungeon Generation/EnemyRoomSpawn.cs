@@ -38,11 +38,13 @@ public class EnemyRoomSpawn : MonoBehaviour
     public bool enemiesSpawned = false;
     public bool spawnEnemies = false;
     public float time = 1.4f;
+    public SoundManager soundManager;
 
     public SpawnState state = SpawnState.COUNTING;
 
     private void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         countdown = waveDelay;
         if(spawnPoints.Length == 0)
@@ -97,6 +99,8 @@ public class EnemyRoomSpawn : MonoBehaviour
 			}
             spawnEnemies = false;
             doors.SetActive(false);
+            //soundManager.PlaySound("DoorOpen");
+
             if(exitDoor != null)
             {
                 exitDoor.SetActive(true);
@@ -181,6 +185,7 @@ public class EnemyRoomSpawn : MonoBehaviour
                     if (doors != null)
                     {
                         doors.SetActive(true);
+                        //soundManager.PlaySound("DoorClose");
                         if (player.GetComponent<PlayerCollisionScript>().doctorDrug)
                         {
                             player.GetComponent<PlayerCollisionScript>().inRoom = true;
