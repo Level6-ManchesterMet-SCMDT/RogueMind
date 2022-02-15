@@ -23,6 +23,7 @@ public class DrugManagerScript : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         healthModifier = 1;//set all modifiers to 1 which means no changes
         movementSpeedModifier = 1 + (float)this.gameObject.GetComponent<SaveManagerScript>().moveSpeed/100;
         dashDistanceModifier = 1;// set to 1 as when it is used it will be multiplied, so if it was 0 then the dash would become nothing
@@ -38,8 +39,6 @@ public class DrugManagerScript : MonoBehaviour
     }
     public void AddEffects(DrugsData scriptable)// adds on each 
 	{
-        
-
             switch (scriptable.name)//run the associated start 
             {
                 case "WindowCleaner":
@@ -51,7 +50,12 @@ public class DrugManagerScript : MonoBehaviour
                 case "Soldier":
                     SoldierStart();
                     break;
-
+                case "Athlete":
+                    AthleteStart();
+                    break;
+                case "Doctor":
+                    DoctorStart();
+                    break;
         }
         
         scriptablesCurrent.Add(scriptable);// add to current list of in effect modifiers
@@ -72,6 +76,7 @@ public class DrugManagerScript : MonoBehaviour
             switch (scriptablesCurrent[i].name)//run the associated start 
             {
                 case "WindowCleaner":
+                    Debug.Log("window");
                     WindowCleanerUpdate();
                     break;
                 case "WindowChef":
@@ -80,7 +85,12 @@ public class DrugManagerScript : MonoBehaviour
                 case "Soldier":
                     SoldierUpdate();
                     break;
-
+                case "Athlete":
+                    AthleteUpdate();
+                    break;
+                case "Doctor":
+                    DoctorUpdate();
+                    break;
             }
         }
     }
@@ -107,6 +117,26 @@ public class DrugManagerScript : MonoBehaviour
         player.GetComponent<ShootingScript>().bulletForce /= 1.5f;
     }
     public void SoldierUpdate()
+    {
+
+    }
+    public void AthleteStart()
+	{
+        player.GetComponent<PlayerMovement>().dashCooldown = 0;
+        player.GetComponent<PlayerMovement>().atheleteDrug = true;
+        
+	}
+    public void AthleteUpdate()
+	{
+
+	}
+
+    public void DoctorStart()
+    {
+        player.GetComponent<PlayerCollisionScript>().doctorDrug = true;
+
+    }
+    public void DoctorUpdate()
     {
 
     }

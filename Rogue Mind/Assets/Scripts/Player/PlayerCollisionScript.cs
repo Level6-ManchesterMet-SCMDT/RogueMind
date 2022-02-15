@@ -21,6 +21,10 @@ public class PlayerCollisionScript : MonoBehaviour
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public SaveManagerScript save;//finds the drugs modifiers
+
+    public bool doctorDrug = false;
+    public bool inRoom = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,10 @@ public class PlayerCollisionScript : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        
+        if(doctorDrug && inRoom)
+		{
+            TakeDamage(Maxhealth * 0.0001f);
+		}
     }
 
 	private void OnTriggerEnter2D(Collider2D collision)//when something enters trigger hit box
@@ -112,7 +119,7 @@ public class PlayerCollisionScript : MonoBehaviour
             Destroy(gameObject);//if health drops below 0 kill the player
         }
     }
-    void HealDamage(float heal)//used for healing
+    public void HealDamage(float heal)//used for healing
 	{
         health += heal;// add health to the health variable
         if(health > Maxhealth)

@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
-  m_Name: Drug3
+  m_Name: Doctor
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   healthPercentage: 0
-  movementSpeedPercentage: 0.05
+  movementSpeedPercentage: 0
   dashDistancePercentage: 0
   meleeDamagePercentage: 0
   fireRatePercentage: 0
-  resistanceToEnemyDamage: -0.1
-  name: drug 3
-  description: 'more movement speed less enemy resistance '
+  resistanceToEnemyDamage: 0
+  name: Doctor
+  description: Constantly lose health, but gain leech life

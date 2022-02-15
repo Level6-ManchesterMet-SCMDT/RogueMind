@@ -20,6 +20,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public GameObject enemyPrefab;// holds the enemy prefab
     public GameObject doors;// holds the doors of the room
     public GameObject exitDoor;// used for the exit door in the end room
+    public GameObject player;
 
     //used in the case of multiple rounds, unneeded for most rooms 
     public int nextWave = 0;
@@ -39,6 +40,7 @@ public class EnemyRoomSpawn : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         countdown = waveDelay;
         if(spawnPoints.Length == 0)
         {
@@ -78,6 +80,10 @@ public class EnemyRoomSpawn : MonoBehaviour
         }
         if(state== SpawnState.FINISHED)
         {
+            if(player.GetComponent<PlayerCollisionScript>().doctorDrug)
+			{
+                player.GetComponent<PlayerCollisionScript>().inRoom = false;
+			}
             spawnEnemies = false;
             doors.SetActive(false);
             if(exitDoor != null)
@@ -163,6 +169,10 @@ public class EnemyRoomSpawn : MonoBehaviour
                     if (doors != null)
                     {
                         doors.SetActive(true);
+                        if (player.GetComponent<PlayerCollisionScript>().doctorDrug)
+                        {
+                            player.GetComponent<PlayerCollisionScript>().inRoom = true;
+                        }
                     }
                     else
                     {

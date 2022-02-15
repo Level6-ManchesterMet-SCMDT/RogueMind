@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
-  m_Name: Drug7
+  m_Name: Athlete
   m_EditorClassIdentifier: 
   healthPercentage: 0
   movementSpeedPercentage: 0
-  dashDistancePercentage: 5
+  dashDistancePercentage: 0
   meleeDamagePercentage: 0
-  fireRatePercentage: 0.15
-  resistanceToEnemyDamage: -0.05
-  name: 'drug 7 '
-  description: 'more fire rate less resistance to enemies '
+  fireRatePercentage: 0
+  resistanceToEnemyDamage: 0
+  name: Athlete
+  description: Can double dash, but must be refreshed by killing an enemy

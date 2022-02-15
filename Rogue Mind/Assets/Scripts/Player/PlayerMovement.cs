@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     public float dashLength = 0.5f;// the length of a dash
     public float dashCooldown = 1f;// the cool down between dashes
     public float activeDashCooldown;// the cool down between dashes
+    public bool atheleteDrug = false;// the cool down between dashes
+    public bool killedEnemy = true;// the cool down between dashes
+    public int dashCount = 0;// the cool down between dashes
 
     float dashCounter, dashCoolCounter;
 
@@ -91,13 +94,38 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (dashCoolCounter <= 0 && dashCounter <= 0)// If the dash cool down is 0
                     {
-                        activeMoveSpeed = dashSpeed;// start the dash
-                        movementStore = movement;// save the current movement axis so the dash is only in 1 direction
-                        //rigidBody.AddForce(new Vector2(dashSpeed * movement.x * Time.deltaTime, dashSpeed * movement.y * Time.deltaTime));
-                        //rigidBody.AddForceAtPosition(new Vector2(dashSpeed * movement.x, dashSpeed * movement.y), transform.position);
-                        dashCounter = dashLength * modifiers.dashDistanceModifier;// set the length of the dash to that of dash length by the current modidfer
-                        
-                        currentState = PlayerState.Dashing;//set the players state to dashing
+                        if (!atheleteDrug)
+                        {
+                            activeMoveSpeed = dashSpeed;// start the dash
+                            movementStore = movement;// save the current movement axis so the dash is only in 1 direction
+                                                     //rigidBody.AddForce(new Vector2(dashSpeed * movement.x * Time.deltaTime, dashSpeed * movement.y * Time.deltaTime));
+                                                     //rigidBody.AddForceAtPosition(new Vector2(dashSpeed * movement.x, dashSpeed * movement.y), transform.position);
+                            dashCounter = dashLength * modifiers.dashDistanceModifier;// set the length of the dash to that of dash length by the current modidfer
+                            
+                            currentState = PlayerState.Dashing;//set the players state to dashing
+                            
+                        }
+                        else if (killedEnemy)
+						{
+
+                            activeMoveSpeed = dashSpeed;// start the dash
+                            movementStore = movement;// save the current movement axis so the dash is only in 1 direction
+                                                     //rigidBody.AddForce(new Vector2(dashSpeed * movement.x * Time.deltaTime, dashSpeed * movement.y * Time.deltaTime));
+                                                     //rigidBody.AddForceAtPosition(new Vector2(dashSpeed * movement.x, dashSpeed * movement.y), transform.position);
+                            dashCounter = dashLength * modifiers.dashDistanceModifier;// set the length of the dash to that of dash length by the current modidfer
+
+                            currentState = PlayerState.Dashing;//set the players state to dashing
+                            if (dashCount == 0)
+                            {
+                                dashCount = 1;
+                            }
+                            else
+                            {
+                                killedEnemy = false;
+                                dashCount = 0;
+                            }
+                        }
+                       
                     }
                     
                 }
