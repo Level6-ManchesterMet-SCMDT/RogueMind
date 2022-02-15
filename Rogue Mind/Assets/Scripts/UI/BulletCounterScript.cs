@@ -16,6 +16,18 @@ public class BulletCounterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Bullets: " + player.GetComponent<ShootingScript>().currentBullets.ToString() + "/" + player.GetComponent<ShootingScript>().maxBullets.ToString();// set the text to the current bullets plus the max bullets
+		for (int i = 0; i < player.GetComponent<ShootingScript>().currentBullets; i++)
+		{
+            transform.GetChild(i).gameObject.active = true;
+		}
+        for (int i = 0; i < player.GetComponent<ShootingScript>().maxBullets - player.GetComponent<ShootingScript>().currentBullets; i++)
+        {
+            transform.GetChild(i+ player.GetComponent<ShootingScript>().currentBullets).gameObject.active = false;
+        }
+
     }
+    public void Reload()
+	{
+
+	}
 }
