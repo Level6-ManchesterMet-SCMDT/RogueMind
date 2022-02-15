@@ -21,4 +21,3 @@ MonoBehaviour:
   resistanceToEnemyDamage: 0
   name: Mime
   description: Picks a random drug
-  drugCost: 6

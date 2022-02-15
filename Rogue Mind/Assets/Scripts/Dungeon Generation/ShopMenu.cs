@@ -63,7 +63,6 @@ public class ShopMenu : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[1].drugCost;
             drugManager.AddEffects(DisplayedDrugs[1]);
         }
-        menu.SetActive(false);//turns off menu
     }
     public void AddDrug3()//adds drug 3 to list of effectors
     {
@@ -72,6 +71,5 @@ public class ShopMenu : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[2].drugCost;
             drugManager.AddEffects(DisplayedDrugs[2]);
         }
-        menu.SetActive(false);//turns off menu
     }
 }

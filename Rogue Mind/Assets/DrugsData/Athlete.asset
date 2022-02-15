@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Athlete
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0
@@ -21,4 +20,3 @@ MonoBehaviour:
   resistanceToEnemyDamage: 0
   name: Athlete
   description: Can double dash, but must be refreshed by killing an enemy
-  drugCost: 5

@@ -32,7 +32,6 @@ TagManager:
   - Shop
   - FoodDrop
   - Trail
-  - UI
   layers:
   - Default
   - TransparentFX

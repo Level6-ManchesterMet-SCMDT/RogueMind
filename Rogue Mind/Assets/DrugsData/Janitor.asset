@@ -21,4 +21,3 @@ MonoBehaviour:
   resistanceToEnemyDamage: 0
   name: Janitor
   description: Half dash length but, leave trail behind
-  drugCost: 5
