@@ -51,10 +51,12 @@ public class EnemyRoomSpawn : MonoBehaviour
         {
             UnityEngine.Debug.Log("SPAWN POINTS EMPTY");
         }
+        currentSp = Random.Range(0, spawnPoints.Length);
         for (int i = 0; i < waves.Length; i++)
         {
             for (int j = 0; j < waves[i].count.Length; j++)
             {
+                
                 waves[i].count[j] = Random.Range(0, maxAmountOf1Enemy- max);
                 max += waves[i].count[j];
             }
@@ -167,8 +169,15 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     void SpawnEnemy(GameObject enemy)
     {
-        Transform sp = spawnPoints[Random.Range(0,spawnPoints.Length)];
+        Transform sp = spawnPoints[currentSp];
         Instantiate(enemy, sp.position, sp.rotation);
+        currentSp++;
+        if (currentSp> spawnPoints.Length - 1)
+        {
+            currentSp = 0;
+        }
+        
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -191,6 +191,10 @@ public class RoomSpawner : MonoBehaviour
             }
             spawned = true;
         }
+        if (other.CompareTag("StartRoom")||other.CompareTag("SpawnedRoom")||other.CompareTag("EndCap"))
+        {
+            Destroy(gameObject);
+        }
        
     }
 }
