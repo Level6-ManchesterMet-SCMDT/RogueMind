@@ -15,4 +15,5 @@ public class DrugsData : ScriptableObject
     public float resistanceToEnemyDamage;//the modifier for the players resistence to enemy damage
     public string name;//the name of a drug
     public string description;// the description of what the drug does
+    public int drugCost;
 }

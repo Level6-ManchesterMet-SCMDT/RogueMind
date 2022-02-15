@@ -20,6 +20,7 @@ public class SpawnShop : MonoBehaviour
         {
             shopRoomTileset.SetActive(true);// sets the tileset to active
             Instantiate(shopKeeper, spawnPoint.position, spawnPoint.rotation);// activates the shopkeeper and his ai
+            spawned = true;
         }
         if (other.CompareTag("Player"))
         {

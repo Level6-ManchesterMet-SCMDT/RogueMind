@@ -165,7 +165,6 @@ public class EnemyRoomSpawn : MonoBehaviour
     {
         Transform sp = spawnPoints[Random.Range(0,spawnPoints.Length)];
         Instantiate(enemy, sp.position, sp.rotation);
-        Destroy(sp);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -8,6 +8,7 @@ public class SmallCollider : MonoBehaviour
     //public GameObject doorTileset;
     public GameObject wallTileset;
     public bool remove = false;
+    float waitTime = 5.0f;
 
     // Update is called once per frame
     void Update()
@@ -16,7 +17,8 @@ public class SmallCollider : MonoBehaviour
         {
             thisDoor.SetActive(true);
             wallTileset.SetActive(false);
-            //Destroy(gameObject);
+            Destroy(gameObject, waitTime);
+            
         }
     }
 }
