@@ -95,20 +95,23 @@ public class RoomSpawner : MonoBehaviour
                 if (direction == OpeningDirection.BOTTOM)
                 {
                     // rooms with 2 or less doors
-                    Instantiate(templates.bottomEndCap, transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom end cap list
+                    rand = Random.Range(0, templates.bottomEndCap.Length);
+                    Instantiate(templates.bottomEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom end cap list
                 }
                 else if (direction == OpeningDirection.TOP)
                 {
-                    Instantiate(templates.topEndCap, transform.position, Quaternion.identity);// creates a room that has a top opening from the Top end cap rooms list
+                    rand = Random.Range(0, templates.topEndCap.Length);
+                    Instantiate(templates.topEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top end cap rooms list
                 }
                 else if (direction == OpeningDirection.LEFT)
                 {
-
-                    Instantiate(templates.leftEndCap, transform.position, Quaternion.identity);// creates a room that has a left opening from the left end cap rooms list
+                    rand = Random.Range(0, templates.leftEndCap.Length);
+                    Instantiate(templates.leftEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a left opening from the left end cap rooms list
                 }
                 else if (direction == OpeningDirection.RIGHT)
                 {
-                    Instantiate(templates.rightEndcap, transform.position, Quaternion.identity);// creates a room that has a right opening from the tight end cap rooms list
+                    rand = Random.Range(0, templates.rightEndcap.Length);
+                    Instantiate(templates.rightEndcap[rand], transform.position, Quaternion.identity);// creates a room that has a right opening from the tight end cap rooms list
                 }
                 spawned = true;
             }
@@ -181,7 +184,8 @@ public class RoomSpawner : MonoBehaviour
         {
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
             {
-                Instantiate(templates.closedRoom, transform.position, transform.rotation);
+                rand = Random.Range(0, templates.closedRoom.Length);
+                Instantiate(templates.closedRoom[rand], transform.position, transform.rotation);
                 Destroy(gameObject);
             }
             spawned = true;
