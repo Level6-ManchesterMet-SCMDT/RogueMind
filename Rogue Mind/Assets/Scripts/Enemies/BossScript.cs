@@ -22,6 +22,7 @@ public class BossScript : MonoBehaviour
     public GameObject nameText;
 
     public GameObject healthBar;// the healthbar for the player
+    public Animator anim;
 
     Vector2 movement;// a vector used for movement
     public BossTypes.BossAI aiType;// the type of AI being used
@@ -37,6 +38,7 @@ public class BossScript : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
         currentState = EnemyState.Moving;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
@@ -51,6 +53,7 @@ public class BossScript : MonoBehaviour
         spawnableData = scriptable.spawnableData;
         Debug.Log(health.ToString());
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(health);
+        anim.runtimeAnimatorController = scriptable.anim;
         nameText.GetComponent<Text>().text = name;
 
         if (scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
@@ -110,9 +113,17 @@ public class BossScript : MonoBehaviour
                 timer++;
                 Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
-                rigidBody.rotation = angle;// rotate enemy to face player
+                //rigidBody.rotation = angle;// rotate enemy to face player
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
+                if (transform.position.x < target.transform.position.x)
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
                 float dist = Vector3.Distance(target.transform.position, transform.position);
                 if (dist < 3.5)//if close enough to the player
                 {
