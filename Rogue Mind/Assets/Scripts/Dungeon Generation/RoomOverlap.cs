@@ -18,7 +18,7 @@ public class RoomOverlap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) // used to stop rooms overlapping, if a room is spawned on top of a spawned room(a room previously there)and will delete the object
     {
-        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap"||collision.CompareTag("StartRoom"))
+        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap")
         {
             Destroy(gameObject);// destroys the overlapped room
         }
