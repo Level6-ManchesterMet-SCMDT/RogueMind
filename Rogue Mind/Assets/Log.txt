@@ -5,5 +5,5 @@ swordDamage: 0
 gunDamage: 0
 moveSpeed: 1
 enemyResistance: 0
-DeskToy1: Energy
-DeskToy2: Donut
+DeskToy1: Atomic
+DeskToy2: Energy
