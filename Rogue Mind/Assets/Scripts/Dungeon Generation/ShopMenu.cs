@@ -9,10 +9,12 @@ public class ShopMenu : MonoBehaviour
     public DrugManagerScript drugManager;
     public GameObject menu;
     public GameObject[] buttons;
+    GameObject player;
 
     void Start()
     {
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -24,10 +26,15 @@ public class ShopMenu : MonoBehaviour
     {
         return drugsData[Random.Range(0, drugsData.Length)];// returns a random drug
     }
+    public void OpenMenu()
+    {
+        menu.SetActive(true);
+        OnOpen();
+    }
     public void OnOpen()// on the opening of the menu
     {
         DisplayedDrugs.Clear();//empty list of drugs
-        for (int i = 0; i < buttons.Length; i++)// for 3 drugs
+        for (int i = 0; i <= buttons.Length; i++)// for 3 drugs
         {
             DrugsData drug1 = RandomDrug();//create a random drug
             DisplayedDrugs.Add(drug1);//add it to list
@@ -42,17 +49,27 @@ public class ShopMenu : MonoBehaviour
     }
     public void AddDrug1()//adds drug 1 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[0]);
+        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= DisplayedDrugs[0].drugCost)
+        {
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[0].drugCost;
+            drugManager.AddEffects(DisplayedDrugs[0]);
+        }
         menu.SetActive(false);//turns off menu
     }
     public void AddDrug2()//adds drug 2 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[1]);
-        menu.SetActive(false);//turns off menu
+        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= DisplayedDrugs[1].drugCost)
+        {
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[1].drugCost;
+            drugManager.AddEffects(DisplayedDrugs[1]);
+        }
     }
     public void AddDrug3()//adds drug 3 to list of effectors
     {
-        drugManager.AddEffects(DisplayedDrugs[2]);
-        menu.SetActive(false);//turns off menu
+        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= DisplayedDrugs[2].drugCost)
+        {
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[2].drugCost;
+            drugManager.AddEffects(DisplayedDrugs[2]);
+        }
     }
 }

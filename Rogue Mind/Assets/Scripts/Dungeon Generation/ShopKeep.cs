@@ -8,7 +8,7 @@ public class ShopKeep : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        drugsMenu = GameObject.FindGameObjectWithTag("UI").GetComponent<ShopMenu>().menu;
+        drugsMenu = GameObject.FindGameObjectWithTag("UI");
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -17,7 +17,7 @@ public class ShopKeep : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                drugsMenu.SetActive(true);
+                drugsMenu.GetComponent<ShopMenu>().OpenMenu();
             }
         }
     }
