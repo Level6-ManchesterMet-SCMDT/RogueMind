@@ -297,7 +297,7 @@ public class EnemyScript : MonoBehaviour
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
                 float dist = Vector3.Distance(target.transform.position, transform.position);
-                if (dist < 1.5)//if close enough to the player
+                if (dist < 1)//if close enough to the player
                 {
                     currentState = EnemyState.Attacking;//stop moving
                     StartCoroutine(NoseAttack());   //run attack
@@ -328,8 +328,8 @@ public class EnemyScript : MonoBehaviour
         s_ScaleX = collider.size.x;
         s_ScaleY = collider.size.y;//save the collider and sprite renderers size
         yield return new WaitForSeconds(1);//pause
-        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX*2,m_ScaleY*2);
-        this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 2, s_ScaleY * 2);// double size for the hit
+        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX*3,m_ScaleY*3);
+        this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 3, s_ScaleY * 3);// double size for the hit
         Vector2 directionNow = new Vector2(direction.x,direction.y);
 
         rigidBody.MovePosition((Vector2)transform.position + (directionNow * activeSpeed));// move position by speed in direction over time

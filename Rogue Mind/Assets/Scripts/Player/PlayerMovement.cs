@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// find the modifiers
         drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
         activeDashCooldown = 0;//sets the dash cool down to nothing
+        
     }
 
 	
@@ -77,8 +78,8 @@ public class PlayerMovement : MonoBehaviour
         switch(currentState)
 		{
             case PlayerState.menu:
-                drugSelectionMenu.GetComponent<DrugChoiceScript>().OpenMenu();//opens the menu for selecting drugs
-                currentState = PlayerState.Moving;// sets the state to moving
+                
+                
                 break;
             case PlayerState.Moving:
                 movement.x = Input.GetAxisRaw("Horizontal");//Obtain user input for horizontal Movement 
