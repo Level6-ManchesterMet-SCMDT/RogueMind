@@ -219,7 +219,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
-                    if (i > 0 && j < 1)
+                    if ( j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
@@ -257,7 +257,7 @@ public class EnemyScript : MonoBehaviour
 				{
                     int j = 0;
                     Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
-                    if (i >= 1&&j < 1)
+                    if (j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
@@ -281,13 +281,14 @@ public class EnemyScript : MonoBehaviour
             
             if (health <= 0)
             {
-                
+                Instantiate(dopamineDropRight, transform.position, transform.rotation);
+                Instantiate(dopamineDropLeft, transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
                     int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
 
-                    if (i >= 1 && j < 1)
+                    if ( j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
