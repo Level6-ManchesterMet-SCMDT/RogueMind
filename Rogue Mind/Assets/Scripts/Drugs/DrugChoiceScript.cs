@@ -23,7 +23,7 @@ public class DrugChoiceScript : MonoBehaviour
         drugSelectionMenu = transform.GetChild(0).gameObject;//find the menu
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms");
-        OpenMenu();
+        //OpenMenu();
     }
 
     // Update is called once per frame
@@ -68,6 +68,7 @@ public class DrugChoiceScript : MonoBehaviour
         drugSelectionMenu.SetActive(true);//turns on menu
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.menu;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CantShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
         OnOpen();// sets the drugs displayed in the menu
     }
 

@@ -45,7 +45,7 @@ public class MeleeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = MeleeState.CantHit;
+        currentState = MeleeState.CanHit;
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered

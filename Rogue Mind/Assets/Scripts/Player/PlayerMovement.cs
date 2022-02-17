@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         activeMoveSpeed = moveSpeed;// setting the active movespeed to that set in the inspector
-        currentState = PlayerState.menu;// set the players state to menu, just to get the initial drug menu to show
+        currentState = PlayerState.Moving;// set the players state to menu, just to get the initial drug menu to show
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();// find the camera
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// find the modifiers
         drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
