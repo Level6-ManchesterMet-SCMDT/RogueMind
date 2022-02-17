@@ -25,6 +25,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject dopamineDropRight;
     public GameObject dopamineDropLeft;
+    public GameObject bloodSplat;
 
     public Color flashColor;//the colour it flashes to
     public Color regularColor;//the colour it returns to 
@@ -214,7 +215,7 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
-                
+                Instantiate(bloodSplat, transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
                     int j = 0;
@@ -252,7 +253,8 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
-                
+                Instantiate(bloodSplat, transform.position, transform.rotation);
+
                 for (int i = 0; i < Random.RandomRange(0,3); i++)
 				{
                     int j = 0;
@@ -281,8 +283,7 @@ public class EnemyScript : MonoBehaviour
             
             if (health <= 0)
             {
-                Instantiate(dopamineDropRight, transform.position, transform.rotation);
-                Instantiate(dopamineDropLeft, transform.position, transform.rotation);
+                Instantiate(bloodSplat, transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
                     int j = 0;

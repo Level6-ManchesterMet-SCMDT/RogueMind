@@ -191,6 +191,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   dopamineDropRight: {fileID: 480781819016563510, guid: 2e1bd6e5544dcce49a72846ffb164c91, type: 3}
   dopamineDropLeft: {fileID: 3458838945682848725, guid: dc49055d69c6bfc4e98b9cdb76d9afb2, type: 3}
+  bloodSplat: {fileID: 5054385957914841627, guid: 02839a8e92c403244a71c79fbbf951f7, type: 3}
   flashColor: {r: 1, g: 0.3066038, b: 0.3066038, a: 0.6666667}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.1
