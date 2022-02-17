@@ -23,6 +23,9 @@ public class EnemyScript : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject dopamineDropRight;
+    public GameObject dopamineDropLeft;
+
     public Color flashColor;//the colour it flashes to
     public Color regularColor;//the colour it returns to 
     public float flashDuration;//the duration of each flash
@@ -211,15 +214,24 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
+                
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
+                    int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                    if (i > 0 && j < 1)
+                    {
+                        Instantiate(dopamineDropRight, transform.position, transform.rotation);
+                        Instantiate(dopamineDropLeft, transform.position, transform.rotation);
+                    }
+                    j++;
                 }
                 if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
+               
                 
                 
                 Destroy(gameObject);// if health 0 or below then die
@@ -240,9 +252,17 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
-				for (int i = 0; i < Random.RandomRange(0,3); i++)
+                
+                for (int i = 0; i < Random.RandomRange(0,3); i++)
 				{
+                    int j = 0;
                     Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
+                    if (i >= 1&&j < 1)
+                    {
+                        Instantiate(dopamineDropRight, transform.position, transform.rotation);
+                        Instantiate(dopamineDropLeft, transform.position, transform.rotation);
+                    }
+                    j++;
 				}
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
@@ -261,14 +281,24 @@ public class EnemyScript : MonoBehaviour
             
             if (health <= 0)
             {
+                
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
+                    int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+
+                    if (i >= 1 && j < 1)
+                    {
+                        Instantiate(dopamineDropRight, transform.position, transform.rotation);
+                        Instantiate(dopamineDropLeft, transform.position, transform.rotation);
+                    }
+                    j++;
                 }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
                     Instantiate(FoodDrop, transform.position, transform.rotation);
                 }
+                
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
             }
