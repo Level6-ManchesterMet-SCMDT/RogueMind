@@ -11,7 +11,7 @@ public class ShootingScript : MonoBehaviour
     public float bulletForce = 20f;//the force at which bullets are shot
     public int currentBullets;// the current bullets in the gun
     public int maxBullets;// the max number of bullets in the clip
-    float shootDelay = 0;// used to delay the shots
+    public float shootDelay = 0;// used to delay the shots
     public float shootDelayLength = 20;//the delay inbetween shots
     public float reloadDelay = 1.0f;
 
@@ -37,6 +37,7 @@ public class ShootingScript : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetMouseButton(0))//if left mouse click
         {
             if (currentBullets > 0)// if the player still has bullets
@@ -62,8 +63,15 @@ public class ShootingScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))//if R is pressed
         {
+            currentState = ShootingState.CantShoot;
             StartCoroutine(Reload());//call reload
         }
+        if(Input.GetMouseButtonUp(0) && currentBullets == 0)
+		{
+            currentState = ShootingState.CantShoot;
+            StartCoroutine(Reload());//call reload
+        }
+
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -88,7 +96,8 @@ public class ShootingScript : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadDelay);//pause
         currentBullets = maxBullets;
-        yield return new WaitForSeconds(reloadDelay);//pause
+        //yield return new WaitForSeconds(reloadDelay);//pause
         currentState = ShootingState.CanShoot;
+        shootDelay = 0;
     }
 }

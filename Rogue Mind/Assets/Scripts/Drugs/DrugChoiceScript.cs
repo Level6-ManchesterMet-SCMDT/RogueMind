@@ -97,8 +97,8 @@ public class DrugChoiceScript : MonoBehaviour
             DisplayedDrugs.Add(adding);//add it to list
             Debug.Log(adding.name);
 
-            drugSelectionMenu.transform.GetChild(i + 2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = adding.name;//set its name
-            drugSelectionMenu.transform.GetChild(i + 2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = adding.description;//set its description
+            drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = adding.name;//set its name
+            drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = adding.description;//set its description
         }
     }
 
