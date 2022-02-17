@@ -223,11 +223,11 @@ public class EnemyScript : MonoBehaviour
             {
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
-                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                 }
                 if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 
@@ -252,11 +252,11 @@ public class EnemyScript : MonoBehaviour
             {
 				for (int i = 0; i < Random.RandomRange(0,3); i++)
 				{
-                    Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
-				}
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
+                }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
@@ -273,11 +273,11 @@ public class EnemyScript : MonoBehaviour
             {
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
-                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                 }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
