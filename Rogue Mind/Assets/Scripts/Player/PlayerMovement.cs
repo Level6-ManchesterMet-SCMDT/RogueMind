@@ -138,6 +138,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (Input.GetAxis("Horizontal") < 0)
                 {
+                    bodyScale.x = -1;
+                    bodyScale.y = 1;
+                    bodyScale.z = 1;
+                    bodyGFX.transform.localScale = bodyScale;
+
                     LegsScale.x = -1;
                     LegsScale.y = 1;
                     LegsScale.z = 1;
@@ -150,32 +155,31 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (Input.GetAxis("Horizontal") > 0)
                 {
-                    LegsScale.x = 1;
-                    LegsScale.y = 1;
-                    LegsScale.z = 1;
-                    legsGFX.transform.localScale = LegsScale;            
-                }
-                if(arm.GetComponent<ArmRotation>().lookDir.x < 0)
-                {
-                    bodyScale.x = -1;
-                    bodyScale.y = 1;
-                    bodyScale.z = 1;
-                    bodyGFX.transform.localScale = bodyScale;
-                    armScale.x = -1;
-                    armScale.y = 1;
-                    armScale.z = 1;
-                    arm.transform.localScale = armScale;
-                }
-                if (arm.GetComponent<ArmRotation>().lookDir.x > 0)
-                {
                     bodyScale.x = 1;
                     bodyScale.y = 1;
                     bodyScale.z = 1;
                     bodyGFX.transform.localScale = bodyScale;
+
+                    LegsScale.x = 1;
+                    LegsScale.y = 1;
+                    LegsScale.z = 1;
+                    legsGFX.transform.localScale = LegsScale;
+
+
                     armScale.x = 1;
                     armScale.y = 1;
                     armScale.z = 1;
                     arm.transform.localScale = armScale;
+                }
+                if(arm.GetComponent<ArmRotation>().lookDir.x < 0)
+                {
+                    
+                    
+                }
+                if (arm.GetComponent<ArmRotation>().lookDir.x > 0)
+                {
+                   
+                   
                 }
 
 
