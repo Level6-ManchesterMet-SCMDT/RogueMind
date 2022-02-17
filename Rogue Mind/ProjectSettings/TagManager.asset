@@ -34,6 +34,7 @@ TagManager:
   - Trail
   - UI
   - SFX
+  - CashDrop
   layers:
   - Default
   - TransparentFX

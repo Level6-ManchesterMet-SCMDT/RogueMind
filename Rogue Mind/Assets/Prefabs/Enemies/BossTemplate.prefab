@@ -185,6 +185,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   collider: {fileID: 0}
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
+  CashDrop: {fileID: 4381117763484346400, guid: f344df6651a4b81489296b625581daad, type: 3}
   spawnableData: {fileID: 0}
   nameText: {fileID: 6133312542093819450}
   healthBar: {fileID: 235803215783670150}
