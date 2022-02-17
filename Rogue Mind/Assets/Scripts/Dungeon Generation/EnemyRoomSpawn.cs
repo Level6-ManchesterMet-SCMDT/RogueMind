@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class EnemyRoomSpawn : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     public int round = 1;
 
     Transform camera;
+    Transform cinemachineCam;
 
     public float waveDelay = 1.0f;
     public float countdown;
@@ -64,7 +66,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     private void Update()
     {
-        
+        cinemachineCam = GameObject.FindGameObjectWithTag("Cinemachine").transform;
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         if (spawnEnemies)
         {
@@ -184,6 +186,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;
+            cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
             if (!enemiesSpawned)
             {
                 time -= Time.deltaTime;

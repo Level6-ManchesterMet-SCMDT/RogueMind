@@ -35,6 +35,7 @@ TagManager:
   - UI
   - SFX
   - CashDrop
+  - Cinemachine
   layers:
   - Default
   - TransparentFX
