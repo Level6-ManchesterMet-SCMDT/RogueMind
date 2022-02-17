@@ -43,6 +43,7 @@ public class EnemyScript : MonoBehaviour
         Moving,//when the enemy is moving 
         Attacking,// when the enemy is attacking
         Stunned,//when the enemy is stunned
+        Wait,
 	}
     private IEnumerator FlashCo()// used for Iframes and flashing
     {
@@ -65,7 +66,7 @@ public class EnemyScript : MonoBehaviour
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
-        currentState = EnemyState.Moving;//set base movement state
+        currentState = EnemyState.Wait;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();// grab the sprite renderer
@@ -102,6 +103,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyTypes.EnemyAI.Nose:
                 NoseUpdate();
                 break;
+            
         }
     }
     private void FixedUpdate()// runs the fixed update associated with this enemies ai type
@@ -163,6 +165,11 @@ public class EnemyScript : MonoBehaviour
 
 	}
 
+    private IEnumerator SpawnDelay()
+	{
+        yield return new WaitForSeconds(0.5f);//pause
+        currentState = EnemyState.Moving;
+    }
     //---------------------------------FOLLOWER-----------------------------------
     void FollowerUpdate()
     {
@@ -186,6 +193,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
                 break;
         }
          
@@ -306,6 +316,9 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
+                break;
         }
         
     }
@@ -364,6 +377,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
                 break;
         }
     }
