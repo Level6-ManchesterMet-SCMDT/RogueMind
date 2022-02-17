@@ -112,6 +112,7 @@ public class DrugChoiceScript : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[0]);
         drugSelectionMenu.SetActive(false);//turns off menu
@@ -121,6 +122,7 @@ public class DrugChoiceScript : MonoBehaviour
     {
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[1]);
         drugSelectionMenu.SetActive(false);//turns off menu
@@ -130,6 +132,7 @@ public class DrugChoiceScript : MonoBehaviour
     {
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[2]);
         drugSelectionMenu.SetActive(false);//turns off menu
