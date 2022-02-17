@@ -30,9 +30,22 @@ public class MeleeScript : MonoBehaviour
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public bool windowCleanerDrug = false;
     public SoundManager soundManager;
+
+
+    public MeleeState currentState;// the enemies state
+
+
+
+
+    public enum MeleeState
+    {
+        CanHit,//when the player can shoot
+        CantHit,// when the player cant shoot
+    }
     // Start is called before the first frame update
     void Start()
     {
+        currentState = MeleeState.CantHit;
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
@@ -42,23 +55,29 @@ public class MeleeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentDelay >= 0)
+        switch(currentState)
 		{
-            currentDelay--;
+            case MeleeState.CanHit:
+                if (currentDelay >= 0)
+                {
+                    currentDelay--;
+                }
+                else
+                {
+                    if (Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
+                    {
+
+                        numberOfClicks = 0;
+                        damage = initialDamage * modifiers.meleeDamageModifier;//sets damage back to 1 for the first hit
+                    }
+                    if (Input.GetMouseButtonDown(1))//if right mouse button clicked
+                    {
+                        OnClick();//Run the onClick function
+                    }
+                }
+                break;
 		}
-        else
-		{
-            if (Time.time - lastClickedTime > maxComboDelay)// if no click has been entered before the ammount of time to end the combo happens
-            {
-                
-                numberOfClicks = 0;
-                damage = initialDamage * modifiers.meleeDamageModifier;//sets damage back to 1 for the first hit
-            }
-            if (Input.GetMouseButtonDown(1))//if right mouse button clicked
-            {
-                OnClick();//Run the onClick function
-            }
-        }
+        
        
     }
 
