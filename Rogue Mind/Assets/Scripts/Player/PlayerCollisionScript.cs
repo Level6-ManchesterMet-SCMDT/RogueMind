@@ -85,6 +85,12 @@ public class PlayerCollisionScript : MonoBehaviour
             Destroy(collision.gameObject);//destroy the dopamine drop
 
         }
+        if (collision.CompareTag("CashDrop"))//if the collider is a dopamine drop
+        {
+            save.cash += 5;
+            Destroy(collision.gameObject);//destroy the dopamine drop
+
+        }
 
 
     }

@@ -47,6 +47,7 @@ public class EnemyScript : MonoBehaviour
         Moving,//when the enemy is moving 
         Attacking,// when the enemy is attacking
         Stunned,//when the enemy is stunned
+        Wait,
 	}
     private IEnumerator FlashCo()// used for Iframes and flashing
     {
@@ -69,7 +70,7 @@ public class EnemyScript : MonoBehaviour
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
-        currentState = EnemyState.Moving;//set base movement state
+        currentState = EnemyState.Wait;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();// grab the sprite renderer
@@ -106,6 +107,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyTypes.EnemyAI.Nose:
                 NoseUpdate();
                 break;
+            
         }
     }
     private void FixedUpdate()// runs the fixed update associated with this enemies ai type
@@ -167,6 +169,11 @@ public class EnemyScript : MonoBehaviour
 
 	}
 
+    private IEnumerator SpawnDelay()
+	{
+        yield return new WaitForSeconds(0.5f);//pause
+        currentState = EnemyState.Moving;
+    }
     //---------------------------------FOLLOWER-----------------------------------
     void FollowerUpdate()
     {
@@ -190,6 +197,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
                 break;
         }
          
@@ -218,8 +228,9 @@ public class EnemyScript : MonoBehaviour
                 Instantiate(bloodSplat, transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
+
                     int j = 0;
-                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                     if ( j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
@@ -229,7 +240,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                
@@ -258,7 +269,7 @@ public class EnemyScript : MonoBehaviour
                 for (int i = 0; i < Random.RandomRange(0,3); i++)
 				{
                     int j = 0;
-                    Instantiate(DopamineDrop, transform.position+(new Vector3(i,i,0)),transform.rotation);
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                     if (j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
@@ -266,9 +277,12 @@ public class EnemyScript : MonoBehaviour
                     }
                     j++;
 				}
+
+                }
+
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
@@ -287,18 +301,19 @@ public class EnemyScript : MonoBehaviour
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
                     int j = 0;
-                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), transform.rotation);
+                   Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
 
                     if ( j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
                     }
-                    j++;
+                    j++
+
                 }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, transform.rotation);
+                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
@@ -337,6 +352,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
                 break;
         }
         
@@ -396,6 +414,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
                 break;
         }
     }

@@ -18,6 +18,7 @@ public class BossScript : MonoBehaviour
     public Rigidbody2D rigidBody;// the enemies rigidbody
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;// the dopamine drops 
+    public GameObject CashDrop;// the dopamine drops 
     public EnemyData spawnableData;// what the boss can spawn
     public GameObject nameText;
 
@@ -205,6 +206,10 @@ public class BossScript : MonoBehaviour
             for (int i = 0; i < Random.RandomRange(5, 10); i++)
             {
                 Instantiate(DopamineDrop, transform.position + (new Vector3(i / 10, i / 10, 0)), transform.rotation);
+            }
+            for (int i = 0; i < Random.RandomRange(5, 10); i++)
+            {
+                Instantiate(CashDrop, transform.position + (new Vector3(i / 10, i / 10, 0)), transform.rotation);
             }
             Destroy(gameObject);// if health 0 or below then die
         }
