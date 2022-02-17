@@ -240,7 +240,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
+                    Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                
@@ -278,11 +278,11 @@ public class EnemyScript : MonoBehaviour
                     j++;
 				}
 
-                }
+                
 
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
+                    Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
@@ -308,12 +308,12 @@ public class EnemyScript : MonoBehaviour
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
                     }
-                    j++
+                    j++;
 
                 }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position, , Quaternion.Euler(0, 0, 0));
+                    Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
