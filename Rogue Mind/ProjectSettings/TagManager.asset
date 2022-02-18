@@ -36,6 +36,7 @@ TagManager:
   - SFX
   - CashDrop
   - Cinemachine
+  - ClosedRoom
   layers:
   - Default
   - TransparentFX
