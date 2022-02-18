@@ -22,7 +22,9 @@ public class BossRoomSpawn : MonoBehaviour
     public GameObject exitDoor;
     public int nextWave = 0;
     public int round = 1;
+    
     Transform camera;
+    Transform cinemachineCam;
 
     public float waveDelay = 1.0f;
     public float countdown;
@@ -45,6 +47,7 @@ public class BossRoomSpawn : MonoBehaviour
     private void Update()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;// finds the main camera
+        cinemachineCam = GameObject.FindGameObjectWithTag("Cinemachine").transform;
         if (spawnEnemies) // if enemies are needed to be spawned
         {
             if (state == SpawnState.WAITING)
@@ -149,6 +152,7 @@ public class BossRoomSpawn : MonoBehaviour
         if (collision.CompareTag("Player")) // if the player is detected
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// sets the cameras target to the spawner transform
+            cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
             if (!enemiesSpawned) //if no enemies are spawned
             {
                 time -= Time.deltaTime;
