@@ -175,12 +175,11 @@ public class RoomSpawner : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Room") || other.CompareTag("SpawnedRoom"))
+        //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
+        if (other.CompareTag("StartRoom") || other.CompareTag("SpawnedRoom") || other.CompareTag("EndCap"))
         {
-            spawned = true;
             Destroy(gameObject);
         }
-        //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
             
@@ -193,10 +192,7 @@ public class RoomSpawner : MonoBehaviour
             }
             spawned = true;
         }
-        if (other.CompareTag("StartRoom")||other.CompareTag("SpawnedRoom")||other.CompareTag("EndCap"))
-        {
-            Destroy(gameObject);
-        }
+        
        
     }
 }

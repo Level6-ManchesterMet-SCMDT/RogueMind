@@ -12,13 +12,16 @@ public class RoomOverlap : MonoBehaviour
         if (waitTime <= 0) 
         {
             waitTime = 0;
-            gameObject.tag = "SpawnedRoom"; // changes the tag of a room that has recently been instansiated to spawned room
+            if (gameObject.tag == "Room")
+            {
+                gameObject.tag = "SpawnedRoom";
+            } // changes the tag of a room that has recently been instansiated to spawned room
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // used to stop rooms overlapping, if a room is spawned on top of a spawned room(a room previously there)and will delete the object
+    private void OnTriggerStay2D(Collider2D collision) // used to stop rooms overlapping, if a room is spawned on top of a spawned room(a room previously there)and will delete the object
     {
-        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap"||collision.CompareTag("StartRoom"))
+        if (collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "Room"|| collision.gameObject.tag == "SpawnedRoom" && gameObject.tag == "EndCap"||collision.CompareTag("StartRoom")||gameObject.tag == "ClosedRoom" && collision.gameObject.CompareTag("Room"))
         {
             Destroy(gameObject);// destroys the overlapped room
         }
