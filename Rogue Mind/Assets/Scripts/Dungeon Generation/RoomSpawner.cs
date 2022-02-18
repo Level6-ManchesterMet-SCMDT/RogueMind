@@ -10,6 +10,7 @@ public class RoomSpawner : MonoBehaviour
 
     private RoomTemplates templates;// holds the gameobject with the different
     private int rand;// defines a random value to pick from the rooms array
+    int random;
     public bool spawned = false;// checks if the spawnpoint has already spawned a room
 
     float WaitTime = 10f; // used to destroy a spawn point after a certain amount of time
@@ -21,7 +22,7 @@ public class RoomSpawner : MonoBehaviour
     private void Start()
     {
         Destroy(gameObject, WaitTime);
-        
+        random = Random.Range(0, 2);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>(); // finds the room templates
         Invoke("Spawn", 0.3f);// spawns the rooms
     }
@@ -182,11 +183,12 @@ public class RoomSpawner : MonoBehaviour
         //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
-            rand = Random.Range(0, templates.closedRoom.Length);
+            
+            
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
             {
                 
-                Instantiate(templates.closedRoom[rand], transform.position, transform.rotation);
+                Instantiate(templates.closedRoom[random], transform.position, Quaternion.Euler(0,0,0));
                 Destroy(gameObject);
             }
             spawned = true;
