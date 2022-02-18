@@ -216,6 +216,7 @@ public class EnemyScript : MonoBehaviour
         if ((collision.tag == "Bullet"))//if collide with a bullet
         {
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
+            CinemachineShake.Instance.ShakeCamera(1.5f, .1f);
             soundManager.PlaySound("EnemyHit");
             StartCoroutine(FlashCo());
             Destroy(collision.gameObject);//destroy bullet
@@ -253,6 +254,7 @@ public class EnemyScript : MonoBehaviour
         {
             health -= target.GetComponent<MeleeScript>().damage;// reduce health by attacks damage value
             soundManager.PlaySound("EnemyHit");
+            CinemachineShake.Instance.ShakeCamera(3f, .1f);
             Stun(collision.GetComponent<HitScript>().stun);
             
             StartCoroutine(FlashCo());
