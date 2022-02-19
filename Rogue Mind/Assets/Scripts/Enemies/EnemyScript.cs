@@ -98,6 +98,8 @@ public class EnemyScript : MonoBehaviour
         if(scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
 		{
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+            transform.GetChild(0).GetComponent<ShadowScript>().enemy = this.gameObject;
+            transform.GetChild(0).parent = null;
         }
     }
     // Update is called once per frame
@@ -408,6 +410,7 @@ public class EnemyScript : MonoBehaviour
         Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
         rigidBody.rotation = angle;// rotate enemy to face player
+        
         switch (currentState)// runs the collider code associated with this enemies ai type
         {
             case EnemyState.Moving:
