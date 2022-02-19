@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1025239956613907275}
   - component: {fileID: 490503738663309364}
   - component: {fileID: 7922443519695237766}
+  - component: {fileID: 5853628104022908887}
   m_Layer: 0
   m_Name: FoodDrop
   m_TagString: FoodDrop
@@ -121,3 +122,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5853628104022908887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642340719644914091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dba936e00e957545bff8cea0cda20e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 0313050f68a1c564fb44eb9b448184f9, type: 3}
+  - {fileID: 21300000, guid: 0d7ba45378b7f2943aa9db27f3b716b6, type: 3}
+  - {fileID: 21300000, guid: 15615f91f298dc448a0332652325c657, type: 3}
