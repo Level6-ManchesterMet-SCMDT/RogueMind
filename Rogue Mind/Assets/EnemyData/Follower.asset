@@ -20,3 +20,5 @@ MonoBehaviour:
   damage: 10
   bulletType: {fileID: 0}
   anim: {fileID: 9100000, guid: 21c9c3ccd486b14479b1b21bd022c449, type: 2}
+  sizeX: 0.8
+  sizeY: 0.5
