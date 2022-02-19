@@ -14,6 +14,8 @@ public class EnemyScript : MonoBehaviour
     public float damage;// the damage value of the enemy
     public string name;// name of the enemy
     public GameObject bulletType;//type of bullet an enemy will use
+    public float sizeX;
+    public float sizeY;
 
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
@@ -74,6 +76,10 @@ public class EnemyScript : MonoBehaviour
         target = GameObject.FindWithTag("Player");//find the player and rigid body
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();// grab the sprite renderer
+        sizeX = scriptable.sizeX;
+        sizeY = scriptable.sizeY;
+        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(sizeX, sizeY);
+        this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, sizeY);
 
         health = scriptable.hp;// set all variables to that of the scriptable object assigned to the enemy
         speed = scriptable.movementSpeed;
@@ -83,6 +89,7 @@ public class EnemyScript : MonoBehaviour
         name = scriptable.name;
         bulletType = scriptable.bulletType;
         anim.runtimeAnimatorController = scriptable.anim;
+
         if(scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
 		{
             spriteRenderer.sprite = scriptable.sprite;
@@ -346,7 +353,7 @@ public class EnemyScript : MonoBehaviour
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
                 float dist = Vector3.Distance(target.transform.position, transform.position);
-                if (dist < 1)//if close enough to the player
+                if (dist < 0.5)//if close enough to the player
                 {
                     currentState = EnemyState.Attacking;//stop moving
                     StartCoroutine(NoseAttack());   //run attack
@@ -379,7 +386,7 @@ public class EnemyScript : MonoBehaviour
         m_ScaleY = collider.size.y;
         s_ScaleX = collider.size.x;
         s_ScaleY = collider.size.y;//save the collider and sprite renderers size
-        yield return new WaitForSeconds(1);//pause
+        yield return new WaitForSeconds(0.5f);//pause
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX*3,m_ScaleY*3);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 3, s_ScaleY * 3);// double size for the hit
         Vector2 directionNow = new Vector2(direction.x,direction.y);
