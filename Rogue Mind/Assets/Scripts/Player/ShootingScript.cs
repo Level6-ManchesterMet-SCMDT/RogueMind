@@ -63,8 +63,12 @@ public class ShootingScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))//if R is pressed
         {
-            currentState = ShootingState.CantShoot;
-            StartCoroutine(Reload());//call reload
+            if(currentState == ShootingState.CanShoot)
+			{
+                currentState = ShootingState.CantShoot;
+                StartCoroutine(Reload());//call reload
+            }
+            
         }
         if(Input.GetMouseButtonUp(0) && currentBullets == 0)
 		{
@@ -94,8 +98,16 @@ public class ShootingScript : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(reloadDelay);//pause
-        currentBullets = maxBullets;
+
+        for (int i = 0; i < maxBullets; i++)
+        {
+            yield return new WaitForSeconds(reloadDelay / maxBullets);//pause
+            currentBullets++;
+        }
+        if(currentBullets > maxBullets)
+		{
+            currentBullets = maxBullets;
+		}
         //yield return new WaitForSeconds(reloadDelay);//pause
         currentState = ShootingState.CanShoot;
         shootDelay = 0;
