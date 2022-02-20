@@ -13,6 +13,8 @@ public class RoomSpawner : MonoBehaviour
     int random;
     public bool spawned = false;// checks if the spawnpoint has already spawned a room
 
+    public int cols = 0;
+
     float WaitTime = 10f; // used to destroy a spawn point after a certain amount of time
     float Delay = 2.0f;
 
@@ -29,7 +31,7 @@ public class RoomSpawner : MonoBehaviour
 
     void Spawn()
     {
-        if (!spawned)// checks if the spawn point has already spawned a room
+        if (!spawned&& cols <=0)// checks if the spawn point has already spawned a room
         {
             int number = Random.Range(0, 100);// picks a random int from 1 to 100;
                                               //TO DO, SPAWNING 3 DOORS OCCASIONALLY CAUSES OVERLAP AND BLOCKS OFF THE PATH TO THE EXIT
@@ -169,28 +171,64 @@ public class RoomSpawner : MonoBehaviour
                     spawned = true;
                 }
             }
-            spawned = true;
         }
         
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
-        if (other.CompareTag("StartRoom") || other.CompareTag("SpawnedRoom") || other.CompareTag("EndCap"))
-        {
-            Destroy(gameObject);
-        }
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
-            
-            
-            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
+            cols++;
+
+            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && cols == 1)// if neither of the spawnpoints have spawned an object
             {
-                
-                Instantiate(templates.closedRoom[random], transform.position, Quaternion.Euler(0,0,0));
+                if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM) //checks the direction of the other spawnpoint
+                {
+                    Debug.Log("BottomLeft");
+                    //rand = Random.Range(0, templates.bottomLeftRooms.Length);
+                    Instantiate(templates.bottomLeftRooms, transform.position, Quaternion.identity); // spawns a room 
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.LEFT) // checks the direction of the other spawnpoint(same as before but reversed, stops rooms spawning on top of one another)
+                {
+                    
+                    Destroy(gameObject, WaitTime); // destroys the spawnpoint after a certain amount of times
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.BOTTOM)
+                {
+                    Debug.Log("BottomRight");
+                    
+                    Instantiate(templates.bottomRightRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.RIGHT)
+                {
+                    Destroy(gameObject, WaitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.TOP)
+                {
+                    //rand = Random.Range(0, templates.topLeftRooms.Length);
+                    Instantiate(templates.topLeftRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.LEFT)
+                {                    
+                    Destroy(gameObject, WaitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.TOP)
+                {
+                    //rand = Random.Range(0, templates.topRightRooms.Length);
+                    Instantiate(templates.topRightRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.RIGHT)
+                {                   
+                    Destroy(gameObject, WaitTime);
+                }
+
+            }
+            else if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && cols > 1)
+            {
+                Instantiate(templates.closedRoom, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
-            spawned = true;
         }
         
        
