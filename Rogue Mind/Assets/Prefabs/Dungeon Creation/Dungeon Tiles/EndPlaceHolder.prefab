@@ -323,7 +323,7 @@ MonoBehaviour:
   - {fileID: 5021983960557804734}
   enemyPrefab: {fileID: 3182398780945161534, guid: 2a30c9f4a72df3f49be52448ee546ace, type: 3}
   doors: {fileID: 0}
-  exitDoor: {fileID: 0}
+  exitDoor: {fileID: 1011154190737002063}
   nextWave: 0
   round: 1
   waveDelay: 1
