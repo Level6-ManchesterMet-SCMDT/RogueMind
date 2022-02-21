@@ -261,6 +261,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
                 }
+                target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                
                 
@@ -285,6 +286,7 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
+                
                 if (collision.GetComponent<HitScript>().hitNo == 3)
                 {
                     target.GetComponent<MeleeScript>().TimeSlowing();
@@ -311,6 +313,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
+                target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -340,7 +343,8 @@ public class EnemyScript : MonoBehaviour
                 {
                     Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
                 }
-                
+
+                target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 Destroy(gameObject);// if health 0 or below then die
             }

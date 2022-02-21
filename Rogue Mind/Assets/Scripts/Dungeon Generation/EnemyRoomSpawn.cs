@@ -36,6 +36,8 @@ public class EnemyRoomSpawn : MonoBehaviour
     public float waveDelay = 1.0f;
     public float countdown;
 
+    bool RoomCleared = false;
+
     private float searchCountdown = .5f;
     public bool enemiesSpawned = false;
     public bool spawnEnemies = false;
@@ -101,8 +103,14 @@ public class EnemyRoomSpawn : MonoBehaviour
 			{
                 player.GetComponent<PlayerCollisionScript>().inRoom = false;
 			}
+            
             spawnEnemies = false;
             doors.SetActive(false);
+            if (!RoomCleared)
+            {
+                player.GetComponent<PlayerCollisionScript>().RoomsCleared += 1;
+                RoomCleared = true;
+            }
             //soundManager.PlaySound("DoorOpen");
 
             if(exitDoor != null)
