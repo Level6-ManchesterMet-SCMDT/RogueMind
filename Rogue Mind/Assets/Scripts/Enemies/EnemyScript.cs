@@ -23,6 +23,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject DopamineDrop;
     public GameObject FoodDrop;
     public GameObject shadow;
+    public float dist;
 
     public Animator anim;
 
@@ -431,12 +432,8 @@ public class EnemyScript : MonoBehaviour
                 
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
-                float dist = Vector3.Distance(target.transform.position, transform.position);
-                if (dist < 10)//if close enough to the player
-                {
-                    currentState = EnemyState.Attacking;//stop moving
-                    StartCoroutine(ShooterAttack());// shoot
-                }
+                
+                distCheck();
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
@@ -463,11 +460,23 @@ public class EnemyScript : MonoBehaviour
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
-        yield return new WaitForSeconds(1);//pause inbetween shots
-        currentState = EnemyState.Moving;//set back to moving
+        yield return new WaitForSeconds(0.5f + Random.RandomRange(0f, 1f));//pause inbetween shots
+        distCheck();
 
         
 	}
 
-    
+    void distCheck()
+	{
+        dist = Vector3.Distance(target.transform.position, transform.position);
+        if (dist < 10)//if close enough to the player
+        {
+            currentState = EnemyState.Attacking;//stop moving
+            StartCoroutine(ShooterAttack());// shoot
+        }
+        else
+		{
+            currentState = EnemyState.Moving;
+		}
+    }
 }
