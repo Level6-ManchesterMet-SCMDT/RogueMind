@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
+    public GameObject pauseMenu;
     public GameObject menu;
+    public bool paused;
     public Text roomsCleared;
     public Text enemiesKilled;
     GameObject player;
@@ -23,6 +25,17 @@ public class DeathScreen : MonoBehaviour
         {
             OpenDeathScreen();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     void OpenDeathScreen()
@@ -38,5 +51,21 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+    public void Pause()
+    {
+        paused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+    public void Resume()
+    {
+        paused = false;
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
