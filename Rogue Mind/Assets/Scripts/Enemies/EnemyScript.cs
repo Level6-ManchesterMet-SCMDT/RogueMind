@@ -25,6 +25,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject shadow;
     public float dist;
 
+
     public Animator anim;
 
     public GameObject dopamineDropRight;
@@ -47,16 +48,18 @@ public class EnemyScript : MonoBehaviour
     public SoundManager soundManager;
 
     public enum EnemyState
-	{
+    {
         Moving,//when the enemy is moving 
         Attacking,// when the enemy is attacking
         Stunned,//when the enemy is stunned
         Wait,
-	}
+        FlyAttack,
+        Limbo,
+    }
     private IEnumerator FlashCo()// used for Iframes and flashing
     {
         int temp = 0;
-        
+
         while (temp < numberOfFlashes)// as long as there are more flashes to do
         {
             spriteRenderer.color = flashColor;// set the sprite the flash colour
@@ -66,7 +69,7 @@ public class EnemyScript : MonoBehaviour
             temp++;//increase the count in the loop by 1
 
         }
-        
+
     }
     void Start()
     {
@@ -92,13 +95,13 @@ public class EnemyScript : MonoBehaviour
         bulletType = scriptable.bulletType;
         anim.runtimeAnimatorController = scriptable.anim;
 
-        if(scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
-		{
+        if (scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
+        {
             spriteRenderer.sprite = scriptable.sprite;
         }
 
-        if(scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
-		{
+        if (scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
+        {
             shadow = transform.GetChild(0).gameObject;
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             transform.GetChild(0).GetComponent<ShadowScript>().enemy = this.gameObject;
@@ -119,7 +122,10 @@ public class EnemyScript : MonoBehaviour
             case EnemyTypes.EnemyAI.Nose:
                 NoseUpdate();
                 break;
-            
+            case EnemyTypes.EnemyAI.Fly:
+                FlyUpdate();
+                break;
+
         }
     }
     private void FixedUpdate()// runs the fixed update associated with this enemies ai type
@@ -135,7 +141,10 @@ public class EnemyScript : MonoBehaviour
             case EnemyTypes.EnemyAI.Nose:
                 NoseFixedUpdate(movement);
                 break;
-        }    
+            case EnemyTypes.EnemyAI.Fly:
+                FlyFixedUpdate(movement);
+                break;
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)//2d trigger collider
     {
@@ -150,46 +159,49 @@ public class EnemyScript : MonoBehaviour
             case EnemyTypes.EnemyAI.Nose:
                 FollowerOnTriggerEnter(collision);
                 break;
+            case EnemyTypes.EnemyAI.Fly:
+                FollowerOnTriggerEnter(collision);
+                break;
         }
         if (collision.CompareTag("StartRoom"))
         {
             Destroy(gameObject);
         }
     }
-	private void OnTriggerExit2D(Collider2D collision)
-	{
+    private void OnTriggerExit2D(Collider2D collision)
+    {
         activeSpeed = speed;
-	}
+    }
 
 
-	public void Stun(int duration)// used to set an enemy in stun
-	{
+    public void Stun(int duration)// used to set an enemy in stun
+    {
         stunnedDuration = duration;//set the duration
         currentState = EnemyState.Stunned;//set the state to stunned
     }
 
     void StunnedUpdate()// counts down the stunned timer and sets state to moving once the stun is over
-	{
-        if(stunnedDuration > 0)
-		{
+    {
+        if (stunnedDuration > 0)
+        {
             stunnedDuration--;
-		}
+        }
         else
-		{
+        {
             currentState = EnemyState.Moving;
-		}
+        }
 
-	}
+    }
 
-	private void OnDestroy()
-	{
-		if(shadow != null)
-		{
+    private void OnDestroy()
+    {
+        if (shadow != null)
+        {
             Destroy(shadow);
-		}
-	}
-	private IEnumerator SpawnDelay()
-	{
+        }
+    }
+    private IEnumerator SpawnDelay()
+    {
         yield return new WaitForSeconds(0.5f);//pause
         currentState = EnemyState.Moving;
     }
@@ -200,12 +212,12 @@ public class EnemyScript : MonoBehaviour
         {
             case EnemyState.Moving:
                 Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
-                if(transform.position.x < target.transform.position.x)
-				{
+                if (transform.position.x < target.transform.position.x)
+                {
                     transform.localRotation = Quaternion.Euler(0, 180, 0);
                 }
                 else
-				{
+                {
                     transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
@@ -221,7 +233,7 @@ public class EnemyScript : MonoBehaviour
                 StartCoroutine(SpawnDelay());
                 break;
         }
-         
+
     }
     void FollowerFixedUpdate(Vector2 direction)
     {
@@ -231,7 +243,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
     private void FollowerOnTriggerEnter(Collider2D collision)
-	{
+    {
         if ((collision.tag == "Bullet"))//if collide with a bullet
         {
             health -= collision.GetComponent<BulletScript>().damage;// reduce health by bullets damage value
@@ -251,22 +263,22 @@ public class EnemyScript : MonoBehaviour
 
                     int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
-                    if ( j < 1)
+                    if (j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
                     }
                     j++;
                 }
-                if(Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
+                    Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
-               
-                
-                
+
+
+
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -276,9 +288,9 @@ public class EnemyScript : MonoBehaviour
             soundManager.PlaySound("EnemyHit");
             CinemachineShake.Instance.ShakeCamera(3f, .1f);
             Stun(collision.GetComponent<HitScript>().stun);
-            
+
             StartCoroutine(FlashCo());
-           
+
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
             if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
@@ -287,15 +299,15 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
-                
+
                 if (collision.GetComponent<HitScript>().hitNo == 3)
                 {
                     target.GetComponent<MeleeScript>().TimeSlowing();
                 }
                 Instantiate(bloodSplat, transform.position, transform.rotation);
 
-                for (int i = 0; i < Random.RandomRange(0,3); i++)
-				{
+                for (int i = 0; i < Random.RandomRange(0, 3); i++)
+                {
                     int j = 0;
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                     if (j < 1)
@@ -304,15 +316,15 @@ public class EnemyScript : MonoBehaviour
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
                     }
                     j++;
-				}
+                }
 
-                
+
 
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
                     Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
-                
+
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 Destroy(gameObject);// if health 0 or below then die
@@ -323,16 +335,16 @@ public class EnemyScript : MonoBehaviour
             health *= 0.9999f;// reduce health by bullets damage value
             activeSpeed = reducedSpeed;
             StartCoroutine(FlashCo());
-            
+
             if (health <= 0)
             {
                 Instantiate(bloodSplat, transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
                     int j = 0;
-                   Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
+                    Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
 
-                    if ( j < 1)
+                    if (j < 1)
                     {
                         Instantiate(dopamineDropRight, transform.position, transform.rotation);
                         Instantiate(dopamineDropLeft, transform.position, transform.rotation);
@@ -342,7 +354,7 @@ public class EnemyScript : MonoBehaviour
                 }
                 if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
                 {
-                    Instantiate(FoodDrop, transform.position,  Quaternion.Euler(0, 0, 0));
+                    Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
 
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
@@ -387,18 +399,18 @@ public class EnemyScript : MonoBehaviour
                 StartCoroutine(SpawnDelay());
                 break;
         }
-        
+
     }
     void NoseFixedUpdate(Vector2 direction)
     {
-        if(currentState == EnemyState.Moving)//as long as he should be moving
-		{
+        if (currentState == EnemyState.Moving)//as long as he should be moving
+        {
             rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
         }
-        
+
     }
     private IEnumerator NoseAttack()
-	{
+    {
 
         anim.SetTrigger("Attack");
         float m_ScaleX, m_ScaleY;
@@ -408,15 +420,15 @@ public class EnemyScript : MonoBehaviour
         s_ScaleX = collider.size.x;
         s_ScaleY = collider.size.y;//save the collider and sprite renderers size
         yield return new WaitForSeconds(0.5f);//pause
-        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX*3,m_ScaleY*3);
+        this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX * 3, m_ScaleY * 3);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 3, s_ScaleY * 3);// double size for the hit
-        Vector2 directionNow = new Vector2(direction.x,direction.y);
+        Vector2 directionNow = new Vector2(direction.x, direction.y);
 
         rigidBody.MovePosition((Vector2)transform.position + (directionNow * activeSpeed));// move position by speed in direction over time
         yield return new WaitForSeconds(1);//wait
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX, m_ScaleX);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX, s_ScaleX);//return to original size
-        
+
         currentState = EnemyState.Moving;//set moving again
         anim.SetTrigger("Move");
         //return null;
@@ -425,18 +437,18 @@ public class EnemyScript : MonoBehaviour
     //---------------------------------SHOOTER-----------------------------------
 
     void ShooterUpdate()
-	{
+    {
         Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
         rigidBody.rotation = angle;// rotate enemy to face player
-        
+
         switch (currentState)// runs the collider code associated with this enemies ai type
         {
             case EnemyState.Moving:
-                
+
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
-                
+
                 distCheck();
                 break;
             case EnemyState.Stunned:
@@ -457,21 +469,21 @@ public class EnemyScript : MonoBehaviour
     }
 
     private IEnumerator ShooterAttack()
-	{
-        
-        
-        GameObject bullet = Instantiate(bulletType, transform.position,transform.rotation);//Create a bullet from the prefab
+    {
+
+
+        GameObject bullet = Instantiate(bulletType, transform.position, transform.rotation);//Create a bullet from the prefab
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         yield return new WaitForSeconds(0.5f + Random.RandomRange(0f, 1f));//pause inbetween shots
         distCheck();
 
-        
-	}
+
+    }
 
     void distCheck()
-	{
+    {
         dist = Vector3.Distance(target.transform.position, transform.position);
         if (dist < 10)//if close enough to the player
         {
@@ -479,8 +491,103 @@ public class EnemyScript : MonoBehaviour
             StartCoroutine(ShooterAttack());// shoot
         }
         else
+        {
+            currentState = EnemyState.Moving;
+        }
+    }
+
+
+    //---------------------------------FLY-----------------------------------
+
+
+    void FlyUpdate()
+    {
+        switch (currentState)// runs the collider code associated with this enemies ai type
+        {
+            case EnemyState.Moving:
+                dist = Vector3.Distance(target.transform.position, transform.position);
+               
+
+                StartCoroutine(FlyMoveDelay());
+                break;
+            case EnemyState.Stunned:
+                StunnedUpdate();
+                break;
+            case EnemyState.Wait:
+                StartCoroutine(SpawnDelay());
+                break;
+            case EnemyState.FlyAttack:
+                dist = Vector3.Distance(target.transform.position, transform.position);
+                Vector3 direction2 = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
+                if (transform.position.x < target.transform.position.x)
+                {
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                float angle2 = Mathf.Atan2(direction2.y, direction2.x) * Mathf.Rad2Deg;//set it to an angle
+                //rigidBody.rotation = angle;// rotate enemy to face player
+                direction2.Normalize();//normalize
+                movement = direction2;//set movement vector 
+
+                if (dist < 2)
+                {
+                    StartCoroutine(FlyAttack());
+                }
+                break;
+        }
+
+    }
+    void FlyFixedUpdate(Vector2 direction)
+    {
+        if (currentState == EnemyState.FlyAttack)//as long as he should be moving
+        {
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
+        }
+        if (currentState == EnemyState.Moving)//as long as he should be moving
+        {
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
+        }
+        if (currentState == EnemyState.Limbo)//as long as he should be moving
+        {
+            rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
+        }
+    }
+    private IEnumerator FlyMoveDelay()
+    {
+        currentState = EnemyState.Limbo;
+        Vector3 direction = new Vector3(Random.RandomRange(-1f, 1f), Random.RandomRange(-1f, 1f), 0);// create a vec3 of the direction from the enemy to the player
+        /*if (transform.position.x < target.transform.position.x)
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }*/
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
+                                                                            //rigidBody.rotation = angle;// rotate enemy to face player
+        direction.Normalize();//normalize
+        movement = direction;//set movement vector 
+        yield return new WaitForSeconds(Random.RandomRange(0.1f, 0.2f));//pause inbetween shots
+        if (dist < 4)//if close enough to the player
+        {
+            currentState = EnemyState.FlyAttack;
+        }
+        else
 		{
             currentState = EnemyState.Moving;
-		}
+        }
+        
+    }
+
+    private IEnumerator FlyAttack()
+    {
+        yield return new WaitForSeconds(1);//pause inbetween shots
+        Instantiate(bulletType, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 }

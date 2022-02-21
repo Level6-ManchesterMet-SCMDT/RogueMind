@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 5.0f;//Players Move Speed
     public float activeMoveSpeed;//Players Move Speed
+    public float reducedSpeed;//Players Move Speed
 
     public Rigidbody2D rigidBody;//Players RigidBody2D Component
     public Camera cam;//the games camera;
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();// find the modifiers
         drugSelectionMenu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
         activeDashCooldown = 0;//sets the dash cool down to nothing
+        reducedSpeed = moveSpeed / 2;
         
     }
 

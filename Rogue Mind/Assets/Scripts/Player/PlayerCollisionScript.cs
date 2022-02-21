@@ -62,20 +62,25 @@ public class PlayerCollisionScript : MonoBehaviour
             {
                 TakeDamage(collision.GetComponent<EnemyScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
 
+
                 StartCoroutine(FlashCo());//run the flash co routine for I frames
+                CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
             }
             if (collision.CompareTag("Boss"))//if the collider is an Boss
             {
                 TakeDamage(collision.GetComponent<BossScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by Boss damage ammount
 
                 StartCoroutine(FlashCo());//run the flash co routine for I frames
+                CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
             }
             if (collision.CompareTag("EnemyBullet"))//if the collider is an enemy bullet
             {
                 TakeDamage(collision.GetComponent<BulletScript>().damage * modifiers.resistanceToEnemyModifier);//reduce health by enemy damage ammount
                 Destroy(collision.gameObject);//destreoy the bullet
                 StartCoroutine(FlashCo());//run the flash co routine for I frames
+                CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
             }
+           
         }
         
         if (collision.CompareTag("DopamineDrop"))//if the collider is a dopamine drop
@@ -100,7 +105,21 @@ public class PlayerCollisionScript : MonoBehaviour
 
 
     }
-	private IEnumerator FlashCo()// used for Iframes and flashing
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+        if (collision.CompareTag("FlySplat"))
+        {
+            //health *= 0.9999f;// reduce health by bullets damage value
+            TakeDamage(health * 0.001f);
+            this.gameObject.GetComponent<PlayerMovement>().activeMoveSpeed = this.gameObject.GetComponent<PlayerMovement>().reducedSpeed;
+
+        }
+    }
+	private void OnTriggerExit2D(Collider2D collision)
+    {
+        this.gameObject.GetComponent<PlayerMovement>().activeMoveSpeed = this.gameObject.GetComponent<PlayerMovement>().moveSpeed;
+    }
+    private IEnumerator FlashCo()// used for Iframes and flashing
 	{
         int temp = 0;
         triggerCollider.enabled = false;// turn off the hitbox to prevent getting hit each frame in contact
