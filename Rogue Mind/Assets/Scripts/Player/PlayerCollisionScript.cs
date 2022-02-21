@@ -17,6 +17,9 @@ public class PlayerCollisionScript : MonoBehaviour
     public float Maxhealth;//the players health
     public int Dopamine;
 
+    public int RoomsCleared = 0;
+    public int EnemiesKilled = 0;
+
     public GameObject healthBar;// the healthbar for the player
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
@@ -25,6 +28,8 @@ public class PlayerCollisionScript : MonoBehaviour
     public bool doctorDrug = false;
     public bool inRoom = false;
     public SoundManager soundManager;
+
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -124,8 +129,9 @@ public class PlayerCollisionScript : MonoBehaviour
         { 
             save.cash += 10;//increase the ammount of cash
             save.NextScene();//save all changed data to the save file
-            SceneManager.LoadScene(0);//load the desk hub scene
-            Destroy(gameObject);//if health drops below 0 kill the player
+            //SceneManager.LoadScene(0);//load the desk hub scene
+            isDead = true;
+            gameObject.SetActive(true);//if health drops below 0 kill the player
         }
     }
     public void HealDamage(float heal)//used for healing
