@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpawnShop : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class SpawnShop : MonoBehaviour
     public GameObject shopKeeper;// holds the shopkeeper
     public bool spawned;// checks to see if the shopkeeper has been spawned, stops repeated shopkeepers spawning on entry
     Transform camera;
+    Transform cinemachineCam;
+    
     private void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;// finds the main camera
+        cinemachineCam = GameObject.FindGameObjectWithTag("Cinemachine").transform;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +29,7 @@ public class SpawnShop : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// changes the cameras position
+            cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
         }
     }
 }

@@ -26,6 +26,8 @@ public class BossRoomSpawn : MonoBehaviour
     
     Transform camera;
     Transform cinemachineCam;
+    GameObject player;
+    bool beenInRoom;
 
     public float waveDelay = 1.0f;
     public float countdown;
@@ -44,11 +46,20 @@ public class BossRoomSpawn : MonoBehaviour
         {
             UnityEngine.Debug.Log("SPAWN POINTS EMPTY");
         }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;// finds the main camera
         cinemachineCam = GameObject.FindGameObjectWithTag("Cinemachine").transform;
+        if (player.GetComponent<PlayerCollisionScript>().hasKey&& !EnemiesAlive())
+        {
+            doors.SetActive(false);
+        }
+        if (!player.GetComponent<PlayerCollisionScript>().hasKey )
+        {
+            doors.SetActive(true);
+        }
         if (spawnEnemies) // if enemies are needed to be spawned
         {
             if (state == SpawnState.WAITING)
@@ -77,6 +88,7 @@ public class BossRoomSpawn : MonoBehaviour
         }
         if (state == SpawnState.FINISHED)
         {
+            beenInRoom = true;
             spawnEnemies = false; // stops enemies spawning
             doors.SetActive(false);// doors reopen on the room
             if (exitDoor != null)// if there is an exit door
@@ -154,6 +166,7 @@ public class BossRoomSpawn : MonoBehaviour
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// sets the cameras target to the spawner transform
             cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
+            beenInRoom = true;
             if (!enemiesSpawned) //if no enemies are spawned
             {
                 time -= Time.deltaTime;

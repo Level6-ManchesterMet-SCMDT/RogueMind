@@ -199,12 +199,13 @@ MonoBehaviour:
   rooms: []
   endRooms: []
   chanceOf3DoorsSpawned: 10
-  spawnWaitTime: 5
-  itemWaitTime: 4
-  shopWaitTime: 3
+  spawnWaitTime: 10
+  itemWaitTime: 9
+  shopWaitTime: 8
   spawnedEndRoom: 0
   spawnedItemRoom: 0
   spawnedShopRoom: 0
+  rand: 0
   endRoomPlaceHolder: {fileID: 5165489882499522545, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
   minNumberOfRooms: 0
   maxNumberOfRooms: 0

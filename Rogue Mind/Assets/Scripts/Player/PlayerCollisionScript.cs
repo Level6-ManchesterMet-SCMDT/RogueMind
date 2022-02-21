@@ -27,6 +27,7 @@ public class PlayerCollisionScript : MonoBehaviour
 
     public bool doctorDrug = false;
     public bool inRoom = false;
+    public bool hasKey = false;
     public SoundManager soundManager;
 
     public bool isDead = false;
@@ -118,7 +119,10 @@ public class PlayerCollisionScript : MonoBehaviour
     void TakeDamage(float damage)//used for taking damage
 	{
         health -= damage;
-        CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
+        if (!doctorDrug)
+        {
+            CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
+        }
         healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
         DeathCheck();
     }
