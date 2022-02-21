@@ -9,11 +9,11 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] rightRooms2Door_endCap; // array of right opening rooms
     public GameObject[] leftRooms2Door_endCap; // array of left opening rooms
 
-   /* public GameObject[] bottomLeftRooms; // array of bottom and left opening rooms
-    public GameObject[] bottomRightRooms;  // array of bottom and right opening rooms
-    public GameObject[] topLeftRooms;  // array of top and left opening rooms
-    public GameObject[] topRightRooms;  // array of top and right opening rooms
-    */
+    public GameObject bottomLeftRooms; // array of bottom and left opening rooms
+    public GameObject bottomRightRooms;  // array of bottom and right opening rooms
+    public GameObject topLeftRooms;  // array of top and left opening rooms
+    public GameObject topRightRooms;  // array of top and right opening rooms
+    
 
     public GameObject[] topRooms2Doors; // array of top opening with 2 or more door rooms
     public GameObject[] bottomRooms2Doors;// array of bottom opening with 2 or more door rooms
@@ -30,7 +30,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] topEndCap; // top opening with no other openings
     public GameObject[] bottomEndCap; // bottom opening with no other openings
 
-    public GameObject[] closedRoom; // used for testing
+    public GameObject closedRoom; // used for testing
 
     public List<GameObject> rooms;// creates a list of rooms spawned in the dungeon
     public List<GameObject> endRooms;// creates a list of end cap rooms spawned in the dungeon

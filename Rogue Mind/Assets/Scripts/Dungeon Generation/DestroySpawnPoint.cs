@@ -8,7 +8,7 @@ public class DestroySpawnPoint : MonoBehaviour
     {
         if ( other.CompareTag("SpawnPoint"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<RoomSpawner>().spawned = true;
         }
         if (other.CompareTag("WaveSpawner")&& this.tag != "Destroyer")
         {
