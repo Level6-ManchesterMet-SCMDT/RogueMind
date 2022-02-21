@@ -92,7 +92,7 @@ public class MeleeScript : MonoBehaviour
                 this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
                 soundManager.PlaySound("Sword");
                 //hit 1
-                GameObject hitBox = Instantiate(hit1Prefab, hitPoint.position, hitPoint.rotation);//spawn first hitbox
+                GameObject hitBox = Instantiate(hit1Prefab, hitPoint.position + (new Vector3(0.5f, 0, 0)), hitPoint.rotation);//spawn first hitbox
             }
             numberOfClicks = Mathf.Clamp(numberOfClicks, 0, 3);//clamps the number of clicks so it doesnt exceed 3
             if (numberOfClicks == 2)//if 2 clicks
@@ -101,7 +101,7 @@ public class MeleeScript : MonoBehaviour
                 soundManager.PlaySound("Sword");
                 //second hit
                 damage = (initialDamage * secondHitModifier) * modifiers.meleeDamageModifier;//doubles damage value
-                GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position, hitPoint.rotation);//spawn second hitbox
+                GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position + (new Vector3(0.5f, 0, 0)), hitPoint.rotation);//spawn second hitbox
             }
             if (numberOfClicks == 3)//if 3 clicks
             {
@@ -110,7 +110,9 @@ public class MeleeScript : MonoBehaviour
                 this.gameObject.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Attacking;
                 soundManager.PlaySound("Sword");
                 damage = (initialDamage * thirdHitModifier) * modifiers.meleeDamageModifier;//tripples damage value
-                GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
+                GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position+(new Vector3(0.5f,0,0)), hitPoint.rotation);//spawn third hitbox
+                
+                
 
                 numberOfClicks = 0;//reset number of clicks 
 
@@ -131,4 +133,16 @@ public class MeleeScript : MonoBehaviour
         
 
     }
+
+    public void TimeSlowing()
+    {
+        StartCoroutine(TimeSlow());
+    }
+    public IEnumerator TimeSlow()
+    {
+        Time.timeScale = 0.4f;
+        yield return new WaitForSeconds(0.2f);//pause inbetween shots
+        Time.timeScale = 1f;
+    }
+
 }

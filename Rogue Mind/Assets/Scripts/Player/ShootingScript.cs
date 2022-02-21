@@ -88,9 +88,12 @@ public class ShootingScript : MonoBehaviour
     }
     void Shoot()
 	{
+        CinemachineShake.Instance.ShakeCamera(1f, .1f);
         soundManager.PlaySound("Gun");
         shootDelay = shootDelayLength / modifiers.fireRateModifier;
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//Create a bullet from the prefab
+        //Vector3 offset = firePoint.up + new Vector3(Random.RandomRange(0f,0.5f), 0, 0);
+        //firePoint.up += new Vector3(Random.RandomRange(0f, 02f), 0, 0);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position , firePoint.rotation);//Create a bullet from the prefab
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         currentBullets--;// lower current bullets by one

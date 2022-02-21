@@ -136,3 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockback: 1
   stun: 0
+  timeTillDestroy: 0.15
+  hitNo: 2
