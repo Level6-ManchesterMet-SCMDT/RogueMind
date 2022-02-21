@@ -95,6 +95,10 @@ MonoBehaviour:
   - {fileID: 3141505564490160153, guid: b7712d35ccd6759488d1eb260ef54eb1, type: 3}
   - {fileID: 3141505564490160153, guid: 9dc6194973b11cb4ea9307d69399a90b, type: 3}
   - {fileID: 3141505564490160153, guid: 3c68130c6191fce42ab2a655b0c3c0bf, type: 3}
+  bottomLeftRooms: {fileID: 2632491851904860803, guid: 46a1780a98d5a9548ad255cf1968c774, type: 3}
+  bottomRightRooms: {fileID: 162729192328163035, guid: e4c6e792d66ca9943a7a2fa7cccde6dc, type: 3}
+  topLeftRooms: {fileID: 9191877799309221745, guid: 2cb447de6f48d0642b92f22ed79236ed, type: 3}
+  topRightRooms: {fileID: 4098022013356744089, guid: a54e0522a86f24f4fbe64715dba5f7af, type: 3}
   topRooms2Doors:
   - {fileID: 4098022013356744089, guid: a54e0522a86f24f4fbe64715dba5f7af, type: 3}
   - {fileID: 4098022013356744089, guid: d378dfcdfab6ce74cab2929de1c64261, type: 3}
@@ -191,10 +195,7 @@ MonoBehaviour:
   - {fileID: 7620072631149712808, guid: 15b2935d1a87ffa42a348fc6dbc5e87a, type: 3}
   - {fileID: 7620072631149712808, guid: 9d2e7175a55e1d742b6a4dabedacae95, type: 3}
   - {fileID: 7620072631149712808, guid: 31d977bdae932034d97d3c4c97e75f92, type: 3}
-  closedRoom:
-  - {fileID: 5526469129406346126, guid: bf00486bebcfc38439896b54fc98bb13, type: 3}
-  - {fileID: 5526469129406346126, guid: 7f849aa6f75ea6f4ebdb9798d271f53a, type: 3}
-  - {fileID: 5526469129406346126, guid: eabb52c91b637a5429ec07bc01c8e244, type: 3}
+  closedRoom: {fileID: 5526469129406346126, guid: bf00486bebcfc38439896b54fc98bb13, type: 3}
   rooms: []
   endRooms: []
   chanceOf3DoorsSpawned: 10

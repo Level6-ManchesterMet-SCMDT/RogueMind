@@ -11,6 +11,7 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates templates;// holds the gameobject with the different
     private int rand;// defines a random value to pick from the rooms array
     int random;
+    public int cols = 0;
     public bool spawned = false;// checks if the spawnpoint has already spawned a room
 
     float WaitTime = 10f; // used to destroy a spawn point after a certain amount of time
@@ -40,141 +41,120 @@ public class RoomSpawner : MonoBehaviour
                     switch(direction)
 					{
                         case OpeningDirection.BOTTOM:
-
+                            rand = Random.Range(0, templates.bottomRooms2Door_endCap.Length);// picks a random room with 2 or less doors (minus 3 because there are 3 rooms that have 3 doors with bottom openings)
+                            Instantiate(templates.bottomRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
                             break;
-                        case OpeningDirection.EMPTY:
-
+                        case OpeningDirection.TOP:
+                            rand = Random.Range(0, templates.topRooms2Door_endCap.Length);
+                            Instantiate(templates.topRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
                             break;
-					}
-                    if (direction == OpeningDirection.BOTTOM) // if the direction of the spawnpoint needs a room with a bottom opening
-                    {
-                        rand = Random.Range(0, templates.bottomRooms2Door_endCap.Length);// picks a random room with 2 or less doors (minus 3 because there are 3 rooms that have 3 doors with bottom openings)
-                        Instantiate(templates.bottomRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
-                    }
-                    else if (direction == OpeningDirection.TOP) // if the direction of the spawnpoint needs a room with a top opening
-                    {
-                        rand = Random.Range(0, templates.topRooms2Door_endCap.Length);
-                        Instantiate(templates.topRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list
-                    }
-                    else if (direction == OpeningDirection.LEFT)// if the direction of the spawnpoint needs a room with a left opening
-                    {
-                        rand = Random.Range(0, templates.leftRooms2Door_endCap.Length);
-                        Instantiate(templates.leftRooms2Door_endCap[rand], transform.position, Quaternion.identity); // creates a room that has a left opening from the left rooms list
-                    }
-                    else if (direction == OpeningDirection.RIGHT)// if the direction of the spawnpoint needs a room with a right opening
-                    {
-                        rand = Random.Range(0, templates.rightRooms2Door_endCap.Length);
-                        Instantiate(templates.rightRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room with a right opening from the right rooms list
-                    }
+                        case OpeningDirection.LEFT :
+                            rand = Random.Range(0, templates.leftRooms2Door_endCap.Length);
+                            Instantiate(templates.leftRooms2Door_endCap[rand], transform.position, Quaternion.identity); // creates a room that has a left opening from the left rooms list
+                            break;
+                        case OpeningDirection.RIGHT:
+                            rand = Random.Range(0, templates.rightRooms2Door_endCap.Length);
+                            Instantiate(templates.rightRooms2Door_endCap[rand], transform.position, Quaternion.identity);// creates a room with a right opening from the right rooms list
+                            break;
+					}                
                     spawned = true; // sets the spawnpoint to have spawned a room
                 }
                 else if (number <= templates.chanceOf3DoorsSpawned) // if the random value is lower or equal to the the chance of a door being spawned
                 {
-                    if (direction == OpeningDirection.BOTTOM) // if the direction of the Spawnpoint needs a bottom opening
+                    switch (direction)
                     {
-                        rand = Random.Range(0, templates.bottomRooms3Doors.Length);//checks for bottom rooms 3 rooms avaliable and picks a random room from them
-                        room = Instantiate(templates.bottomRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
-
-                    }
-                    else if (direction == OpeningDirection.TOP)
-                    {
-
-                        rand = Random.Range(0, templates.topRooms3Doors.Length);//checks for top rooms 3 rooms avaliable and picks a random room from them
-                        room = Instantiate(templates.topRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
-
-
-                    }
-                    else if (direction == OpeningDirection.LEFT)
-                    {
-                        rand = Random.Range(0, templates.leftRooms3Doors.Length);//checks for left rooms 3 rooms avaliable and picks a random room from them
-                        room = Instantiate(templates.leftRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
-
-                    }
-                    else if (direction == OpeningDirection.RIGHT)
-                    {
-                        rand = Random.Range(0, templates.rightRooms3Doors.Length);//checks for right rooms 3 rooms avaliable and picks a random room from them
-                        room = Instantiate(templates.rightRooms3Doors[rand], transform.position, Quaternion.identity); // spawns the room
-
-                    }
+                        case OpeningDirection.BOTTOM:
+                            rand = Random.Range(0, templates.bottomRooms3Doors.Length);//checks for bottom rooms 3 rooms avaliable and picks a random room from them
+                            room = Instantiate(templates.bottomRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
+                            break;
+                        case OpeningDirection.TOP:
+                            rand = Random.Range(0, templates.topRooms3Doors.Length);//checks for top rooms 3 rooms avaliable and picks a random room from them
+                            room = Instantiate(templates.topRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
+                            break;
+                        case OpeningDirection.LEFT:
+                            rand = Random.Range(0, templates.leftRooms3Doors.Length);//checks for left rooms 3 rooms avaliable and picks a random room from them
+                            room = Instantiate(templates.leftRooms3Doors[rand], transform.position, Quaternion.identity);// spawns the room
+                            break;
+                        case OpeningDirection.RIGHT:
+                            rand = Random.Range(0, templates.rightRooms3Doors.Length);//checks for right rooms 3 rooms avaliable and picks a random room from them
+                            room = Instantiate(templates.rightRooms3Doors[rand], transform.position, Quaternion.identity); // spawns the room
+                            break;
+                    }                    
                     spawned = true;
                 }
 
             }
             else if (templates.rooms.Count >= templates.maxNumberOfRooms)// checks if the max number of rooms has been reached and will only spawn room end 
             {
-                if (direction == OpeningDirection.BOTTOM)
+                switch (direction)
                 {
-                    // rooms with 2 or less doors
-                    rand = Random.Range(0, templates.bottomEndCap.Length);
-                    Instantiate(templates.bottomEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom end cap list
+                    case OpeningDirection.BOTTOM:
+                        rand = Random.Range(0, templates.bottomEndCap.Length);
+                        Instantiate(templates.bottomEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom end cap list
+                        break;
+                    case OpeningDirection.TOP:
+                        rand = Random.Range(0, templates.topEndCap.Length);
+                        Instantiate(templates.topEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top end cap rooms list
+                        break;
+                    case OpeningDirection.LEFT:
+                        rand = Random.Range(0, templates.leftEndCap.Length);
+                        Instantiate(templates.leftEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a left opening from the left end cap rooms list
+                        break;
+                    case OpeningDirection.RIGHT:
+                        rand = Random.Range(0, templates.rightEndcap.Length);
+                        Instantiate(templates.rightEndcap[rand], transform.position, Quaternion.identity);// creates a room that has a right opening from the tight end cap rooms list
+                        break;
                 }
-                else if (direction == OpeningDirection.TOP)
-                {
-                    rand = Random.Range(0, templates.topEndCap.Length);
-                    Instantiate(templates.topEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top end cap rooms list
-                }
-                else if (direction == OpeningDirection.LEFT)
-                {
-                    rand = Random.Range(0, templates.leftEndCap.Length);
-                    Instantiate(templates.leftEndCap[rand], transform.position, Quaternion.identity);// creates a room that has a left opening from the left end cap rooms list
-                }
-                else if (direction == OpeningDirection.RIGHT)
-                {
-                    rand = Random.Range(0, templates.rightEndcap.Length);
-                    Instantiate(templates.rightEndcap[rand], transform.position, Quaternion.identity);// creates a room that has a right opening from the tight end cap rooms list
-                }
+                
                 spawned = true;
             }
             else if (templates.rooms.Count<= templates.minNumberOfRooms) // if the amount of rooms is less than the minimum number of rooms
             {
                 if (number > templates.chanceOf3DoorsSpawned) // if the random value is a 2 door room
                 {
-                    if (direction == OpeningDirection.BOTTOM)
+                    switch (direction)
                     {
-                        rand = Random.Range(0, templates.bottomRooms2Doors.Length);// rooms with 2 or less doors
-                        Instantiate(templates.bottomRooms2Doors[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
-                    }
-                    else if (direction == OpeningDirection.TOP)
-                    {
-                        rand = Random.Range(0, templates.topRooms2Doors.Length ); 
-                        Instantiate(templates.topRooms2Doors[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list                        
-                    }
-                    else if (direction == OpeningDirection.LEFT)
-                    {
-                        rand = Random.Range(0, templates.leftRooms2Doors.Length);
-                        Instantiate(templates.leftRooms2Doors[rand], transform.position, Quaternion.identity);
-                    }
-                    else if (direction == OpeningDirection.RIGHT)
-                    {
-                        rand = Random.Range(0, templates.rightRooms2Doors.Length);
-                        Instantiate(templates.rightRooms2Doors[rand], transform.position, Quaternion.identity);
-                    }
+                        case OpeningDirection.BOTTOM:
+                            rand = Random.Range(0, templates.bottomRooms2Doors.Length);// rooms with 2 or less doors
+                            Instantiate(templates.bottomRooms2Doors[rand], transform.position, Quaternion.identity);// creates a room that has a bottom opening from the bottom rooms list
+                            break;
+                        case OpeningDirection.TOP:
+                            rand = Random.Range(0, templates.topRooms2Doors.Length);
+                            Instantiate(templates.topRooms2Doors[rand], transform.position, Quaternion.identity);// creates a room that has a top opening from the Top rooms list   
+                            break;
+                        case OpeningDirection.LEFT:
+                            rand = Random.Range(0, templates.leftRooms2Doors.Length);
+                            Instantiate(templates.leftRooms2Doors[rand], transform.position, Quaternion.identity);
+                            break;
+                        case OpeningDirection.RIGHT:
+                            rand = Random.Range(0, templates.rightRooms2Doors.Length);
+                            Instantiate(templates.rightRooms2Doors[rand], transform.position, Quaternion.identity);
+                            break;
+                    }                   
                     spawned = true;
                 }
                 else if (number <= templates.chanceOf3DoorsSpawned)
                 {
-                    if (direction == OpeningDirection.BOTTOM)
-                    {
-                        rand = Random.Range(0, templates.bottomRooms3Doors.Length);// all rooms avaliable
-                        Instantiate(templates.bottomRooms3Doors[rand], transform.position, Quaternion.identity);
-                    }
-                    else if (direction == OpeningDirection.TOP)
-                    {
-                        rand = Random.Range(0, templates.topRooms3Doors.Length);
-                        Instantiate(templates.topRooms3Doors[rand], transform.position, Quaternion.identity);
-                    }
-                    else if (direction == OpeningDirection.LEFT)
-                    {
-                        rand = Random.Range(0, templates.leftRooms3Doors.Length);
-                        Instantiate(templates.leftRooms3Doors[rand], transform.position, Quaternion.identity);
-
-                    }
-                    else if (direction == OpeningDirection.RIGHT)
-                    {
-                        rand = Random.Range(0, templates.rightRooms3Doors.Length);
-                        Instantiate(templates.rightRooms3Doors[rand], transform.position, Quaternion.identity);
-
-                    }
+                    switch(direction)
+					{
+                        case OpeningDirection.BOTTOM:
+                            rand = Random.Range(0, templates.bottomRooms3Doors.Length);// all rooms avaliable
+                            Instantiate(templates.bottomRooms3Doors[rand], transform.position, Quaternion.identity);
+                            break;
+                        case OpeningDirection.TOP:
+                            rand = Random.Range(0, templates.topRooms3Doors.Length);
+                            Instantiate(templates.topRooms3Doors[rand], transform.position, Quaternion.identity);
+                            break;
+                        case OpeningDirection.LEFT :
+                            rand = Random.Range(0, templates.leftRooms3Doors.Length);
+                            Instantiate(templates.leftRooms3Doors[rand], transform.position, Quaternion.identity);
+                            break;
+                        case OpeningDirection.RIGHT:
+                            rand = Random.Range(0, templates.rightRooms3Doors.Length);
+                            Instantiate(templates.rightRooms3Doors[rand], transform.position, Quaternion.identity);
+                            break;
+					}
+                    
                     spawned = true;
                 }
             }
@@ -184,27 +164,63 @@ public class RoomSpawner : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Room") || other.CompareTag("SpawnedRoom"))
-        {
-            spawned = true;
-            Destroy(gameObject);
-        }
+       
         //WORKING ON THIS, THINGS WILL BE FULLY COMMENTED AND CLEANED UP UPON COMPLETION
         if (other.CompareTag("SpawnPoint")) // checks if a spawnpoint collides with another spawnpoint
         {
-            
-            
-            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
+            templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+            cols++;
+
+            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && cols == 1)// if neither of the spawnpoints have spawned an object
+            {
+                if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.BOTTOM) //checks the direction of the other spawnpoint
+                {
+                    Debug.Log("BottomLeft");
+                    //rand = Random.Range(0, templates.bottomLeftRooms.Length);
+                    Instantiate(templates.bottomLeftRooms, transform.position, Quaternion.identity); // spawns a room 
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.LEFT) // checks the direction of the other spawnpoint(same as before but reversed, stops rooms spawning on top of one another)
+                {
+                    spawned = true;
+                    Destroy(gameObject, WaitTime); // destroys the spawnpoint after a certain amount of times
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.BOTTOM)
+                {
+                    Debug.Log("BottomRight");
+
+                    Instantiate(templates.bottomRightRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.BOTTOM && direction == OpeningDirection.RIGHT)
+                {
+                    Destroy(gameObject, WaitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.LEFT && direction == OpeningDirection.TOP)
+                {
+                    //rand = Random.Range(0, templates.topLeftRooms.Length);
+                    Instantiate(templates.topLeftRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.LEFT)
+                {
+                    Destroy(gameObject, WaitTime);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.RIGHT && direction == OpeningDirection.TOP)
+                {
+                    //rand = Random.Range(0, templates.topRightRooms.Length);
+                    Instantiate(templates.topRightRooms, transform.position, Quaternion.identity);
+                }
+                else if (other.GetComponent<RoomSpawner>().direction == OpeningDirection.TOP && direction == OpeningDirection.RIGHT)
+                {
+                    Destroy(gameObject, WaitTime);
+                }
+
+            }
+            else if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false && cols > 1)// if neither of the spawnpoints have spawned an object
             {
                 
-                Instantiate(templates.closedRoom[Random.RandomRange(0,2)], transform.position, Quaternion.Euler(0,0,0));
+                Instantiate(templates.closedRoom, transform.position, Quaternion.Euler(0,0,0));
                 Destroy(gameObject);
             }
-            spawned = true;
-        }
-        if (other.CompareTag("StartRoom")||other.CompareTag("SpawnedRoom")||other.CompareTag("EndCap"))
-        {
-            Destroy(gameObject);
+            
         }
        
     }

@@ -24,7 +24,7 @@ public class RoomOverlap : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("SpawnPoint")) 
         {
-            Destroy(collision.gameObject);// destroys the overlapped spawnpoint
+            //Destroy(collision.gameObject);// destroys the overlapped spawnpoint
         }
     }
 }
