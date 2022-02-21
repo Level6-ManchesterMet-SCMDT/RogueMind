@@ -2177,6 +2177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
+  roomsSpawned: 0
+  cols: 0
   spawned: 0
 --- !u!61 &1408480141971659061
 BoxCollider2D:
@@ -2328,6 +2330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 3
+  roomsSpawned: 0
+  cols: 0
   spawned: 0
 --- !u!61 &2760200598309988692
 BoxCollider2D:
@@ -2422,6 +2426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  roomsSpawned: 0
+  cols: 0
   spawned: 0
 --- !u!61 &4897696402130102971
 BoxCollider2D:
@@ -2924,6 +2930,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
+  roomsSpawned: 0
+  cols: 0
   spawned: 1
 --- !u!61 &6354245857950012127
 BoxCollider2D:
@@ -3018,6 +3026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 2
+  roomsSpawned: 0
+  cols: 0
   spawned: 0
 --- !u!61 &7877290994751759699
 BoxCollider2D:
@@ -3288,7 +3298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.735102, y: 8.509435}
+  m_Size: {x: 13.735102, y: 6.331889}
   m_EdgeRadius: 0
 --- !u!50 &9126414316944937839
 Rigidbody2D:
