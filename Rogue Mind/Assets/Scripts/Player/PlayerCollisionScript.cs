@@ -137,7 +137,10 @@ public class PlayerCollisionScript : MonoBehaviour
     void TakeDamage(float damage)//used for taking damage
 	{
         health -= damage;
-        
+        if (!doctorDrug)
+        {
+            CinemachineShake.Instance.ShakeCamera(7f, 0.2f);
+        }
         healthBar.GetComponent<HealthBarScirpt>().SetHealth(health);//update health bar
         DeathCheck();
     }
