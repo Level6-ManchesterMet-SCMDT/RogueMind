@@ -22,6 +22,7 @@ public class EnemyScript : MonoBehaviour
     public BoxCollider2D collider;// the boxcollider on the enemy
     public GameObject DopamineDrop;
     public GameObject FoodDrop;
+    public GameObject shadow;
 
     public Animator anim;
 
@@ -97,6 +98,7 @@ public class EnemyScript : MonoBehaviour
 
         if(scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
 		{
+            shadow = transform.GetChild(0).gameObject;
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             transform.GetChild(0).GetComponent<ShadowScript>().enemy = this.gameObject;
             transform.GetChild(0).parent = null;
@@ -178,7 +180,14 @@ public class EnemyScript : MonoBehaviour
 
 	}
 
-    private IEnumerator SpawnDelay()
+	private void OnDestroy()
+	{
+		if(shadow != null)
+		{
+            Destroy(shadow);
+		}
+	}
+	private IEnumerator SpawnDelay()
 	{
         yield return new WaitForSeconds(0.5f);//pause
         currentState = EnemyState.Moving;
@@ -267,6 +276,7 @@ public class EnemyScript : MonoBehaviour
             Stun(collision.GetComponent<HitScript>().stun);
             
             StartCoroutine(FlashCo());
+           
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
             if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
@@ -275,6 +285,10 @@ public class EnemyScript : MonoBehaviour
             }
             if (health <= 0)
             {
+                if (collision.GetComponent<HitScript>().hitNo == 3)
+                {
+                    target.GetComponent<MeleeScript>().TimeSlowing();
+                }
                 Instantiate(bloodSplat, transform.position, transform.rotation);
 
                 for (int i = 0; i < Random.RandomRange(0,3); i++)
@@ -454,4 +468,6 @@ public class EnemyScript : MonoBehaviour
 
         
 	}
+
+    
 }

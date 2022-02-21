@@ -8,6 +8,7 @@ public class HitScript : MonoBehaviour
     public int stun = 1;// the knockback this hit applies to enemies
     public float timeTillDestroy = 0.15f;//the time till the hitbox destroys itself
     GameObject player;
+    public int hitNo;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,16 @@ public class HitScript : MonoBehaviour
 	private void OnDestroy()
 	{
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;// sets the players movement state back to moving at the end of an attack
+    }
+
+    public void TimeSlowing()
+	{
+        StartCoroutine(TimeSlow());
+	}
+    public IEnumerator TimeSlow()
+    {
+        Time.timeScale = 0.4f;
+        yield return new WaitForSeconds(0.2f);//pause inbetween shots
+        Time.timeScale = 1f;
     }
 }

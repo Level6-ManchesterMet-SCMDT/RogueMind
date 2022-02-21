@@ -37,6 +37,15 @@ public class RoomSpawner : MonoBehaviour
             {
                 if (number > templates.chanceOf3DoorsSpawned)// if the random value is a 2 door room
                 {
+                    switch(direction)
+					{
+                        case OpeningDirection.BOTTOM:
+
+                            break;
+                        case OpeningDirection.EMPTY:
+
+                            break;
+					}
                     if (direction == OpeningDirection.BOTTOM) // if the direction of the spawnpoint needs a room with a bottom opening
                     {
                         rand = Random.Range(0, templates.bottomRooms2Door_endCap.Length);// picks a random room with 2 or less doors (minus 3 because there are 3 rooms that have 3 doors with bottom openings)
@@ -188,7 +197,7 @@ public class RoomSpawner : MonoBehaviour
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)// if neither of the spawnpoints have spawned an object
             {
                 
-                Instantiate(templates.closedRoom[random], transform.position, Quaternion.Euler(0,0,0));
+                Instantiate(templates.closedRoom[Random.RandomRange(0,2)], transform.position, Quaternion.Euler(0,0,0));
                 Destroy(gameObject);
             }
             spawned = true;
