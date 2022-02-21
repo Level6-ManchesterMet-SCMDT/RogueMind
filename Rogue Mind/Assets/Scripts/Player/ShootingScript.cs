@@ -93,10 +93,13 @@ public class ShootingScript : MonoBehaviour
         shootDelay = shootDelayLength / modifiers.fireRateModifier;
         //Vector3 offset = firePoint.up + new Vector3(Random.RandomRange(0f,0.5f), 0, 0);
         //firePoint.up += new Vector3(Random.RandomRange(0f, 02f), 0, 0);
+        Quaternion saved = firePoint.rotation;
+        firePoint.Rotate(0, 0, Random.RandomRange(-10f, 10f));
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position , firePoint.rotation);//Create a bullet from the prefab
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         currentBullets--;// lower current bullets by one
+        firePoint.rotation = saved;
     }
 
     private IEnumerator Reload()
