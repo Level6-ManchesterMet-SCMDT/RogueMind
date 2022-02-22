@@ -30,18 +30,22 @@ public class RockScript : MonoBehaviour
         if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
         {
             health -= 1000;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.2f);
         }
         if (collision.CompareTag("Bullet"))
         {
             health -= collision.GetComponent<BulletScript>().damage;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.2f);
         }
         if (collision.CompareTag("EnemyBullet"))
         {
             health -= collision.GetComponent<BulletScript>().damage;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.2f);
         }
         if (collision.CompareTag("Melee"))
         {
             health -= player.GetComponent<MeleeScript>().damage;
+            CinemachineShake.Instance.ShakeCamera(1f, 0.2f);
         }
         
     }
