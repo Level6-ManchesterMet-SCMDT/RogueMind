@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
               
 
-                if (Input.GetKeyDown(KeyCode.E))//if the player hits "E"
+                if (Input.GetKeyDown(KeyCode.LeftShift))//if the player hits "E"
                 {
                     if (dashCoolCounter <= 0 && dashCounter <= 0)// If the dash cool down is 0
                     {
