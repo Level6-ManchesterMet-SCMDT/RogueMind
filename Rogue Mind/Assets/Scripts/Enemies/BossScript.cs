@@ -28,6 +28,8 @@ public class BossScript : MonoBehaviour
     Vector2 movement;// a vector used for movement
     public BossTypes.BossAI aiType;// the type of AI being used
 
+   
+
     public EnemyState currentState;// the enemies state
     public int timer = 0;
 
@@ -39,7 +41,6 @@ public class BossScript : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
         currentState = EnemyState.Moving;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
@@ -126,11 +127,11 @@ public class BossScript : MonoBehaviour
                     transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
                 float dist = Vector3.Distance(target.transform.position, transform.position);
-                if (dist < 3.5)//if close enough to the player
+                /*if (dist < 3.5)//if close enough to the player
                 {
                     currentState = EnemyState.Attacking;//stop moving
                     StartCoroutine(BigSamAttack());   //run attack
-                }
+                }*/
                 if(timer > 2000)
 				{
                     timer = 0;
@@ -172,13 +173,22 @@ public class BossScript : MonoBehaviour
 
     private IEnumerator BigSamAssembleTheMinions()
 	{
+        anim.SetTrigger("BeginWobble");
         yield return new WaitForSeconds(1);//pause
-		for (int i = 0; i < Random.RandomRange(2,5); i++)//a random number
+        anim.SetTrigger("BeforeThrowUp");
+        yield return new WaitForSeconds(0.5f);//pause
+        anim.SetTrigger("Start Throwing Up");
+        for (int i = 0; i < Random.RandomRange(3,5); i++)//a random number
 		{
             GameObject spawned = Instantiate(spawnable, transform.position, transform.rotation);//summon the spawnables 
             spawned.GetComponent<EnemyScript>().scriptable = spawnableData;//apply their scriptable for data
-		}
+            yield return new WaitForSeconds(0.5f);//pause
+        }
+        anim.SetTrigger("Sad");
+        yield return new WaitForSeconds(1f);//pause
         currentState = EnemyState.Moving;//set moving again
+        anim.SetTrigger("BackToWalk");
+
     }
     void BigSamCollision(Collider2D collision)
     {
