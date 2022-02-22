@@ -18,7 +18,7 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
 
     public Wave[] waves; // an array of waves
-    public Transform[] spawnPoints;// holds the spawnpoints in the room
+    public List<Transform> spawnPoints;// holds the spawnpoints in the room
     public int currentSp = 0;
     public GameObject enemyPrefab;// holds the enemy prefab
     public GameObject doors;// holds the doors of the room
@@ -52,11 +52,11 @@ public class EnemyRoomSpawn : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         countdown = waveDelay;
-        if(spawnPoints.Length == 0)
+        if(spawnPoints.Count == 0)
         {
             UnityEngine.Debug.Log("SPAWN POINTS EMPTY");
         }
-        currentSp = Random.Range(0, spawnPoints.Length);
+       
 
         
     }
@@ -188,13 +188,12 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     void SpawnEnemy(GameObject enemy)
     {
+        currentSp = Random.Range(0, spawnPoints.Count);
         Transform sp = spawnPoints[currentSp];
         Instantiate(enemy, sp.position, sp.rotation);
+        spawnPoints.Remove(sp);
         currentSp++;
-        if (currentSp> spawnPoints.Length - 1)
-        {
-            currentSp = 0;
-        }
+        
         
         
     }
