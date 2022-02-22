@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip Click,Dash,DoorClose,DoorOpen,EnemyHit,Footsteps,Gun,Drug,Dopamine,Sword;
+    public static AudioClip Click,Dash,DoorClose,DoorOpen,EnemyHit,Footsteps,Gun,Drug,Dopamine,Sword,Hench;
     static AudioSource audioSrc;
     
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
         Drug = Resources.Load<AudioClip>("On Drug Clicked");
         Dopamine = Resources.Load<AudioClip>("Pick up dopamine");
         Sword = Resources.Load<AudioClip>("sword");
+        Hench = Resources.Load<AudioClip>("Get Hench");
         
 
         audioSrc = GetComponent<AudioSource>();
@@ -65,7 +66,9 @@ public class SoundManager : MonoBehaviour
             case "Sword":
                 audioSrc.PlayOneShot(Sword);
                 break;
-
+            case "Hench":
+                audioSrc.PlayOneShot(Hench);
+                break;
 
 
         }
