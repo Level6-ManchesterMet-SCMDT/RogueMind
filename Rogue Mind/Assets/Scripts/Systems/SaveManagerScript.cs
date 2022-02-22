@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManagerScript : MonoBehaviour
 {
@@ -27,6 +26,9 @@ public class SaveManagerScript : MonoBehaviour
     public string DeskToy2;
 
     bool firstChoice = false;// whether the desk toy being chose is the first or second
+
+    public GameObject deskToysImage;
+    public GameObject soundManager;
 
     string content;// used for writing to the text file
     // Start is called before the first frame update
@@ -138,7 +140,7 @@ public class SaveManagerScript : MonoBehaviour
             swordDamage += 5;
             DecreaseCash(swordDamagePrice);
         }
-        
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
     }
     public void IncreaseGunDamage()
     {
@@ -147,6 +149,7 @@ public class SaveManagerScript : MonoBehaviour
             gunDamage += 5;
             DecreaseCash(gunDamagePrice);
         }
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
     }
     public void IncreaseSwordRate()
     {
@@ -155,6 +158,7 @@ public class SaveManagerScript : MonoBehaviour
             swordRate += 5;
             DecreaseCash(swordRatePrice);
         }
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
     }
     public void IncreaseGunRate()
     {
@@ -163,6 +167,7 @@ public class SaveManagerScript : MonoBehaviour
             gunRate += 5;
             DecreaseCash(gunRatePrice);
         }
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
     }
     public void IncreasemMoveSpeed()
     {
@@ -171,6 +176,7 @@ public class SaveManagerScript : MonoBehaviour
             moveSpeed *= 2;
             DecreaseCash(moveSpeedPrice);
         }
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
     }
     public void IncreasemResistance()
     {
@@ -179,6 +185,7 @@ public class SaveManagerScript : MonoBehaviour
             enemyResistance *= 2;
             DecreaseCash(enemyResistancePrice);
         }
+        soundManager.GetComponent<SoundManager>().PlaySound("Hench");
         
     }
 
@@ -193,6 +200,7 @@ public class SaveManagerScript : MonoBehaviour
 		{
             DeskToy2 = "Atomic";
         }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectEnergy()
     {
@@ -205,6 +213,7 @@ public class SaveManagerScript : MonoBehaviour
         {
             DeskToy2 = "Energy";
         }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectPlumber()
     {
@@ -217,6 +226,7 @@ public class SaveManagerScript : MonoBehaviour
         {
             DeskToy2 = "Plumber";
         }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectDonut()
     {
@@ -229,6 +239,7 @@ public class SaveManagerScript : MonoBehaviour
         {
             DeskToy2 = "Donut";
         }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
 
 }
