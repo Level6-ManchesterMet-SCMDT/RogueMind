@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SpawnItem : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class SpawnItem : MonoBehaviour
     public DrugsData[] drugData;
     bool spawned;
     Transform camera;
+    Transform cinemachineCam;
     private void Start()
     {
         camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        cinemachineCam = GameObject.FindGameObjectWithTag("Cinemachine").transform;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +30,12 @@ public class SpawnItem : MonoBehaviour
         }
         if (other.CompareTag("Player"))
         {
+            cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;
+        }
+        if (other.CompareTag("Rock"))
+        {
+            Destroy(gameObject);
         }
     }
 }
