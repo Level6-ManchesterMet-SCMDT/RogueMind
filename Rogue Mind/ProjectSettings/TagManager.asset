@@ -37,6 +37,7 @@ TagManager:
   - CashDrop
   - Cinemachine
   - FlySplat
+  - VendingMenu
   layers:
   - Default
   - TransparentFX
