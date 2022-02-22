@@ -11,20 +11,21 @@ public class EnemyRoomSpawn : MonoBehaviour
     public class Wave
     {
         public int roundNum; // allows for multiple rounds
-        public EnemyData[] enemyTypes;// holds the data for the different enemies
-        public int[] count;// array for the amount of each enemy you would like to spawn
+        public WaveData[] waveData;
+        public List<EnemyData>  enemyTypes;// holds the data for the different enemies
+        public List<int> count;// array for the amount of each enemy you would like to spawn
         public float spawnRate;// how quick the enemies spawn
     }
 
     public Wave[] waves; // an array of waves
-    public Transform[] spawnPoints;// holds the spawnpoints in the room
+    public List<Transform> spawnPoints;// holds the spawnpoints in the room
     public int currentSp = 0;
     public GameObject enemyPrefab;// holds the enemy prefab
     public GameObject doors;// holds the doors of the room
     public GameObject exitDoor;// used for the exit door in the end room
     public GameObject player;
     public int maxAmountOf1Enemy;
-    int max = -1;
+    int CurrentWaveType;
 
     //used in the case of multiple rounds, unneeded for most rooms 
     public int nextWave = 0;
@@ -51,20 +52,13 @@ public class EnemyRoomSpawn : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         countdown = waveDelay;
-        if(spawnPoints.Length == 0)
+        if(spawnPoints.Count == 0)
         {
             UnityEngine.Debug.Log("SPAWN POINTS EMPTY");
         }
-        currentSp = Random.Range(0, spawnPoints.Length);
-        for (int i = 0; i < waves.Length; i++)
-        {
-            for (int j = 0; j < waves[i].count.Length; j++)
-            {
-                
-                waves[i].count[j] = Random.Range(0, maxAmountOf1Enemy- max);
-                max += waves[i].count[j];
-            }
-        }
+       
+
+        
     }
     private void Update()
     {
@@ -164,8 +158,23 @@ public class EnemyRoomSpawn : MonoBehaviour
     IEnumerator SpawnWave(Wave wave)
     {
         state = SpawnState.SPAWNING;
+        wave.enemyTypes.Clear();
+        wave.count.Clear();
 
-        for(int i = 0; i < wave.enemyTypes.Length; i++)
+        CurrentWaveType = Random.Range(0, wave.waveData.Length);
+        for (int i = 0; i < wave.waveData.Length; i++)
+        {
+            if(i== CurrentWaveType)
+            {
+                for (int j = 0; j < wave.waveData[i].enemyData.Length; j++)
+                {
+                    wave.enemyTypes.Add(wave.waveData[i].enemyData[j]);
+                    wave.count.Add(wave.waveData[i].amount[j]);
+                }
+            }
+        }
+
+        for(int i = 0; i < wave.enemyTypes.Count; i++)
         {
             for (int j = 0; j < wave.count[i]; j++)
             {
@@ -179,13 +188,12 @@ public class EnemyRoomSpawn : MonoBehaviour
     }
     void SpawnEnemy(GameObject enemy)
     {
+        currentSp = Random.Range(0, spawnPoints.Count);
         Transform sp = spawnPoints[currentSp];
         Instantiate(enemy, sp.position, sp.rotation);
+        spawnPoints.Remove(sp);
         currentSp++;
-        if (currentSp> spawnPoints.Length - 1)
-        {
-            currentSp = 0;
-        }
+        
         
         
     }

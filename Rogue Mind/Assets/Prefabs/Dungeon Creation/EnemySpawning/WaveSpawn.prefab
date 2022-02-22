@@ -72,10 +72,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - roundNum: 0
-    enemyTypes:
-    - {fileID: 11400000, guid: d6df9412572c2034db641a9eb55b907a, type: 2}
-    - {fileID: 11400000, guid: fccdea38009fb134499a930825912f39, type: 2}
-    count: 0100000001000000
+    waveData:
+    - {fileID: 11400000, guid: d55a88f2b259c944c9dfe46836915e11, type: 2}
+    - {fileID: 11400000, guid: 70c2053eab815164f897c23c8e0baaf7, type: 2}
+    - {fileID: 11400000, guid: 70f7f56fa60aaf9459955d7b66f2f693, type: 2}
+    - {fileID: 11400000, guid: cff8ce40476e6cc438fc6fdd16ac0f8c, type: 2}
+    - {fileID: 11400000, guid: 27fef2c9c636b7f47b22c17a0a54462d, type: 2}
+    - {fileID: 11400000, guid: 33106b4b4b5757e479bb8c55600632ea, type: 2}
+    - {fileID: 11400000, guid: e0845499550d2f343911e7bf2a62b3fa, type: 2}
+    - {fileID: 11400000, guid: 91defb9316a475e4daaab37e7cd938a5, type: 2}
+    - {fileID: 11400000, guid: a832de75f168db644a152ad792ab524b, type: 2}
+    - {fileID: 11400000, guid: 5c01e9fec21acfb48b53861775b11847, type: 2}
+    - {fileID: 11400000, guid: 4576387c8bca51a4c89855258915fba2, type: 2}
+    - {fileID: 11400000, guid: fb7b55e9e14943a42bc425261d9bc46c, type: 2}
+    - {fileID: 11400000, guid: ab212a070a9d1bb4e8a1a23abed83a90, type: 2}
+    - {fileID: 11400000, guid: 9b188916fa6606e49b06fdbde131d598, type: 2}
+    - {fileID: 11400000, guid: 69b412f47b909144aa0d055ff62d45b6, type: 2}
+    - {fileID: 11400000, guid: a34072bb47cd19f4c86d715fc319cf6a, type: 2}
+    - {fileID: 11400000, guid: 95444cc37c7be9d4abe45401d3ea850b, type: 2}
+    - {fileID: 11400000, guid: 93533075f5e759d47baeb678e2e11786, type: 2}
+    - {fileID: 11400000, guid: b2bd1ea7f40a3a9439bfb8591e943122, type: 2}
+    - {fileID: 11400000, guid: a82ddd32683424643be3073702873644, type: 2}
+    - {fileID: 11400000, guid: 2694d88fc40ae1f448a1dc8701b050d9, type: 2}
+    - {fileID: 11400000, guid: 3beede5d4e7ca1542b19aade1db0a2e5, type: 2}
+    - {fileID: 11400000, guid: d01dfde2f8620784f8b83e0ea7be7ee9, type: 2}
+    - {fileID: 11400000, guid: f3d04c4b368a6f74fac20c74d04e7bea, type: 2}
+    - {fileID: 11400000, guid: b011beaede4b74e4e9a1786e2fb90ba4, type: 2}
+    - {fileID: 11400000, guid: 774b17e28289b2c49a0563db9f7b3c7e, type: 2}
+    - {fileID: 11400000, guid: 4746c181fd37d884fb6ceb3e66f64e2e, type: 2}
+    - {fileID: 11400000, guid: affd8b08dfdda3f4cae3c983464d8fb3, type: 2}
+    - {fileID: 11400000, guid: c8b565779cbc03b43be36d3e4d44b6a8, type: 2}
+    enemyTypes: []
+    count: 
     spawnRate: 2
   spawnPoints:
   - {fileID: 0}
@@ -93,4 +121,5 @@ MonoBehaviour:
   enemiesSpawned: 0
   spawnEnemies: 0
   time: 1.4
+  soundManager: {fileID: 0}
   state: 2
