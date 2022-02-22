@@ -35,7 +35,7 @@ public class SpawnItem : MonoBehaviour
         }
         if (other.CompareTag("Rock"))
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

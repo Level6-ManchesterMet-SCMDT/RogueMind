@@ -38,7 +38,7 @@ public class SpawnShop : MonoBehaviour
         }
         if (other.CompareTag("Rock"))
         {
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
