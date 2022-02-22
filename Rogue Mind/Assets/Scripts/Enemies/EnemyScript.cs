@@ -586,7 +586,8 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator FlyAttack()
     {
-        yield return new WaitForSeconds(1);//pause inbetween shots
+        currentState = EnemyState.Wait;
+        yield return new WaitForSeconds(0.5f);//pause inbetween shots
         Instantiate(bulletType, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
