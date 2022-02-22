@@ -36,5 +36,9 @@ public class SpawnShop : MonoBehaviour
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// changes the cameras position
             
         }
+        if (other.CompareTag("Rock"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

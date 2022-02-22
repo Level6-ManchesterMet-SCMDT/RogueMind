@@ -7,7 +7,7 @@ public class HitScript : MonoBehaviour
     public float knockback = 1f;// the knockback this hit applies to enemies
     public int stun = 1;// the knockback this hit applies to enemies
     public float timeTillDestroy = 0.15f;//the time till the hitbox destroys itself
-    GameObject player;
+    public GameObject player;
     public int hitNo;
     // Start is called before the first frame update
     void Start()

@@ -190,10 +190,15 @@ MonoBehaviour:
   collider: {fileID: 0}
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
   FoodDrop: {fileID: 0}
+  shadow: {fileID: 0}
+  dist: 0
   anim: {fileID: 0}
-  dopamineDropRight: {fileID: 480781819016563510, guid: 2e1bd6e5544dcce49a72846ffb164c91, type: 3}
-  dopamineDropLeft: {fileID: 3458838945682848725, guid: dc49055d69c6bfc4e98b9cdb76d9afb2, type: 3}
-  bloodSplat: {fileID: 5054385957914841627, guid: 02839a8e92c403244a71c79fbbf951f7, type: 3}
+  dopamineDropRight:
+  - {fileID: 480781819016563510, guid: 2e1bd6e5544dcce49a72846ffb164c91, type: 3}
+  - {fileID: 3458838945682848725, guid: dc49055d69c6bfc4e98b9cdb76d9afb2, type: 3}
+  spawnParticle: {fileID: 2391459105561445736, guid: 80137c0f381bc8243ac75aac05e542f3, type: 3}
+  bloodSplat:
+  - {fileID: 5054385957914841627, guid: 02839a8e92c403244a71c79fbbf951f7, type: 3}
   flashColor: {r: 1, g: 0.3066038, b: 0.3066038, a: 0.6666667}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.1
@@ -331,3 +336,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fee8633c261af34aa8c053ad7934ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
