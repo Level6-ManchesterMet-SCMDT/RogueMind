@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
   - {fileID: 11400000, guid: fccdea38009fb134499a930825912f39, type: 2}
-  amount: 03000000
+  amount: 04000000

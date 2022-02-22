@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4630f01470b27f4488801e227e800dd5, type: 3}
   m_Name: 3 Nose 1 Shooter
   m_EditorClassIdentifier: 
-  enemyData: []
-  amount: 
+  enemyData:
+  - {fileID: 11400000, guid: 0daf3fa888cdc9442a8323de9ff7dc48, type: 2}
+  - {fileID: 11400000, guid: fccdea38009fb134499a930825912f39, type: 2}
+  amount: 0300000001000000
