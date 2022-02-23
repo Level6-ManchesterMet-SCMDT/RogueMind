@@ -199,6 +199,8 @@ MonoBehaviour:
   spawnParticle: {fileID: 2391459105561445736, guid: 80137c0f381bc8243ac75aac05e542f3, type: 3}
   bloodSplat:
   - {fileID: 5054385957914841627, guid: 02839a8e92c403244a71c79fbbf951f7, type: 3}
+  - {fileID: 5054385957914841627, guid: c6a8befb881cae349b8f01b6bb647260, type: 3}
+  - {fileID: 5054385957914841627, guid: 8697a4e8b70729148bd7d0e0d5b3ce85, type: 3}
   flashColor: {r: 1, g: 0.3066038, b: 0.3066038, a: 0.6666667}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.1
