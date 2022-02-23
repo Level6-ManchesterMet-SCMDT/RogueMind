@@ -110,7 +110,6 @@ public class DrugChoiceScript : MonoBehaviour
 
     public void AddDrug1()//adds drug 1 to list of effectors
     {
-
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;

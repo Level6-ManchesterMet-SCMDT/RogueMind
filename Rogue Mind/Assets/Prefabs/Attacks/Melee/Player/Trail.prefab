@@ -135,3 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 2
+  options:
+  - {fileID: 21300000, guid: e2657d2155793ca4fbe15ebd96b2101d, type: 3}
+  - {fileID: 21300000, guid: f5592abde763cdc49abaf188f5d9eb3a, type: 3}
+  - {fileID: 21300000, guid: 59d60b5a5f5f2f1408b268a5bc32e34d, type: 3}
+  sr: {fileID: 2440101117505236459}

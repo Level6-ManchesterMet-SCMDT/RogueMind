@@ -2347,6 +2347,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
+      propertyPath: janitorDrug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: killedEnemy
       value: 1
       objectReference: {fileID: 0}
@@ -3685,6 +3689,7 @@ MonoBehaviour:
   - {fileID: 801273422}
   - {fileID: 582333735}
   - {fileID: 255851366}
+  soundManager: {fileID: 0}
 --- !u!114 &1958291565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4031,6 +4036,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music Source
       objectReference: {fileID: 0}
+    - target: {fileID: 1493066567591515372, guid: 008bdd5686cfd9e4db648a5ccfaca5b8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 721c7fb6dc06d804ead98371a875ec3f, type: 3}
     - target: {fileID: 1493066567591515373, guid: 008bdd5686cfd9e4db648a5ccfaca5b8, type: 3}
       propertyPath: m_RootOrder
       value: 8

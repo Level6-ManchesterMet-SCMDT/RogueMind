@@ -180,7 +180,7 @@ public class BossScript : MonoBehaviour
         anim.SetTrigger("Start Throwing Up");
         for (int i = 0; i < Random.RandomRange(3,5); i++)//a random number
 		{
-            GameObject spawned = Instantiate(spawnable, transform.position, transform.rotation);//summon the spawnables 
+            GameObject spawned = Instantiate(spawnable, transform.position+ new Vector3(0,-3,0), transform.rotation);//summon the spawnables 
             spawned.GetComponent<EnemyScript>().scriptable = spawnableData;//apply their scriptable for data
             yield return new WaitForSeconds(0.5f);//pause
         }

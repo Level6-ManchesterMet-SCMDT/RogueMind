@@ -16,9 +16,9 @@ MonoBehaviour:
   name: Samlets
   sprite: {fileID: 0}
   hp: 5
-  movementSpeed: 2
-  damage: 1
+  movementSpeed: 3
+  damage: 10
   bulletType: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 9100000, guid: 9f1c60e81d3ac3044bac031b6ca1bc14, type: 2}
   sizeX: 0.4
   sizeY: 0.4
