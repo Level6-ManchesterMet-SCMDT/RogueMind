@@ -9,16 +9,28 @@ public class ShopMenu : MonoBehaviour
     public DrugManagerScript drugManager;
     public GameObject menu;
     public GameObject[] buttons;
+    public SoundManager soundManager;
     GameObject player;
 
     void Start()
     {
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
         player = GameObject.FindGameObjectWithTag("Player");
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+       if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
+            menu.SetActive(false);//turns off menu
+        }
+    }
+    public void CloseMenu()
     {
         
     }
@@ -29,11 +41,14 @@ public class ShopMenu : MonoBehaviour
     public void OpenMenu()
     {
         menu.SetActive(true);
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.menu;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CantShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
         OnOpen();
     }
     public void OnOpen()// on the opening of the menu
     {
-        DisplayedDrugs.Clear();//empty list of drugs
+        /*DisplayedDrugs.Clear();//empty list of drugs
         for (int i = 0; i <= buttons.Length; i++)// for 3 drugs
         {
             DrugsData drug1 = RandomDrug();//create a random drug
@@ -44,6 +59,34 @@ public class ShopMenu : MonoBehaviour
             buttons[i].GetComponent<ShopButton>().drugCost.text = "Cost: " + drug1.drugCost.ToString();
             //drugSelectionMenu.transform.GetChild(i + 2).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = drug1.name;//set its name
             //drugSelectionMenu.transform.GetChild(i + 2).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = drug1.description;//set its description
+        }*/
+        DisplayedDrugs.Clear();//empty list of drugs
+        for (int i = 0; i < buttons.Length; i++)// for 3 drugs
+        {
+            DrugsData adding;
+            while (true)
+            {
+                bool test = true;
+                adding = RandomDrug();
+                for (int j = 0; j < DisplayedDrugs.Count; j++)
+                {
+                    if (DisplayedDrugs[j].name == adding.name)
+                    {
+                        test = false;
+                    }
+                }
+                if (test)
+                {
+                    break;
+                }
+
+            }
+            DisplayedDrugs.Add(adding);//add it to list
+            Debug.Log(adding.name);
+
+            buttons[i].GetComponent<ShopButton>().drugName.text = adding.name;
+            buttons[i].GetComponent<ShopButton>().drugDescription.text = adding.description;
+            buttons[i].GetComponent<ShopButton>().drugCost.text = "Cost: " + adding.drugCost.ToString();
         }
 
     }
@@ -53,7 +96,11 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[0].drugCost;
             drugManager.AddEffects(DisplayedDrugs[0]);
+            soundManager.PlaySound("Drug");
         }
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         menu.SetActive(false);//turns off menu
     }
     public void AddDrug2()//adds drug 2 to list of effectors
@@ -62,7 +109,11 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[1].drugCost;
             drugManager.AddEffects(DisplayedDrugs[1]);
+            soundManager.PlaySound("Drug");
         }
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         menu.SetActive(false);//turns off menu
     }
     public void AddDrug3()//adds drug 3 to list of effectors
@@ -71,7 +122,11 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[2].drugCost;
             drugManager.AddEffects(DisplayedDrugs[2]);
+            soundManager.PlaySound("Drug");
         }
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         menu.SetActive(false);//turns off menu
     }
 }

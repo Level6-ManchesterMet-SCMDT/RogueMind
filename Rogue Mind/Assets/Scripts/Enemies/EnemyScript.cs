@@ -492,6 +492,7 @@ public class EnemyScript : MonoBehaviour
         {
             case EnemyState.Moving:
                 dist = Vector3.Distance(target.transform.position, transform.position);
+                activeSpeed = 2;
                
 
                 StartCoroutine(FlyMoveDelay());
@@ -503,6 +504,7 @@ public class EnemyScript : MonoBehaviour
                 StartCoroutine(SpawnDelay());
                 break;
             case EnemyState.FlyAttack:
+                activeSpeed = scriptable.movementSpeed;
                 dist = Vector3.Distance(target.transform.position, transform.position);
                 Vector3 direction2 = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
                 if (transform.position.x < target.transform.position.x)
@@ -518,7 +520,7 @@ public class EnemyScript : MonoBehaviour
                 direction2.Normalize();//normalize
                 movement = direction2;//set movement vector 
 
-                if (dist < 2)
+                if (dist < 0.7)
                 {
                     StartCoroutine(FlyAttack());
                 }
@@ -573,6 +575,7 @@ public class EnemyScript : MonoBehaviour
     private IEnumerator FlyAttack()
     {
         currentState = EnemyState.Wait;
+        anim.SetTrigger("Explode");
         yield return new WaitForSeconds(0.5f);//pause inbetween shots
         Instantiate(bulletType, transform.position, transform.rotation);
         Destroy(this.gameObject);
