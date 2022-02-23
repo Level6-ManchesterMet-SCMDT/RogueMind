@@ -1665,6 +1665,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1765261158589255007, guid: b70841cbbca3af44da4c04c3766292a9, type: 3}
+      propertyPath: itemWaitTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765261158589255007, guid: b70841cbbca3af44da4c04c3766292a9, type: 3}
+      propertyPath: shopWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765261158589255007, guid: b70841cbbca3af44da4c04c3766292a9, type: 3}
+      propertyPath: spawnWaitTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765261158589255007, guid: b70841cbbca3af44da4c04c3766292a9, type: 3}
       propertyPath: maxNumberOfRooms
       value: 12
       objectReference: {fileID: 0}

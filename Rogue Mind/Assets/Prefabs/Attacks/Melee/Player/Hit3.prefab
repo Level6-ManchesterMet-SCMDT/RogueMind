@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3093771038677827456}
   - component: {fileID: 145986102738252584}
   - component: {fileID: 4839747110627873469}
+  - component: {fileID: -1981341052183049640}
   m_Layer: 0
   m_Name: Hit3
   m_TagString: Melee
@@ -136,6 +137,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockback: 5
   stun: 200
-  timeTillDestroy: 0.15
+  timeTillDestroy: 0.5
   player: {fileID: 0}
   hitNo: 3
+--- !u!95 &-1981341052183049640
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600023975566780479}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3db30b0b78abe724bab050f3d2e014e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

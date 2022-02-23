@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject trail;
     public bool janitorDrug = false;
 
+    public bool isLeft;
+    public bool isRight;
+
     float dashCounter, dashCoolCounter;
 
     public PlayerState currentState;// the enemies state
@@ -154,6 +157,8 @@ public class PlayerMovement : MonoBehaviour
                     armScale.y = 1;
                     armScale.z = 1;
                     arm.transform.localScale = armScale;
+                    isLeft = true;
+                    isRight = false;
                 }
                 if (Input.GetAxis("Horizontal") > 0)
                 {
@@ -172,6 +177,8 @@ public class PlayerMovement : MonoBehaviour
                     armScale.y = 1;
                     armScale.z = 1;
                     arm.transform.localScale = armScale;
+                    isLeft = false;
+                    isRight = true;
                 }
                 if(arm.GetComponent<ArmRotation>().lookDir.x < 0)
                 {

@@ -9,6 +9,7 @@ public class MeleeScript : MonoBehaviour
     public GameObject hit2Prefab;
     public GameObject hit3Prefab;
     public GameObject windowCleanerHitPrefab;
+    public GameObject player;
 
     public Transform hitPoint;//The transform child object where the slashes will spawn
 
@@ -50,6 +51,7 @@ public class MeleeScript : MonoBehaviour
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         initialDamage = damage;// sets the damage to initial attack as we will be changing damage , but want to maintain what was originaly entered
         hitDelay /= modifiers.meleeAttackRateModifier;
+        player = gameObject;
     }
 
     // Update is called once per frame
@@ -93,6 +95,14 @@ public class MeleeScript : MonoBehaviour
                 soundManager.PlaySound("Sword");
                 //hit 1
                 GameObject hitBox = Instantiate(hit1Prefab, hitPoint.position , hitPoint.rotation);//spawn first hitbox
+                if (gameObject.GetComponent<PlayerMovement>().isRight)
+                {
+                    hitBox.transform.localScale = new Vector3(1, 1, 1);
+                }
+                else if (gameObject.GetComponent<PlayerMovement>().isLeft)
+                {
+                    hitBox.transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
             numberOfClicks = Mathf.Clamp(numberOfClicks, 0, 3);//clamps the number of clicks so it doesnt exceed 3
             if (numberOfClicks == 2)//if 2 clicks
@@ -102,6 +112,14 @@ public class MeleeScript : MonoBehaviour
                 //second hit
                 damage = (initialDamage * secondHitModifier) * modifiers.meleeDamageModifier;//doubles damage value
                 GameObject hitBox = Instantiate(hit2Prefab, hitPoint.position , hitPoint.rotation);//spawn second hitbox
+                if (gameObject.GetComponent<PlayerMovement>().isRight)
+                {
+                    hitBox.transform.localScale = new Vector3(1, 1, 1);
+                }
+                else if (gameObject.GetComponent<PlayerMovement>().isLeft)
+                {
+                    hitBox.transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
             if (numberOfClicks == 3)//if 3 clicks
             {
@@ -111,6 +129,14 @@ public class MeleeScript : MonoBehaviour
                 soundManager.PlaySound("Sword");
                 damage = (initialDamage * thirdHitModifier) * modifiers.meleeDamageModifier;//tripples damage value
                 GameObject hitBox = Instantiate(hit3Prefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
+                if (gameObject.GetComponent<PlayerMovement>().isRight)
+                {
+                    hitBox.transform.localScale = new Vector3(1, 1, 1);
+                }
+                else if (gameObject.GetComponent<PlayerMovement>().isLeft) 
+                {
+                    hitBox.transform.localScale = new Vector3(-1, 1, 1);
+                }
                 
                 
 
