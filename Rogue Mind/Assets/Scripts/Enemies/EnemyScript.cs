@@ -16,6 +16,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject bulletType;//type of bullet an enemy will use
     public float sizeX;
     public float sizeY;
+    public float angle;
 
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
@@ -425,7 +426,7 @@ public class EnemyScript : MonoBehaviour
     void ShooterUpdate()
     {
         Vector3 direction = target.transform.position - transform.position;// create a vec3 of the direction from the enemy to the player
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;//set it to an angle
         rigidBody.rotation = angle;// rotate enemy to face player
 
         switch (currentState)// runs the collider code associated with this enemies ai type
@@ -448,6 +449,14 @@ public class EnemyScript : MonoBehaviour
 
     void ShooterFixedUpdate(Vector2 direction)
     {
+        if (angle < -90f || angle > 90f)
+        {
+            transform.localScale = new Vector3(1, -1, 1);
+        }
+        else 
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
         if (currentState == EnemyState.Moving)
         {
             rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
