@@ -109,6 +109,7 @@ public class EnemyScript : MonoBehaviour
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             transform.GetChild(0).GetComponent<ShadowScript>().enemy = this.gameObject;
             transform.GetChild(0).parent = null;
+            StartCoroutine(SpawnDelay());
         }
     }
     // Update is called once per frame
@@ -436,19 +437,20 @@ public class EnemyScript : MonoBehaviour
                 direction.Normalize();//normalize
                 movement = direction;//set movement vector 
 
-                distCheck();
+                
                 break;
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
             case EnemyState.Wait:
-                StartCoroutine(SpawnDelay());
+                //StartCoroutine(SpawnDelay());
                 break;
         }
     }
 
     void ShooterFixedUpdate(Vector2 direction)
     {
+
         if (angle < -90f || angle > 90f)
         {
             transform.localScale = new Vector3(1, -1, 1);
@@ -459,6 +461,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (currentState == EnemyState.Moving)
         {
+            distCheck();
             rigidBody.MovePosition((Vector2)transform.position + (direction * activeSpeed * Time.deltaTime));// move position by speed in direction over time
         }
     }
@@ -467,11 +470,11 @@ public class EnemyScript : MonoBehaviour
     {
 
 
-        GameObject bullet = Instantiate(bulletType, transform.position, transform.rotation);//Create a bullet from the prefab
+        GameObject bullet = Instantiate(bulletType, transform.GetChild(0).position, transform.GetChild(0).rotation);//Create a bullet from the prefab
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
-        yield return new WaitForSeconds(0.5f + Random.RandomRange(0f, 1f));//pause inbetween shots
+        yield return new WaitForSeconds(1f );//pause inbetween shots   + Random.RandomRange(0f, 1f)
         distCheck();
 
 
