@@ -100,6 +100,9 @@ public class DrugChoiceScript : MonoBehaviour
 
             drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(0).gameObject.GetComponent<Text>().text = adding.name;//set its name
             drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(1).gameObject.GetComponent<Text>().text = adding.description;//set its description
+            drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().sprite1 = adding.sprite1;
+            drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().sprite2 = adding.sprite2;
+            drugSelectionMenu.transform.GetChild(i + 3).gameObject.transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().setSprite();
         }
     }
 

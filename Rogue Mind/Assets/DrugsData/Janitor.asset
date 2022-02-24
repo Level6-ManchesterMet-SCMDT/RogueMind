@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Janitor
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: ba8244ac7b1a75b43abd9f94232d0596, type: 3}
+  sprite2: {fileID: 21300000, guid: 9dfc64ecb38dbc44899479eb879333a4, type: 3}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0

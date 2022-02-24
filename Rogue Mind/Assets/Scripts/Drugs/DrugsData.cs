@@ -6,7 +6,8 @@ using System;
 [CreateAssetMenu]
 public class DrugsData : ScriptableObject
 {
-    public Sprite sprite;
+    public Sprite sprite1;
+    public Sprite sprite2;
     public float healthPercentage;//the modifier for the players health
     public float movementSpeedPercentage;//the modifier for the players movement speed
     public float dashDistancePercentage;//the modifier for the players dash distance

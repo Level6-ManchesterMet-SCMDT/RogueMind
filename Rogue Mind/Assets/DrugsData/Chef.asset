@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Chef
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: 13ec429def838754e8b349617008836b, type: 3}
+  sprite2: {fileID: 21300000, guid: 6626857a7acb06e49ac993cc632690bd, type: 3}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0

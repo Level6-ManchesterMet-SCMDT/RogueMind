@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Athlete
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: dcd91e6b7fc3f26459cc021295cc29dd, type: 3}
+  sprite2: {fileID: 21300000, guid: ca282dd6e434697438101d27ea982fde, type: 3}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0
