@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Doctor
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: b8eed6ab59434e54cb534f923657e164, type: 3}
+  sprite2: {fileID: 21300000, guid: 596e82b1ae8d6654dbcf63b2ea324c44, type: 3}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0

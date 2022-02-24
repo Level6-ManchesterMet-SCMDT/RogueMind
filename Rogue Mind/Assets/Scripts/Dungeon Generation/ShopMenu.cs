@@ -87,6 +87,11 @@ public class ShopMenu : MonoBehaviour
             buttons[i].GetComponent<ShopButton>().drugName.text = adding.name;
             buttons[i].GetComponent<ShopButton>().drugDescription.text = adding.description;
             buttons[i].GetComponent<ShopButton>().drugCost.text = "Cost: " + adding.drugCost.ToString();
+            buttons[i].transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().sprite1 = adding.sprite1;
+            buttons[i].transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().sprite2 = adding.sprite2;
+            buttons[i].transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().setSprite();
+
+
         }
 
     }

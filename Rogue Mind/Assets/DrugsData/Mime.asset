@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2625facfa0950d94b986348c87d45787, type: 3}
   m_Name: Mime
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite1: {fileID: 21300000, guid: 29a6cd55eae180b4dabb99df0f3e23d8, type: 3}
+  sprite2: {fileID: 21300000, guid: 16273ecfd7a37fe438ba569db80e758b, type: 3}
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0
