@@ -203,6 +203,7 @@ public class EnemyRoomSpawn : MonoBehaviour
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;
             cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
+            collision.GetComponent<PlayerMovement>().lights.SetActive(true);
             if (!enemiesSpawned)
             {
                 time -= Time.deltaTime;
