@@ -2608,7 +2608,6 @@ MonoBehaviour:
   roomsCleared: {fileID: 37379158}
   enemiesKilled: {fileID: 1749638176}
   deathTransition: {fileID: 0}
-  pauseMenuTransition: {fileID: 0}
 --- !u!1001 &1989642317
 PrefabInstance:
   m_ObjectHideFlags: 0
