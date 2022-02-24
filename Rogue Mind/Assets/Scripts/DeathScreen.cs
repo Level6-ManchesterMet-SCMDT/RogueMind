@@ -83,7 +83,7 @@ public class DeathScreen : MonoBehaviour
     IEnumerator pauseMenuOpen()
     {
         pauseMenu.SetActive(true);
-        pauseMenuTransition.SetTrigger("Pause");
+        //pauseMenuTransition.SetTrigger("Pause");
         
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 0f;
@@ -92,7 +92,7 @@ public class DeathScreen : MonoBehaviour
     IEnumerator pauseMenuClose()
     {
         pauseMenu.SetActive(true);
-        pauseMenuTransition.SetTrigger("Pause");
+        //pauseMenuTransition.SetTrigger("Pause");
 
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 1f;
