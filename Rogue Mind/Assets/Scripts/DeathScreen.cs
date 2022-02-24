@@ -11,11 +11,15 @@ public class DeathScreen : MonoBehaviour
     public bool paused;
     public Text roomsCleared;
     public Text enemiesKilled;
+    public Animator deathTransition;
+    //public Animator pauseMenuTransition;
     GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        deathTransition = menu.GetComponent<Animator>();
+        //pauseMenuTransition = pauseMenu.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,12 +44,8 @@ public class DeathScreen : MonoBehaviour
 
     void OpenDeathScreen()
     {
-        menu.SetActive(true);
-        roomsCleared.GetComponent<Text>().text = "Rooms Cleared: " + player.GetComponent<PlayerCollisionScript>().RoomsCleared.ToString();
-        enemiesKilled.GetComponent<Text>().text = "Enemies Killed " + player.GetComponent<PlayerCollisionScript>().EnemiesKilled.ToString();
-        Time.timeScale = 0;
-
-
+        StartCoroutine(OpenTransition());
+ 
     }
     public void ReturnToOffice()
     {
@@ -55,8 +55,9 @@ public class DeathScreen : MonoBehaviour
     public void Pause()
     {
         paused = true;
-        Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
     public void Resume()
     {
@@ -67,5 +68,33 @@ public class DeathScreen : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    IEnumerator OpenTransition()
+    {
+        //transition.SetTrigger("Start");
+        menu.SetActive(true);
+        roomsCleared.GetComponent<Text>().text = "Rooms Cleared: " + player.GetComponent<PlayerCollisionScript>().RoomsCleared.ToString();
+        enemiesKilled.GetComponent<Text>().text = "Enemies Killed " + player.GetComponent<PlayerCollisionScript>().EnemiesKilled.ToString();
+
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 0;
+    }
+    IEnumerator pauseMenuOpen()
+    {
+        pauseMenu.SetActive(true);
+        pauseMenuTransition.SetTrigger("Pause");
+        
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 0f;
+
+    }
+    IEnumerator pauseMenuClose()
+    {
+        pauseMenu.SetActive(true);
+        pauseMenuTransition.SetTrigger("Pause");
+
+        yield return new WaitForSeconds(1.0f);
+        Time.timeScale = 1f;
     }
 }

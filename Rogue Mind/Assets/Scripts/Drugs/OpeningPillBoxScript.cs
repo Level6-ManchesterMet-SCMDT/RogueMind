@@ -6,12 +6,14 @@ public class OpeningPillBoxScript : MonoBehaviour
 {
     public GameObject menu;
     public GameObject player;
+    public Animator transition;
 
     // Start is called before the first frame update
     void Start()
     {
         menu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
         player = GameObject.FindWithTag("Player");//find the player and rigid body
+        transition = menu.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class OpeningPillBoxScript : MonoBehaviour
 		{
             menu.GetComponent<DrugChoiceScript>().OpenMenu();
             Destroy(this.gameObject);
+            transition.SetTrigger("Start");
 		}
 	}
 }

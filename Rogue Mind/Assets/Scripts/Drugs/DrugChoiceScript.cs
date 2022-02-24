@@ -14,6 +14,7 @@ public class DrugChoiceScript : MonoBehaviour
     public GameObject shopKeeper;// the games shop keeper
     public SoundManager soundManager;
     public GameObject player;
+    public Animator transition;
 
     // Start is called before the first frame update
     void Start()
@@ -115,8 +116,8 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[0]);
-        drugSelectionMenu.SetActive(false);//turns off menu
-        
+        StartCoroutine(CloseMenu());
+
     }
     public void AddDrug2()//adds drug 2 to list of effectors
     {
@@ -125,8 +126,8 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[1]);
-        drugSelectionMenu.SetActive(false);//turns off menu
-        
+        StartCoroutine(CloseMenu());
+
     }
     public void AddDrug3()//adds drug 3 to list of effectors
     {
@@ -135,7 +136,14 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[2]);
-        drugSelectionMenu.SetActive(false);//turns off menu
+        StartCoroutine(CloseMenu()); //turns off menu
         
+    }
+
+    IEnumerator CloseMenu()
+    {
+        transition.SetTrigger("End");
+        yield return new WaitForSeconds(1.0f);
+        drugSelectionMenu.SetActive(false);
     }
 }
