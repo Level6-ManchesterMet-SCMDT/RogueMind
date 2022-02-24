@@ -7,6 +7,7 @@ public class SpawnItem : MonoBehaviour
 {
     public Transform spawnPoint;
     public GameObject item;
+    public Animator animator;
     public DrugsData[] drugData;
     bool spawned;
     Transform camera;
