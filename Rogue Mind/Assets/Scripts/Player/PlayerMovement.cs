@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform arm;
     Vector3 armScale;
     public ArmRotation rotate;
+    public GameObject lights;
 
     public Transform bodyGFX;
     public Animator bodyAnim;

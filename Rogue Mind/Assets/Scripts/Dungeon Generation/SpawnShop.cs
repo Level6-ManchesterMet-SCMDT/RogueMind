@@ -34,6 +34,7 @@ public class SpawnShop : MonoBehaviour
         {
             cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// changes the cameras position
+            other.GetComponent<PlayerMovement>().lights.SetActive(false);
             
         }
         if (other.CompareTag("Rock"))
