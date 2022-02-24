@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isLeft;
     public bool isRight;
+    public bool isUp;
+    public bool isDown;
 
     float dashCounter, dashCoolCounter;
 
@@ -181,14 +183,16 @@ public class PlayerMovement : MonoBehaviour
                     isLeft = false;
                     isRight = true;
                 }
-                if(arm.GetComponent<ArmRotation>().lookDir.x < 0)
+                if(Input.GetAxis("Vertical")>0)
                 {
-                    
+                    isUp = true;
+                    isDown = false;
                     
                 }
-                if (arm.GetComponent<ArmRotation>().lookDir.x > 0)
+                if (Input.GetAxis("Vertical") < 0)
                 {
-                   
+                    isDown = true;
+                    isUp = false;
                    
                 }
 
