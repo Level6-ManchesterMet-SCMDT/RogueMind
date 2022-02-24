@@ -789,7 +789,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.057246, y: -1.826198}
+  m_Offset: {x: 0.05724597, y: -1.9218965}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -800,7 +800,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0113454, y: 0.34760404}
+  m_Size: {x: 2.0113454, y: 0.2785759}
   m_EdgeRadius: 0
 --- !u!114 &7253674216189750487
 MonoBehaviour:
@@ -838,6 +838,8 @@ MonoBehaviour:
   dashCount: 0
   trail: {fileID: 3493532758288577932, guid: b44c587588ef6014eba64ad95731a268, type: 3}
   janitorDrug: 0
+  isLeft: 0
+  isRight: 0
   currentState: 0
   soundManager: {fileID: 0}
 --- !u!114 &7253674216189750444
@@ -879,6 +881,7 @@ MonoBehaviour:
   hit2Prefab: {fileID: 163164568366012444, guid: 8b807921e07cddd4b8253e8e5d99681a, type: 3}
   hit3Prefab: {fileID: 1600023975566780479, guid: 1bb2437fa8c4e264ca2c634784cc5d8e, type: 3}
   windowCleanerHitPrefab: {fileID: 1600023975566780479, guid: 7e1970b40eca63f4a85971e425693dad, type: 3}
+  player: {fileID: 0}
   hitPoint: {fileID: 7253674216771829774}
   damage: 10
   lastClickedTime: 0
