@@ -104,25 +104,16 @@ public class RoomTemplates : MonoBehaviour
         {
             if(i == rand) // if the random number is the same as the current room in the for loop
             {
-                if (rooms[i].GetComponent<Activator>().isShopRoom == false&& rooms[i].GetComponent<Activator>().isEndRoom == false|| rooms[i+1].GetComponent<Activator>().isShopRoom == false && rooms[i].GetComponent<Activator>().isEndRoom == false)// checks to see if the room is already a shop room
+                if (rooms[i].GetComponent<Activator>().isShopRoom == false&& rooms[i].GetComponent<Activator>().isEndRoom == false)// checks to see if the room is already a shop room
                 {
                     rooms[i].GetComponent<Activator>().isItemRoom = true;// makes the room an item room
                     spawnedItemRoom = true;// item room is set to true
                 }
                 else
                 {
-                    if (i+1 >= rooms.Count - 1) // checks to see if the next item room in the loop is not the end room
-                    {
-                        rooms[i - 1].GetComponent<Activator>().isItemRoom = true; // makes the item room activate in the last room
-                        spawnedItemRoom = true;
-                    }
-                    else if(i-1<=0)// if the last room is not empty
-                    {
-                        rooms[i + 1].GetComponent<Activator>().isItemRoom = true;// makes the item room activate in the next room
-                        spawnedItemRoom = true;
-                    }
-                }
-                    
+                    rand = Random.Range(0, rooms.Count - 1);
+                    i = 0;
+                }    
             }
         }
     }
@@ -141,16 +132,8 @@ public class RoomTemplates : MonoBehaviour
                 }
                 else
                 {
-                    if (i + 1 >= endRooms.Count - 1) // checks to see if the next shop room in the loop is not the end room
-                    {
-                        endRooms[i - 1].GetComponent<Activator>().isShopRoom = true; // makes the shop room activate in the last room
-                        spawnedShopRoom = true;
-                    }
-                    else if (i - 1 <= 0)
-                    {
-                        endRooms[i + 1].GetComponent<Activator>().isShopRoom = true;// makes the shop room activate in the next room
-                        spawnedShopRoom = true;
-                    }
+                    rand = Random.Range(0, endRooms.Count - 1);
+                    i = 0;
                 }
 
             }

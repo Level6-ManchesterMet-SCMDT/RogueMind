@@ -63,10 +63,10 @@ MonoBehaviour:
   - {fileID: 9191877799309221745, guid: 2cb447de6f48d0642b92f22ed79236ed, type: 3}
   - {fileID: 2632491851904860803, guid: 46a1780a98d5a9548ad255cf1968c774, type: 3}
   - {fileID: 3141505564490160153, guid: b7712d35ccd6759488d1eb260ef54eb1, type: 3}
-  bottomLeftRooms: {fileID: 2632491851904860803, guid: 46a1780a98d5a9548ad255cf1968c774, type: 3}
-  bottomRightRooms: {fileID: 162729192328163035, guid: e4c6e792d66ca9943a7a2fa7cccde6dc, type: 3}
-  topLeftRooms: {fileID: 9191877799309221745, guid: 2cb447de6f48d0642b92f22ed79236ed, type: 3}
-  topRightRooms: {fileID: 4098022013356744089, guid: a54e0522a86f24f4fbe64715dba5f7af, type: 3}
+  bottomLeftRooms: {fileID: 2632491851904860803, guid: 5202008708097a046ae9f99d8d0807a9, type: 3}
+  bottomRightRooms: {fileID: 162729192328163035, guid: 733b2154e2329984b91f90b08dd68bb4, type: 3}
+  topLeftRooms: {fileID: 9191877799309221745, guid: 65f8956cc2089de49ab7b3ce493ac6ee, type: 3}
+  topRightRooms: {fileID: 4098022013356744089, guid: 2cda5ff5c1efb544a9102d4709c67076, type: 3}
   topRooms2Doors:
   - {fileID: 4098022013356744089, guid: a54e0522a86f24f4fbe64715dba5f7af, type: 3}
   - {fileID: 8540196834633133520, guid: aaa7df4e1752c79479865a2392d5cccf, type: 3}
