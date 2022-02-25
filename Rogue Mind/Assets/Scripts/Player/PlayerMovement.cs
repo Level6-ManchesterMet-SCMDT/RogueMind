@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator legsAnim;
     Vector3 LegsScale;
 
+    public ParticleSystem dust;
+
 
     public float dashSpeed;// the speed of a dash
     public float dashLength = 0.5f;// the length of a dash 
@@ -146,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (Input.GetAxis("Horizontal") < 0)
                 {
+                    createDust();
                     bodyScale.x = -1;
                     bodyScale.y = 1;
                     bodyScale.z = 1;
@@ -165,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (Input.GetAxis("Horizontal") > 0)
                 {
+                    createDust();
                     bodyScale.x = 1;
                     bodyScale.y = 1;
                     bodyScale.z = 1;
@@ -185,15 +189,21 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if(Input.GetAxis("Vertical")>0)
                 {
+                    createDust();
                     isUp = true;
                     isDown = false;
                     
                 }
                 if (Input.GetAxis("Vertical") < 0)
                 {
+                    createDust();
                     isDown = true;
                     isUp = false;
                    
+                }
+                if(Input.GetAxis("Horizontal") == 0&&Input.GetAxis("Vertical")==0)
+                {
+                    dust.Stop();
                 }
 
 
@@ -231,6 +241,11 @@ public class PlayerMovement : MonoBehaviour
             dashCoolCounter -= Time.deltaTime;//count down
         }
 
+    }
+    void createDust()
+    {
+        dust.Play();
+        Debug.Log("Playing");
     }
 
     private void FixedUpdate()
