@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockback: 5
   stun: 200
-  timeTillDestroy: 0.5
+  timeTillDestroy: 0.25
   player: {fileID: 0}
   hitNo: 3
 --- !u!95 &-1981341052183049640
