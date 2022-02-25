@@ -19,6 +19,7 @@ public class ShootingScript : MonoBehaviour
 
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public SoundManager soundManager;
+    public GameObject shootParticle;
 
 
     public enum ShootingState
@@ -96,6 +97,7 @@ public class ShootingScript : MonoBehaviour
         Quaternion saved = firePoint.rotation;
         firePoint.Rotate(0, 0, Random.RandomRange(-10f, 10f));
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position , firePoint.rotation);//Create a bullet from the prefab
+        Instantiate(shootParticle, firePoint.position, Quaternion.identity);
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
         currentBullets--;// lower current bullets by one

@@ -901,6 +901,7 @@ MonoBehaviour:
   currentState: 0
   modifiers: {fileID: 0}
   soundManager: {fileID: 0}
+  shootParticle: {fileID: 5554012230848164499, guid: 5d2a1ff10dcb45041b24e1e2f22688e0, type: 3}
 --- !u!114 &7253674216189750445
 MonoBehaviour:
   m_ObjectHideFlags: 0
