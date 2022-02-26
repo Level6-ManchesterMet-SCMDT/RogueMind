@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a196cf8771ebf49b6d45457e6e9d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drugsMenu: {fileID: 3102957311368369073, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
+  drugsMenu: {fileID: 0}
 --- !u!61 &4858025401933404808
 BoxCollider2D:
   m_ObjectHideFlags: 0
