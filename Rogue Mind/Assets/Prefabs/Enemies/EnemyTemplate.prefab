@@ -153,7 +153,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3182398780945161534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   rigidBody: {fileID: 0}
   collider: {fileID: 0}
+  otherCollider: {fileID: 3182398780945161530}
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
   FoodDrop: {fileID: 0}
   shadow: {fileID: 0}

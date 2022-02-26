@@ -17,6 +17,7 @@ public class BossScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
     public BoxCollider2D collider;// the boxcollider on the enemy
+    public BoxCollider2D otherCollider;// the boxcollider on the enemy
     public GameObject DopamineDrop;// the dopamine drops 
     public GameObject CashDrop;// the dopamine drops 
     public EnemyData spawnableData;// what the boss can spawn

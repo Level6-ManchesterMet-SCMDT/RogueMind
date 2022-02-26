@@ -21,6 +21,8 @@ public class EnemyScript : MonoBehaviour
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
     public BoxCollider2D collider;// the boxcollider on the enemy
+    public BoxCollider2D otherCollider;// the boxcollider on the enemy
+   
     public GameObject DopamineDrop;
     public GameObject FoodDrop;
     public GameObject shadow;
@@ -573,7 +575,7 @@ public class EnemyScript : MonoBehaviour
         direction.Normalize();//normalize
         movement = direction;//set movement vector 
         yield return new WaitForSeconds(Random.RandomRange(0.1f, 0.2f));//pause inbetween shots
-        if (dist < 4)//if close enough to the player
+        if (dist < 5)//if close enough to the player
         {
             currentState = EnemyState.FlyAttack;
         }

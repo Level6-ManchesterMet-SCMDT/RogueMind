@@ -102,7 +102,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0060127974, y: -0.29462856}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,7 +113,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.3246927, y: 1.7335645}
   m_EdgeRadius: 0
 --- !u!61 &3182398780945161530
 BoxCollider2D:
@@ -122,13 +122,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3182398780945161534}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.9921162}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.36264056}
   m_EdgeRadius: 0
 --- !u!50 &3182398780945161531
 Rigidbody2D:
@@ -184,6 +184,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   rigidBody: {fileID: 0}
   collider: {fileID: 0}
+  otherCollider: {fileID: 3182398780945161530}
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
   CashDrop: {fileID: 4381117763484346400, guid: f344df6651a4b81489296b625581daad, type: 3}
   spawnableData: {fileID: 0}
