@@ -895,6 +895,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f4b09868fddae499a3ea1e89dbf2fc, type: 3}
+--- !u!114 &435071253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+  m_PrefabInstance: {fileID: 67372747026110889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444100775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,6 +3195,7 @@ MonoBehaviour:
   roomsCleared: {fileID: 37379158}
   enemiesKilled: {fileID: 1749638176}
   deathTransition: {fileID: 0}
+  mainMixer: {fileID: 24100000, guid: 2188a6d9076e8d54e969fc7865623fb5, type: 2}
 --- !u!1001 &1989642317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3509,6 +3521,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1958291563}
     m_Modifications:
+    - target: {fileID: 54040224576120590, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 67372747087968527, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3612,6 +3628,86 @@ PrefabInstance:
     - target: {fileID: 67372748574650493, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1958291565}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFullScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DeathScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_Value
+      value: -2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_MaxValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_MinValue
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1958291565}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DeathScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 435071253}
+    - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Slider, UnityEngine.UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
@@ -3743,6 +3839,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 721c7fb6dc06d804ead98371a875ec3f, type: 3}
+    - target: {fileID: 1493066567591515372, guid: 008bdd5686cfd9e4db648a5ccfaca5b8, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2188a6d9076e8d54e969fc7865623fb5, type: 2}
     - target: {fileID: 1493066567591515373, guid: 008bdd5686cfd9e4db648a5ccfaca5b8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4128,6 +4228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 444100776}
     m_Modifications:
+    - target: {fileID: 7812663561018993904, guid: 98a60a2926af617449a041d2b00f2a66, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2188a6d9076e8d54e969fc7865623fb5, type: 2}
     - target: {fileID: 7812663561018993933, guid: 98a60a2926af617449a041d2b00f2a66, type: 3}
       propertyPath: m_Name
       value: Sound Effects

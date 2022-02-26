@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class DeathScreen : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DeathScreen : MonoBehaviour
     public Text roomsCleared;
     public Text enemiesKilled;
     public Animator deathTransition;
+    public AudioMixer mainMixer;
     //public Animator pauseMenuTransition;
     GameObject player;
     // Start is called before the first frame update
@@ -96,5 +98,18 @@ public class DeathScreen : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 1f;
+    }
+
+    public void SetFullScreen(bool isFullscreen)
+	{
+        Screen.fullScreen = isFullscreen;
+	}
+
+    public void SetVolume(Slider slider)
+	{
+        
+        mainMixer.SetFloat("volume", slider.value);
+        
+
     }
 }
