@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 LegsScale;
 
     public ParticleSystem dust;
+    public GameObject[] enemies;
+    public GameObject boss;
 
 
     public float dashSpeed;// the speed of a dash
@@ -121,6 +123,15 @@ public class PlayerMovement : MonoBehaviour
                             
                             currentState = PlayerState.Dashing;//set the players state to dashing
                             
+                            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                            boss = GameObject.FindGameObjectWithTag("Boss");
+
+							for (int i = 0; i < enemies.Length; i++)
+							{
+                                enemies[i].GetComponent<EnemyScript>().otherCollider.enabled = false;
+							}
+                            boss.GetComponent<BossScript>().otherCollider.enabled = false;
+
                         }
                         else if (killedEnemy)
 						{
@@ -231,6 +242,12 @@ public class PlayerMovement : MonoBehaviour
                     activeDashCooldown = dashCoolCounter;//set the cooldown
 
                     currentState = PlayerState.Moving;//back to moving state
+                    for (int i = 0; i < enemies.Length; i++)
+                    {
+                        enemies[i].GetComponent<EnemyScript>().otherCollider.enabled = true;
+                    }
+                    boss.GetComponent<BossScript>().otherCollider.enabled = true;
+
                 }
             }
 
