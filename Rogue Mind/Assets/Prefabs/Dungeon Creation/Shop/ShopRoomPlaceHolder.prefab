@@ -189,5 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 5021983960557804734}
-  shopRoomTileset: {fileID: 0}
   shopKeeper: {fileID: 6037098253703466992, guid: 47f8866ad4630684795165b6438a48d1, type: 3}
+  spawned: 0
+  cinemachineCam: {fileID: 0}
