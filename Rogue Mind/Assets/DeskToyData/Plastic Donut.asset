@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696119505fa21cb4fbd5d1d0832bac5b, type: 3}
   m_Name: Plastic Donut
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cec1a8cc23e827447bdcc1f8fc6fcc2d, type: 3}
+  sprite: {fileID: 21300000, guid: f0720de0074395f46b5e4479684f528e, type: 3}
   name: Donut
   description: '100 more health (1 time thing) '
   AI: 3
