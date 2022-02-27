@@ -76,8 +76,10 @@ public class DeathScreen : MonoBehaviour
     {
         //transition.SetTrigger("Start");
         menu.SetActive(true);
+        
         roomsCleared.GetComponent<Text>().text = "Rooms Cleared: " + player.GetComponent<PlayerCollisionScript>().RoomsCleared.ToString();
         enemiesKilled.GetComponent<Text>().text = "Enemies Killed " + player.GetComponent<PlayerCollisionScript>().EnemiesKilled.ToString();
+        player.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.0f);
         Time.timeScale = 0;
