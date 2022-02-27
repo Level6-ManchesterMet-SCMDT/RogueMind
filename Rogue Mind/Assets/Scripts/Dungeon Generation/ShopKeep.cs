@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopKeep : MonoBehaviour
 {
     public GameObject drugsMenu;
+    public GameObject player;
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,9 +16,10 @@ public class ShopKeep : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                
+            Debug.Log("Player Detected");
+            player = other.gameObject;
+            if (Input.GetKeyDown(KeyCode.F))
+            {   
                     drugsMenu.GetComponent<ShopMenu>().OpenMenu();
                    
             }

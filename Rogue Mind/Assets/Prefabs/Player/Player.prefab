@@ -805,7 +805,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &7253674216189750480
@@ -863,6 +863,8 @@ MonoBehaviour:
   legsGFX: {fileID: 8399426286298412886}
   legsAnim: {fileID: 5403374716691405028}
   dust: {fileID: 4784961173272955157}
+  enemies: []
+  boss: {fileID: 0}
   dashSpeed: 0
   dashLength: 0.5
   dashCooldown: 1
