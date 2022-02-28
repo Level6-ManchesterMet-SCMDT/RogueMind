@@ -191,55 +191,57 @@ public class SaveManagerScript : MonoBehaviour
 
     public void SelectAtomic()
     {
-        if(!firstChoice)
-		{
-            DeskToy1 = "Atomic";
-            firstChoice = true;
-		}
-        else
-		{
-            DeskToy2 = "Atomic";
-        }
+        
+        DeskToy1 = "Atomic";
         deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectEnergy()
     {
-        if (!firstChoice)
-        {
-            DeskToy1 = "Energy";
-            firstChoice = true;
-        }
-        else
-        {
-            DeskToy2 = "Energy";
-        }
+        
+        DeskToy1 = "Energy";
         deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+
     }
     public void SelectPlumber()
     {
-        if (!firstChoice)
-        {
-            DeskToy1 = "Plumber";
-            firstChoice = true;
-        }
-        else
-        {
-            DeskToy2 = "Plumber";
-        }
+        
+        DeskToy1 = "Plumber";
         deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+
+
     }
     public void SelectDonut()
     {
-        if (!firstChoice)
-        {
-            DeskToy1 = "Donut";
-            firstChoice = true;
-        }
-        else
-        {
-            DeskToy2 = "Donut";
-        }
+
+        DeskToy1 = "Donut";
         deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
 
+    public void SelectAtomic2()
+    {
+
+        DeskToy2 = "Atomic";
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+    }
+    public void SelectEnergy2()
+    {
+
+        DeskToy2 = "Energy";
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+
+    }
+    public void SelectPlumber2()
+    {
+
+        DeskToy2 = "Plumber";
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+
+
+    }
+    public void SelectDonut2()
+    {
+
+        DeskToy2 = "Donut";
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+    }
 }
