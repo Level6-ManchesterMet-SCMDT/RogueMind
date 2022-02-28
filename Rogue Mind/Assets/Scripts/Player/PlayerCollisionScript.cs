@@ -13,6 +13,10 @@ public class PlayerCollisionScript : MonoBehaviour
     public Collider2D triggerCollider;// the players trigger collider hitbox
     public SpriteRenderer spriteRenderer;// the sprite renderer
 
+    public SpriteRenderer playerTop;
+    public SpriteRenderer playerBottom;
+    public SpriteRenderer playerArm;
+
     public float health;//the players health
     public float Maxhealth;//the players health
     public int Dopamine;
@@ -125,9 +129,13 @@ public class PlayerCollisionScript : MonoBehaviour
         triggerCollider.enabled = false;// turn off the hitbox to prevent getting hit each frame in contact
         while(temp<numberOfFlashes)// as long as there are more flashes to do
 		{
-            spriteRenderer.color = flashColor;// set the sprite the flash colour
+            playerTop.color = flashColor;
+            playerBottom.color = flashColor;// set the sprite the flash colour
+            playerArm.color = flashColor;// set the sprite the flash colour
             yield return new WaitForSeconds(flashDuration);//wait the duration
-            spriteRenderer.color = regularColor;//set the sprite the normal colour
+            playerTop.color = regularColor;
+            playerBottom.color = regularColor;//set the sprite the normal colour
+            playerArm.color = regularColor;//set the sprite the normal colour
             yield return new WaitForSeconds(flashDuration);//wait the duration
             temp++;//increase the count in the loop by 1
 
