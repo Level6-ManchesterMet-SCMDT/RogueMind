@@ -951,6 +951,9 @@ MonoBehaviour:
   numberOfFlashes: 3
   triggerCollider: {fileID: 7253674216189750480}
   spriteRenderer: {fileID: 7253674216189750482}
+  playerTop: {fileID: 1319038114150898799}
+  playerBottom: {fileID: 4198233940653787858}
+  playerArm: {fileID: 3705531836528042042}
   health: 100
   Maxhealth: 0
   Dopamine: 0
