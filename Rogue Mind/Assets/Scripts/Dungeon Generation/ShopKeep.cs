@@ -19,9 +19,9 @@ public class ShopKeep : MonoBehaviour
             Debug.Log("Player Detected");
             player = other.gameObject;
             if (Input.GetKeyDown(KeyCode.F))
-            {   
-                    drugsMenu.GetComponent<ShopMenu>().OpenMenu();
-                   
+            {
+                drugsMenu.GetComponent<ShopMenu>().OpenMenu();
+
             }
         }
     }
