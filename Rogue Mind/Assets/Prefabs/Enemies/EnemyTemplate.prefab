@@ -217,7 +217,7 @@ MonoBehaviour:
   sizeX: 0
   sizeY: 0
   angle: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 3182398780945161508}
   rigidBody: {fileID: 0}
   collider: {fileID: 0}
   otherCollider: {fileID: 3182398780945161530}
