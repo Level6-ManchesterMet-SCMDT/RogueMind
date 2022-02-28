@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2480954403745265520}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.86, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3182398780945161511}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &3182398780945161534
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   DopamineDrop: {fileID: 6719482821463016578, guid: 1b332f75a2027c74e80909d0a6e5da03, type: 3}
   FoodDrop: {fileID: 0}
   shadow: {fileID: 0}
+  firePoint: {fileID: 6715782891243606958}
   dist: 0
   anim: {fileID: 0}
   dopamineDropRight:

@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject DopamineDrop;
     public GameObject FoodDrop;
     public GameObject shadow;
+    public Transform firePoint;
     public float dist;
 
 
@@ -456,10 +457,12 @@ public class EnemyScript : MonoBehaviour
         if (angle < -90f || angle > 90f)
         {
             transform.localScale = new Vector3(1, -1, 1);
+            firePoint.transform.localRotation = Quaternion.Euler(0, 0, -90);
         }
         else 
         {
             transform.localScale = new Vector3(1, 1, 1);
+            firePoint.transform.localRotation = Quaternion.Euler(0, 0, 90);
         }
         if (currentState == EnemyState.Moving)
         {
@@ -472,7 +475,7 @@ public class EnemyScript : MonoBehaviour
     {
 
 
-        GameObject bullet = Instantiate(bulletType, transform.GetChild(0).position, transform.GetChild(0).rotation);//Create a bullet from the prefab
+        GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);//Create a bullet from the prefab
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
