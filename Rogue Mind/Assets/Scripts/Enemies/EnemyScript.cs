@@ -416,12 +416,13 @@ public class EnemyScript : MonoBehaviour
         Vector2 directionNow = new Vector2(direction.x, direction.y);
 
         rigidBody.MovePosition((Vector2)transform.position + (directionNow * activeSpeed));// move position by speed in direction over time
-        yield return new WaitForSeconds(1);//wait
+        yield return new WaitForSeconds(0.7f);//wait
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX, m_ScaleX);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX, s_ScaleX);//return to original size
-
-        currentState = EnemyState.Moving;//set moving again
         anim.SetTrigger("Move");
+        
+        yield return new WaitForSeconds(0.2f);//wait
+        currentState = EnemyState.Moving;//set moving again
         //return null;
     }
 
