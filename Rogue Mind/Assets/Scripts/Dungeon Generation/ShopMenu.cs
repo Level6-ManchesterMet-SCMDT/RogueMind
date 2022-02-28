@@ -8,6 +8,7 @@ public class ShopMenu : MonoBehaviour
     private List<DrugsData> DisplayedDrugs = new List<DrugsData>();
     public DrugManagerScript drugManager;
     public GameObject menu;
+    public GameObject vendingMenu;
     public GameObject[] buttons;
     public SoundManager soundManager;
     GameObject player;
