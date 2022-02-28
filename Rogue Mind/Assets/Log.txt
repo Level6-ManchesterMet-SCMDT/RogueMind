@@ -1,9 +1,9 @@
-cash: 780
+cash: 790
 gunRate: 5
 swordRate: 0
 swordDamage: 0
 gunDamage: 0
 moveSpeed: 64
 enemyResistance: 0
-DeskToy1: Energy
-DeskToy2: Energy
+DeskToy1: Donut
+DeskToy2: Atomic
