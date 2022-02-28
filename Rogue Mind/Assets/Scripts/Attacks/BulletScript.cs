@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)//on hitting something
 	{
-        if((collision.gameObject.tag != "Player") && (collision.gameObject.tag != "Enemy"))//if it isn't a player or enemy
+        if((collision.gameObject.tag != "Player") && (collision.gameObject.tag != "Enemy") && (collision.gameObject.tag != "EnemyBullet") && (collision.gameObject.tag != "Bullet"))//if it isn't a player or enemy
         {
             Destroy(gameObject);//Destroy the bullet
         }
