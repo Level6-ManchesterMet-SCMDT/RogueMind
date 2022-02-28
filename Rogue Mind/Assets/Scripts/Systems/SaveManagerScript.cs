@@ -191,72 +191,65 @@ public class SaveManagerScript : MonoBehaviour
 
     public void SelectAtomic()
     {
-        if(DeskToy2 != "Atomic")
+        if(firstChoice)
         {
             DeskToy1 = "Atomic";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+            firstChoice = false;
+            
         }
-        
+        else
+		{
+            DeskToy2 = "Atomic";
+            firstChoice = true;
+        }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectEnergy()
     {
-        if (DeskToy2 != "Energy")
+        if (firstChoice)
         {
             DeskToy1 = "Energy";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+            firstChoice = false;
+
         }
+        else
+        {
+            DeskToy2 = "Energy";
+            firstChoice = true;
+        }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
     public void SelectPlumber()
     {
-        if (DeskToy2 != "Plumber")
+        if (firstChoice)
         {
             DeskToy1 = "Plumber";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+            firstChoice = false;
+
         }
+        else
+        {
+            DeskToy2 = "Plumber";
+            firstChoice = true;
+        }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
 
     }
     public void SelectDonut()
     {
-        if (DeskToy2 != "Donut")
+        if (firstChoice)
         {
             DeskToy1 = "Donut";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
-        }
-    }
+            firstChoice = false;
 
-    public void SelectAtomic2()
-    {
-        if (DeskToy1 != "Atomic")
-        {
-            DeskToy2 = "Atomic";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
         }
-    }
-    public void SelectEnergy2()
-    {
-        if (DeskToy1 != "Energy")
-        {
-            DeskToy2 = "Energy";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
-        }
-
-    }
-    public void SelectPlumber2()
-    {
-        if (DeskToy1 != "Plumber")
-        {
-            DeskToy2 = "Plumber";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
-        }
-
-
-    }
-    public void SelectDonut2()
-    {
-        if (DeskToy1 != "Donut")
+        else
         {
             DeskToy2 = "Donut";
-            deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
+            firstChoice = true;
         }
+        deskToysImage.GetComponent<DeskToysShowScript>().RealStart(this);
     }
+
+ 
 }
