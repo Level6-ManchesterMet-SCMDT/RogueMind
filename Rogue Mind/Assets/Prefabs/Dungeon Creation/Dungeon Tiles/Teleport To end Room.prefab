@@ -167,9 +167,9 @@ GameObject:
   - component: {fileID: 5333735810755245923}
   - component: {fileID: 4346672626689232623}
   - component: {fileID: 7502807091893319610}
-  - component: {fileID: 5938552339662241231}
+  - component: {fileID: 8225399234036436515}
   m_Layer: 0
-  m_Name: EndPlaceHolder
+  m_Name: Teleport To end Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5679c4f2aaa4a24cbb76a3362822e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5938552339662241231
+--- !u!114 &8225399234036436515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,24 +310,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5165489882499522545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ba90401f7073946b16f92c5b570ff9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6af50afe081d5644fa79ee84fb9a4542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - roundNum: 0
-    enemyTypes: []
-    count: 
-    spawnRate: 1
-  spawnPoints:
-  - {fileID: 5021983960557804734}
-  enemyPrefab: {fileID: 0}
-  doors: {fileID: 0}
-  exitDoor: {fileID: 1011154190737002063}
-  nextWave: 0
-  round: 1
-  waveDelay: 1
-  countdown: 0
-  enemiesSpawned: 0
-  spawnEnemies: 0
-  time: 1.4
-  state: 2

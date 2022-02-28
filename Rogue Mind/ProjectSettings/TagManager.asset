@@ -38,6 +38,8 @@ TagManager:
   - Cinemachine
   - FlySplat
   - VendingMenu
+  - Rock
+  - EndRoom
   layers:
   - Default
   - TransparentFX

@@ -166,6 +166,7 @@ public class BossRoomSpawn : MonoBehaviour
         {
             camera.GetComponent<CameraScript>().target = this.gameObject.transform;// sets the cameras target to the spawner transform
             cinemachineCam.GetComponent<CinemachineVirtualCamera>().Follow = this.gameObject.transform;
+            cinemachineCam.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 7f;
             beenInRoom = true;
             if (!enemiesSpawned) //if no enemies are spawned
             {
