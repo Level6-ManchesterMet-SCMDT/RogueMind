@@ -104,8 +104,9 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[0].drugCost;
             drugManager.AddEffects(DisplayedDrugs[0]);
-            soundManager.PlaySound("Drug");
+            
         }
+        soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
@@ -117,8 +118,9 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[1].drugCost;
             drugManager.AddEffects(DisplayedDrugs[1]);
-            soundManager.PlaySound("Drug");
+            
         }
+        soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
@@ -131,8 +133,9 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[2].drugCost;
             drugManager.AddEffects(DisplayedDrugs[2]);
-            soundManager.PlaySound("Drug");
+            
         }
+        soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
         player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;

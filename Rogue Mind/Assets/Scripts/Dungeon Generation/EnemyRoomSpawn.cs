@@ -214,7 +214,7 @@ public class EnemyRoomSpawn : MonoBehaviour
                     if (doors != null)
                     {
                         doors.SetActive(true);
-                        //soundManager.PlaySound("DoorClose");
+                        
                         if (player.GetComponent<PlayerCollisionScript>().doctorDrug)
                         {
                             player.GetComponent<PlayerCollisionScript>().inRoom = true;

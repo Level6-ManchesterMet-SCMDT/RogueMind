@@ -138,3 +138,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0313050f68a1c564fb44eb9b448184f9, type: 3}
   - {fileID: 21300000, guid: 0d7ba45378b7f2943aa9db27f3b716b6, type: 3}
   - {fileID: 21300000, guid: 15615f91f298dc448a0332652325c657, type: 3}
+  audios:
+  - SnackBar
+  - Slurp
+  - Crisps
+  main: 

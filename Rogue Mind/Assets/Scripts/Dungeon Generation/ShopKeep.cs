@@ -6,9 +6,11 @@ public class ShopKeep : MonoBehaviour
 {
     public GameObject drugsMenu;
     public GameObject player;
+    public SoundManager soundManager;
     // Start is called before the first frame update
     private void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         drugsMenu = GameObject.FindGameObjectWithTag("UI");
     }
 
@@ -21,7 +23,6 @@ public class ShopKeep : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 drugsMenu.GetComponent<ShopMenu>().OpenMenu();
-
             }
         }
     }
