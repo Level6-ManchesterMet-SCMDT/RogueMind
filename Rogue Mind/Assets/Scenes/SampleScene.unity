@@ -2605,6 +2605,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750445, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
+      propertyPath: damage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253674216189750445, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: windowCleanerDrug
       value: 0
       objectReference: {fileID: 0}
@@ -2667,10 +2671,6 @@ PrefabInstance:
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: dashSpeed
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
-      propertyPath: dashLength
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: janitorDrug

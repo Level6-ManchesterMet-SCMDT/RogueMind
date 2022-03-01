@@ -886,7 +886,7 @@ MonoBehaviour:
   enemies: []
   boss: {fileID: 0}
   dashSpeed: 0
-  dashLength: 0.5
+  dashLength: 0.15
   dashCooldown: 1
   activeDashCooldown: 0
   atheleteDrug: 0
