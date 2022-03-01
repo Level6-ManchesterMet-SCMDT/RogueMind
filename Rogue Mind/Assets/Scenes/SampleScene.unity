@@ -901,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 730994305729806869, guid: a0f4b09868fddae499a3ea1e89dbf2fc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f4b09868fddae499a3ea1e89dbf2fc, type: 3}
@@ -4285,6 +4285,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1353740549018648539, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.97475
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353740549018648539, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -4316,6 +4324,18 @@ PrefabInstance:
     - target: {fileID: 3102598864425599427, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483259968336823671, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.97475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483259968336823671, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483259968336823671, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.97475
       objectReference: {fileID: 0}
     - target: {fileID: 7525709286105391990, guid: 97d9e2ec0df1a6542ba890e11dd982dc, type: 3}
       propertyPath: m_Value
