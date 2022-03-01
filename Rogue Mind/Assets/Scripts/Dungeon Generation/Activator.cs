@@ -14,6 +14,7 @@ public class Activator : MonoBehaviour
     public GameObject itemRoomTemplate;
     public GameObject shopRoomTemplate;
     public GameObject teleporter;
+    public GameObject bossRoomTileset;
 
     public GameObject shopTileSet;
 
@@ -24,6 +25,7 @@ public class Activator : MonoBehaviour
         if (isEndRoom)
         {
             endRoomTemplate.SetActive(true);
+            bossRoomTileset.SetActive(true);
             teleporter.SetActive(true);
         }
         if (isItemRoom)
