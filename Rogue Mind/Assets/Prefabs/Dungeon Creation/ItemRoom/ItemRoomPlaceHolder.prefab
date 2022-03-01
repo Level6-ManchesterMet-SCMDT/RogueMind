@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1870651678097302487
 Transform:
   m_ObjectHideFlags: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 5021983960557804734}
   item: {fileID: 4434812164370589443, guid: f524e6a1e6c6ca248ab0c75df81025c7, type: 3}
+  animator: {fileID: 0}
   drugData:
   - {fileID: 11400000, guid: 274e9089818255b429cd7eb10b80abb0, type: 2}
   - {fileID: 11400000, guid: 63e984b4232560444886897e1a343823, type: 2}

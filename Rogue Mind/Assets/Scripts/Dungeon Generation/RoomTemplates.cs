@@ -76,7 +76,7 @@ public class RoomTemplates : MonoBehaviour
         }
         if (shopWaitTime <= 0 && !spawnedShopRoom)
         {
-            itemWaitTime = 0;
+            shopWaitTime = 0;
             ShopRoom();
         }
         else
@@ -122,7 +122,7 @@ public class RoomTemplates : MonoBehaviour
     void ShopRoom()
     {
          rand = Random.Range(0, endRooms.Count - 1);// picks a random number from all the end rooms in the level
-
+        Debug.Log(rand);
         for (int i = 0; i < endRooms.Count; i++)// for loop for all the rooms in the end room list
         {
             if (i == rand)// if the random number is the same as the current room in the for loop
@@ -138,7 +138,7 @@ public class RoomTemplates : MonoBehaviour
                     rand = Random.Range(0, endRooms.Count - 1);
                     i = 0;
                 }
-
+                Debug.Log(i);
             }
         }
     }
