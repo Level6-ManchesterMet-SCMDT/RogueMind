@@ -26,7 +26,9 @@ public class VendingScript : MonoBehaviour
 		{
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 20;
             player.GetComponent<PlayerCollisionScript>().HealDamage(20);
+
         }
+        this.gameObject.active = false;
 	}
     public void heal2()
     {
@@ -35,6 +37,7 @@ public class VendingScript : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 40;
             player.GetComponent<PlayerCollisionScript>().HealDamage(40);
         }
+        this.gameObject.active = false;
     }
     public void heal3()
     {
@@ -43,5 +46,6 @@ public class VendingScript : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 60;
             player.GetComponent<PlayerCollisionScript>().HealDamage(60);
         }
+        this.gameObject.active = false;
     }
 }
