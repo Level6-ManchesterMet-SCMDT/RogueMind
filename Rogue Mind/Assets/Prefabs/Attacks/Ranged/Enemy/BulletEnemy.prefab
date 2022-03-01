@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderNonTrigger: {fileID: 670771620110954472}
-  damage: 1
+  damage: 20
   timeTillDestroy: 3
   modifiers: {fileID: 0}
 --- !u!58 &670771620110954472

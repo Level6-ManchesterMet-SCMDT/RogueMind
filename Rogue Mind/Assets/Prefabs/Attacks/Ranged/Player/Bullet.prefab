@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f037f49d6f594d9fdde2a1f9a416d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderNonTrigger: {fileID: 0}
   damage: 5
   timeTillDestroy: 3
   modifiers: {fileID: 0}

@@ -421,7 +421,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3102957311368369075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +464,7 @@ MonoBehaviour:
   soundManager: {fileID: 0}
   player: {fileID: 0}
   transition: {fileID: 570679927949620804}
+  displayedDrugs: {fileID: 0}
 --- !u!95 &570679927949620804
 Animator:
   serializedVersion: 3
