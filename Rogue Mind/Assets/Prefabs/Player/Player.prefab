@@ -878,7 +878,6 @@ MonoBehaviour:
   arm: {fileID: 4717255142170071649}
   rotate: {fileID: 0}
   lights: {fileID: 5738953207442612951}
-  armAnim: {fileID: 0}
   bodyGFX: {fileID: 4533666522622918737}
   bodyAnim: {fileID: 2597989263192847285}
   legsGFX: {fileID: 8399426286298412886}
@@ -975,6 +974,7 @@ MonoBehaviour:
   playerTop: {fileID: 1319038114150898799}
   playerBottom: {fileID: 4198233940653787858}
   playerArm: {fileID: 3705531836528042042}
+  playerFeetBox: {fileID: 7253674216189750480}
   health: 100
   Maxhealth: 0
   Dopamine: 0
