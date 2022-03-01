@@ -2332,27 +2332,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 846
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 476
       objectReference: {fileID: 0}
     - target: {fileID: 3102957311368369078, guid: 69e8db825aa74874d9b5a8096a49a328, type: 3}
       propertyPath: m_LocalScale.x
@@ -2817,7 +2817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: dashCooldown
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7693344399655470621, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: m_Materials.Array.data[0]

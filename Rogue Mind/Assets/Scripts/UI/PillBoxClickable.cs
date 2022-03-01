@@ -30,7 +30,7 @@ public class PillBoxClickable : MonoBehaviour
     {
         saveManager.GetComponent<SaveManagerScript>().NextScene();
         loadingScreen.SetActive(true);
-        StartCoroutine(LoadLevel(1));
+        StartCoroutine(LoadLevel(3));
         // this object was clicked - do something
         
     }
