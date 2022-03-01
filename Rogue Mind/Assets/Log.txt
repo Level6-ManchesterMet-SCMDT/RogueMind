@@ -1,4 +1,4 @@
-cash: 820
+cash: 890
 gunRate: 5
 swordRate: 0
 swordDamage: 0

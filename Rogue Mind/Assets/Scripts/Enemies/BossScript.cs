@@ -246,6 +246,7 @@ public class BossScript : MonoBehaviour
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(transform.GetChild(0).gameObject);
             yield return new WaitForSeconds(5f);
 
             winMenu.GetComponent<WinScreen>().OpenWinScreen();

@@ -81,7 +81,7 @@ public class EnemyScript : MonoBehaviour
     {
         Samlets = Resources.Load<AudioClip>("Samlets Noise");
         Eyeball = Resources.Load<AudioClip>("Eye ball");//THIS ONE
-        FlySound = Resources.Load<AudioClip>("fly sound");//THIS ONE
+        FlySound = Resources.Load<AudioClip>("FlyNormal");//THIS ONE
         NoseSound = Resources.Load<AudioClip>("nose idle");
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
@@ -511,6 +511,7 @@ public class EnemyScript : MonoBehaviour
         bullet.GetComponent<BulletScript>().damage = damage;//sets the damage of the bullet it shoots to the enemies damage
         Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();//save it's rigidBody
         rigidBody.AddForce(-(transform.right) * 4, ForceMode2D.Impulse);//add a force based on the bulletForce Variable 
+        soundManager.PlaySound("Eyeball");
         yield return new WaitForSeconds(1f );//pause inbetween shots   + Random.RandomRange(0f, 1f)
         distCheck();
 
@@ -624,6 +625,7 @@ public class EnemyScript : MonoBehaviour
         GetComponent<AudioSource>().Stop();
         currentState = EnemyState.Wait;
         anim.SetTrigger("Explode");
+        soundManager.PlaySound("FlyDamage");
         yield return new WaitForSeconds(0.5f);//pause inbetween shots
         soundManager.PlaySound("FlyExplode");
         Instantiate(bulletType, transform.position, transform.rotation);

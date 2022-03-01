@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip Cymbol, ShopPurchase, OfficeNoise, SamPuke, SamWalk, Samlets, Sword2, Sword3;
     public static AudioClip Crisps, Dave, MenuOpen, EnemyDeath, EnemySpawn, Eyeball, FlyDamage, FlyExplode, FlySound, NoseSound;
     public static AudioClip Pages, Vending, NoseAttack1,NoseAttack2, Reload, Rocks1, Rocks2, SelectNoise, Shoot1, Shoot2,PlayerDamage,SnackBar,Slurp;
-
+    public static AudioClip Dave2, Dave3, EnemyDeath2, EnemyDeath3, ShootAlt1, ShootAlt2, ShootAlt3,Shoot,Keycard;
     static AudioSource audioSrc;
     
     // Start is called before the first frame update
@@ -34,14 +34,18 @@ public class SoundManager : MonoBehaviour
         Sword2 = Resources.Load<AudioClip>("sword2");
         Sword3 = Resources.Load<AudioClip>("sword3");
         Crisps = Resources.Load<AudioClip>("Crisps");
-        Dave = Resources.Load<AudioClip>("Dave");//THIS ONE
+        Dave = Resources.Load<AudioClip>("Dave1");
+        Dave2 = Resources.Load<AudioClip>("Dave2");
+        Dave3 = Resources.Load<AudioClip>("Dave3");
         MenuOpen = Resources.Load<AudioClip>("drug menu open noise");
-        EnemyDeath = Resources.Load<AudioClip>("enemy die");//THIS ONE
-        EnemySpawn = Resources.Load<AudioClip>("enemy spawn cut");//THIS ONE
-        Eyeball = Resources.Load<AudioClip>("Eye ball");//THIS ONE
-        FlyDamage = Resources.Load<AudioClip>("fly damage");//THIS ONE
-        FlyExplode = Resources.Load<AudioClip>("fly explode");//THIS ONE
-        FlySound = Resources.Load<AudioClip>("fly sound");//THIS ONE
+        EnemyDeath = Resources.Load<AudioClip>("EnemyDeath1");
+        EnemyDeath2 = Resources.Load<AudioClip>("EnemyDeath2");
+        EnemyDeath3 = Resources.Load<AudioClip>("EnemyDeath3");
+        EnemySpawn = Resources.Load<AudioClip>("EnemySpawn");
+        Eyeball = Resources.Load<AudioClip>("Eyeball Attack");
+        FlyDamage = Resources.Load<AudioClip>("FlyCry");
+        FlyExplode = Resources.Load<AudioClip>("FlyExplosion");
+        FlySound = Resources.Load<AudioClip>("FlyNormal");
         NoseSound = Resources.Load<AudioClip>("nose idle");
         Vending = Resources.Load<AudioClip>("Old fridge");
         Pages = Resources.Load<AudioClip>("pages cut");
@@ -50,12 +54,18 @@ public class SoundManager : MonoBehaviour
         PlayerDamage = Resources.Load<AudioClip>("player damage");
         Rocks1 = Resources.Load<AudioClip>("rocks breaking 1");
         Rocks2 = Resources.Load<AudioClip>("rocks breaking 2");
-        Reload = Resources.Load<AudioClip>("reload");///THIS ONE
+        Reload = Resources.Load<AudioClip>("Reload");
         SelectNoise = Resources.Load<AudioClip>("select noise");
         SnackBar = Resources.Load<AudioClip>("snack bar");
         Slurp = Resources.Load<AudioClip>("slurp");
-        Shoot1 = Resources.Load<AudioClip>("shoot");
-        Shoot2 = Resources.Load<AudioClip>("shoot");// NEEDS NEW SOUND
+        Shoot = Resources.Load<AudioClip>("Pew1");
+        Shoot1 = Resources.Load<AudioClip>("Pew2");
+        Shoot2 = Resources.Load<AudioClip>("Pew3");
+        ShootAlt1 = Resources.Load<AudioClip>("ShootAlt1");
+        ShootAlt2 = Resources.Load<AudioClip>("ShootAlt2");
+        ShootAlt3 = Resources.Load<AudioClip>("ShootAlt3");
+        Keycard = Resources.Load<AudioClip>("Keycard PickUp");
+        
 
 
 
@@ -147,13 +157,37 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(Crisps);
                 break;
             case "Dave":
-                audioSrc.PlayOneShot(Dave);
+                switch (Random.RandomRange(0, 3))
+                {
+                    case 0:
+                        audioSrc.PlayOneShot(Dave);
+                        break;
+                    case 1:
+                        audioSrc.PlayOneShot(Dave2);
+                        break;
+                    case 2:
+                        audioSrc.PlayOneShot(Dave3);
+                        break;
+                }
+                
                 break;
             case "MenuOpen":
                 audioSrc.PlayOneShot(MenuOpen);
                 break;
             case "EnemyDeath":
-                audioSrc.PlayOneShot(EnemyDeath);
+                switch (Random.RandomRange(0, 3))
+                {
+                    case 0:
+                        audioSrc.PlayOneShot(EnemyDeath);
+                        break;
+                    case 1:
+                        audioSrc.PlayOneShot(EnemyDeath2);
+                        break;
+                    case 2:
+                        audioSrc.PlayOneShot(EnemyDeath3);
+                        break;
+                }
+                
                 break;
             case "Eyeball":
                 audioSrc.PlayOneShot(Eyeball);
@@ -206,7 +240,7 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(SelectNoise);
                 break;
             case "Shoot":
-                switch (Random.RandomRange(0, 2))
+                switch (Random.RandomRange(0, 3))
                 {
                     case 0:
                         audioSrc.PlayOneShot(Shoot1);
@@ -214,8 +248,26 @@ public class SoundManager : MonoBehaviour
                     case 1:
                         audioSrc.PlayOneShot(Shoot2);
                         break;
+                    case 2:
+                        audioSrc.PlayOneShot(Shoot);
+                        break;
                 }
                 
+                break;
+            case "ShootAlt":
+                switch (Random.RandomRange(0, 3))
+                {
+                    case 0:
+                        audioSrc.PlayOneShot(ShootAlt1);
+                        break;
+                    case 1:
+                        audioSrc.PlayOneShot(ShootAlt2);
+                        break;
+                    case 2:
+                        audioSrc.PlayOneShot(ShootAlt3);
+                        break;
+                }
+
                 break;
             case "PlayerDamage":
                 audioSrc.PlayOneShot(PlayerDamage);
@@ -226,6 +278,10 @@ public class SoundManager : MonoBehaviour
             case "Slurp":
                 audioSrc.PlayOneShot(Slurp);
                 break;
+            case "Keycard":
+                audioSrc.PlayOneShot(Slurp);
+                break;
+
         }
     }
 }

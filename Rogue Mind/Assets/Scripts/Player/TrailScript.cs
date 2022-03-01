@@ -10,18 +10,6 @@ public class TrailScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch(Random.RandomRange(1,3))
-        {
-            case 1:
-                sr.sprite = options[1];
-                break;
-            case 2:
-                sr.sprite = options[2];
-                break;
-            case 3:
-                sr.sprite = options[3];
-                break;
-        }
         Destroy(this.gameObject, destroyTime);
     }
 
