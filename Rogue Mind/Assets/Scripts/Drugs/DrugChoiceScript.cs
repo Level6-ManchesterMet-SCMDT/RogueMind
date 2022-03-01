@@ -15,10 +15,12 @@ public class DrugChoiceScript : MonoBehaviour
     public SoundManager soundManager;
     public GameObject player;
     public Animator transition;
+    public GameObject displayedDrugs;
 
     // Start is called before the first frame update
     void Start()
     {
+        displayedDrugs = GameObject.FindGameObjectWithTag("Display");
         player = GameObject.FindGameObjectWithTag("Player");//finds the player
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         drugSelectionMenu = transform.GetChild(0).gameObject;//find the menu
@@ -119,6 +121,7 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[0]);
+        displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[0]);
         StartCoroutine(CloseMenu());
 
     }
@@ -129,6 +132,7 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[1]);
+        displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[1]);
         StartCoroutine(CloseMenu());
 
     }
@@ -139,6 +143,7 @@ public class DrugChoiceScript : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         soundManager.PlaySound("Drug");
         drugManager.AddEffects(DisplayedDrugs[2]);
+        displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[2]);
         StartCoroutine(CloseMenu()); //turns off menu
         
     }
