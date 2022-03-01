@@ -2670,7 +2670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: dashLength
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7253674216189750487, guid: 0c61df9f429bc27498cfd1f4fbda8139, type: 3}
       propertyPath: janitorDrug
