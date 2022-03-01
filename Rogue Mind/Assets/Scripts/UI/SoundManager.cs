@@ -279,7 +279,7 @@ public class SoundManager : MonoBehaviour
                 audioSrc.PlayOneShot(Slurp);
                 break;
             case "Keycard":
-                audioSrc.PlayOneShot(Slurp);
+                audioSrc.PlayOneShot(Keycard);
                 break;
 
         }
