@@ -16,8 +16,8 @@ MonoBehaviour:
   name: Shnose
   sprite: {fileID: 0}
   hp: 25
-  movementSpeed: 3
-  damage: 5
+  movementSpeed: 2.5
+  damage: 1
   bulletType: {fileID: 0}
   anim: {fileID: 9100000, guid: 415bb4a08b67c714da0e8f2333d5cba2, type: 2}
   sizeX: 0.7

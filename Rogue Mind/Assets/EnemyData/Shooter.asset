@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   hp: 28
   movementSpeed: 2
-  damage: 7
+  damage: 10
   bulletType: {fileID: 6596869843035164009, guid: b7d36903ea403a44695a3f96a10e2c7a, type: 3}
   anim: {fileID: 9100000, guid: b1340db170a4ece44bc94da87b3d251c, type: 2}
   sizeX: 1.2
