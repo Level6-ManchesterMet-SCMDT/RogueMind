@@ -22,9 +22,9 @@ public class ShopKeep : MonoBehaviour
             player = other.gameObject;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                soundManager.PlaySound("Dave");
                     drugsMenu.GetComponent<ShopMenu>().OpenMenu();
-                   
+                soundManager.PlaySound("Dave");
+
             }
         }
     }
