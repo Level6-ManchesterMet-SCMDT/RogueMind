@@ -26,8 +26,6 @@ public class BossScript : MonoBehaviour
     public GameObject healthBar;// the healthbar for the player
     public Animator anim;
 
-    public GameObject winMenu;
-
     Vector2 movement;// a vector used for movement
     public BossTypes.BossAI aiType;// the type of AI being used
 
@@ -60,8 +58,6 @@ public class BossScript : MonoBehaviour
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(health);
         anim.runtimeAnimatorController = scriptable.anim;
         nameText.GetComponent<Text>().text = name;
-
-        winMenu = GameObject.FindGameObjectWithTag("UI");
 
         if (scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
         {
@@ -226,18 +222,8 @@ public class BossScript : MonoBehaviour
             {
                 Instantiate(CashDrop, transform.position + (new Vector3(i / 10, i / 10, 0)), transform.rotation);
             }
-            StartCoroutine(winState());
-            // if health 0 or below then die
+            Destroy(gameObject);// if health 0 or below then die
         }
-    }
-    IEnumerator winState()
-    {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        yield return new WaitForSeconds(5f);
-
-        winMenu.GetComponent<WinScreen>().OpenWinScreen();
-        Destroy(gameObject);
     }
 
 }

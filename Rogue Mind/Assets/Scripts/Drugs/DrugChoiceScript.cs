@@ -36,7 +36,7 @@ public class DrugChoiceScript : MonoBehaviour
             if (shopRoom.GetComponent<SpawnShop>().spawned)
             {
                 shopKeeper = GameObject.FindGameObjectWithTag("ShopKeep");//find the shop keeper
-               // get the shop keepers menu
+                shopKeeper.GetComponent<ShopKeep>().drugsMenu = this.gameObject;// get the shop keepers menu
             }
             else if (shopKeeper == null)
             {

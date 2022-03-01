@@ -8,7 +8,6 @@ public class ShopMenu : MonoBehaviour
     private List<DrugsData> DisplayedDrugs = new List<DrugsData>();
     public DrugManagerScript drugManager;
     public GameObject menu;
-    bool menuOpen;
     public GameObject vendingMenu;
     public GameObject[] buttons;
     public SoundManager soundManager;
@@ -25,17 +24,17 @@ public class ShopMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)&&menuOpen)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
+            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
+            StartCoroutine(CloseTransition());
         }
     }
     public void CloseMenu()
     {
-        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
-        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
-        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
-        StartCoroutine(CloseTransition());
+
     }
     public DrugsData RandomDrug()// obtain a random drug from the list of potential ones
     {
@@ -95,7 +94,7 @@ public class ShopMenu : MonoBehaviour
             buttons[i].transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().sprite2 = adding.sprite2;
             buttons[i].transform.GetChild(3).gameObject.GetComponent<PillBoxMouseOver>().setSprite();
 
-            menuOpen = true;
+
         }
 
     }
@@ -143,7 +142,6 @@ public class ShopMenu : MonoBehaviour
     {
         transition.SetTrigger("Close");
         yield return new WaitForSeconds(1.0f);
-        menuOpen = false;
         menu.SetActive(false);
     }
 }
