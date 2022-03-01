@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.LeftShift))//if the player hits "E"
                 {
-                    if (dashCoolCounter <= 0 && dashCounter <= 0)// If the dash cool down is 0
+                    if (dashCoolCounter <= 0 && dashCounter <= 0 && activeDashCooldown <=0)// If the dash cool down is 0
                     {
                         if (!atheleteDrug)
                         {
@@ -226,6 +226,7 @@ public class PlayerMovement : MonoBehaviour
 				{
                     Instantiate(trail, transform.position,transform.rotation);
 				}
+                
                 break;
 
 
@@ -239,7 +240,7 @@ public class PlayerMovement : MonoBehaviour
                 if (dashCounter <= 0)// once it's 0
                 {
                     activeMoveSpeed = moveSpeed;// stop the dash
-                    activeDashCooldown = dashCoolCounter;//set the cooldown
+                    activeDashCooldown = dashCooldown;//set the cooldown
 
                     currentState = PlayerState.Moving;//back to moving state
                     for (int i = 0; i < enemies.Length; i++)
@@ -255,7 +256,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (activeDashCooldown > 0)// if in cool down
         {
-            dashCoolCounter -= Time.deltaTime;//count down
+            activeDashCooldown -= Time.deltaTime;//count down
         }
 
     }
