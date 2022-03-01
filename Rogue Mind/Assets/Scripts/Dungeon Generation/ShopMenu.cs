@@ -14,9 +14,11 @@ public class ShopMenu : MonoBehaviour
     public SoundManager soundManager;
     GameObject player;
     public Animator transition;
+    public GameObject displayedDrugs;
 
     void Start()
     {
+        displayedDrugs = GameObject.FindGameObjectWithTag("Display");
         drugManager = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();//find the drug manager
         player = GameObject.FindGameObjectWithTag("Player");
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
@@ -105,7 +107,8 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[0].drugCost;
             drugManager.AddEffects(DisplayedDrugs[0]);
-            
+            displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[0]);
+
         }
         soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
@@ -119,7 +122,8 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[1].drugCost;
             drugManager.AddEffects(DisplayedDrugs[1]);
-            
+            displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[1]);
+
         }
         soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
@@ -134,7 +138,8 @@ public class ShopMenu : MonoBehaviour
         {
             player.GetComponent<PlayerCollisionScript>().Dopamine -= DisplayedDrugs[2].drugCost;
             drugManager.AddEffects(DisplayedDrugs[2]);
-            
+            displayedDrugs.GetComponent<DrugDisplayingScript>().AddDrug(DisplayedDrugs[2]);
+
         }
         soundManager.PlaySound("ShopPurchase");
         player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
