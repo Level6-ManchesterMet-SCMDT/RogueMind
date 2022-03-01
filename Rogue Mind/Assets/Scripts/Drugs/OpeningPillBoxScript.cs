@@ -7,10 +7,11 @@ public class OpeningPillBoxScript : MonoBehaviour
     public GameObject menu;
     public GameObject player;
     public Animator transition;
-
+    public SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         menu = GameObject.FindGameObjectWithTag("DrugMenu");//finds the drug selection menu
         player = GameObject.FindWithTag("Player");//find the player and rigid body
         transition = menu.gameObject.GetComponent<Animator>();
@@ -26,6 +27,7 @@ public class OpeningPillBoxScript : MonoBehaviour
 	{
 		if(collision.gameObject.tag == "Player")
 		{
+            soundManager.PlaySound("MenuOpen");
             menu.GetComponent<DrugChoiceScript>().OpenMenu();
             Destroy(this.gameObject);
             transition.SetTrigger("Start");

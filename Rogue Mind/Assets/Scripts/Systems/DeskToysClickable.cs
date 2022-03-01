@@ -8,11 +8,13 @@ public class DeskToysClickable : MonoBehaviour
     public GameObject otherMenu;// the other menu
 
     public Sprite sprite1;// the sprite associated with the non hovered over icon
+    public string sound;
     public Sprite sprite2;// the sprite associated with the hovered over icon
+    public SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
     }
     
     // Update is called once per frame
@@ -27,8 +29,13 @@ public class DeskToysClickable : MonoBehaviour
         mainMenu.SetActive(true);//turn on this menu
     }
 
-    void OnMouseOver()
+	private void OnMouseEnter()
+	{
+        soundManager.PlaySound(sound);
+    }
+	void OnMouseOver()
     {
+        
         //If your mouse hovers over the GameObject with the script attached, output this message
         gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;// if mouse over then second sprite
         Debug.Log("Mouse is over GameObject.");

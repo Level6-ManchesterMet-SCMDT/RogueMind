@@ -90,7 +90,7 @@ public class ShootingScript : MonoBehaviour
     void Shoot()
 	{
         CinemachineShake.Instance.ShakeCamera(1f, .1f);
-        soundManager.PlaySound("Gun");
+        soundManager.PlaySound("Shoot");
         shootDelay = shootDelayLength / modifiers.fireRateModifier;
         //Vector3 offset = firePoint.up + new Vector3(Random.RandomRange(0f,0.5f), 0, 0);
         //firePoint.up += new Vector3(Random.RandomRange(0f, 02f), 0, 0);
@@ -106,7 +106,7 @@ public class ShootingScript : MonoBehaviour
 
     private IEnumerator Reload()
     {
-
+        soundManager.PlaySound("Reload");
         for (int i = 0; i < maxBullets; i++)
         {
             yield return new WaitForSeconds(reloadDelay / maxBullets);//pause

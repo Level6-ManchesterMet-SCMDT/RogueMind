@@ -8,8 +8,10 @@ public class RockScript : MonoBehaviour
     public float maxHealth;
     public GameObject player;
     public GameObject DeathParticles;
+    public SoundManager soundManager;
     private void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         health = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -22,6 +24,7 @@ public class RockScript : MonoBehaviour
     }
     void DestroyRock()
     {
+        soundManager.PlaySound("Rocks");
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

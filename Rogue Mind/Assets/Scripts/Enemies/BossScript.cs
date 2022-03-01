@@ -13,6 +13,7 @@ public class BossScript : MonoBehaviour
     public float damage;// the damage value of the enemy
     public string name;// name of the enemy
     public GameObject spawnable;//type of bullet an enemy will use
+    public SoundManager soundManager;
 
     public SpriteRenderer spriteRenderer;// the enemies sprite renderer
     public Rigidbody2D rigidBody;// the enemies rigidbody
@@ -29,7 +30,7 @@ public class BossScript : MonoBehaviour
     Vector2 movement;// a vector used for movement
     public BossTypes.BossAI aiType;// the type of AI being used
 
-   
+    public static AudioClip SamPuke, SamWalk;
 
     public EnemyState currentState;// the enemies state
     public int timer = 0;
@@ -42,6 +43,8 @@ public class BossScript : MonoBehaviour
 
     void Start()
     {
+        SamPuke = Resources.Load<AudioClip>("Sam Puke");
+        SamWalk = Resources.Load<AudioClip>("Sam Walk");
         collider = this.gameObject.GetComponent<BoxCollider2D>();//assign collider
         currentState = EnemyState.Moving;//set base movement state
         target = GameObject.FindWithTag("Player");//find the player and rigid body
@@ -58,6 +61,8 @@ public class BossScript : MonoBehaviour
         healthBar.GetComponent<HealthBarScirpt>().SetMaxHealth(health);
         anim.runtimeAnimatorController = scriptable.anim;
         nameText.GetComponent<Text>().text = name;
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
+        soundManager.PlaySound("SamWalk");
 
         if (scriptable.sprite != null)// if there is a sprite then set it otherwise it sticks with the prefabs default
         {
@@ -105,7 +110,7 @@ public class BossScript : MonoBehaviour
 
     void BigSamStart()
 	{
-        
+        GetComponent<AudioSource>().PlayOneShot(SamWalk);
 	}
 
     void BigSamUpdate()
@@ -157,6 +162,7 @@ public class BossScript : MonoBehaviour
 
     private IEnumerator BigSamAttack()
 	{
+        
         float m_ScaleX, m_ScaleY;
         float s_ScaleX, s_ScaleY;
         m_ScaleX = collider.size.x;
@@ -174,11 +180,15 @@ public class BossScript : MonoBehaviour
 
     private IEnumerator BigSamAssembleTheMinions()
 	{
+        otherCollider.enabled = false;
+        GetComponent<AudioSource>().Stop();
+        
         anim.SetTrigger("BeginWobble");
         yield return new WaitForSeconds(1);//pause
         anim.SetTrigger("BeforeThrowUp");
         yield return new WaitForSeconds(0.5f);//pause
         anim.SetTrigger("Start Throwing Up");
+        GetComponent<AudioSource>().PlayOneShot(SamPuke);
         for (int i = 0; i < Random.RandomRange(3,5); i++)//a random number
 		{
             GameObject spawned = Instantiate(spawnable, transform.position+ new Vector3(0,-3,0), transform.rotation);//summon the spawnables 
@@ -189,6 +199,8 @@ public class BossScript : MonoBehaviour
         yield return new WaitForSeconds(1f);//pause
         currentState = EnemyState.Moving;//set moving again
         anim.SetTrigger("BackToWalk");
+        GetComponent<AudioSource>().PlayOneShot(SamWalk);
+        otherCollider.enabled = true;
 
     }
     void BigSamCollision(Collider2D collision)
@@ -222,6 +234,7 @@ public class BossScript : MonoBehaviour
             {
                 Instantiate(CashDrop, transform.position + (new Vector3(i / 10, i / 10, 0)), transform.rotation);
             }
+            soundManager.PlaySound("EnemyDeath");
             Destroy(gameObject);// if health 0 or below then die
         }
     }

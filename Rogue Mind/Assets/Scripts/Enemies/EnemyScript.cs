@@ -51,6 +51,8 @@ public class EnemyScript : MonoBehaviour
     public DrugManagerScript modifiers;//finds the drugs modifiers
     public SoundManager soundManager;
 
+    public static AudioClip Samlets, Eyeball, FlySound, NoseSound;
+
     public enum EnemyState
     {
         Moving,//when the enemy is moving 
@@ -77,6 +79,10 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        Samlets = Resources.Load<AudioClip>("Samlets Noise");
+        Eyeball = Resources.Load<AudioClip>("Eye ball");//THIS ONE
+        FlySound = Resources.Load<AudioClip>("fly sound");//THIS ONE
+        NoseSound = Resources.Load<AudioClip>("nose idle");
         soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         modifiers = GameObject.FindGameObjectWithTag("DrugManager").GetComponent<DrugManagerScript>();
         anim = GetComponent<Animator>();
@@ -108,12 +114,14 @@ public class EnemyScript : MonoBehaviour
 
         if (scriptable.aiType == EnemyTypes.EnemyAI.Shooter)
         {
+            
             shadow = transform.GetChild(0).gameObject;
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             transform.GetChild(0).GetComponent<ShadowScript>().enemy = this.gameObject;
             transform.GetChild(0).parent = null;
-            StartCoroutine(SpawnDelay());
+            
         }
+        StartCoroutine(SpawnDelay());
     }
     // Update is called once per frame
     void Update()
@@ -209,8 +217,28 @@ public class EnemyScript : MonoBehaviour
     }
     private IEnumerator SpawnDelay()
     {
+        switch(scriptable.aiType)
+		{
+            case EnemyTypes.EnemyAI.Follower:
+                GetComponent<AudioSource>().clip = Samlets;
+                GetComponent<AudioSource>().Play();
+                break;
+            case EnemyTypes.EnemyAI.Shooter:
+                GetComponent<AudioSource>().clip = Eyeball;
+                GetComponent<AudioSource>().Play();
+                break;
+            case EnemyTypes.EnemyAI.Nose:
+                GetComponent<AudioSource>().clip = NoseSound;
+                GetComponent<AudioSource>().Play();
+                break;
+            case EnemyTypes.EnemyAI.Fly:
+                GetComponent<AudioSource>().clip = FlySound;
+                GetComponent<AudioSource>().Play();
+                break;
+        }
         yield return new WaitForSeconds(0.5f);//pause
         currentState = EnemyState.Moving;
+
     }
     //---------------------------------FOLLOWER-----------------------------------
     void FollowerUpdate()
@@ -236,9 +264,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
-            case EnemyState.Wait:
-                StartCoroutine(SpawnDelay());
-                break;
+            
         }
 
     }
@@ -279,9 +305,10 @@ public class EnemyScript : MonoBehaviour
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
 
-
+                soundManager.PlaySound("EnemyDeath");
 
                 Destroy(gameObject);// if health 0 or below then die
+               
             }
         }
         if ((collision.tag == "Melee"))//if collide with a melee attack
@@ -324,6 +351,7 @@ public class EnemyScript : MonoBehaviour
 
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
+                soundManager.PlaySound("EnemyDeath");
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -350,6 +378,7 @@ public class EnemyScript : MonoBehaviour
 
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
                 target.GetComponent<PlayerMovement>().killedEnemy = true;
+                soundManager.PlaySound("EnemyDeath");
                 Destroy(gameObject);// if health 0 or below then die
             }
         }
@@ -386,9 +415,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
-            case EnemyState.Wait:
-                StartCoroutine(SpawnDelay());
-                break;
+           
         }
 
     }
@@ -402,7 +429,8 @@ public class EnemyScript : MonoBehaviour
     }
     private IEnumerator NoseAttack()
     {
-
+        otherCollider.enabled = false;
+        GetComponent<AudioSource>().Stop();
         anim.SetTrigger("Attack");
         float m_ScaleX, m_ScaleY;
         float s_ScaleX, s_ScaleY;
@@ -410,7 +438,8 @@ public class EnemyScript : MonoBehaviour
         m_ScaleY = collider.size.y;
         s_ScaleX = collider.size.x;
         s_ScaleY = collider.size.y;//save the collider and sprite renderers size
-        yield return new WaitForSeconds(0.5f);//pause
+        yield return new WaitForSeconds(0.9f);//pause
+        soundManager.PlaySound("NoseAttack");
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(m_ScaleX * 3, m_ScaleY * 3);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(s_ScaleX * 3, s_ScaleY * 3);// double size for the hit
         Vector2 directionNow = new Vector2(direction.x, direction.y);
@@ -422,7 +451,11 @@ public class EnemyScript : MonoBehaviour
         anim.SetTrigger("Move");
         
         yield return new WaitForSeconds(0.2f);//wait
+        GetComponent<AudioSource>().PlayOneShot(NoseSound);
         currentState = EnemyState.Moving;//set moving again
+        otherCollider.enabled = true;
+        GetComponent<AudioSource>().clip = NoseSound;
+        GetComponent<AudioSource>().Play();
         //return null;
     }
 
@@ -446,9 +479,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
-            case EnemyState.Wait:
-                //StartCoroutine(SpawnDelay());
-                break;
+           
         }
     }
 
@@ -518,9 +549,7 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.Stunned:
                 StunnedUpdate();
                 break;
-            case EnemyState.Wait:
-                StartCoroutine(SpawnDelay());
-                break;
+           
             case EnemyState.FlyAttack:
                 activeSpeed = scriptable.movementSpeed;
                 dist = Vector3.Distance(target.transform.position, transform.position);
@@ -592,9 +621,11 @@ public class EnemyScript : MonoBehaviour
 
     private IEnumerator FlyAttack()
     {
+        GetComponent<AudioSource>().Stop();
         currentState = EnemyState.Wait;
         anim.SetTrigger("Explode");
         yield return new WaitForSeconds(0.5f);//pause inbetween shots
+        soundManager.PlaySound("FlyExplode");
         Instantiate(bulletType, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }

@@ -191,7 +191,8 @@ public class SaveManagerScript : MonoBehaviour
 
     public void SelectAtomic()
     {
-        if(firstChoice)
+        soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
+        if (firstChoice)
         {
             DeskToy1 = "Atomic";
             firstChoice = false;
@@ -206,6 +207,7 @@ public class SaveManagerScript : MonoBehaviour
     }
     public void SelectEnergy()
     {
+        soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
         if (firstChoice)
         {
             DeskToy1 = "Energy";
@@ -221,6 +223,7 @@ public class SaveManagerScript : MonoBehaviour
     }
     public void SelectPlumber()
     {
+        soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
         if (firstChoice)
         {
             DeskToy1 = "Plumber";
@@ -237,6 +240,7 @@ public class SaveManagerScript : MonoBehaviour
     }
     public void SelectDonut()
     {
+        soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
         if (firstChoice)
         {
             DeskToy1 = "Donut";

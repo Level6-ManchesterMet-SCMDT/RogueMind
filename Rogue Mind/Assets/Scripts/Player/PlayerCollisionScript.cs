@@ -96,6 +96,7 @@ public class PlayerCollisionScript : MonoBehaviour
         }
         if (collision.CompareTag("FoodDrop"))//if the collider is a dopamine drop
         {
+            soundManager.PlaySound(collision.GetComponent<FoodDropScript>().main);
             HealDamage(25);
             Destroy(collision.gameObject);//destroy the dopamine drop
 
@@ -125,6 +126,7 @@ public class PlayerCollisionScript : MonoBehaviour
     }
     private IEnumerator FlashCo()// used for Iframes and flashing
 	{
+        soundManager.PlaySound("PlayerDamage");
         int temp = 0;
         triggerCollider.enabled = false;// turn off the hitbox to prevent getting hit each frame in contact
         while(temp<numberOfFlashes)// as long as there are more flashes to do

@@ -14,11 +14,13 @@ public class DeathScreen : MonoBehaviour
     public Text enemiesKilled;
     public Animator deathTransition;
     public AudioMixer mainMixer;
+    public SoundManager soundManager;
     //public Animator pauseMenuTransition;
     GameObject player;
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         deathTransition = menu.GetComponent<Animator>();
         //pauseMenuTransition = pauseMenu.GetComponent<Animator>();
@@ -35,10 +37,12 @@ public class DeathScreen : MonoBehaviour
         {
             if (paused)
             {
+                soundManager.PlaySound("MenuOpen");
                 Resume();
             }
             else
             {
+                soundManager.PlaySound("MenuOpen");
                 Pause();
             }
         }
@@ -51,6 +55,7 @@ public class DeathScreen : MonoBehaviour
     }
     public void ReturnToOffice()
     {
+        soundManager.PlaySound("SelectNoise");
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
@@ -63,12 +68,14 @@ public class DeathScreen : MonoBehaviour
     }
     public void Resume()
     {
+        soundManager.PlaySound("SelectNoise");
         paused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
     }
     public void Exit()
     {
+        soundManager.PlaySound("SelectNoise");
         Application.Quit();
     }
 
@@ -104,6 +111,7 @@ public class DeathScreen : MonoBehaviour
 
     public void SetFullScreen(bool isFullscreen)
 	{
+        soundManager.PlaySound("SelectNoise");
         Screen.fullScreen = isFullscreen;
 	}
 
