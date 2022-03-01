@@ -315,13 +315,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - roundNum: 0
-    enemyTypes:
-    - {fileID: 11400000, guid: e1ae556b324945c4f9ee869c84d742c3, type: 2}
-    count: 01000000
+    enemyTypes: []
+    count: 
     spawnRate: 1
   spawnPoints:
   - {fileID: 5021983960557804734}
-  enemyPrefab: {fileID: 3182398780945161534, guid: 2a30c9f4a72df3f49be52448ee546ace, type: 3}
+  enemyPrefab: {fileID: 0}
   doors: {fileID: 0}
   exitDoor: {fileID: 1011154190737002063}
   nextWave: 0

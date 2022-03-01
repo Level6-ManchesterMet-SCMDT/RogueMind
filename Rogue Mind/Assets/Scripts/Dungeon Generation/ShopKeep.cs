@@ -23,7 +23,6 @@ public class ShopKeep : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 drugsMenu.GetComponent<ShopMenu>().OpenMenu();
-               
             }
         }
     }

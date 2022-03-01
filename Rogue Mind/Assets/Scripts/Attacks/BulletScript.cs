@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public CircleCollider2D colliderNonTrigger;
     public float damage = 1f;//the damage of the bullet
     public int timeTillDestroy = 3;// how long till the bullet automaticaly destroys itself
     // Start is called before the first frame update
@@ -27,6 +28,26 @@ public class BulletScript : MonoBehaviour
         {
             Destroy(gameObject);//Destroy the bullet
         }
+        if (collision.gameObject.tag == "EnemyBullet"||collision.gameObject.tag=="Bullet"||collision.gameObject.tag =="Enemy")
+        {
+            StartCoroutine(TurnOffCollider());
+        }
         
 	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Enemy")
+        {
+            StartCoroutine(TurnOffCollider());
+        }
+    }
+    IEnumerator TurnOffCollider()
+    {
+
+        colliderNonTrigger.enabled = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        colliderNonTrigger.enabled = true;
+    }
 }

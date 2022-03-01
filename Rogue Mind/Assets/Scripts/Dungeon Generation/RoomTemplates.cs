@@ -76,7 +76,7 @@ public class RoomTemplates : MonoBehaviour
         }
         if (shopWaitTime <= 0 && !spawnedShopRoom)
         {
-            itemWaitTime = 0;
+            shopWaitTime = 0;
             ShopRoom();
         }
         else
@@ -91,6 +91,7 @@ public class RoomTemplates : MonoBehaviour
         {
             if(i == rooms.Count -1) // gets the last room in the list
             {
+                Debug.Log(rooms[i].gameObject + "is End Room");
                 rooms[i].GetComponent<Activator>().isEndRoom = true; // gets the final rooms activator script and sets the end room to true
                 spawnedEndRoom = true; // stops the timer counting down
             }
@@ -106,6 +107,7 @@ public class RoomTemplates : MonoBehaviour
             {
                 if (rooms[i].GetComponent<Activator>().isShopRoom == false&& rooms[i].GetComponent<Activator>().isEndRoom == false)// checks to see if the room is already a shop room
                 {
+                    Debug.Log(rooms[i].gameObject + "is Item Room");
                     rooms[i].GetComponent<Activator>().isItemRoom = true;// makes the room an item room
                     spawnedItemRoom = true;// item room is set to true
                 }
@@ -120,13 +122,14 @@ public class RoomTemplates : MonoBehaviour
     void ShopRoom()
     {
          rand = Random.Range(0, endRooms.Count - 1);// picks a random number from all the end rooms in the level
-
+        Debug.Log(rand);
         for (int i = 0; i < endRooms.Count; i++)// for loop for all the rooms in the end room list
         {
             if (i == rand)// if the random number is the same as the current room in the for loop
             {
                 if (endRooms[i].GetComponent<Activator>().isItemRoom == false)// checks to see if the room is already a item room
                 {
+                    Debug.Log(endRooms[i].gameObject + "is shop Room");
                     endRooms[i].GetComponent<Activator>().isShopRoom = true; // spawns the shop room
                     spawnedShopRoom = true;
                 }
@@ -135,7 +138,7 @@ public class RoomTemplates : MonoBehaviour
                     rand = Random.Range(0, endRooms.Count - 1);
                     i = 0;
                 }
-
+                Debug.Log(i);
             }
         }
     }

@@ -17,18 +17,20 @@ public class PusherVertical : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             currentpos = player.transform.position;
-
-            if (collision.GetComponent<PlayerMovement>().isUp)
+            if (collision == player.GetComponent<PlayerCollisionScript>().playerFeetBox)
             {
+                if (collision.GetComponent<PlayerMovement>().isUp)
+                {
 
-                currentpos = new Vector3(currentpos.x , currentpos.y + pushAmount, currentpos.z);
-                collision.transform.position = currentpos;
-            }
-            if (collision.GetComponent<PlayerMovement>().isDown)
-            {
+                    currentpos = new Vector3(currentpos.x, currentpos.y + pushAmount, currentpos.z);
+                    collision.transform.position = currentpos;
+                }
+                if (collision.GetComponent<PlayerMovement>().isDown)
+                {
 
-                currentpos = new Vector3(currentpos.x , currentpos.y - pushAmount, currentpos.z);
-                collision.transform.position = currentpos;
+                    currentpos = new Vector3(currentpos.x, currentpos.y - pushAmount, currentpos.z);
+                    collision.transform.position = currentpos;
+                }
             }
         }
     }

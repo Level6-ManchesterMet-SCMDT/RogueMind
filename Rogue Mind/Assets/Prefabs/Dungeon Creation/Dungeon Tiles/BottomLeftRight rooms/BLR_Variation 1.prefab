@@ -2588,6 +2588,7 @@ Transform:
   - {fileID: 8139731722014280401}
   - {fileID: 3990805856987888303}
   - {fileID: 1908663096613110060}
+  - {fileID: 6975615572958239853}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2621,6 +2622,7 @@ MonoBehaviour:
   endRoomTemplate: {fileID: 5165489882499522545, guid: f715d8d4828fb894ebd15dc230851367, type: 3}
   itemRoomTemplate: {fileID: 4899770360544395483}
   shopRoomTemplate: {fileID: 0}
+  teleporter: {fileID: 4509298412677734475}
   shopTileSet: {fileID: 0}
 --- !u!114 &-5080605290881368608
 MonoBehaviour:
@@ -4625,4 +4627,27 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3084381476305592169, guid: 79bb4c4c22b434845bc421721425c59b, type: 3}
   m_PrefabInstance: {fileID: 8687969495577562491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8735785556625178554
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2292081751103577235}
+    m_Modifications:
+    - target: {fileID: 1870651678097302487, guid: 229c0c7e981ae8d428520c8a78de8b98, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 229c0c7e981ae8d428520c8a78de8b98, type: 3}
+--- !u!1 &4509298412677734475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5165489882499522545, guid: 229c0c7e981ae8d428520c8a78de8b98, type: 3}
+  m_PrefabInstance: {fileID: 8735785556625178554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6975615572958239853 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1870651678097302487, guid: 229c0c7e981ae8d428520c8a78de8b98, type: 3}
+  m_PrefabInstance: {fileID: 8735785556625178554}
   m_PrefabAsset: {fileID: 0}

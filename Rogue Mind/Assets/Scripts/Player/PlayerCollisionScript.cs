@@ -17,6 +17,8 @@ public class PlayerCollisionScript : MonoBehaviour
     public SpriteRenderer playerBottom;
     public SpriteRenderer playerArm;
 
+    public BoxCollider2D playerFeetBox;
+
     public float health;//the players health
     public float Maxhealth;//the players health
     public int Dopamine;

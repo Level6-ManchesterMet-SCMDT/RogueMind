@@ -8,7 +8,7 @@ public class VendingMachineScript : MonoBehaviour
     public GameObject vendingMenu;
     void Start()
     {
-        vendingMenu = GameObject.FindGameObjectWithTag("VendingMenu");
+        vendingMenu = GameObject.FindGameObjectWithTag("UI").gameObject.GetComponent<ShopMenu>().vendingMenu;
     }
 
     // Update is called once per frame
@@ -19,9 +19,12 @@ public class VendingMachineScript : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D collision)
 	{
-		if(Input.GetKey("F"))
-		{
-            vendingMenu.SetActive(true);
-		}
+        if (collision.CompareTag("Player"))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                vendingMenu.SetActive(true);
+            }
+        }
 	}
 }

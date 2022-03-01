@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!50 &8877410642842376109
 Rigidbody2D:
   serializedVersion: 4
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0f037f49d6f594d9fdde2a1f9a416d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliderNonTrigger: {fileID: 670771620110954472}
   damage: 1
   timeTillDestroy: 3
   modifiers: {fileID: 0}
@@ -145,7 +146,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6596869843035164009}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
