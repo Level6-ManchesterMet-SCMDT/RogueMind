@@ -5,10 +5,10 @@ using UnityEngine;
 public class VendingMachineScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject vendingMenu;
+    public GameObject UI;
     void Start()
     {
-        vendingMenu = GameObject.FindGameObjectWithTag("UI").gameObject.GetComponent<ShopMenu>().vendingMenu;
+        UI = GameObject.FindGameObjectWithTag("UI");
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class VendingMachineScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                vendingMenu.SetActive(true);
+                UI.GetComponent<ShopMenu>().OpenVending();
             }
         }
 	}

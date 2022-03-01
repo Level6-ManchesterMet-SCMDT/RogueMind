@@ -52,6 +52,21 @@ public class ShopMenu : MonoBehaviour
         player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
         OnOpen();
     }
+    public void OpenVending()
+    {
+        vendingMenu.SetActive(true);
+        //transition.SetTrigger("Open");
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.menu;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CantShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
+    }
+    public void CloseVending()
+    {
+        player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+        player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+        player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
+        vendingMenu.SetActive(false);
+    }
     public void OnOpen()// on the opening of the menu
     {
         /*DisplayedDrugs.Clear();//empty list of drugs

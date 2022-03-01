@@ -6,9 +6,11 @@ public class VendingScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject player;
+    public GameObject UI;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        UI = GameObject.FindGameObjectWithTag("UI");
     }
 
     // Update is called once per frame
@@ -16,7 +18,7 @@ public class VendingScript : MonoBehaviour
     {
         if(Input.GetKey("escape"))
 		{
-            this.gameObject.SetActive(false);
+            UI.GetComponent<ShopMenu>().CloseVending();
 		}
     }
 
@@ -27,8 +29,9 @@ public class VendingScript : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 20;
             player.GetComponent<PlayerCollisionScript>().HealDamage(20);
         }
-        this.gameObject.active = false;
-	}
+
+        UI.GetComponent<ShopMenu>().CloseVending();
+    }
     public void heal2()
     {
         if (player.GetComponent<PlayerCollisionScript>().Dopamine >= 40)
@@ -36,7 +39,7 @@ public class VendingScript : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 40;
             player.GetComponent<PlayerCollisionScript>().HealDamage(40);
         }
-        this.gameObject.active = false;
+        UI.GetComponent<ShopMenu>().CloseVending();
     }
     public void heal3()
     {
@@ -45,6 +48,6 @@ public class VendingScript : MonoBehaviour
             player.GetComponent<PlayerCollisionScript>().Dopamine -= 60;
             player.GetComponent<PlayerCollisionScript>().HealDamage(60);
         }
-        this.gameObject.active = false;
+        UI.GetComponent<ShopMenu>().CloseVending();
     }
 }
