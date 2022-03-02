@@ -141,7 +141,7 @@ public class BossScript : MonoBehaviour
                     currentState = EnemyState.Attacking;//stop moving
                     StartCoroutine(BigSamAttack());   //run attack
                 }*/
-                if(timer > 2000)
+                if(timer > 700)
 				{
                     timer = 0;
                     currentState = EnemyState.Attacking;//stop moving
