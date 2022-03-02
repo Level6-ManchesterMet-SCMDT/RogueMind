@@ -183,27 +183,30 @@ public class BossScript : MonoBehaviour
 
     private IEnumerator BigSamAssembleTheMinions()
 	{
-        otherCollider.enabled = false;
-        GetComponent<AudioSource>().Stop();
-        
-        anim.SetTrigger("BeginWobble");
-        yield return new WaitForSeconds(1);//pause
-        anim.SetTrigger("BeforeThrowUp");
-        yield return new WaitForSeconds(0.5f);//pause
-        anim.SetTrigger("Start Throwing Up");
-        GetComponent<AudioSource>().PlayOneShot(SamPuke);
-        for (int i = 0; i < Random.RandomRange(3,5); i++)//a random number
-		{
-            GameObject spawned = Instantiate(spawnable, transform.position+ new Vector3(0,-3,0), transform.rotation);//summon the spawnables 
-            spawned.GetComponent<EnemyScript>().scriptable = spawnableData;//apply their scriptable for data
+        if (health >= 0)
+        {
+            otherCollider.enabled = false;
+            GetComponent<AudioSource>().Stop();
+
+            anim.SetTrigger("BeginWobble");
+            yield return new WaitForSeconds(1);//pause
+            anim.SetTrigger("BeforeThrowUp");
             yield return new WaitForSeconds(0.5f);//pause
+            anim.SetTrigger("Start Throwing Up");
+            GetComponent<AudioSource>().PlayOneShot(SamPuke);
+            for (int i = 0; i < Random.RandomRange(3, 5); i++)//a random number
+            {
+                GameObject spawned = Instantiate(spawnable, transform.position + new Vector3(0, -3, 0), transform.rotation);//summon the spawnables 
+                spawned.GetComponent<EnemyScript>().scriptable = spawnableData;//apply their scriptable for data
+                yield return new WaitForSeconds(0.5f);//pause
+            }
+            anim.SetTrigger("Sad");
+            yield return new WaitForSeconds(1f);//pause
+            currentState = EnemyState.Moving;//set moving again
+            anim.SetTrigger("BackToWalk");
+            GetComponent<AudioSource>().PlayOneShot(SamWalk);
+            otherCollider.enabled = true;
         }
-        anim.SetTrigger("Sad");
-        yield return new WaitForSeconds(1f);//pause
-        currentState = EnemyState.Moving;//set moving again
-        anim.SetTrigger("BackToWalk");
-        GetComponent<AudioSource>().PlayOneShot(SamWalk);
-        otherCollider.enabled = true;
 
     }
     void BigSamCollision(Collider2D collision)

@@ -15,8 +15,8 @@ MonoBehaviour:
   aiType: 0
   name: Big Sam
   sprite: {fileID: 0}
-  hp: 800
-  movementSpeed: 0.5
+  hp: 600
+  movementSpeed: 1.25
   damage: 10
   spawnable: {fileID: 3182398780945161534, guid: b9f0643a8794e3e4ab35fdc86bacf9c7, type: 3}
   spawnableData: {fileID: 11400000, guid: caa6ccd66fcaff84b90d7de5fde9de3d, type: 2}

@@ -17,9 +17,9 @@ MonoBehaviour:
   healthPercentage: 0
   movementSpeedPercentage: 0
   dashDistancePercentage: 0
-  meleeDamagePercentage: 0
+  meleeDamagePercentage: 0.2
   fireRatePercentage: 0
   resistanceToEnemyDamage: 0
   name: WindowCleaner
-  description: No gentlemen but attack behind too
+  description: 1 melee hit, Big Swing
   drugCost: 20

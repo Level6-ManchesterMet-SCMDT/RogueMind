@@ -154,6 +154,14 @@ public class MeleeScript : MonoBehaviour
             damage = initialDamage * modifiers.meleeDamageModifier;//tripples damage value
             GameObject hitBox = Instantiate(windowCleanerHitPrefab, hitPoint.position, hitPoint.rotation);//spawn third hitbox
 
+            if (gameObject.GetComponent<PlayerMovement>().isRight)
+            {
+                hitBox.transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (gameObject.GetComponent<PlayerMovement>().isLeft)
+            {
+                hitBox.transform.localScale = new Vector3(-1, 1, 1);
+            }
             numberOfClicks = 0;//reset number of clicks 
         }
         

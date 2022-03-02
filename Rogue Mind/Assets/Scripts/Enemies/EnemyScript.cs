@@ -284,12 +284,13 @@ public class EnemyScript : MonoBehaviour
             soundManager.PlaySound("EnemyHit");
             StartCoroutine(FlashCo());
             Destroy(collision.gameObject);//destroy bullet
-            if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
-            {
-                target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
-            }
+            
             if (health <= 0)
             {
+                if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
+                {
+                    target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
+                }
                 Instantiate(bloodSplat[Random.Range(0,bloodSplat.Length)], transform.position, transform.rotation);
                 for (int i = 0; i < Random.RandomRange(0, 3); i++)
                 {
@@ -322,12 +323,13 @@ public class EnemyScript : MonoBehaviour
 
             Vector3 moveDirection = target.transform.position - transform.position;// create a vector facing the opposite direction of the player
             rigidBody.AddForce(moveDirection.normalized * -collision.GetComponent<HitScript>().knockback);// push enemy in said direction by the hits knockback power
-            if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
-            {
-                target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
-            }
+            
             if (health <= 0)
             {
+                if (target.GetComponent<PlayerCollisionScript>().doctorDrug)
+                {
+                    target.GetComponent<PlayerCollisionScript>().HealDamage(healthHeal);
+                }
 
                 if (collision.GetComponent<HitScript>().hitNo == 3)
                 {

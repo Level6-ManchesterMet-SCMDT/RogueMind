@@ -15,11 +15,11 @@ MonoBehaviour:
   sprite1: {fileID: 21300000, guid: dcd91e6b7fc3f26459cc021295cc29dd, type: 3}
   sprite2: {fileID: 21300000, guid: ca282dd6e434697438101d27ea982fde, type: 3}
   healthPercentage: 0
-  movementSpeedPercentage: 0
+  movementSpeedPercentage: 0.5
   dashDistancePercentage: 0
   meleeDamagePercentage: 0
   fireRatePercentage: 0
   resistanceToEnemyDamage: 0
   name: Athlete
-  description: Can double dash, but must be refreshed by killing an enemy
-  drugCost: 10
+  description: Movement Speed Increased, Ability To Double Dash
+  drugCost: 15

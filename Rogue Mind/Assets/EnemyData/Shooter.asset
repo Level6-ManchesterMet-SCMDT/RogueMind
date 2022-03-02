@@ -15,7 +15,7 @@ MonoBehaviour:
   aiType: 1
   name: 
   sprite: {fileID: 0}
-  hp: 28
+  hp: 35
   movementSpeed: 2
   damage: 10
   bulletType: {fileID: 6596869843035164009, guid: b7d36903ea403a44695a3f96a10e2c7a, type: 3}

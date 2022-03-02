@@ -56,7 +56,7 @@ public class PlayerCollisionScript : MonoBehaviour
     {
         if(doctorDrug && inRoom)
 		{
-            TakeDamage(Maxhealth * 0.0001f);
+            TakeDamage(Maxhealth * 0.0005f);
 		}
     }
 

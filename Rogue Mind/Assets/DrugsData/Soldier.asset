@@ -18,8 +18,8 @@ MonoBehaviour:
   movementSpeedPercentage: 0
   dashDistancePercentage: 0
   meleeDamagePercentage: 0
-  fireRatePercentage: 0
+  fireRatePercentage: 0.3
   resistanceToEnemyDamage: 0
   name: Soldier
-  description: Faster Reload speed, but slower bullets
-  drugCost: 50
+  description: Faster Fire And Reload speed but slower bullets
+  drugCost: 20

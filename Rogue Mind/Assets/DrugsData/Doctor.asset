@@ -22,4 +22,4 @@ MonoBehaviour:
   resistanceToEnemyDamage: 0
   name: Doctor
   description: Constantly lose health, but gain leech life
-  drugCost: 50
+  drugCost: 25

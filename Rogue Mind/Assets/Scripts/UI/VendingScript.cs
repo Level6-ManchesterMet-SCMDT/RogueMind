@@ -24,9 +24,9 @@ public class VendingScript : MonoBehaviour
 
     public void heal1()
 	{
-        if(player.GetComponent<PlayerCollisionScript>().Dopamine >= 20)
+        if(player.GetComponent<PlayerCollisionScript>().Dopamine >= 10)
 		{
-            player.GetComponent<PlayerCollisionScript>().Dopamine -= 20;
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= 10;
             player.GetComponent<PlayerCollisionScript>().HealDamage(20);
         }
 
@@ -34,18 +34,18 @@ public class VendingScript : MonoBehaviour
     }
     public void heal2()
     {
-        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= 40)
+        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= 20)
         {
-            player.GetComponent<PlayerCollisionScript>().Dopamine -= 40;
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= 20;
             player.GetComponent<PlayerCollisionScript>().HealDamage(40);
         }
         UI.GetComponent<ShopMenu>().CloseVending();
     }
     public void heal3()
     {
-        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= 60)
+        if (player.GetComponent<PlayerCollisionScript>().Dopamine >= 30)
         {
-            player.GetComponent<PlayerCollisionScript>().Dopamine -= 60;
+            player.GetComponent<PlayerCollisionScript>().Dopamine -= 30;
             player.GetComponent<PlayerCollisionScript>().HealDamage(60);
         }
         UI.GetComponent<ShopMenu>().CloseVending();

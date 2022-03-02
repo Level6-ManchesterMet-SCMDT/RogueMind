@@ -52,7 +52,13 @@ public class RoomTemplates : MonoBehaviour
     //ints to hold the minimum and maximum number of rooms in the dungeon
     public int minNumberOfRooms;
     public int maxNumberOfRooms;
+    public GameObject player;
 
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     private void Update()
     {
         if(spawnWaitTime<= 0 && !spawnedEndRoom) // if the wait time is 0 and the end room hasnt been spawned yet
@@ -82,6 +88,20 @@ public class RoomTemplates : MonoBehaviour
         else
         {
             shopWaitTime -= Time.deltaTime;
+        }
+        if (!spawnedItemRoom) 
+        {
+            
+
+            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.menu;
+            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CantShoot;
+            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
+        }
+        else 
+        {
+            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
+            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
+            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
         }
     }
 
