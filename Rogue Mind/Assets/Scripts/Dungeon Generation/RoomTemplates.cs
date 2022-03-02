@@ -53,6 +53,7 @@ public class RoomTemplates : MonoBehaviour
     public int minNumberOfRooms;
     public int maxNumberOfRooms;
     public GameObject player;
+    public bool spawnedOnce = true;
 
 
     private void Start()
@@ -89,20 +90,7 @@ public class RoomTemplates : MonoBehaviour
         {
             shopWaitTime -= Time.deltaTime;
         }
-        if (!spawnedItemRoom) 
-        {
-            
-
-            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.menu;
-            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CantShoot;
-            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CantHit;
-        }
-        else 
-        {
-            player.GetComponent<PlayerMovement>().currentState = PlayerMovement.PlayerState.Moving;
-            player.GetComponent<ShootingScript>().currentState = ShootingScript.ShootingState.CanShoot;
-            player.GetComponent<MeleeScript>().currentState = MeleeScript.MeleeState.CanHit;
-        }
+        
     }
 
     void ExitRoom()

@@ -95,6 +95,7 @@ public class EnemyScript : MonoBehaviour
         sizeY = scriptable.sizeY;
         this.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(sizeX, sizeY);
         this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(sizeX, sizeY);
+        transform.localScale = new Vector2(sizeX, sizeY);
 
         health = scriptable.hp;// set all variables to that of the scriptable object assigned to the enemy
         speed = scriptable.movementSpeed;
@@ -299,8 +300,10 @@ public class EnemyScript : MonoBehaviour
                     Instantiate(DopamineDrop, transform.position + (new Vector3(i, i, 0)), Quaternion.Euler(0, 0, 0));
                     Instantiate(dopamineDropRight[Random.Range(0, dopamineDropRight.Length)], transform.position, transform.rotation);
                 }
-                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                Debug.Log(modifiers.chefDrug);
+                if (Random.RandomRange(0, 10) == 1 && modifiers.chefDrug)
                 {
+                    Debug.Log("SpawnFood");
                     Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
                 target.GetComponent<PlayerCollisionScript>().EnemiesKilled += 1;
@@ -345,9 +348,10 @@ public class EnemyScript : MonoBehaviour
                 }
 
 
-
-                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                Debug.Log(modifiers.chefDrug);
+                if (Random.RandomRange(0, 10) == 1 && modifiers.chefDrug)
                 {
+                    Debug.Log("SpawnFood");
                     Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }
 
@@ -373,7 +377,7 @@ public class EnemyScript : MonoBehaviour
                     Instantiate(dopamineDropRight[Random.Range(0, dopamineDropRight.Length)],transform.position,transform.rotation);
 
                 }
-                if (Random.RandomRange(0, 3) == 1 && modifiers.chefDrug)
+                if (Random.RandomRange(0, 10) == 1 && modifiers.chefDrug)
                 {
                     Instantiate(FoodDrop, transform.position, Quaternion.Euler(0, 0, 0));
                 }

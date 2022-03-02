@@ -25,11 +25,12 @@ public class DeskToysScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        saveManager = GameObject.FindGameObjectWithTag("DrugManager");
     }
 
     public void RealStart()// used to be called after the save file is read
 	{
+        Debug.Log("Real start");
         player = GameObject.FindGameObjectWithTag("Player");// find the player
         activeToys[0] = saveManager.GetComponent<SaveManagerScript>().DeskToy1;// set the active toys to be those currently in the save file
         activeToys[1] = saveManager.GetComponent<SaveManagerScript>().DeskToy2;
@@ -113,7 +114,7 @@ public class DeskToysScript : MonoBehaviour
         if(player.GetComponent<PlayerCollisionScript>().health < player.GetComponent<PlayerCollisionScript>().Maxhealth * 0.5 && temp1B == false)
 		{
             player.GetComponent<PlayerCollisionScript>().health = player.GetComponent<PlayerCollisionScript>().Maxhealth;
-            temp1B = false;
+            temp1B = true;
 
         }
     }

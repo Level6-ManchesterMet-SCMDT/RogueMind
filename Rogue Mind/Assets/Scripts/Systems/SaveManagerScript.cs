@@ -29,11 +29,16 @@ public class SaveManagerScript : MonoBehaviour
 
     public GameObject deskToysImage;
     public GameObject soundManager;
+    public GameObject deskToyManager;
+
+    public bool Desk;
 
     string content;// used for writing to the text file
     // Start is called before the first frame update
     void Start()
     {
+        deskToyManager = GameObject.FindGameObjectWithTag("DeskToyManager");
+        Debug.Log(deskToyManager);
         string path = Application.dataPath + "/Log.txt";// the path to the save file
 
         if (!File.Exists(path))// if there isn't a save file then make one
@@ -51,8 +56,17 @@ public class SaveManagerScript : MonoBehaviour
             //GameObject test = GameObject.FindGameObjectWithTag("DeskToyManager");// finds the desk toy manager
             //test.GetComponent<DeskToysScript>().RealStart();//runs its real start     
         }
-        GameObject test2 = GameObject.FindGameObjectWithTag("DeskToys");// finds the desk toys on the desk
-        test2.GetComponent<DeskToysShowScript>().RealStart(GetComponent<SaveManagerScript>());//runs its real start
+        if(Desk)
+        {
+            GameObject test2 = GameObject.FindGameObjectWithTag("DeskToys");// finds the desk toys on the desk
+            test2.GetComponent<DeskToysShowScript>().RealStart(GetComponent<SaveManagerScript>());//runs its real start
+        }
+        else
+        {
+            deskToyManager.GetComponent<DeskToysScript>().RealStart();
+        }
+        
+        
 
     }
 
@@ -192,14 +206,15 @@ public class SaveManagerScript : MonoBehaviour
     public void SelectAtomic()
     {
         soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
-        if (firstChoice)
+        if (firstChoice && DeskToy2 != "Atomic")
         {
             DeskToy1 = "Atomic";
             firstChoice = false;
             
         }
-        else
-		{
+        else if (DeskToy1 != "Atomic")
+
+        {
             DeskToy2 = "Atomic";
             firstChoice = true;
         }
@@ -208,13 +223,14 @@ public class SaveManagerScript : MonoBehaviour
     public void SelectEnergy()
     {
         soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
-        if (firstChoice)
+        if (firstChoice && DeskToy2 != "Energy")
         {
             DeskToy1 = "Energy";
             firstChoice = false;
 
         }
-        else
+        else if (DeskToy1 != "Energy")
+
         {
             DeskToy2 = "Energy";
             firstChoice = true;
@@ -224,13 +240,14 @@ public class SaveManagerScript : MonoBehaviour
     public void SelectPlumber()
     {
         soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
-        if (firstChoice)
+        if (firstChoice && DeskToy2 != "Plumber")
         {
             DeskToy1 = "Plumber";
             firstChoice = false;
 
         }
-        else
+        else if (DeskToy1 != "Plumber")
+
         {
             DeskToy2 = "Plumber";
             firstChoice = true;
@@ -241,13 +258,14 @@ public class SaveManagerScript : MonoBehaviour
     public void SelectDonut()
     {
         soundManager.GetComponent<SoundManager>().PlaySound("SelectNoise");
-        if (firstChoice)
+        if (firstChoice && DeskToy2 != "Donut")
         {
             DeskToy1 = "Donut";
             firstChoice = false;
 
         }
-        else
+        else if (DeskToy1 != "Donut")
+
         {
             DeskToy2 = "Donut";
             firstChoice = true;

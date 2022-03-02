@@ -12,10 +12,13 @@ public class MainMenuScript : MonoBehaviour
     public Animator LoadBar;// the animator for the slider
     public float loadBarTime;
     public Animator transition;// animator for the transition
+    private void Start()
+    {
+        StartCoroutine(starting());
+    }
     public void NextScene(int sceneIndex)
 	{
-        loadingScreen.SetActive(true);// sets the loading screen to active
-        StartCoroutine(loadAsyncronously(sceneIndex));// starts to load the next scene
+        
     }
     IEnumerator loadAsyncronously(int sceneIndex)
     {
@@ -38,6 +41,14 @@ public class MainMenuScript : MonoBehaviour
 
         
         
+    }
+
+
+    private IEnumerator starting()
+    {
+        yield return new WaitForSeconds(3);//wait the duration
+        loadingScreen.SetActive(true);// sets the loading screen to active
+        StartCoroutine(loadAsyncronously(1));// starts to load the next scene
     }
 
     public void ExitGame()

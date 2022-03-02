@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isUp;
     public bool isDown;
 
-    float dashCounter, dashCoolCounter;
+    public float dashCounter, dashCoolCounter;
 
     public PlayerState currentState;// the enemies state
 
@@ -110,10 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.LeftShift))//if the player hits "E"
                 {
-                    if (dashCoolCounter <= 0 && dashCounter <= 0 && activeDashCooldown <=0)// If the dash cool down is 0
+                    if (dashCoolCounter <= 0 && dashCounter <= 0 && activeDashCooldown <= 0)// If the dash cool down is 0
                     {
                         if (!atheleteDrug)
                         {
+                            Debug.Log("Dash");
                             soundManager.PlaySound("Dash");
                             activeMoveSpeed = dashSpeed;// start the dash
                             movementStore = movement;// save the current movement axis so the dash is only in 1 direction
